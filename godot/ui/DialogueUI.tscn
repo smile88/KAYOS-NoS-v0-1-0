@@ -9,16 +9,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_ui")
-
-[node name="BG" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.058, 0.05, 0.12, 1)
 
 [node name="Strain" type="Label" parent="."]
 unique_name_in_owner = true
@@ -28,10 +20,12 @@ offset_left = 12.0
 offset_top = 8.0
 offset_right = 400.0
 offset_bottom = 28.0
-modulate = Color(0.62, 0.78, 0.95, 1)
+mouse_filter = 2
+theme_override_colors/font_color = Color(0.62, 0.78, 0.95, 1)
 text = "Mental Strain: 0 / 100  (Calm)"
 
 [node name="Panel" type="PanelContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 0.5
@@ -58,8 +52,8 @@ theme_override_constants/separation = 8
 [node name="Speaker" type="Label" parent="Panel/Margin/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
-modulate = Color(0.95, 0.82, 0.42, 1)
-text = "Corel"
+theme_override_colors/font_color = Color(0.95, 0.82, 0.42, 1)
+text = "Speaker"
 
 [node name="Line" type="RichTextLabel" parent="Panel/Margin/VBox"]
 unique_name_in_owner = true

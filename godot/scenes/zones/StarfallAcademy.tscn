@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" path="res://actors/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://actors/NPC.tscn" id="2_npc"]
+[ext_resource type="Resource" path="res://data/characters/corel.tres" id="3_corel"]
+[ext_resource type="PackedScene" path="res://ui/DialogueUI.tscn" id="4_ui"]
+[ext_resource type="Script" path="res://actors/Interactable.gd" id="5_interactable"]
+
+[sub_resource type="RectangleShape2D" id="board_shape"]
+size = Vector2(56, 40)
+
+[node name="StarfallAcademy" type="Node2D"]
+
+[node name="Ground" type="Polygon2D" parent="."]
+color = Color(0.09, 0.09, 0.16, 1)
+polygon = PackedVector2Array(-200, -200, 840, -200, 840, 560, -200, 560)
+
+[node name="Path" type="Polygon2D" parent="."]
+color = Color(0.14, 0.13, 0.2, 1)
+polygon = PackedVector2Array(120, -200, 340, -200, 340, 560, 120, 560)
+
+[node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="World" instance=ExtResource("1_player")]
+position = Vector2(200, 260)
+
+[node name="Corel" parent="World" instance=ExtResource("2_npc")]
+position = Vector2(360, 200)
+character_data = ExtResource("3_corel")
+
+[node name="NoticeBoard" type="Area2D" parent="World"]
+position = Vector2(470, 240)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("5_interactable")
+display_name = "Notice Board"
+examine_text = "Parchment notices flutter under glass. A lecture on void-essence theory — hers — is circled twice. Someone has written 'unproven' beside it in a careful, unkind hand."
+
+[node name="Body" type="Polygon2D" parent="World/NoticeBoard"]
+color = Color(0.3, 0.24, 0.16, 1)
+polygon = PackedVector2Array(-28, -56, 28, -56, 28, 0, -28, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/NoticeBoard"]
+position = Vector2(0, -20)
+shape = SubResource("board_shape")
+
+[node name="Label" type="Label" parent="World/NoticeBoard"]
+offset_left = -40.0
+offset_top = -76.0
+offset_right = 40.0
+offset_bottom = -58.0
+theme_override_colors/font_color = Color(0.7, 0.72, 0.85, 1)
+text = "Notices"
+horizontal_alignment = 1
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="DialogueUI" parent="HUD" instance=ExtResource("4_ui")]
+
+[node name="Hint" type="Label" parent="HUD"]
+offset_left = 12.0
+offset_top = 332.0
+offset_right = 400.0
+offset_bottom = 352.0
+theme_override_colors/font_color = Color(0.5, 0.52, 0.62, 1)
+text = "WASD / arrows: move    E: interact"

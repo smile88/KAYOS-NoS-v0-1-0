@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://data/characters/character_data.gd" id="1_cd"]
+
+[resource]
+script = ExtResource("1_cd")
+id = "CH-013"
+display_name = "Corel"
+faction = 0
+default_dialogue = "res://data/dialogue/test_funding_lie.json"
+editor_notes = "Placeholder NPC for the Phase 2 walkable slice. Swap in CH-013 sprite + PO-011 portrait when cleaned."

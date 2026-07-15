@@ -30,3 +30,6 @@ art/assets_raw/
 # Office lock/temp files
 .~lock.*#
 ~$*
+
+# Affinity working files (large; the exported PNG in assets_clean is what ships)
+art/affinity_work/*.afphoto
