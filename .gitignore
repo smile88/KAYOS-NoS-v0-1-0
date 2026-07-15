@@ -1,0 +1,32 @@
+# Godot 4+ ----------------------------------------------------------------
+godot/.godot/
+godot/.import/
+godot/export.cfg
+godot/export_presets.cfg
+*.translation
+
+# Godot export builds
+/build/
+/exports/
+*.dmg
+*.zip
+*.app
+
+# macOS --------------------------------------------------------------------
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon?
+
+# Editor / tooling ---------------------------------------------------------
+*.tmp
+*.bak
+$CLAUDE_JOB_DIR/
+
+# Large raw generations: kept out of git (reproducible; ~6MB each). Use Git LFS if you
+# ever want them versioned. Cleaned finals in art/assets_clean/ ARE committed.
+art/assets_raw/
+
+# Office lock/temp files
+.~lock.*#
+~$*

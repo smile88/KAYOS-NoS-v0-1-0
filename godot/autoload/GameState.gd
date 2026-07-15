@@ -1,0 +1,166 @@
+extends Node
+## GameState — the persistent flag registry + inventory + protagonist context.
+##
+## The Legacy System (GDD §5, §11) IS this dictionary, serialized to the save file.
+## It is NEVER cleared mid-run: Part One writes flags, Part Two and the Coda read them.
+## Human-readable JSON save so flags are testable in isolation (write in a P1 test scene,
+## read in a P2 test scene — the Ledger checkpoint, GDD §11).
+
+signal flag_changed(key: String, value)
+signal strain_changed(value: int, band: int)
+signal strain_silence_triggered()
+
+const SAVE_PATH := "user://kayos_save.json"
+
+## The seven attributes (GDD §7.1). Point-buy at creation; 1-10 range.
+const ATTRIBUTES := ["Vigor", "Resilience", "Celerity", "Arcana", "Acumen", "Magnetism", "Fortune"]
+
+## Mental Strain bands (GDD §7.3).
+enum StrainBand { CALM, FRAYED, STRAINED, BREAKING, SILENCE }
+
+## Persistent run state -------------------------------------------------------
+var flags: Dictionary = {}
+var inventory: Array[String] = []
+var current_protagonist: String = "elorin"   # "elorin" | "grakkar" | "talindir"
+var current_scene: String = ""
+var player_position: Vector2 = Vector2.ZERO
+var mental_strain: int = 0                    # 0-100 (GDD §7.3)
+var attributes: Dictionary = {}               # attr name -> int (set at character creation)
+
+
+func _ready() -> void:
+	_seed_default_flags()
+	_seed_default_attributes()
+
+
+## Attribute API --------------------------------------------------------------
+func get_attribute(attr: String) -> int:
+	return int(attributes.get(attr, 0))
+
+func set_attribute(attr: String, value: int) -> void:
+	attributes[attr] = clampi(value, 1, 10)
+
+func _seed_default_attributes() -> void:
+	# Base 3 in each (GDD §7.1). Real values set by character creation (Phase 2.4).
+	for a in ATTRIBUTES:
+		if not attributes.has(a):
+			attributes[a] = 3
+
+
+## Mental Strain API (GDD §7.3) -----------------------------------------------
+## Never a game-over: at 100 a Silence scene fires and Strain resets to 60.
+func add_strain(delta: int) -> void:
+	var before := mental_strain
+	mental_strain = clampi(mental_strain + delta, 0, 100)
+	if mental_strain != before:
+		strain_changed.emit(mental_strain, get_strain_band())
+	if mental_strain >= 100:
+		strain_silence_triggered.emit()
+		mental_strain = 60
+		strain_changed.emit(mental_strain, get_strain_band())
+
+func get_strain_band() -> StrainBand:
+	if mental_strain >= 100: return StrainBand.SILENCE
+	if mental_strain >= 75:  return StrainBand.BREAKING
+	if mental_strain >= 50:  return StrainBand.STRAINED
+	if mental_strain >= 25:  return StrainBand.FRAYED
+	return StrainBand.CALM
+
+
+## Flag API -------------------------------------------------------------------
+func get_flag(key: String, default_value = null):
+	return flags.get(key, default_value)
+
+func set_flag(key: String, value) -> void:
+	flags[key] = value
+	flag_changed.emit(key, value)
+
+func has_flag(key: String) -> bool:
+	return flags.has(key)
+
+## Increment an int flag by delta, clamped to [min_v, max_v]. Used for 0-3 / 0-4 scales.
+func bump_flag(key: String, delta: int, min_v: int = 0, max_v: int = 99) -> void:
+	set_flag(key, clampi(int(flags.get(key, 0)) + delta, min_v, max_v))
+
+
+## Save / load ----------------------------------------------------------------
+func save_game() -> void:
+	var data := {
+		"flags": flags,
+		"inventory": inventory,
+		"current_protagonist": current_protagonist,
+		"current_scene": current_scene,
+		"player_position": {"x": player_position.x, "y": player_position.y},
+		"mental_strain": mental_strain,
+		"attributes": attributes,
+	}
+	var f := FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	if f:
+		f.store_string(JSON.stringify(data, "\t"))
+		f.close()
+
+func load_game() -> bool:
+	if not FileAccess.file_exists(SAVE_PATH):
+		return false
+	var f := FileAccess.open(SAVE_PATH, FileAccess.READ)
+	if not f:
+		return false
+	var parsed = JSON.parse_string(f.get_as_text())
+	f.close()
+	if typeof(parsed) != TYPE_DICTIONARY:
+		return false
+	flags = parsed.get("flags", {})
+	inventory.assign(parsed.get("inventory", []))
+	current_protagonist = parsed.get("current_protagonist", "elorin")
+	current_scene = parsed.get("current_scene", "")
+	var p: Dictionary = parsed.get("player_position", {"x": 0, "y": 0})
+	player_position = Vector2(p.get("x", 0), p.get("y", 0))
+	mental_strain = int(parsed.get("mental_strain", 0))
+	var saved_attrs = parsed.get("attributes", {})
+	if typeof(saved_attrs) == TYPE_DICTIONARY and not saved_attrs.is_empty():
+		attributes = saved_attrs.duplicate()
+	return true
+
+
+## Default flag registry (GDD §11) --------------------------------------------
+## Defaults only. Real values are written by reachable choices. Grouped by part.
+func _seed_default_flags() -> void:
+	# --- Cross-part / meta (§11.3) ---
+	flags["COLDOPEN_HONEST"] = false
+	flags["P1_CLASS"] = ""          # voidweaver | harmonist | mender
+	flags["P2_CLASS"] = ""          # scholar | chainbreaker | whisper
+
+	# --- Part One (§11.1) ---
+	flags["P1_FUNDING"] = ""        # LIE | TRUTH | HEDGE
+	flags["P1_VARA_RECRUITED"] = false
+	flags["P1_VARA_CREDITED"] = false
+	flags["P1_DURAK_TRUST"] = 0     # 0-3
+	flags["P1_COIL_LOYALTY"] = 0    # 0-3
+	flags["P1_FIRSTTEST_BLAME"] = ""  # self | team | project
+	flags["P1_WARD_SCHEME"] = ""    # LATTICE | ORBIT | SEAL
+	flags["P1_FAILSAFE_CUT"] = false
+	flags["P1_FLAW"] = ""           # DOCUMENTED | HIDDEN | NONE
+	flags["P1_GLANCE_SEEN"] = false
+	flags["P1_SERA_LEAK"] = false
+	flags["P1_TESTIMONY"] = ""      # TRUE | LIE | EXPOSED
+	flags["P1_ARCHIVE_LEFT"] = false
+	flags["P1_ARCHIVE_LOCATION"] = ""  # LUNARIS | ACADEMY | DESTROYED | NEVER
+	flags["P1_WARNING"] = ""        # FILED | ENCODED | SWALLOWED
+	flags["P1_TALINDIR_TRUTH"] = 0  # 0-3
+	flags["P1_NORTHREACH_PROMISE"] = false
+
+	# --- Part Two (§11.2) ---
+	flags["P2_LITERACY"] = false
+	flags["P2_MORGA_ALIVE"] = false
+	flags["P2_BLACKCRAG_ROLE"] = ""   # defiance | rescue | preserve
+	flags["P2_ARITHMETIC"] = 0        # 0-4
+	flags["P2_HEEDS_ELORIN"] = false
+	flags["P2_KESS_FATE"] = ""        # saved | spent | freed | lost
+	flags["P2_ILVANE_DOUBT"] = false
+	flags["P2_WARNING_SENT"] = false
+	flags["P2_TOWER_CLEARED"] = false
+	flags["P2_FINAL_MERCY"] = ""      # killed | spared | used
+	flags["P2_NIGHT_TONE"] = ""       # rage | grief | cold | shared
+
+	# --- Coda (§11.3) ---
+	flags["Talindir_final"] = ""      # seal | publish | soften

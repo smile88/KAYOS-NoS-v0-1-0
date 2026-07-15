@@ -1,0 +1,56 @@
+{
+  "id": "test_funding_lie",
+  "start": "corel_ask",
+  "nodes": {
+    "corel_ask": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "They want a demonstration of confidence. Tell them the containment method is proven. It nearly is. It will be.",
+      "choices": [
+        { "text": "It isn't proven. I won't say it is.", "goto": "truth" },
+        { "text": "I'll tell them what they need to hear.", "goto": "lie", "set_flags": { "P1_FUNDING": "LIE" } },
+        { "text": "I can frame the uncertainty as opportunity - honest and fundable both.",
+          "check": { "attr": "Acumen", "dc": 7, "uncertain": false },
+          "goto": "hedge_check", "goto_fail": "hedge_fail" },
+        { "text": "The Conclave doesn't fund certainty. It funds leverage. Let me show you what they actually want to buy.",
+          "require_flag": { "P1_CLASS": "harmonist" }, "goto": "harmonist" }
+      ]
+    },
+    "truth": {
+      "speaker": "corel", "portrait": "PO-011",
+      "text": "Then we may lose the funding, and the surges won't wait for our honesty.",
+      "set_flags": { "P1_FUNDING": "TRUTH" },
+      "choices": [
+        { "text": "Better a lost grant than a lie in the foundation.", "goto": "truth_end", "set_flags": { "P1_COIL_LOYALTY": 1 } },
+        { "text": "...Give me one week to make it true instead.", "goto": "truth_week" }
+      ]
+    },
+    "truth_end": { "speaker": "corel", "portrait": "PO-011", "text": "As you say. I'll tell them the truth, and brace for it." },
+    "truth_week": { "speaker": "corel", "portrait": "PO-011", "text": "One week. Make me a liar the honest way." },
+    "lie": {
+      "speaker": "corel", "portrait": "PO-011",
+      "text": "Thank you. I know what it costs you.",
+      "strain": 8,
+      "choices": [ { "text": "You don't. But it's done.", "goto": "lie_end" } ]
+    },
+    "lie_end": { "speaker": "corel", "portrait": "PO-011", "text": "It's done. The first crack, laid in the foundation." },
+    "hedge_check": {
+      "speaker": "corel", "portrait": "PO-011",
+      "text": "...That might actually hold. Draft it. Both of us sign.",
+      "set_flags": { "P1_FUNDING": "HEDGE" }
+    },
+    "hedge_fail": {
+      "speaker": "corel", "portrait": "PO-011",
+      "text": "A pretty phrase, but the Conclave will see straight through it. We need a real answer.",
+      "choices": [
+        { "text": "Then the truth it is.", "goto": "truth" },
+        { "text": "...Fine. Tell them what they want to hear.", "goto": "lie", "set_flags": { "P1_FUNDING": "LIE" } }
+      ]
+    },
+    "harmonist": {
+      "speaker": "corel", "portrait": "PO-011",
+      "text": "You frighten me a little, Elorin. Do it.",
+      "set_flags": { "P1_FUNDING": "HEDGE", "P1_HARMONIST_CorelRespect": true }
+    }
+  }
+}
