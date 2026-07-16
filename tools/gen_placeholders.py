@@ -8,6 +8,7 @@ Output: godot/art/placeholders/  (referenced by scenes; swap by dragging the
 real PNG onto the node's Texture slot, or by dropping cleaned art into
 godot/art/sprites|portraits and repointing the texture).
 """
+import math
 import os
 from PIL import Image, ImageDraw, ImageFont
 
@@ -46,23 +47,23 @@ def save(img, name):
 
 
 def character(name, body, robe_trim=None, aged=False):
-    """48x72 standing figure, feet at bottom edge, ID label on the chest."""
-    im = Image.new("RGBA", (48, 72), (0, 0, 0, 0))
+    """32x48 standing figure per GDD §13, feet at bottom edge, ID label on the chest."""
+    im = Image.new("RGBA", (32, 48), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
     dark = tuple(int(c * 0.55) for c in body)
     skin = (216, 204, 226) if not aged else (198, 192, 206)
     # robe / body
-    d.polygon([(12, 26), (36, 26), (42, 70), (6, 70)], fill=body, outline=dark)
+    d.polygon([(8, 17), (24, 17), (28, 47), (4, 47)], fill=body, outline=dark)
     # head
-    d.ellipse([15, 4, 33, 24], fill=skin, outline=dark)
+    d.ellipse([10, 2, 22, 16], fill=skin, outline=dark)
     # hair / hood hint
-    d.arc([15, 4, 33, 24], 180, 360, fill=dark, width=3)
+    d.arc([10, 2, 22, 16], 180, 360, fill=dark, width=2)
     # trim stripe
     if robe_trim:
-        d.polygon([(22, 26), (26, 26), (28, 70), (20, 70)], fill=robe_trim)
+        d.polygon([(14, 17), (18, 17), (19, 47), (13, 47)], fill=robe_trim)
     # feet shadow line
-    d.line([(8, 70), (40, 70)], fill=dark, width=2)
-    label(d, 48, 38, name.split("_")[0], 9, (255, 255, 255))
+    d.line([(5, 47), (27, 47)], fill=dark, width=2)
+    label(d, 32, 24, name.split("_")[0], 7, (255, 255, 255))
     save(im, name)
 
 
@@ -160,6 +161,93 @@ def prop_starlamp():
     save(im, "PR-017_star_lamp")
 
 
+def prop_sun_mask():
+    """A child's festival mask, dropped. PR-021 (festival solstice decorations)."""
+    im = Image.new("RGBA", (24, 24), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    for i in range(9):  # the sun's nine rays
+        a = i * 40
+        d.line([(12, 12), (12 + int(11 * math.cos(math.radians(a))),
+                           12 + int(11 * math.sin(math.radians(a))))], fill=GOLD, width=1)
+    d.ellipse([4, 4, 20, 20], fill=(242, 216, 130), outline=(150, 118, 48))
+    d.ellipse([8, 9, 11, 12], fill=INK)   # eye holes
+    d.ellipse([13, 9, 16, 12], fill=INK)
+    save(im, "PR-021_sun_mask")
+
+
+def prop_wine_cups():
+    """Two abandoned cups. PR-021."""
+    im = Image.new("RGBA", (24, 16), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    for x in (3, 13):
+        d.polygon([(x, 4), (x + 8, 4), (x + 6, 14), (x + 2, 14)], fill=(176, 168, 148),
+                  outline=(120, 112, 96))
+        d.ellipse([x, 2, x + 8, 6], fill=(122, 40, 58), outline=(120, 112, 96))  # wine dregs
+    save(im, "PR-021_wine_cups")
+
+
+def prop_broadsheet():
+    """The printed order of ceremony. PR-008 (documents set)."""
+    im = Image.new("RGBA", (24, 24), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.polygon([(3, 2), (21, 4), (20, 22), (4, 20)], fill=PARCHMENT, outline=(158, 140, 100))
+    d.ellipse([9, 5, 15, 11], outline=GOLD, width=1)      # sun sigil masthead
+    for y in range(13, 20, 2):
+        d.line([(6, y), (18, y)], fill=(120, 106, 78))    # type
+    save(im, "PR-008_broadsheet")
+
+
+def prop_ledger():
+    """Talindir's chronicle, open on the balustrade. PR-008 (documents set)."""
+    im = Image.new("RGBA", (32, 24), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.polygon([(1, 6), (15, 3), (15, 21), (1, 22)], fill=PARCHMENT, outline=(150, 132, 92))
+    d.polygon([(17, 3), (31, 6), (31, 22), (17, 21)], fill=PARCHMENT, outline=(150, 132, 92))
+    d.line([(16, 3), (16, 21)], fill=(110, 96, 66), width=1)   # spine
+    for y in range(8, 19, 3):
+        d.line([(3, y), (13, y)], fill=(90, 80, 60))           # his narrowing hand
+        d.line([(19, y), (29, y)], fill=(90, 80, 60))
+    save(im, "PR-008_ledger")
+
+
+def prop_stair_down():
+    """The stair into the festival. PR-023 (stairs, ladders, catwalks)."""
+    im = Image.new("RGBA", (48, 40), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    for i in range(5):
+        y = 4 + i * 7
+        shade = 150 - i * 22
+        d.rectangle([4 + i * 2, y, 44 - i * 2, y + 6], fill=(shade, shade - 6, shade + 10),
+                    outline=(60, 56, 78))
+    label(d, 48, 30, "PR-023", 7, (240, 236, 255))
+    save(im, "PR-023_stair_down")
+
+
+def prop_sun_mosaic():
+    """Solari sun-sigil inlaid in the balcony floor. EN-006."""
+    im = Image.new("RGBA", (64, 64), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.ellipse([16, 16, 48, 48], outline=(198, 176, 120), width=3)
+    for i in range(9):
+        a = math.radians(i * 40)
+        d.line([(32 + int(17 * math.cos(a)), 32 + int(17 * math.sin(a))),
+                (32 + int(29 * math.cos(a)), 32 + int(29 * math.sin(a)))],
+               fill=(198, 176, 120), width=2)
+    label(d, 64, 29, "EN-006", 7, (198, 176, 120))
+    save(im, "EN-006_sun_mosaic")
+
+
+def prop_rail_carving():
+    """Two sets of initials cut under the rail. EN-006."""
+    im = Image.new("RGBA", (16, 12), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    d.line([(2, 3), (2, 9)], fill=(150, 140, 114))
+    d.line([(2, 3), (5, 6)], fill=(150, 140, 114))
+    d.line([(8, 3), (8, 9)], fill=(150, 140, 114))
+    d.line([(8, 9), (12, 9)], fill=(150, 140, 114))
+    save(im, "EN-006_rail_carving")
+
+
 def city_district(name, lit):
     """96x64 city block seen from above/afar — windows are the light source.
     The Silence sweep darkens these via modulate; a dark variant also exists."""
@@ -179,10 +267,10 @@ def city_district(name, lit):
 def balustrade():
     im = Image.new("RGBA", (32, 32), (0, 0, 0, 0))
     d = ImageDraw.Draw(im)
-    d.rectangle([0, 2, 31, 8], fill=(196, 186, 160), outline=(140, 130, 104))   # rail
+    d.rectangle([0, 2, 31, 8], fill=(150, 142, 128), outline=(96, 90, 82))   # rail
     for x in (4, 14, 24):
-        d.rectangle([x, 9, x + 4, 26], fill=(176, 166, 140), outline=(140, 130, 104))
-    d.rectangle([0, 27, 31, 31], fill=(196, 186, 160), outline=(140, 130, 104))
+        d.rectangle([x, 9, x + 4, 26], fill=(120, 114, 104), outline=(84, 80, 74))
+    d.rectangle([0, 27, 31, 31], fill=(150, 142, 128), outline=(96, 90, 82))
     save(im, "EN-006_balustrade")
 
 
@@ -231,7 +319,7 @@ def main():
     portrait("PO-014_generic", SOLARI, "Citizen")
     # -- tiles --
     for args, name in [
-        (((214, 196, 158), (238, 224, 190), "marble"), "EN-006_balcony_floor"),
+        (((74, 68, 92), (104, 96, 120), "marble"), "EN-006_balcony_floor"),
         (((52, 50, 72), (74, 72, 100), "stone"), "EN-001_academy_stone"),
         (((40, 38, 58), (58, 56, 82), "stone"), "EN-001_academy_path"),
     ]:
@@ -245,6 +333,14 @@ def main():
     prop_notice_board()
     prop_garland()
     prop_starlamp()
+    # -- Cold Open density set: optional detail, most of it leading nowhere (GDD pillar 4, §8.4) --
+    prop_sun_mask()
+    prop_wine_cups()
+    prop_broadsheet()
+    prop_ledger()
+    prop_stair_down()
+    prop_sun_mosaic()
+    prop_rail_carving()
     # -- backdrop / panels / ui --
     city_district("EN-016_city_district_lit", True)
     city_district("EN-016_city_district_dark", False)
