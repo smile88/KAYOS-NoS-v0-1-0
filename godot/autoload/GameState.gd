@@ -128,7 +128,9 @@ func _seed_default_flags() -> void:
 	# --- Cross-part / meta (§11.3) ---
 	flags["COLDOPEN_HONEST"] = false
 	flags["P1_CLASS"] = ""          # voidweaver | harmonist | mender
+	flags["P1_PERK"] = ""           # umbraveil_born | conclave_sponsored | seravins_student
 	flags["P2_CLASS"] = ""          # scholar | chainbreaker | whisper
+	flags["P2_PERK"] = ""           # collar_scarred | ashpile_sharp | the_reader
 
 	# --- Part One (§11.1) ---
 	flags["P1_FUNDING"] = ""        # LIE | TRUTH | HEDGE
