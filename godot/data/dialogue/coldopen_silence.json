@@ -1,0 +1,23 @@
+{
+	"id": "coldopen_silence",
+	"start": "n1",
+	"nodes": {
+		"n1": {
+			"speaker": "Festival-Goer",
+			"portrait": "PO-014",
+			"text": "\"The lights— look at the lights—\"",
+			"choices": [ { "text": "(look)", "goto": "n2" } ]
+		},
+		"n2": {
+			"speaker": "",
+			"text": "District by district, Astra'Thalas goes out. Not blown out — silenced. And beneath the screaming, something worse: the Song, the hum under the world so constant that no one living has ever heard it, stops.",
+			"choices": [ { "text": "(the silence)", "goto": "n3" } ],
+			"strain": 10
+		},
+		"n3": {
+			"speaker": "Talindir",
+			"portrait": "PO-005",
+			"text": "You do not run. You sit down on the cold marble, among the fallen garlands, and you open your ledger. The habit of observation is the only thing you have ever done well enough for it to constitute protection. You begin to write."
+		}
+	}
+}

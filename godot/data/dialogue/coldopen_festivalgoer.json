@@ -1,0 +1,41 @@
+{
+	"id": "coldopen_festivalgoer",
+	"start": "q",
+	"nodes": {
+		"q": {
+			"speaker": "Festival-Goer",
+			"portrait": "PO-014",
+			"text": "You're not watching the lights, scribe. All of Astra'Thalas is dancing, and you keep looking at the sky like it owes you a debt. Why do you look afraid?",
+			"choices": [
+				{
+					"text": "Tell the truth. \"Tonight something ends.\"",
+					"set_flags": { "COLDOPEN_HONEST": true },
+					"goto": "honest"
+				},
+				{
+					"text": "Deflect. \"Just old bones. Go and dance.\"",
+					"set_flags": { "COLDOPEN_HONEST": false },
+					"goto": "deflect"
+				}
+			]
+		},
+		"honest": {
+			"speaker": "Festival-Goer",
+			"portrait": "PO-014",
+			"strain": 5,
+			"text": "She laughs — and then she doesn't. Something in your face stops her. \"That isn't a kind thing to say on a festival night.\" She steps back into the crowd. She does not dance again.",
+			"choices": [ { "text": "(watch the sky)", "goto": "end" } ]
+		},
+		"deflect": {
+			"speaker": "Festival-Goer",
+			"portrait": "PO-014",
+			"text": "\"Old bones! Then sit, grandfather, and let the young ones wear theirs out.\" She spins away, laughing, into the gold and the noise.",
+			"choices": [ { "text": "(watch the sky)", "goto": "end" } ]
+		},
+		"end": {
+			"speaker": "Talindir",
+			"portrait": "PO-005",
+			"text": "Overhead, past the festival-glow, the stars are very clear tonight. In your satchel, the seal on a three-hundred-year-old letter has never felt so heavy."
+		}
+	}
+}

@@ -9,9 +9,13 @@ class_name Interactable
 @export var display_name: String = ""
 @export_multiline var examine_text: String = ""
 @export_file("*.json", "*.tres") var dialogue: String = ""
+## Optional: a flag set to true the first time the player interacts (tutorial/progress tracking).
+@export var flag_on_interact: String = ""
 
 
 func interact() -> void:
+	if flag_on_interact != "":
+		GameState.set_flag(flag_on_interact, true)
 	if dialogue != "":
 		DialogueManager.start(dialogue)
 	elif examine_text != "":

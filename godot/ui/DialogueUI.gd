@@ -12,9 +12,15 @@ const COL_LOCKED := Color(0.45, 0.45, 0.52)
 @onready var line: RichTextLabel = %Line
 @onready var choices: VBoxContainer = %Choices
 @onready var strain: Label = %Strain
+@onready var portrait: TextureRect = %Portrait
+
+## Portrait id (e.g. "PO-005") -> texture path. Cleaned art dropped into art/portraits/ wins
+## over art/placeholders/ automatically — name the file with the PO-### id as its prefix.
+var _portrait_index: Dictionary = {}
 
 
 func _ready() -> void:
+	_build_portrait_index()
 	DialogueManager.dialogue_started.connect(func(_id): panel.show())
 	DialogueManager.node_entered.connect(_on_node)
 	DialogueManager.choices_ready.connect(_on_choices)
@@ -27,6 +33,27 @@ func _ready() -> void:
 func _on_node(node: Dictionary) -> void:
 	speaker.text = String(node.get("speaker", "")).capitalize()
 	line.text = String(node.get("text", ""))
+	var pid := String(node.get("portrait", ""))
+	if pid != "" and _portrait_index.has(pid):
+		portrait.texture = load(_portrait_index[pid])
+		portrait.show()
+	else:
+		portrait.texture = null
+		portrait.hide()
+
+
+## Scan placeholders first, then real art, so art/portraits/ overrides same-id placeholders.
+func _build_portrait_index() -> void:
+	for dir_path in ["res://art/placeholders", "res://art/portraits"]:
+		var dir := DirAccess.open(dir_path)
+		if dir == null:
+			continue
+		for f in dir.get_files():
+			if not f.ends_with(".png"):
+				continue
+			var pid := f.get_basename().get_slice("_", 0)   # "PO-005_talindir.png" -> "PO-005"
+			if pid.begins_with("PO-"):
+				_portrait_index[pid] = dir_path + "/" + f
 
 
 func _on_choices(list: Array) -> void:

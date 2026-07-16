@@ -1,11 +1,15 @@
-[gd_resource type="Resource" script_class="CharacterData" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3]
 
 [ext_resource type="Script" path="res://data/characters/character_data.gd" id="1_cd"]
+[ext_resource type="Texture2D" path="res://art/placeholders/CH-013_corel.png" id="2_sprite"]
+[ext_resource type="Texture2D" path="res://art/placeholders/PO-011_corel.png" id="3_portrait"]
 
 [resource]
 script = ExtResource("1_cd")
 id = "CH-013"
 display_name = "Corel"
 faction = 0
+portrait = ExtResource("3_portrait")
+sprite = ExtResource("2_sprite")
 default_dialogue = "res://data/dialogue/test_funding_lie.json"
-editor_notes = "Placeholder NPC for the Phase 2 walkable slice. Swap in CH-013 sprite + PO-011 portrait when cleaned."
+editor_notes = "Archmagister of containment, Starfall. Swap: drag cleaned CH-013 PNG into `sprite` and PO-011 into `portrait` — every placed Corel updates."

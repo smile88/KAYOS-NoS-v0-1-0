@@ -11,6 +11,10 @@ enum Faction { NOCTARI, SOLARI, ORC, TERRAN, HUMAN, OTHER }
 @export var display_name: String = ""             # e.g. "Elorin Voidweaver"
 @export var faction: Faction = Faction.NOCTARI    # drives palette / social reactions
 @export var portrait: Texture2D                    # PO-### (painterly, Linear filter)
+@export var sprite: Texture2D                       # CH-### static/idle sprite (48x72). Drag the
+                                                    # cleaned PNG here to swap this character's look
+                                                    # everywhere at once. Superseded by sprite_frames
+                                                    # once walk animations exist.
 @export var sprite_frames: SpriteFrames            # 4-dir walk animations (Nearest filter)
 @export_file("*.tres", "*.json") var default_dialogue: String = ""  # conversation resource
 @export_multiline var editor_notes: String = ""   # designer notes, not shown in game

@@ -45,17 +45,30 @@ theme_override_constants/margin_top = 12
 theme_override_constants/margin_right = 16
 theme_override_constants/margin_bottom = 12
 
-[node name="VBox" type="VBoxContainer" parent="Panel/Margin"]
+[node name="HBox" type="HBoxContainer" parent="Panel/Margin"]
 layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Portrait" type="TextureRect" parent="Panel/Margin/HBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+size_flags_vertical = 0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="VBox" type="VBoxContainer" parent="Panel/Margin/HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_constants/separation = 8
 
-[node name="Speaker" type="Label" parent="Panel/Margin/VBox"]
+[node name="Speaker" type="Label" parent="Panel/Margin/HBox/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_colors/font_color = Color(0.95, 0.82, 0.42, 1)
 text = "Speaker"
 
-[node name="Line" type="RichTextLabel" parent="Panel/Margin/VBox"]
+[node name="Line" type="RichTextLabel" parent="Panel/Margin/HBox/VBox"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 60)
 layout_mode = 2
@@ -63,10 +76,10 @@ bbcode_enabled = true
 fit_content = true
 text = "..."
 
-[node name="Sep" type="HSeparator" parent="Panel/Margin/VBox"]
+[node name="Sep" type="HSeparator" parent="Panel/Margin/HBox/VBox"]
 layout_mode = 2
 
-[node name="Choices" type="VBoxContainer" parent="Panel/Margin/VBox"]
+[node name="Choices" type="VBoxContainer" parent="Panel/Margin/HBox/VBox"]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_constants/separation = 4

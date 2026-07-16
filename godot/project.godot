@@ -8,7 +8,7 @@ config_version=5
 
 config/name="KAYOS: The Night of Silence"
 config/description="A narrative-first 2D top-down RPG. Elorin builds the Nullstone; Grakkar activates it 300 years later. The Legacy System writes Part One choices into Part Two."
-run/main_scene="res://scenes/zones/StarfallAcademy.tscn"
+run/main_scene="res://scenes/Title.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -26,7 +26,6 @@ window/size/viewport_height=360
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
-window/stretch/aspect="keep"
 window/stretch/scale_mode="integer"
 
 [gui]
@@ -88,6 +87,6 @@ move_right={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
-textures/canvas_textures/default_texture_filter=0

@@ -11,6 +11,9 @@ size = Vector2(56, 40)
 
 [node name="StarfallAcademy" type="Node2D"]
 
+[node name="SpawnFromColdOpen" type="Marker2D" parent="."]
+position = Vector2(200, 260)
+
 [node name="Ground" type="Polygon2D" parent="."]
 color = Color(0.09, 0.09, 0.16, 1)
 polygon = PackedVector2Array(-200, -200, 840, -200, 840, 560, -200, 560)

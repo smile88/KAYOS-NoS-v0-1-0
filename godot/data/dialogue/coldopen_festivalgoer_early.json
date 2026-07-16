@@ -1,0 +1,11 @@
+{
+	"id": "coldopen_fg_early",
+	"start": "a",
+	"nodes": {
+		"a": {
+			"speaker": "Festival-Goer",
+			"portrait": "PO-014",
+			"text": "Two thousand years of the Age of Order, scribe! They say when the Luminarae reaches its apex, the Grand Archmage will draw down the sun's own note. Have you ever seen the city so bright?"
+		}
+	}
+}

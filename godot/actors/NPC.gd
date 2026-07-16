@@ -1,28 +1,49 @@
+@tool
 extends Interactable
 class_name NPC
 ## A reusable NPC: drop NPC.tscn into a zone, assign a CharacterData in the Inspector, and it
-## configures its own name, dialogue, and (placeholder) faction colour. GDD §13.
+## configures its own name, dialogue, and sprite. GDD §13. @tool so the editor previews the
+## character the moment you pick a .tres — swapping art is: open the character's .tres, drag the
+## cleaned PNG into its `sprite` slot, and every placed instance updates.
 
-## Placeholder body colours by faction until CH-### sprites are cleaned in.
-const FACTION_COLORS := {
-	CharacterData.Faction.NOCTARI: Color(0.42, 0.36, 0.72),  # indigo/violet
-	CharacterData.Faction.SOLARI:  Color(0.85, 0.72, 0.38),  # gold
-	CharacterData.Faction.ORC:     Color(0.55, 0.36, 0.28),  # rust
-	CharacterData.Faction.TERRAN:  Color(0.45, 0.50, 0.42),  # stone-green
-	CharacterData.Faction.HUMAN:   Color(0.60, 0.55, 0.50),  # earth
-	CharacterData.Faction.OTHER:   Color(0.50, 0.50, 0.55),
+## Generic labeled placeholders by faction, used until a CharacterData provides a real sprite.
+const FACTION_PLACEHOLDERS := {
+	CharacterData.Faction.NOCTARI: "res://art/placeholders/NPC_generic_noctari.png",
+	CharacterData.Faction.SOLARI:  "res://art/placeholders/NPC_generic_solari.png",
+	CharacterData.Faction.ORC:     "res://art/placeholders/NPC_generic_orc.png",
+	CharacterData.Faction.TERRAN:  "res://art/placeholders/NPC_generic_terran.png",
+	CharacterData.Faction.HUMAN:   "res://art/placeholders/NPC_generic_human.png",
+	CharacterData.Faction.OTHER:   "res://art/placeholders/NPC_generic_other.png",
 }
 
-@export var character_data: CharacterData
+@export var character_data: CharacterData : set = _set_character_data
 
 
 func _ready() -> void:
-	if character_data:
+	if not Engine.is_editor_hint() and character_data:
 		if display_name == "":
 			display_name = character_data.display_name
 		if dialogue == "" and character_data.default_dialogue != "":
 			dialogue = character_data.default_dialogue
-		if has_node("Body"):
-			($Body as Polygon2D).color = FACTION_COLORS.get(character_data.faction, Color.GRAY)
+	_apply_visuals()
+
+
+func _set_character_data(value: CharacterData) -> void:
+	character_data = value
+	if is_inside_tree():
+		_apply_visuals()
+
+
+func _apply_visuals() -> void:
+	if has_node("Body"):
+		var body := $Body as Sprite2D
+		if character_data and character_data.sprite:
+			body.texture = character_data.sprite
+		elif character_data:
+			body.texture = load(FACTION_PLACEHOLDERS.get(character_data.faction,
+				FACTION_PLACEHOLDERS[CharacterData.Faction.OTHER]))
 	if has_node("NameLabel"):
-		($NameLabel as Label).text = display_name
+		var shown := display_name
+		if shown == "" and character_data:
+			shown = character_data.display_name
+		($NameLabel as Label).text = shown if shown != "" else "NPC"

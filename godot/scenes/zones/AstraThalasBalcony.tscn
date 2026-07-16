@@ -1,0 +1,225 @@
+[gd_scene load_steps=22 format=3]
+
+[ext_resource type="Script" path="res://scenes/zones/ColdOpen.gd" id="1_director"]
+[ext_resource type="PackedScene" path="res://actors/Player.tscn" id="2_player"]
+[ext_resource type="PackedScene" path="res://actors/NPC.tscn" id="3_npc"]
+[ext_resource type="Resource" path="res://data/characters/festivalgoer.tres" id="4_fg"]
+[ext_resource type="PackedScene" path="res://ui/DialogueUI.tscn" id="5_ui"]
+[ext_resource type="Script" path="res://actors/Interactable.gd" id="6_interactable"]
+[ext_resource type="Texture2D" path="res://art/placeholders/CH-007_talindir_night.png" id="7_talindir"]
+[ext_resource type="Texture2D" path="res://art/placeholders/EN-006_balcony_floor.png" id="8_floor"]
+[ext_resource type="Texture2D" path="res://art/placeholders/EN-006_balustrade.png" id="9_rail"]
+[ext_resource type="Texture2D" path="res://art/placeholders/EN-016_city_district_lit.png" id="10_city"]
+[ext_resource type="Texture2D" path="res://art/placeholders/PR-021_festival_banner.png" id="11_banner"]
+[ext_resource type="Texture2D" path="res://art/placeholders/PR-021_telescope.png" id="12_scope"]
+[ext_resource type="Texture2D" path="res://art/placeholders/PR-008_sealed_letter.png" id="13_letter"]
+[ext_resource type="Texture2D" path="res://art/placeholders/PR-021_light_garland.png" id="14_garland"]
+[ext_resource type="Texture2D" path="res://art/placeholders/PR-017_star_lamp.png" id="15_lamp"]
+[ext_resource type="Texture2D" path="res://art/placeholders/VS-001_lights_die.png" id="16_panel"]
+
+[sub_resource type="RectangleShape2D" id="banner_shape"]
+size = Vector2(40, 48)
+
+[sub_resource type="RectangleShape2D" id="scope_shape"]
+size = Vector2(48, 40)
+
+[sub_resource type="RectangleShape2D" id="satchel_shape"]
+size = Vector2(34, 28)
+
+[sub_resource type="RectangleShape2D" id="wall_h"]
+size = Vector2(688, 16)
+
+[sub_resource type="RectangleShape2D" id="wall_v"]
+size = Vector2(16, 272)
+
+[node name="ColdOpen" type="Node2D"]
+script = ExtResource("1_director")
+
+[node name="Sky" type="Polygon2D" parent="."]
+color = Color(0.045, 0.04, 0.085, 1)
+polygon = PackedVector2Array(-320, -240, 960, -240, 960, 720, -320, 720)
+
+[node name="CityBelow" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="District1" type="Sprite2D" parent="CityBelow"]
+position = Vector2(8, 276)
+centered = false
+texture = ExtResource("10_city")
+
+[node name="District2" type="Sprite2D" parent="CityBelow"]
+position = Vector2(112, 266)
+centered = false
+texture = ExtResource("10_city")
+
+[node name="District3" type="Sprite2D" parent="CityBelow"]
+position = Vector2(216, 278)
+centered = false
+texture = ExtResource("10_city")
+
+[node name="District4" type="Sprite2D" parent="CityBelow"]
+position = Vector2(320, 264)
+centered = false
+texture = ExtResource("10_city")
+
+[node name="District5" type="Sprite2D" parent="CityBelow"]
+position = Vector2(424, 274)
+centered = false
+texture = ExtResource("10_city")
+
+[node name="District6" type="Sprite2D" parent="CityBelow"]
+position = Vector2(528, 268)
+centered = false
+texture = ExtResource("10_city")
+
+[node name="Floor" type="Sprite2D" parent="."]
+texture_repeat = 2
+centered = false
+texture = ExtResource("8_floor")
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 224)
+
+[node name="Balustrade" type="Sprite2D" parent="."]
+texture_repeat = 2
+position = Vector2(0, 224)
+centered = false
+texture = ExtResource("9_rail")
+region_enabled = true
+region_rect = Rect2(0, 0, 640, 32)
+
+[node name="FestivalLights" type="Node2D" parent="."]
+unique_name_in_owner = true
+
+[node name="Garland1" type="Sprite2D" parent="FestivalLights"]
+position = Vector2(120, 14)
+centered = false
+texture = ExtResource("14_garland")
+
+[node name="Garland2" type="Sprite2D" parent="FestivalLights"]
+position = Vector2(420, 14)
+centered = false
+texture = ExtResource("14_garland")
+
+[node name="StarLamp1" type="Sprite2D" parent="FestivalLights"]
+position = Vector2(48, 68)
+texture = ExtResource("15_lamp")
+
+[node name="StarLamp2" type="Sprite2D" parent="FestivalLights"]
+position = Vector2(592, 68)
+texture = ExtResource("15_lamp")
+
+[node name="World" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="World" instance=ExtResource("2_player")]
+position = Vector2(320, 150)
+
+[node name="Body" parent="World/Player" index="0"]
+texture = ExtResource("7_talindir")
+
+[node name="FestivalGoer" parent="World" instance=ExtResource("3_npc")]
+unique_name_in_owner = true
+position = Vector2(432, 128)
+character_data = ExtResource("4_fg")
+
+[node name="Banner" type="Area2D" parent="World"]
+position = Vector2(150, 68)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("6_interactable")
+display_name = "Festival Banner"
+examine_text = "Gold thread on white silk: THE TWO-THOUSANDTH LUMINARAE. Beneath the sun-sigil, in smaller stitching: 'May the Song hold.' It has held for two thousand years."
+flag_on_interact = "COLDOPEN_SAW_BANNER"
+
+[node name="Body" type="Sprite2D" parent="World/Banner"]
+position = Vector2(0, -32)
+texture = ExtResource("11_banner")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Banner"]
+position = Vector2(0, -28)
+shape = SubResource("banner_shape")
+
+[node name="Telescope" type="Area2D" parent="World"]
+position = Vector2(520, 216)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("6_interactable")
+display_name = "Festival Telescope"
+examine_text = "Set out for the crowds, aimed at the Tower of Celestial Harmony. Through the lens: the whole spire alight, and a tiny silhouette upon it — the Grand Archmage, arms rising with the apex of the ceremony. For a heartbeat you think you see the lights below the Tower flicker. An old man's eyes. Surely."
+flag_on_interact = "COLDOPEN_SAW_TELESCOPE"
+
+[node name="Body" type="Sprite2D" parent="World/Telescope"]
+position = Vector2(0, -22)
+texture = ExtResource("12_scope")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Telescope"]
+position = Vector2(0, -20)
+shape = SubResource("scope_shape")
+
+[node name="Satchel" type="Area2D" parent="World"]
+position = Vector2(276, 172)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("6_interactable")
+display_name = "Your Satchel"
+examine_text = "Ink, nibs, the ledger — and beneath them, wrapped in oilcloth, a letter. The hand that wrote your name on it was precise, unhurried, three hundred years gone. The indigo wax seal — a void, held — is unbroken. 'You will know the night,' she said. You have carried it so long you had almost stopped believing there would be one."
+flag_on_interact = "COLDOPEN_SAW_LETTER"
+
+[node name="Body" type="Sprite2D" parent="World/Satchel"]
+position = Vector2(0, -14)
+texture = ExtResource("13_letter")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Satchel"]
+position = Vector2(0, -12)
+shape = SubResource("satchel_shape")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_layer = 1
+collision_mask = 0
+
+[node name="North" type="CollisionShape2D" parent="Walls"]
+position = Vector2(320, 24)
+shape = SubResource("wall_h")
+
+[node name="South" type="CollisionShape2D" parent="Walls"]
+position = Vector2(320, 232)
+shape = SubResource("wall_h")
+
+[node name="West" type="CollisionShape2D" parent="Walls"]
+position = Vector2(-8, 112)
+shape = SubResource("wall_v")
+
+[node name="East" type="CollisionShape2D" parent="Walls"]
+position = Vector2(648, 112)
+shape = SubResource("wall_v")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="DialogueUI" parent="HUD" instance=ExtResource("5_ui")]
+
+[node name="Hint" type="Label" parent="HUD"]
+unique_name_in_owner = true
+offset_left = 12.0
+offset_top = 332.0
+offset_right = 628.0
+offset_bottom = 352.0
+theme_override_colors/font_color = Color(0.72, 0.74, 0.85, 1)
+text = "..."
+
+[node name="StoryPanel" type="CanvasLayer" parent="."]
+layer = 10
+visible = false
+
+[node name="Panel" type="TextureRect" parent="StoryPanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("16_panel")
+expand_mode = 1
+stretch_mode = 6
+
+[editable path="World/Player"]

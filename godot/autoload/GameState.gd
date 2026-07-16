@@ -33,6 +33,21 @@ func _ready() -> void:
 	_seed_default_attributes()
 
 
+## Fresh run (New Game). The registry is reseeded — never call this mid-run: the Legacy
+## System depends on the dictionary surviving from Part One into Part Two and the Coda.
+func reset() -> void:
+	flags.clear()
+	_seed_default_flags()
+	inventory.clear()
+	attributes.clear()
+	_seed_default_attributes()
+	current_protagonist = "talindir"   # the game opens on the Cold Open
+	current_scene = ""
+	player_position = Vector2.ZERO
+	mental_strain = 0
+	strain_changed.emit(mental_strain, get_strain_band())
+
+
 ## Attribute API --------------------------------------------------------------
 func get_attribute(attr: String) -> int:
 	return int(attributes.get(attr, 0))
