@@ -1,0 +1,51 @@
+{
+	"protagonist": "elorin",
+	"attributes": ["Vigor", "Resilience", "Celerity", "Arcana", "Acumen", "Magnetism", "Fortune"],
+	"point_pool": 30,
+	"base_value": 3,
+	"min_value": 1,
+	"max_value": 8,
+	"classes": [
+		{
+			"id": "voidweaver",
+			"name": "Voidweaver",
+			"lean": "Arcana / Resilience",
+			"ability": "Unmake — negate an essence obstacle or ward.",
+			"access": "The path that \"wins\"; highest Legacy control."
+		},
+		{
+			"id": "harmonist",
+			"name": "Harmonist",
+			"lean": "Acumen / Magnetism",
+			"ability": "Resonate — read a system's weak point.",
+			"access": "Conclave-politics routes; institutional persuasion."
+		},
+		{
+			"id": "mender",
+			"name": "Mender",
+			"lean": "Resilience / Magnetism",
+			"ability": "Restore — heal harm to people, bonds, records.",
+			"access": "The conscience path; hardest checks, unique access."
+		}
+	],
+	"perks": [
+		{
+			"id": "umbraveil_born",
+			"name": "Umbraveil-Born",
+			"edge": "Rapport with commoners and Terrans.",
+			"cost": "Academy aristocracy reads you as lesser."
+		},
+		{
+			"id": "conclave_sponsored",
+			"name": "Conclave-Sponsored",
+			"edge": "Institutional doors open.",
+			"cost": "The team trusts you less."
+		},
+		{
+			"id": "seravins_student",
+			"name": "Seravin's Student",
+			"edge": "Unique Mender-adjacent dialogue anywhere.",
+			"cost": "Higher Strain from moral compromise."
+		}
+	]
+}
