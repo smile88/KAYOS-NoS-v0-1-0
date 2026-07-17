@@ -182,8 +182,14 @@ cabinet), `PR-021` (banner, telescope, garlands, mask, cups), `PR-023` (stairs u
   silence-by-absence rather than silence-by-design.
 - No pathing anywhere: the festival-goer walks to you in a straight line, and the crowd wanders
   through props and each other. Fine at this fidelity, won't survive real art.
-- The crowd all share one CharacterData, so they're one placeholder body tinted seven ways. The
-  tints are scaffolding — delete them when real CH-027 variants exist.
+- Everyone animates now (player and crowd) off 192×288 walk sheets, and the crowd is faction-tinted
+  so they read as different people. But those bodies are procedural placeholders — robed hooded
+  figures with an alternating-boot walk — not real art, and the whole crowd shares one CharacterData
+  (`festivalgoer.tres`), so they're the same silhouette in different colours. Real CH-027 variants
+  replace them by dropping sheets into their `.tres` files; nothing in the scene changes.
+- The placeholder walk cycle is *better* than the cleaned CH-001 sheet, which is an accident: the
+  generator alternates legs and Nano Banana didn't. When CH-001's legs get hand-animated, drop the
+  Player's `step_bob` (it's compensation for that one sheet).
 - NPC name labels are always on, which is gamey. Kept for now because you asked for orientation;
   worth revisiting once portraits and real sprites make people recognisable.
 - Nothing has solid collision except the outer walls — you walk through shelves, desks and the

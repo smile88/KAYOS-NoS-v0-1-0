@@ -4,6 +4,11 @@ extends CharacterBody2D
 
 @export var speed: float = 90.0
 
+## Per-zone character override. The Player scene bakes CH-001 (Elorin); set this in a zone that
+## stars someone else — the Cold Open sets Talindir's sheet here — and the frames are rebuilt from
+## it at load via SpriteSheet. Leave empty to keep the baked Elorin frames.
+@export var sheet_override: Texture2D
+
 ## --- Step bob (temporary; see the note) --------------------------------------
 ## The CH-001 walk rows aren't a walk cycle: measured across the four frames of each row, the boots
 ## shift by 1px (down) to 3px (sides). The generator produced near-identical standing poses, so the
@@ -26,6 +31,9 @@ var _bob_phase: float = 0.0
 
 
 func _ready() -> void:
+	if sheet_override:
+		body.sprite_frames = SpriteSheet.frames_from(sheet_override)
+		body.animation = "walk_down"
 	_body_rest_y = body.position.y
 
 

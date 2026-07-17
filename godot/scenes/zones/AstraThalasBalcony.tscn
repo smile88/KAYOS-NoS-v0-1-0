@@ -313,9 +313,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="World" instance=ExtResource("2_player")]
 position = Vector2(640, 520)
-
-[node name="Body" parent="World/Player" index="0"]
-texture = ExtResource("8_talindir")
+sheet_override = ExtResource("8_talindir")
 
 [node name="Camera2D" parent="World/Player" index="2"]
 limit_left = 0

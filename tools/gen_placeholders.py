@@ -46,25 +46,86 @@ def save(img, name):
     print("  " + name + ".png")
 
 
-def character(name, body, robe_trim=None, aged=False):
-    """48x72 standing figure — the locked frame size (docs/Affinity_Cleanup_Guide.md).
-    Feet at the bottom edge, ID label on the chest."""
-    im = Image.new("RGBA", (48, 72), (0, 0, 0, 0))
-    d = ImageDraw.Draw(im)
+# Row layout of a character sheet, per GDD §13 (confirmed against CH-001):
+# row 0 = down, 1 = up, 2 = right, 3 = left. Left is a mirror of right.
+CHAR_ROWS = ("down", "up", "right", "left")
+
+
+def _char_frame(d, ox, oy, facing, phase, body, dark, mid, trim, skin, h):
+    """Draw one 48x72 walk frame of a robed figure at sheet offset (ox, oy).
+    `phase` 0..3 is the walk-cycle position: 0/2 = contact (a boot leads),
+    1/3 = passing (feet together, body lifts 1px). This is the leg alternation the
+    AI generations never produced — it's what makes the placeholder read as walking."""
+    cx = ox + 24
+    feet = oy + 70
+    top = feet - h
+    # Contact-pass-contact-pass: stride on frames 0 and 2 (opposite feet), neutral pass on 1 and 3
+    # where the body lifts. This is the alternation the AI generations lack.
+    bob = 1 if phase in (1, 3) else 0
+    step = (1, 0, -1, 0)[phase]
+    boot = tuple(int(c * 0.42) for c in body)
+
+    # --- boots (drawn first, behind the hem) ---
+    if facing in ("down", "up"):
+        # feet splay apart on a contact frame; one lifts on the pass
+        splay = 3 * abs(step)
+        lift = 3 if step == 0 else 0
+        d.rectangle([cx - 8 - splay, feet - 5, cx - 2 - splay, feet], fill=boot)
+        d.rectangle([cx + 2 + splay, feet - 5 - lift, cx + 8 + splay, feet - lift], fill=boot)
+    else:  # right-facing profile; legs swing fore/aft
+        lead = 6 * step
+        d.rectangle([cx - 8 - lead, feet - 4, cx - 1 - lead, feet], fill=dark)      # back
+        d.rectangle([cx - 1 + lead, feet - 5, cx + 7 + lead, feet], fill=boot)      # front
+
+    # --- robe (trapezoid, hem sways with the stride) ---
+    sh = top + 16 - bob                        # shoulder line
+    hem = feet - 6
+    hemL = hem - (3 if step > 0 else 0)
+    hemR = hem - (3 if step < 0 else 0)
+    d.polygon([(cx - 8, sh), (cx + 8, sh), (cx + 11, hemR), (cx - 11, hemL)],
+              fill=body, outline=dark)
+    d.polygon([(cx - 2, sh), (cx + 2, sh), (cx + 3, hem), (cx - 3, hem)], fill=mid)  # shading seam
+    if trim:
+        d.line([(cx, sh + 1), (cx, hem - 1)], fill=trim, width=2)
+
+    # --- arm (a small swing, most visible in profile) ---
+    if facing in ("right", "left"):
+        aswing = 3 * step
+        d.line([(cx + 2, sh + 3), (cx + 4 + aswing, sh + 12)], fill=dark, width=3)
+
+    # --- head + hood ---
+    hy = sh - 8
+    d.ellipse([cx - 6, hy - 7, cx + 6, hy + 6], fill=skin, outline=dark)
+    d.arc([cx - 7, hy - 8, cx + 7, hy + 7], 180, 360, fill=dark, width=3)   # hair/hood crown
+    if facing == "up":
+        d.ellipse([cx - 6, hy - 7, cx + 6, hy + 6], fill=dark)              # back of the head
+    elif facing == "down":
+        d.point([(cx - 3, hy), (cx + 3, hy)], fill=(20, 18, 30))           # eyes
+    elif facing == "right":
+        d.point([(cx + 3, hy)], fill=(20, 18, 30))
+    else:  # left
+        d.point([(cx - 3, hy)], fill=(20, 18, 30))
+
+
+def character(name, body, robe_trim=None, aged=False, height=62):
+    """A 48x72-per-frame walk sheet, 192x288 (4 cols x 4 rows), rows down/up/right/left
+    per GDD §13. Legs alternate frame to frame so it actually reads as walking — the one
+    thing the AI generations don't do. ID baked small into frame 0 so the editor shows which
+    real asset replaces it."""
     dark = tuple(int(c * 0.55) for c in body)
+    mid = tuple(int(c * 0.78) for c in body)
     skin = (216, 204, 226) if not aged else (198, 192, 206)
-    # robe / body
-    d.polygon([(12, 26), (36, 26), (42, 70), (6, 70)], fill=body, outline=dark)
-    # head
-    d.ellipse([15, 4, 33, 24], fill=skin, outline=dark)
-    # hair / hood hint
-    d.arc([15, 4, 33, 24], 180, 360, fill=dark, width=3)
-    # trim stripe
-    if robe_trim:
-        d.polygon([(22, 26), (26, 26), (28, 70), (20, 70)], fill=robe_trim)
-    # feet shadow line
-    d.line([(8, 70), (40, 70)], fill=dark, width=2)
-    label(d, 48, 38, name.split("_")[0], 9, (255, 255, 255))
+    im = Image.new("RGBA", (192, 288), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    for row, facing in enumerate(CHAR_ROWS):
+        src = "right" if facing == "left" else facing
+        for col in range(4):
+            _char_frame(d, col * 48, row * 72, src, col, body, dark, mid, trim=robe_trim,
+                        skin=skin, h=height)
+        if facing == "left":                       # mirror the right row into the left row
+            band = im.crop((0, row * 72, 192, row * 72 + 72)).transpose(Image.FLIP_LEFT_RIGHT)
+            im.paste(band, (0, row * 72))
+    label(ImageDraw.Draw(im), 48, 60, name.split("_")[0], 7, (255, 255, 255))  # frame-0 tag
     save(im, name)
 
 
@@ -486,7 +547,8 @@ def main():
     character("CH-027_athalas_citizen", SOLARI, robe_trim=(255, 240, 190))
     for fname, col in [("noctari", NOCTARI), ("solari", SOLARI), ("orc", ORC),
                        ("terran", TERRAN), ("human", HUMAN), ("other", OTHER)]:
-        character("NPC_generic_" + fname, col)
+        h = {"orc": 68, "terran": 52}.get(fname, 62)
+        character("NPC_generic_" + fname, col, height=h)
     # -- portraits (96x96 in-game size) --
     portrait("PO-001_elorin", NOCTARI, "Elorin")
     portrait("PO-005_talindir_chronicler", (150, 146, 168), "Talindir")

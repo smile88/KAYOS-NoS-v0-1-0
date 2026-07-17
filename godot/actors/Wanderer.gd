@@ -37,6 +37,7 @@ func _process(delta: float) -> void:
 
 	if _pause_left > 0.0:
 		_pause_left -= delta
+		set_moving(false)
 		if _pause_left <= 0.0:
 			_target = Vector2(
 				randf_range(roam_rect.position.x, roam_rect.end.x),
@@ -46,13 +47,23 @@ func _process(delta: float) -> void:
 	var to := _target - global_position
 	if to.length() <= 3.0:
 		_pause_left = randf_range(pause_min, pause_max)
+		set_moving(false)
 		return
+	face(_dir_name(to))
+	set_moving(true)
 	global_position += to.normalized() * speed * delta
+
+
+func _dir_name(v: Vector2) -> String:
+	if absf(v.x) > absf(v.y):
+		return "right" if v.x > 0.0 else "left"
+	return "down" if v.y > 0.0 else "up"
 
 
 ## Stop where you are. The director uses this the moment the Song stops.
 func freeze() -> void:
 	_frozen = true
+	set_moving(false)
 
 
 ## Everyone turns and moves to the rail to look. No pathing, no ceremony — they just go. Spread wide
@@ -60,7 +71,9 @@ func freeze() -> void:
 ## instead of a scrum around a dropped coin.
 func rush_to(point: Vector2, over: float) -> void:
 	_frozen = true
+	var dest := Vector2(clampf(point.x + randf_range(-460, 460), 60, 1220), point.y + randf_range(0, 40))
+	face("up" if dest.y < global_position.y else "down")   # they turn toward the rail
+	set_moving(true)
 	var tw := create_tween()
-	tw.tween_property(self, "global_position",
-		Vector2(clampf(point.x + randf_range(-460, 460), 60, 1220), point.y + randf_range(0, 40)),
-		over).set_trans(Tween.TRANS_SINE)
+	tw.tween_property(self, "global_position", dest, over).set_trans(Tween.TRANS_SINE)
+	tw.tween_callback(func(): set_moving(false))
