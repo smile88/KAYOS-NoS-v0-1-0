@@ -907,10 +907,22 @@ persistent HUD elements; controller and keyboard/mouse both supported (Input Map
 
 ## 13. TECHNICAL SPECIFICATION
 
+> **Render target — HD-2D pivot, decided 2026-07-16.** These numbers superseded the original
+> 640×360 / 32×48 spec. If any other document disagrees with this block, **this block wins** and the
+> other document is stale — fix it rather than working around it. (The 32×48 figure in particular
+> survived here for a day after the pivot and caused a downstream agent to "correct" correct code.)
+
 - **Engine:** Godot 4.7 stable, GDScript. Renderer: Compatibility (2D, web-export-capable).
-- **Resolution:** 640×360 native viewport; window 1280×720 default; Stretch mode `canvas_items`,
-  aspect `keep`, scale `integer`; default texture filter `Nearest`.
-- **Grid:** 32px tiles. Character sprites 32×48. Portraits 512×512 source → displayed ~96×96.
+- **Aesthetic:** HD-2D pixel art with a modern twist — detailed sprites and lit, layered
+  backdrops. Never a bare black void behind a scene; every zone gets a backdrop.
+- **Resolution:** **1280×720 native viewport**; window 1920×1080 default; Stretch mode
+  `canvas_items`, scale `integer`; default texture filter `Nearest`. Exactly 2× the old native, so
+  integer scaling and the 32px grid both still line up.
+- **Camera:** Camera2D `zoom` stays at **1.0**. To show more of the world, raise the native
+  resolution — never zoom the camera out. Zoom below 1.0 is a non-integer downscale and visibly
+  destroys nearest-neighbour art.
+- **Grid:** 32px tiles. **Character sprite frames 48×72** (locked; `docs/Affinity_Cleanup_Guide.md`
+  is the walkthrough for producing them). Portraits 512×512 source → displayed ~96×96.
   Story panels 1920×1080 (16:9, painterly — deliberate register shift for visions).
 - **Core singletons (autoloads):**
   - `GameState` — the flag registry (§11) + inventory + current-protagonist context. Serialized to save.

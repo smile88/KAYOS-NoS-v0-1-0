@@ -1,6 +1,6 @@
 extends CharacterBody2D
 ## Top-down 4-direction player (GDD §13: Player is its own scene, instanced into zones).
-## Placeholder 32x48 body until CH-001 sprites are cleaned; `facing` is tracked now so the
+## Placeholder 48x72 body until CH-001 sprites are cleaned; `facing` is tracked now so the
 ## AnimatedSprite2D swap-in is trivial later.
 
 @export var speed: float = 90.0
