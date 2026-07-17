@@ -4,7 +4,7 @@
 **Studio:** SC Milenwall
 **Franchise:** KAYOS: Pieces of Fate
 **Document status:** Build-ready master specification
-**Engine target:** Godot 4.7 (GDScript) · 2D top-down · 640×360 native · 32px grid · nearest-neighbour scaling
+**Engine target:** Godot 4.7 (GDScript) · 2D top-down · 960×540 native · 32px grid · 48×72 sprite frames · nearest-neighbour scaling (see §13 — the locked spec)
 **Date:** July 2026
 
 ---
@@ -907,23 +907,47 @@ persistent HUD elements; controller and keyboard/mouse both supported (Input Map
 
 ## 13. TECHNICAL SPECIFICATION
 
-> **Render target — HD-2D pivot, decided 2026-07-16.** These numbers superseded the original
-> 640×360 / 32×48 spec. If any other document disagrees with this block, **this block wins** and the
-> other document is stale — fix it rather than working around it. (The 32×48 figure in particular
-> survived here for a day after the pivot and caused a downstream agent to "correct" correct code.)
+> ## ⚠ THE LOCKED SPEC — single source of truth (reconciled 2026-07-17)
+>
+> **If any other document, comment, or asset disagrees with this table, this table wins** and the
+> other thing is stale. Fix it; do not work around it, and do not "correct" code to match a doc that
+> contradicts this block. This rule exists because it has already gone wrong twice in one day: the
+> old sprite figure outlived its own decision here and caused an agent to shrink correct sprites, and a
+> reconciliation brief then re-confirmed an already-superseded viewport from this same section.
+> **Every value below is dated. If you change one, change it here first.**
+>
+> | Property | Value | Notes |
+> |---|---|---|
+> | Native viewport | **960 × 540** | decided 2026-07-17 |
+> | Default window | **1920 × 1080** | exactly **2×**; 4K is exactly 4× |
+> | Stretch mode / aspect / scale | **canvas_items / keep / integer** | |
+> | Default texture filter | **Nearest** | |
+> | Camera2D zoom | **1.0 — never lower** | see *Camera* below |
+> | Tile grid | **32 × 32 px** | tilesets only — unrelated to sprite frames |
+> | Character sprite frame | **48 × 72 px** | locked 2026-07-17 |
+> | Character sprite sheet | **192 × 288 px** (4 cols × 4 rows) | |
+> | Sheet row order | **0 = down, 1 = up, 2 = left, 3 = right** | |
+> | Frame baseline | **feet on the frame's bottom edge**; headroom varies | |
+> | Frame width sufficiency | **48 px confirmed sufficient** | confirmed 2026-07-17; art must respect it |
+> | Portraits | 512 × 512 source → **96 × 96** in game | |
+> | Item icons | **32 × 32** | |
+> | Story panels | **1920 × 1080**, painterly (deliberate register shift) | not pixel art |
+>
+> **Why 960×540 and not 640×360 or 1280×720.** It is the only option that is *both* a real step up in
+> how much world is on screen (2.25× the area of 640×360) *and* integer-clean on the target displays:
+> 2× to 1080p, 4× to 4K. 1280×720 fails this — it is 1.5× to 1080p, and `scale_mode = integer`
+> rounds *down*, so it renders at 1× in the middle of a black border.
 
 - **Engine:** Godot 4.7 stable, GDScript. Renderer: Compatibility (2D, web-export-capable).
-- **Aesthetic:** HD-2D pixel art with a modern twist — detailed sprites and lit, layered
-  backdrops. Never a bare black void behind a scene; every zone gets a backdrop.
-- **Resolution:** **1280×720 native viewport**; window 1920×1080 default; Stretch mode
-  `canvas_items`, scale `integer`; default texture filter `Nearest`. Exactly 2× the old native, so
-  integer scaling and the 32px grid both still line up.
+- **Aesthetic:** HD-2D pixel art with a modern twist — detailed sprites and lit, layered backdrops.
+  Never a bare black void behind a scene; every zone gets a backdrop.
 - **Camera:** Camera2D `zoom` stays at **1.0**. To show more of the world, raise the native
-  resolution — never zoom the camera out. Zoom below 1.0 is a non-integer downscale and visibly
-  destroys nearest-neighbour art.
-- **Grid:** 32px tiles. **Character sprite frames 48×72** (locked; `docs/Affinity_Cleanup_Guide.md`
-  is the walkthrough for producing them). Portraits 512×512 source → displayed ~96×96.
-  Story panels 1920×1080 (16:9, painterly — deliberate register shift for visions).
+  resolution — **never zoom the camera out**. Zoom below 1.0 is a non-integer downscale and visibly
+  destroys nearest-neighbour art. Zones larger than the viewport pan via Camera2D limits.
+- **Sprites:** character art height varies by race within the shared 48×72 frame — see the
+  **SPRITE SCALE** sheet in the Asset Bible for the height chart. `docs/Affinity_Cleanup_Guide.md`
+  is the production walkthrough. Reference: **CH-001 (Elorin) is 64 px tall in a 48×72 frame**;
+  every other elf/human matches her. Do not re-derive this from anything else.
 - **Core singletons (autoloads):**
   - `GameState` — the flag registry (§11) + inventory + current-protagonist context. Serialized to save.
   - `DialogueManager` — loads conversation resources, walks nodes, evaluates checks/flags, emits signals to UI.

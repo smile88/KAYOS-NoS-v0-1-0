@@ -39,7 +39,12 @@ Shortcuts are Mac (⌘ = Cmd, ⌥ = Option). **Sprite frame size is 48×72** (ou
 
 ## A. CHARACTER SPRITE — walkthrough for CH-001 (Elorin)  ·  target 48×72/frame
 
-Your raw sheet is **2816×1536**, 7 columns × 4 rows (rows = **down / up / left / right**; columns
+> **Never judge sprite size in Affinity at 100% zoom.** On a Retina display 100% shows one image
+> pixel as one physical pixel — roughly 0.1 mm. In game the 960×540 viewport is scaled **2×** to
+> 1080p (and 4× to 4K), so the sprite appears several times larger than Affinity shows it.
+> **The only honest size check is running the sheet in Godot.**
+
+Your raw sheet is **2816×1536**, 7 columns × 4 rows (rows = **down / up / left / right** — this order is locked, see GDD §13; columns
 6–7 are staff/idle poses) on a **flat magenta** background. Goal: one clean **192×288** sheet =
 **4 frames wide × 4 rows** at **48×72 each**.
 
@@ -52,16 +57,35 @@ Your raw sheet is **2816×1536**, 7 columns × 4 rows (rows = **down / up / left
    walk cycle (contact-pass-contact-pass). Ignore the staff-idle extras for now. Decide which 4
    columns read best as a loop for the DOWN row; you'll mirror LEFT↔RIGHT so you really only clean
    **down, up, side**.
-4. **Make the target canvas.** File → **New** → 192 × 72 px (one row: 4 frames × 48... wait, 48×4=192
-   wide, 72 tall), 72 DPI, RGB/8, transparent. Actually make the **full sheet**: **192 × 288**
-   (4 wide × 4 rows). Turn the 32px grid on — note frames are 48 wide, so count 1.5 grid cells per
-   frame; consider setting a temporary 48px guide via View → guides.
-5. **Bring one source frame over.** Back in the raw doc, use the **Rectangle Marquee** to select one
-   ~402×384 frame around Elorin, `⌘C`. In the target doc, `⌘V`. It lands huge.
-6. **Downscale that frame to 48×72 with Nearest Neighbour.** With the pasted layer selected, use
-   **free-transform** but **only after** you know the ratio — safer: paste into a *scratch* doc,
-   Document → **Resize Document** → set 48 × 72, **Resampling = Nearest Neighbour** (never
-   Bilinear/Bicubic/Lanczos), then copy the 48×72 result into your sheet cell. Repeat per frame.
+4. **Make the target canvas.** File → **New** → **192 × 288** px (4 frames wide × 4 rows),
+   72 DPI, RGB/8, transparent.
+   **Do not use the 32px grid — it is for tilesets only and has nothing to do with sprite frames.**
+   Instead add guides via View → **Guides Manager**: **vertical at 48, 96, 144** and **horizontal at
+   72, 144, 216**. Three lines each = a 4×4 cell grid. Position every frame by typing exact X/Y into
+   the **Transform panel**, never by dragging.
+5. **Resize the whole raw sheet ONCE — never frame by frame.**
+   Marquee tightly around one single character — top of head to bottom of feet. Read her height **H**
+   from the Transform panel. Then: **new width = (raw sheet width) × 64 ÷ H**.
+   `⌘D` to deselect → Document → **Resize Document** → units **Pixels** → **chain/link icon ON** →
+   type the result into **Width** only → **Resampling = Nearest Neighbour** → Resize.
+   Every character scales together, in proportion, and squashing is impossible.
+   *(There is no Percentage option in the unified app's units dropdown — use the pixel formula.)*
+   **Why this replaced the old per-frame method:** the source cells are near-square and the target
+   frames are tall, so resizing each frame to 48×72 individually squashes the character horizontally.
+6. **Place frames using the Transform panel's bottom-centre anchor.**
+   Click the **bottom-centre square** on the 3×3 anchor widget beside the X/Y fields. X now means the
+   character's horizontal centre and Y means the ground under her feet — the panel does the centring
+   for you. Click each sprite and type its pair:
+
+   | Row | Direction | Y (feet) | X for the 4 frames |
+   |---|---|---|---|
+   | 1 | Down | 68 | 24 · 72 · 120 · 168 |
+   | 2 | Up | 140 | 24 · 72 · 120 · 168 |
+   | 3 | Left | 212 | 24 · 72 · 120 · 168 |
+   | 4 | Right | 284 | 24 · 72 · 120 · 168 |
+
+   Then **Document → Canvas Size** (*not* Resize Document) → **192 × 288**, **anchor top-left**, to
+   trim the spare margin. Typed coordinates stay valid.
 7. **The real work — hand-clean each 48×72 frame** (budget 20–45 min/sprite, this is normal):
    - Zoom **800–1600%**. Open a second view at 100% (Window → **New View**) so you always see it at
      game size while you work zoomed in — *if it doesn't read at 100%, it doesn't work.*

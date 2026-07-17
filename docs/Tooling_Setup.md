@@ -15,7 +15,7 @@ This doc records the researched options and the recommended setup for each. Item
 - **Action:** download Godot 4.7 stable (standard build; GDScript, no C# needed) from
   godotengine.org/download/macos and use it for this project. Existing 4.6 projects (donors) upgrade
   one-way when opened in 4.7 — keep the donors closed and copy art out rather than converting them.
-- Project settings for this game (set at Phase 0.1): Compatibility renderer, 640×360 viewport,
+- Project settings for this game (set at Phase 0.1): Compatibility renderer, 960×540 viewport,
   stretch `canvas_items`/`keep`/`integer`, default texture filter **Nearest**.
 
 ---

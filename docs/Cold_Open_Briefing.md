@@ -160,12 +160,14 @@ cabinet), `PR-021` (banner, telescope, garlands, mask, cups), `PR-023` (stairs u
 
 ## Things you should know I changed
 
-- **The HD-2D pivot is now actually implemented.** Native viewport is **1280×720** (was 640×360),
-  window 1920×1080. That's 4× the world area on screen at 1:1 crispness — the thing you kept asking
-  for. The mechanism matters: raising native resolution shows more world *and* stays sharp, whereas
-  zooming the camera out (`zoom = 0.4`, which a previous agent set) is a non-integer downscale that
-  shreds nearest-neighbour art. Camera stays at 1.0, forever.
-- **Sprite scale: 48×72, restored.** I had "fixed" these down to 32×48 citing GDD §13 — that was my
+- **The HD-2D pivot is implemented.** Native viewport is **960×540** (was 640×360), window
+  1920×1080 — exactly 2×, and 4× to 4K, so integer scaling is clean. That's 2.25× the world area of
+  the old build. The mechanism matters: raising native resolution shows more world *and* stays
+  sharp, whereas zooming the camera out (`zoom = 0.4`, which a previous agent set) is a non-integer
+  downscale that shreds nearest-neighbour art. Camera stays at 1.0, forever. Each Cold Open room is
+  1280×720 of world, so the camera now pans a little within a room rather than showing it all at
+  once.
+- **Sprite scale: 48×72, restored.** I had "fixed" these down to the old smaller frame citing GDD §13 — that was my
   error. §13 was stale; your Affinity guide's 48×72 was the locked decision. GDD §13 has been
   rewritten to match reality and now says so loudly, so this can't bite again.
 - **Placeholder palette.** The balcony floor was `(214,196,158)` — bright tan. It read as noon. It's

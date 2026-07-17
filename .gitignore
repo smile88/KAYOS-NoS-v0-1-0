@@ -26,6 +26,7 @@ $CLAUDE_JOB_DIR/
 # Raw generations AND Affinity working files ARE versioned so the full project is
 # reproducible on any machine. If this ever grows unwieldy, migrate art/ to Git LFS.
 
-# Office lock/temp files
+# Office / Affinity lock & temp files
 .~lock.*#
 ~$*
+*.af~lock~

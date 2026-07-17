@@ -89,7 +89,7 @@ Phase 8  Polish · visions · audio · build . CP-8  ← v1.0
 
 **0.1 Engine & project skeleton**
 - Install/confirm **Godot 4.7 stable** (you currently have 4.6.1 — see `Tooling_Setup.md`).
-- Create `godot/` project: renderer **Compatibility**; viewport **640×360**; window 1280×720;
+- Create `godot/` project: renderer **Compatibility**; viewport **960×540**; window 1920×1080 (2×);
   stretch `canvas_items` / aspect `keep` / scale `integer`; default texture filter **Nearest** (GDD §13).
 - Folder convention inside `godot/`: `autoload/ scenes/ scenes/zones/ actors/ ui/ data/ data/dialogue/
   data/quests/ data/characters/ resources/ art/` (art symlinks or import-copies from `../art/assets_clean/`).
@@ -107,7 +107,7 @@ Phase 8  Polish · visions · audio · build . CP-8  ← v1.0
   → import into Godot with Filter=Nearest → visible crisp on a test scene.
 
 > **CP-0 (hard stop).** Exit criteria — all must be true:
-> 1. Godot 4.7 project opens, runs an empty 640×360 scene with crisp integer scaling.
+> 1. Godot 4.7 project opens, runs an empty 960×540 scene with crisp integer scaling.
 > 2. Godot MCP server connected; Claude Code can list the scene tree and launch the project.
 > 3. One real asset has traversed the entire pipeline and renders pixel-crisp in-engine.
 > 4. Three faction palettes exist in `style_anchors/`.
@@ -160,7 +160,7 @@ Phase 8  Polish · visions · audio · build . CP-8  ← v1.0
 *All lanes active. Goal: Cold Open + Part One Act I (Starfall) fully playable, shipping-quality feel.*
 
 **2.1 Player + movement + interaction (systems/level)**
-- `Player.tscn` (own scene, instanced into zones), 32×48 sprite, 4-dir; `Interactable` base
+- `Player.tscn` (own scene, instanced into zones), 48×72 sprite frame, 4-dir; `Interactable` base
   (Area2D + `@export` examine-text/dialogue ref); talk/examine/take/exit cursor states (UI-015).
 
 **2.2 SceneManager + zone template (architect/level)**
@@ -196,7 +196,7 @@ VS-001). ~33 P1 assets total.
 > 2. At least two side quests complete and set consequence flags.
 > 3. The Ledger screen shows real P1 deeds accumulating.
 > 4. Save/load works mid-slice and restores exact state.
-> 5. Runs 60fps at 640×360 integer-scaled; feels like the shipping game.
+> 5. Runs 60fps at 960×540 integer-scaled; feels like the shipping game.
 > **If CP-2 does not feel right, stop and fix feel before scaling content. This is the whole point.**
 
 ---

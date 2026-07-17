@@ -13,7 +13,7 @@ Copy everything below the line into Claude Design as your brief.
 
 Design a single, richly detailed prototype scene for **KAYOS: The Night of Silence**, a narrative
 RPG in the visual lineage of *Fallout 1/2* and *Planescape: Torment*, built as top-down 2D pixel
-art at **Zelda: Minish Cap fidelity** on a strict **32px grid**, native resolution **640×360**,
+art at **HD-2D fidelity** on a strict **32px grid**, native resolution **960×540**,
 nearest-neighbour scaling (crisp pixels, zero blur, zero anti-aliasing on sprites).
 
 **The scene:** the courtyard and containment-wing entrance of the **Academy of Astral Harmony**,

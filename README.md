@@ -6,7 +6,7 @@ classic *Fallout*. Two protagonists across one catastrophe: **Elorin** builds th
 Part One choices into the world Part Two must overcome.
 
 - **Studio:** SC Milenwall · **Franchise:** KAYOS: Pieces of Fate
-- **Engine:** Godot 4.7 · GDScript · 2D top-down · 640×360 native · 32px grid · nearest-neighbour
+- **Engine:** Godot 4.7 · GDScript · 2D top-down · 960×540 native · 32px grid · 48×72 sprite frames · nearest-neighbour
 - **Scope (v1.0):** full two-part narrative, Legacy System, 7 attributes, Mental Strain, 6 classes,
   perks, skill checks, favour economy, 15 zones, 18 UI screens, 3 endings, save/load. **No combat.**
 
