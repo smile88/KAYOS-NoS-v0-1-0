@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3]
+[gd_scene load_steps=54 format=3]
 
 [ext_resource type="Script" path="res://scenes/zones/ColdOpen.gd" id="1_director"]
 [ext_resource type="PackedScene" path="res://actors/Player.tscn" id="2_player"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" path="res://ui/DialogueUI.tscn" id="5_ui"]
 [ext_resource type="Script" path="res://actors/Interactable.gd" id="6_interactable"]
 [ext_resource type="Script" path="res://actors/RoomStair.gd" id="7_stair"]
+[ext_resource type="Script" path="res://actors/Wanderer.gd" id="40_wanderer"]
 [ext_resource type="Texture2D" path="res://art/placeholders/CH-007_talindir_night.png" id="8_talindir"]
 [ext_resource type="Texture2D" path="res://art/placeholders/EN-006_balcony_floor.png" id="9_floor"]
 [ext_resource type="Texture2D" path="res://art/placeholders/EN-006_balustrade.png" id="10_rail"]
@@ -326,6 +327,85 @@ limit_bottom = 720
 unique_name_in_owner = true
 position = Vector2(820, 440)
 character_data = ExtResource("4_fg")
+
+[node name="Lamplighter" parent="World" instance=ExtResource("3_npc")]
+modulate = Color(0.82, 0.86, 0.95, 1)
+position = Vector2(140, 430)
+script = ExtResource("40_wanderer")
+character_data = ExtResource("4_fg")
+display_name = "The Lamplighter"
+portrait_id = "PO-014"
+examine_text = "\"Sixty-first Luminarae I've worked, and there's nothing to light. There's never anything to light. My father held the office, and his mother before him, and not one of us has ever struck a flame in this city.\" He turns his unlit taper over in his hands. \"Tonight of all nights, scribe, I'd like there to be something to light.\""
+roam_rect = Rect2(60, 380, 200, 130)
+
+[node name="Reveller" parent="World" instance=ExtResource("3_npc")]
+modulate = Color(1, 0.86, 0.72, 1)
+position = Vector2(380, 530)
+script = ExtResource("40_wanderer")
+character_data = ExtResource("4_fg")
+display_name = "A Reveller, Well On"
+portrait_id = "PO-014"
+examine_text = "\"Two thousand years!\" He holds up two fingers, then looks at them, unconvinced. \"Do you know what that is, scribe? That's — that's a lot of years. That's all of them. That's every year there's ever been.\" He is going to be very unwell tomorrow, and that is the worst thing that is going to happen to him tomorrow."
+roam_rect = Rect2(300, 470, 190, 150)
+speed = 14.0
+
+[node name="Mother" parent="World" instance=ExtResource("3_npc")]
+modulate = Color(0.9, 0.78, 0.86, 1)
+position = Vector2(560, 665)
+script = ExtResource("40_wanderer")
+character_data = ExtResource("4_fg")
+display_name = "A Woman, Looking"
+portrait_id = "PO-014"
+examine_text = "\"Have you seen a boy? So high. Gold mask, the nine rays, he cut it himself and he won't be parted from it.\" She is not frightened yet — it is a festival, and children run. \"He was at the rail a moment ago. He wanted to see the Tower.\""
+roam_rect = Rect2(470, 600, 220, 100)
+speed = 30.0
+pause_min = 0.4
+pause_max = 1.6
+
+[node name="Couple" parent="World" instance=ExtResource("3_npc")]
+modulate = Color(0.78, 0.9, 0.88, 1)
+position = Vector2(700, 385)
+script = ExtResource("40_wanderer")
+character_data = ExtResource("4_fg")
+display_name = "Two, Leaning"
+portrait_id = "PO-014"
+examine_text = "\"We came up for the view and stayed for the quiet.\" She does not look away from the city while she says it. \"Don't tell them it's quiet up here. They'll all come.\" Beside her he says nothing at all, and has the face of a man who would stand on this balcony for the rest of his life."
+roam_rect = Rect2(660, 356, 120, 60)
+speed = 8.0
+pause_min = 4.0
+pause_max = 9.0
+
+[node name="Priest" parent="World" instance=ExtResource("3_npc")]
+modulate = Color(1, 0.98, 0.86, 1)
+position = Vector2(960, 570)
+script = ExtResource("40_wanderer")
+character_data = ExtResource("4_fg")
+display_name = "A Solari Celebrant"
+portrait_id = "PO-014"
+examine_text = "\"The Song is eternal.\" She says it the way you would say the sky is blue — no fervour in it, none needed. \"Say it with me, scribe, it steadies a person. The Song is eternal, and was here before us, and will be here after.\" She smiles at your face. \"You've gone grey. Sit down. It's a festival.\""
+roam_rect = Rect2(880, 510, 190, 140)
+
+[node name="Functionary" parent="World" instance=ExtResource("3_npc")]
+modulate = Color(0.8, 0.82, 1, 1)
+position = Vector2(1120, 470)
+script = ExtResource("40_wanderer")
+character_data = ExtResource("4_fg")
+display_name = "A Tower Functionary"
+portrait_id = "PO-014"
+examine_text = "\"He's been up there since the sixth bell.\" He means Sulvaine; up here tonight everyone means Sulvaine. \"Hasn't eaten. Sent the attendants out.\" He laughs, and it does not come out right. \"They're saying he's nervous. Archmages aren't nervous. It's a ceremony. We've done it two thousand times.\""
+roam_rect = Rect2(1040, 410, 200, 130)
+speed = 26.0
+
+[node name="Warden" parent="World" instance=ExtResource("3_npc")]
+modulate = Color(0.72, 0.8, 0.78, 1)
+position = Vector2(1190, 630)
+script = ExtResource("40_wanderer")
+character_data = ExtResource("4_fg")
+display_name = "A Bored Warden"
+portrait_id = "PO-014"
+examine_text = "\"Same duty every Luminarae: stop the balcony falling into the street.\" He does not look at the balcony. \"Two thousand years, and it has never once tried. I'll be here till the tenth bell and then I'll go and find my wife and she'll be drunk.\" He nods at the crowd, comfortable, incurious, entirely safe."
+roam_rect = Rect2(1120, 570, 110, 120)
+speed = 10.0
 
 [node name="Banner" type="Area2D" parent="World"]
 position = Vector2(240, 392)

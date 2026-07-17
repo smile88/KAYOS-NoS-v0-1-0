@@ -10,6 +10,11 @@ greyed out until a save exists.) About 3 minutes if you touch nothing, 10–15 i
 **Two rooms.** The balcony, and the scriptorium below it — take the stair at the bottom-left. Both
 are dense; the scriptorium is where Talindir actually lives.
 
+**Who you are** is now established in the first few seconds rather than left as a puzzle: Talindir,
+sixty years a scribe of the Astral Archive below, who has watched sixty Luminarae from this balcony
+and never once gone down to one. Mystery about the *Silence* is the design (GDD §4.1). Confusion
+about your own name never was — that was a bug.
+
 ---
 
 ## What you're about to play
@@ -24,7 +29,8 @@ You do. That's the whole scene: a man who knows, watching a city that doesn't.
 Four beats, per GDD §4.1:
 
 1. **You walk.** A control prompt fades and leaves you alone on the balcony.
-2. **You look at things** — or don't. Twenty-eight objects across two rooms, all optional.
+2. **You look at things, and talk to people** — or don't. Thirty-five objects across two rooms and
+   eight NPCs on the balcony, all optional.
 3. **The festival-goer comes to you** and asks why you look afraid. This is the one real choice:
    tell the truth, or deflect. It sets `COLDOPEN_HONEST`, which echoes all the way to the Coda.
 4. **The lights go out.** District by district — not blown out, *silenced*. The Song stops. You do
@@ -101,6 +107,29 @@ down in Talindir's voice. That's deliberate: you should feel it coming without a
 
 ---
 
+## The crowd
+
+The balcony has seven people on it besides you, drifting around on their own business, each with one
+thing to say. None of them is a quest. They exist because it is the biggest festival in two thousand
+years and a balcony with the best view of the Tower cannot contain two people.
+
+They are also where the dramatic irony lives, so talk to them: the lamplighter who has never in his
+life had anything to light and wishes tonight he did; the celebrant who tells you the Song is
+eternal and offers it as comfort; the functionary repeating that archmages don't get nervous; the
+woman looking for a boy in a gold mask — the mask you may already have found on the floor.
+
+**Downstairs is deliberately empty, and that's the point.** The duty roster names everyone who should
+be on watch and strikes every line through. Sorrel's note says *"back before the ninth — don't tell."*
+They all went dancing. The archive is deserted because the city is celebrating, and that only lands
+if the balcony above is heaving — which is why the crowd had to exist before the emptiness could mean
+anything.
+
+**When the Song stops, everyone stops.** Then they go to the rail, all of them, to look. Talindir
+does not. He is the only person on that balcony still standing where he was, because he is the only
+one who already knows.
+
+---
+
 ## Placeholder art — what to swap
 
 Every placeholder has its Asset Bible ID baked into the pixels, so the editor always shows you which
@@ -149,8 +178,12 @@ cabinet), `PR-021` (banner, telescope, garlands, mask, cups), `PR-023` (stairs u
 
 - No audio. The Song stopping is the single most important sound in the game and it is currently
   silence-by-absence rather than silence-by-design.
-- The festival-goer walks to you in a straight line with no pathing. Fine on an empty balcony;
-  won't survive a crowd.
+- No pathing anywhere: the festival-goer walks to you in a straight line, and the crowd wanders
+  through props and each other. Fine at this fidelity, won't survive real art.
+- The crowd all share one CharacterData, so they're one placeholder body tinted seven ways. The
+  tints are scaffolding — delete them when real CH-027 variants exist.
+- NPC name labels are always on, which is gamey. Kept for now because you asked for orientation;
+  worth revisiting once portraits and real sprites make people recognisable.
 - Nothing has solid collision except the outer walls — you walk through shelves, desks and the
   telescope. Consistent with the old build, but the scriptorium's stacks make it obvious.
 - The scriptorium's aisle shelves don't y-sort against the player, so you always draw in front of

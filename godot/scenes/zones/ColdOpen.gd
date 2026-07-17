@@ -38,6 +38,10 @@ const SILENCE_AT := 190.0
 ## dread and telegraph the apex diegetically — the player should *feel* the bell coming without a
 ## HUD ever counting it down for them.
 const BEATS := [
+	# Who, where, and why he is up here rather than down there — established immediately. The
+	# player is meant to not understand the *Silence* (GDD §4.1); they are not meant to be confused
+	# about their own name.
+	{ "t": 7.0, "text": "Talindir. Sixty years a scribe of the Astral Archive below you — and sixty Luminarae watched from this balcony, never once from down there among them." },
 	{ "t": 26.0, "text": "Below, they have begun the count to the ninth bell." },
 	{ "t": 88.0, "text": "The garlands draw brighter. The Song is being gathered up — the way breath is gathered before a shout." },
 	{ "t": 150.0, "text": "The count is nearly done. On the Tower, a small figure raises his arms." },
@@ -46,6 +50,9 @@ const BEATS := [
 const CONTROL_PROMPT := "WASD — walk        E — look"
 const FIRST_DESCENT := "Observation is not the same as absence, you have told yourself. You have been telling yourself that for sixty years."
 const FIRST_ASCENT := "The noise comes back all at once, the way it does when you have been reading."
+
+## Where she goes afterwards — over by the Celebrant and the Functionary, i.e. other people.
+const CROWD_SPOT := Vector2(1020, 520)
 
 const APPROACH_SPEED := 46.0
 const APPROACH_STOP_DIST := 52.0
@@ -170,16 +177,21 @@ func _on_dialogue_finished(id: String) -> void:
 		_leave_into_the_crowd()
 
 
-## Both branches end with her gone — "steps back into the crowd" / "spins away into the gold and the
-## noise". Clearing her dialogue also stops the player reopening the exchange and flipping
-## COLDOPEN_HONEST, which has to stay the answer they actually gave.
+## Both branches end with her walking off — "steps back into the crowd" / "spins away into the gold
+## and the noise". She walks to where the others are and *stays there*: she is a person at a party,
+## not a quest-giver being garbage-collected. Clearing her dialogue stops the player reopening the
+## exchange and flipping COLDOPEN_HONEST, which has to stay the answer they actually gave; the line
+## she leaves behind depends on which answer that was.
 func _leave_into_the_crowd() -> void:
+	var honest: bool = GameState.get_flag("COLDOPEN_HONEST", false)
 	festival_goer.dialogue = ""
-	festival_goer.examine_text = ""
+	festival_goer.examine_text = (
+		"She is standing with her friends again. She is not laughing, and every little while she looks up at the sky, and then at you."
+		if honest else
+		"She is dancing again, and has already forgotten you entirely, which is precisely what you asked her to do."
+	)
 	var tw := create_tween()
-	tw.tween_property(festival_goer, "global_position",
-		festival_goer.global_position + Vector2(-120, 70), 3.0)
-	tw.parallel().tween_property(festival_goer, "modulate:a", 0.0, 3.0)
+	tw.tween_property(festival_goer, "global_position", CROWD_SPOT, 3.4).set_trans(Tween.TRANS_SINE)
 
 
 ## --- the whisper (the old hint HUD, repurposed; never a quest tracker) ---------
@@ -210,6 +222,11 @@ func _run_silence() -> void:
 		await _go_to_room("balcony")
 
 	await get_tree().create_timer(1.4).timeout
+
+	# Everyone stops at once. Whatever they were in the middle of, they are not in the middle of it
+	# any more — then they go to the rail, because that is what people do.
+	for w in get_tree().get_nodes_in_group("wanderer"):
+		(w as Wanderer).rush_to(Vector2(640, 372), 2.2)
 
 	# District by district, the lights go out — an expanding ring of quiet.
 	var tw := create_tween()

@@ -11,6 +11,10 @@ class_name Interactable
 @export_file("*.json", "*.tres") var dialogue: String = ""
 ## Optional: a flag set to true the first time the player interacts (tutorial/progress tracking).
 @export var flag_on_interact: String = ""
+## Optional Asset Bible portrait id (e.g. "PO-014") shown beside `examine_text`. Objects leave this
+## empty; a one-line NPC exchange should set it so a passing remark looks like every other
+## conversation in the game.
+@export var portrait_id: String = ""
 
 
 func interact() -> void:
@@ -23,5 +27,9 @@ func interact() -> void:
 		DialogueManager.start({
 			"id": "examine",
 			"start": "n",
-			"nodes": { "n": { "speaker": display_name, "text": examine_text } }
+			"nodes": { "n": {
+				"speaker": display_name,
+				"text": examine_text,
+				"portrait": portrait_id,
+			} }
 		})
