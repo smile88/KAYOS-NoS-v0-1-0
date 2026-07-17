@@ -926,7 +926,7 @@ persistent HUD elements; controller and keyboard/mouse both supported (Input Map
 > | Tile grid | **32 × 32 px** | tilesets only — unrelated to sprite frames |
 > | Character sprite frame | **48 × 72 px** | locked 2026-07-17 |
 > | Character sprite sheet | **192 × 288 px** (4 cols × 4 rows) | |
-> | Sheet row order | **0 = down, 1 = up, 2 = left, 3 = right** | |
+> | Sheet row order | **0 = down, 1 = up, 2 = right, 3 = left** | confirmed against CH-001, 2026-07-17 |
 > | Frame baseline | **feet on the frame's bottom edge**; headroom varies | |
 > | Frame width sufficiency | **48 px confirmed sufficient** | confirmed 2026-07-17; art must respect it |
 > | Portraits | 512 × 512 source → **96 × 96** in game | |

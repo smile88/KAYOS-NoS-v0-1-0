@@ -44,7 +44,7 @@ Shortcuts are Mac (⌘ = Cmd, ⌥ = Option). **Sprite frame size is 48×72** (ou
 > 1080p (and 4× to 4K), so the sprite appears several times larger than Affinity shows it.
 > **The only honest size check is running the sheet in Godot.**
 
-Your raw sheet is **2816×1536**, 7 columns × 4 rows (rows = **down / up / left / right** — this order is locked, see GDD §13; columns
+Your raw sheet is **2816×1536**, 7 columns × 4 rows (rows = **down / up / right / left** — this order is locked, see GDD §13; columns
 6–7 are staff/idle poses) on a **flat magenta** background. Goal: one clean **192×288** sheet =
 **4 frames wide × 4 rows** at **48×72 each**.
 
@@ -81,8 +81,8 @@ Your raw sheet is **2816×1536**, 7 columns × 4 rows (rows = **down / up / left
    |---|---|---|---|
    | 1 | Down | 68 | 24 · 72 · 120 · 168 |
    | 2 | Up | 140 | 24 · 72 · 120 · 168 |
-   | 3 | Left | 212 | 24 · 72 · 120 · 168 |
-   | 4 | Right | 284 | 24 · 72 · 120 · 168 |
+   | 3 | Right | 212 | 24 · 72 · 120 · 168 |
+   | 4 | Left | 284 | 24 · 72 · 120 · 168 |
 
    Then **Document → Canvas Size** (*not* Resize Document) → **192 × 288**, **anchor top-left**, to
    trim the spare margin. Typed coordinates stay valid.
@@ -96,8 +96,12 @@ Your raw sheet is **2816×1536**, 7 columns × 4 rows (rows = **down / up / left
      in-between pixels that destroy pixel art. Shade with dithering or discrete steps.
    - Onion-skin trick: set the previous frame's layer to ~30% opacity beneath the one you're drawing;
      toggle it off before export.
-8. **Mirror the side row** for the opposite direction: select the cleaned side frames, `⌘C`, paste,
-   then **Flip Horizontal** (Layer → Flip Horizontal). Place in the other row.
+8. **Mirror the side row** for the opposite direction: clean the **RIGHT-facing** row (row 3, Y=212),
+   select those frames, `⌘C`, paste, **Flip Horizontal** (Layer → Flip Horizontal), and place them in
+   the **LEFT** row (row 4, Y=284).
+   **Row order is down / up / right / left — confirmed against CH-001. Do not reorder it.** Mirroring
+   also guarantees the two sides stay identical; CH-001's sides were cleaned separately and are only
+   ~62% mirrored, which is avoidable work.
 9. **Save the working file:** File → **Save As** → `art/affinity_work/CH-001.afphoto`.
 10. **Export the final:** File → **Export** → **PNG**, whole document (192×288), **don't resample /
     Nearest**, transparency on. Save to **`art/assets_clean/CH-001.png`**.
