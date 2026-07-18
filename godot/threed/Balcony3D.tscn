@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3]
+
+[ext_resource type="Script" path="res://threed/Balcony3D.gd" id="1_world"]
+[ext_resource type="Script" path="res://threed/CameraRig3D.gd" id="2_cam"]
+[ext_resource type="PackedScene" path="res://threed/Player3D.tscn" id="3_player"]
+[ext_resource type="Texture2D" path="res://art/placeholders/CH-007_talindir_night.png" id="4_talindir"]
+
+[sub_resource type="Environment" id="env"]
+background_mode = 0
+ambient_light_source = 2
+ambient_light_color = Color(0.28, 0.3, 0.42, 1)
+ambient_light_energy = 0.9
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 0.35
+glow_bloom = 0.0
+glow_hdr_threshold = 1.1
+
+[node name="Balcony" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="MoonLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.86, -0.35, 0.37, 0, 0.72, 0.69, -0.5, -0.6, 0.62, 0, 14, 0)
+light_color = Color(0.6, 0.68, 0.9, 1)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="World" type="Node3D" parent="."]
+script = ExtResource("1_world")
+
+[node name="Player3D" parent="." instance=ExtResource("3_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+sheet = ExtResource("4_talindir")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 11)
+script = ExtResource("2_cam")
+target_path = NodePath("../Player3D")
