@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cf3ox4t711t1k" path="res://threed/CameraRig3D.gd" id="2_cam"]
 [ext_resource type="PackedScene" path="res://threed/Player3D.tscn" id="3_player"]
 [ext_resource type="Texture2D" uid="uid://cfkfkkjxgxdk3" path="res://art/placeholders/CH-007_talindir_night.png" id="4_talindir"]
+[ext_resource type="PackedScene" path="res://ui/DialogueUI.tscn" id="5_ui"]
 
 [sub_resource type="Environment" id="env"]
 ambient_light_source = 2
@@ -36,3 +37,5 @@ sheet = ExtResource("4_talindir")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 11)
 script = ExtResource("2_cam")
 target_path = NodePath("../Player3D")
+
+[node name="DialogueUI" parent="." instance=ExtResource("5_ui")]

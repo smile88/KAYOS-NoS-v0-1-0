@@ -72,4 +72,4 @@ func forward_xz() -> Vector3:
 
 func right_xz() -> Vector3:
 	var f := forward_xz()
-	return Vector3(f.z, 0.0, -f.x)   # f rotated -90° about Y
+	return Vector3(-f.z, 0.0, f.x)   # f rotated +90° about Y = screen-right for a Y-up camera
