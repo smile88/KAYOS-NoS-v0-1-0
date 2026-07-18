@@ -29,6 +29,7 @@ func _ready() -> void:
 	_build_festival_lights()
 	_build_stair()
 	_build_interactables()
+	_build_npcs()
 
 
 # --- helpers -----------------------------------------------------------------
@@ -248,6 +249,54 @@ func _build_interactables() -> void:
 			it.prop_texture = _tex(PLACE + tex_name + ".png")
 		it.position = Vector3(d["x"], 0.0, d["z"])
 		add_child(it)
+
+
+## The FestivalGoer sits in group "festival_goer" so the director (step G) can find and walk her.
+const FG_EARLY_DIALOGUE := "res://data/dialogue/coldopen_festivalgoer_early.json"
+
+
+func _build_npcs() -> void:
+	# The seven balcony wanderers, ported from AstraThalasBalcony.tscn: same examine text (§8.4),
+	# same CH-027 citizen sheet, roam rects mapped from the 2D layout to the XZ ground
+	# (Rect2 = minX, minZ, width, depth). They drift, pause, and — at the Silence — rush the rail.
+	var citizen := _tex(PLACE + "CH-027_athalas_citizen.png")
+	var crowd := [
+		{"name": "The Lamplighter", "x": -7.0, "z": -2.5, "roam": Rect2(-8.2, -3.9, 2.8, 3.6),
+		 "text": "\"Sixty-first Luminarae I've worked, and there's nothing to light. There's never anything to light. My father held the office, and his mother before him, and not one of us has ever struck a flame in this city.\" He turns his unlit taper over in his hands. \"Tonight of all nights, scribe, I'd like there to be something to light.\""},
+		{"name": "A Reveller, Well On", "x": -3.7, "z": 0.3, "roam": Rect2(-4.8, -1.4, 2.7, 4.2),
+		 "text": "\"Two thousand years!\" He holds up two fingers, then looks at them, unconvinced. \"Do you know what that is, scribe? That's — that's a lot of years. That's all of them. That's every year there's ever been.\" He is going to be very unwell tomorrow, and that is the worst thing that is going to happen to him tomorrow."},
+		{"name": "A Woman, Looking", "x": -1.1, "z": 4.0, "roam": Rect2(-2.4, 2.2, 3.1, 2.6),
+		 "text": "\"Have you seen a boy? So high. Gold mask, the nine rays, he cut it himself and he won't be parted from it.\" She is not frightened yet — it is a festival, and children run. \"He was at the rail a moment ago. He wanted to see the Tower.\""},
+		{"name": "Two, Leaning", "x": 0.8, "z": -3.8, "roam": Rect2(0.3, -4.6, 1.7, 1.7),
+		 "text": "\"We came up for the view and stayed for the quiet.\" She does not look away from the city while she says it. \"Don't tell them it's quiet up here. They'll all come.\" Beside her he says nothing at all, and has the face of a man who would stand on this balcony for the rest of his life."},
+		{"name": "A Solari Celebrant", "x": 4.5, "z": 1.4, "roam": Rect2(3.4, -0.3, 2.7, 3.9),
+		 "text": "\"The Song is eternal.\" She says it the way you would say the sky is blue — no fervour in it, none needed. \"Say it with me, scribe, it steadies a person. The Song is eternal, and was here before us, and will be here after.\" She smiles at your face. \"You've gone grey. Sit down. It's a festival.\""},
+		{"name": "A Tower Functionary", "x": 6.7, "z": -1.4, "roam": Rect2(5.6, -3.1, 2.8, 3.6),
+		 "text": "\"He's been up there since the sixth bell.\" He means Sulvaine; up here tonight everyone means Sulvaine. \"Hasn't eaten. Sent the attendants out.\" He laughs, and it does not come out right. \"They're saying he's nervous. Archmages aren't nervous. It's a ceremony. We've done it two thousand times.\""},
+		{"name": "A Bored Warden", "x": 7.7, "z": 3.1, "roam": Rect2(6.8, 1.4, 1.6, 3.3),
+		 "text": "\"Same duty every Luminarae: stop the balcony falling into the street.\" He does not look at the balcony. \"Two thousand years, and it has never once tried. I'll be here till the tenth bell and then I'll go and find my wife and she'll be drunk.\" He nods at the crowd, comfortable, incurious, entirely safe."},
+	]
+	for d in crowd:
+		var w := Wanderer3D.new()
+		w.name = "NPC_" + str(d["name"]).replace(" ", "").replace(",", "")
+		w.sheet = citizen
+		w.display_name = d["name"]
+		w.examine_text = d["text"]
+		w.portrait_id = "PO-014"
+		w.roam_rect = d["roam"]
+		w.position = Vector3(d["x"], 0.0, d["z"])
+		add_child(w)
+
+	# The festival-goer who will (step G) bring the player their one choice. For now she stands among
+	# the crowd; examining her opens her early, pre-bell exchange, exactly as before the bell in 2D.
+	var fg := NPC3D.new()
+	fg.name = "FestivalGoer"
+	fg.sheet = citizen
+	fg.display_name = "Festival-Goer"
+	fg.dialogue = FG_EARLY_DIALOGUE
+	fg.position = Vector3(2.5, 0.0, -2.2)
+	fg.add_to_group("festival_goer")
+	add_child(fg)
 
 
 func _build_stair() -> void:
