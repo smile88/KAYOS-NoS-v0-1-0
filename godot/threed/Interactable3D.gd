@@ -1,0 +1,53 @@
+extends Area3D
+class_name Interactable3D
+## A world object the player can examine in the 3D Cold Open — the HD-2D twin of actors/Interactable.gd.
+## interact() behaves identically (starts `dialogue` if set, else shows `examine_text` as a one-node
+## conversation through the shared DialogueUI), so the examine writing — ~30% of the game's
+## characterisation (GDD §8.4) — carries over verbatim. If `prop_texture` is set it also stands a
+## billboard sprite here reusing the existing 2D prop PNG; leave it empty for an invisible zone on a
+## piece of the environment (the rail, the floor mosaic).
+
+@export var display_name: String = ""
+@export_multiline var examine_text: String = ""
+@export_file("*.json", "*.tres") var dialogue: String = ""
+@export var flag_on_interact: String = ""
+@export var portrait_id: String = ""
+## Optional prop art to stand here as a billboard. Same pixel_size convention as the player.
+@export var prop_texture: Texture2D
+@export var prop_pixel_size := 0.03
+## How tall (world m) to lift the sprite so its base sits on the ground at this node's y.
+@export var prop_base_lift := true
+
+
+func _ready() -> void:
+	add_to_group("interactable3d")
+	if prop_texture:
+		var s := Sprite3D.new()
+		s.name = "Prop"
+		s.texture = prop_texture
+		s.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
+		s.shaded = false
+		s.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+		s.alpha_cut = SpriteBase3D.ALPHA_CUT_DISCARD
+		s.pixel_size = prop_pixel_size
+		if prop_base_lift:
+			s.position.y = (prop_texture.get_height() * prop_pixel_size) * 0.5
+		add_child(s)
+
+
+## Identical to actors/Interactable.interact() — same DialogueManager calls, same one-node wrap.
+func interact() -> void:
+	if flag_on_interact != "":
+		GameState.set_flag(flag_on_interact, true)
+	if dialogue != "":
+		DialogueManager.start(dialogue)
+	elif examine_text != "":
+		DialogueManager.start({
+			"id": "examine",
+			"start": "n",
+			"nodes": { "n": {
+				"speaker": display_name,
+				"text": examine_text,
+				"portrait": portrait_id,
+			} }
+		})

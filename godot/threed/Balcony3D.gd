@@ -28,6 +28,7 @@ func _ready() -> void:
 	_build_tower()
 	_build_festival_lights()
 	_build_stair()
+	_build_interactables()
 
 
 # --- helpers -----------------------------------------------------------------
@@ -199,6 +200,54 @@ func _build_festival_lights() -> void:
 		l.light_energy = 1.6
 		l.omni_range = 6.0
 		add_child(l)
+
+
+func _build_interactables() -> void:
+	# The balcony's examinables, ported one-for-one from scenes/zones/AstraThalasBalcony.tscn with
+	# their text verbatim (§8.4 writing). Positions are mapped from the 2D layout: balcony x [0,1280]
+	# -> world x [-9,9]; balcony floor y [340,700] (rail..front) -> world z [-5,5]. `tex` empty means
+	# an invisible zone on a piece of the environment (rail, floor mosaic, the light orbs).
+	var items := [
+		{"name": "Festival Banner", "x": -5.6, "z": -3.6, "tex": "PR-021_festival_banner",
+		 "flag": "COLDOPEN_SAW_BANNER",
+		 "text": "Gold thread on white silk: THE TWO-THOUSANDTH LUMINARAE. Beneath the sun-sigil, in smaller stitching: 'May the Song hold.' It has held for two thousand years."},
+		{"name": "Festival Telescope", "x": 5.9, "z": -3.6, "tex": "PR-021_telescope",
+		 "flag": "COLDOPEN_SAW_TELESCOPE",
+		 "text": "Set out for the crowds, aimed at the Tower of Celestial Harmony. Through the lens: the whole spire alight, and a tiny silhouette upon it — the Grand Archmage, arms rising with the apex of the ceremony. For a heartbeat you think you see the lights below the Tower flicker. An old man's eyes. Surely."},
+		{"name": "Your Satchel", "x": -1.1, "z": 0.6, "tex": "PR-008_sealed_letter",
+		 "flag": "COLDOPEN_SAW_LETTER",
+		 "text": "Ink, nibs, blotting sand — and beneath them, wrapped in oilcloth, a letter. The hand that wrote your name on it was precise, unhurried, three hundred years gone. The indigo wax seal — a void, held — is unbroken. 'You will know the night,' she said. You have carried it so long you had almost stopped believing there would be one."},
+		{"name": "Star-Lamp", "x": -7.0, "z": RAIL_Z + 0.1, "tex": "",
+		 "text": "No flame in it. There has never been a flame in it — the Solari hang these and the Song fills them, the way water fills a cup you did not know was empty. Every child in Astra'Thalas learns the trick of cupping their hands round one to feel the hum. You do it now, an old man alone at the rail. It hums."},
+		{"name": "Star-Lamp", "x": 7.0, "z": RAIL_Z + 0.1, "tex": "",
+		 "text": "The twin of the one at the far end, and of nine thousand others down in the districts, and of the great ones ringing the Tower. Nobody lights them. Nobody has ever lit them. That is not a thing anyone in this city has ever had to think about, and you are thinking about it now."},
+		{"name": "A Child's Sun-Mask", "x": -4.5, "z": 3.3, "tex": "PR-021_sun_mask",
+		 "text": "Gold paper on a willow frame, the sun's nine rays cut out by hand. Dropped in the rush to see the Tower, and already trodden on once. Someone will cry about this tomorrow. You catch yourself on the word — tomorrow — and cannot say why it has gone cold in your mouth."},
+		{"name": "Your Ledger", "x": -2.4, "z": 2.8, "tex": "PR-008_ledger",
+		 "text": "Sixty years of entries in your own narrowing hand. Weather. Deaths. The price of ink. The chronicle of a city that has never needed chronicling, because nothing here has ever changed. You have long thought your life's work one very long sentence with no verb in it. She promised you a verb."},
+		{"name": "Sun-Sigil Mosaic", "x": 0.0, "z": 0.5, "tex": "",
+		 "text": "Gold tesserae, worn pale by two thousand years of feet. The Solari set these into every high place in the city so the Song would always have somewhere to land. You have never been certain whether that is theology or engineering. You have never been certain the Solari know either."},
+		{"name": "Order of Ceremony", "x": 2.1, "z": 2.8, "tex": "PR-008_broadsheet",
+		 "text": "THE ORDER OF THE TWO-THOUSANDTH LUMINARAE, struck in gold on cheap pulp. The apex is timed to the ninth bell: the Grand Archmage Sulvaine will draw the Song up through the Tower and return it to the city sevenfold. At the foot, in the smallest type the press could set: by the grace of the Song, which is eternal."},
+		{"name": "The Balustrade", "x": 0.0, "z": RAIL_Z, "tex": "",
+		 "text": "Marble, worn smooth and faintly hollow at exactly the height of a man's forearms. Two thousand years of people leaning here to look at their own city. Sixty of those years are yours. Below, nine thousand move like one animal breathing, and under the streets the Songlines run faint and gold, the way veins run under skin. Nobody looks at them. Nobody has ever had to."},
+		{"name": "Initials, Cut in the Rail", "x": 3.7, "z": RAIL_Z, "tex": "EN-006_rail_carving",
+		 "text": "Two sets of initials cut into the underside of the rail, where the wardens would not think to look. The cuts are old. You do not know who they were, and there is no one left to ask. That is the ordinary fate of very nearly everyone. It has never frightened you before tonight."},
+		{"name": "Two Cups, Left Behind", "x": 7.2, "z": 3.6, "tex": "PR-021_wine_cups",
+		 "text": "Both empty, set side by side on the parapet. Someone brought a friend up here to look at the city and did not stay long. The rims are still sticky — honey, clove, and something floral the Solari have never agreed on a name for."},
+	]
+	for d in items:
+		var it := Interactable3D.new()
+		it.name = "IX_" + str(d["name"]).replace(" ", "")
+		it.display_name = d["name"]
+		it.examine_text = d["text"]
+		if d.has("flag"):
+			it.flag_on_interact = d["flag"]
+		var tex_name: String = d["tex"]
+		if tex_name != "":
+			it.prop_texture = _tex(PLACE + tex_name + ".png")
+		it.position = Vector3(d["x"], 0.0, d["z"])
+		add_child(it)
 
 
 func _build_stair() -> void:
