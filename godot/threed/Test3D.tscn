@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="Script" path="res://threed/CameraRig3D.gd" id="1_cam"]
+[ext_resource type="PackedScene" path="res://threed/Player3D.tscn" id="2_player"]
+[ext_resource type="Texture2D" path="res://art/3d/marble_floor.png" id="3_floor"]
+[ext_resource type="Texture2D" path="res://art/placeholders/CH-007_talindir_night.png" id="4_talindir"]
+
+[sub_resource type="StandardMaterial3D" id="floor_mat"]
+albedo_texture = ExtResource("3_floor")
+uv1_scale = Vector3(12, 12, 1)
+texture_filter = 3
+
+[sub_resource type="PlaneMesh" id="floor_mesh"]
+size = Vector2(40, 40)
+
+[sub_resource type="Environment" id="env"]
+background_mode = 1
+background_color = Color(0.05, 0.06, 0.12, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.35, 0.38, 0.5, 1)
+ambient_light_energy = 1.0
+tonemap_mode = 2
+
+[node name="Test3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.7, -0.5, 0.5, 0, 0.7, 0.7, -0.7, -0.5, 0.5, 0, 12, 0)
+light_energy = 0.9
+shadow_enabled = true
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("floor_mesh")
+surface_material_override/0 = SubResource("floor_mat")
+
+[node name="Player3D" parent="." instance=ExtResource("2_player")]
+sheet = ExtResource("4_talindir")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 11)
+script = ExtResource("1_cam")
+target_path = NodePath("../Player3D")
