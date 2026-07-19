@@ -1,0 +1,90 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://threed/ColdOpen3D.gd" id="1_dir"]
+[ext_resource type="Script" path="res://threed/Balcony3D.gd" id="2_world"]
+[ext_resource type="Script" path="res://threed/Scriptorium3D.gd" id="3_scr"]
+[ext_resource type="Script" path="res://threed/CameraRig3D.gd" id="4_cam"]
+[ext_resource type="Script" path="res://threed/RoomCoordinator3D.gd" id="5_coord"]
+[ext_resource type="PackedScene" path="res://threed/Player3D.tscn" id="6_player"]
+[ext_resource type="Texture2D" path="res://art/placeholders/CH-007_talindir_night.png" id="7_talindir"]
+[ext_resource type="PackedScene" path="res://ui/DialogueUI.tscn" id="8_ui"]
+[ext_resource type="Texture2D" path="res://art/placeholders/VS-001_lights_die.png" id="9_panel"]
+
+[sub_resource type="Environment" id="env"]
+ambient_light_source = 2
+ambient_light_color = Color(0.28, 0.3, 0.42, 1)
+ambient_light_energy = 0.9
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 0.35
+glow_hdr_threshold = 1.1
+
+[node name="ColdOpen" type="Node3D"]
+script = ExtResource("1_dir")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("env")
+
+[node name="MoonLight" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.86, -0.35, 0.37, 0, 0.72, 0.69, -0.5, -0.6, 0.62, 0, 14, 0)
+light_color = Color(0.6, 0.68, 0.9, 1)
+light_energy = 0.5
+shadow_enabled = true
+
+[node name="World" type="Node3D" parent="."]
+script = ExtResource("2_world")
+
+[node name="Scriptorium" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40, 0)
+script = ExtResource("3_scr")
+
+[node name="Player3D" parent="." instance=ExtResource("6_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
+sheet = ExtResource("7_talindir")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 11)
+script = ExtResource("4_cam")
+target_path = NodePath("../Player3D")
+
+[node name="RoomCoordinator" type="Node3D" parent="."]
+script = ExtResource("5_coord")
+player_path = NodePath("../Player3D")
+rig_path = NodePath("../Camera3D")
+scriptorium_path = NodePath("../Scriptorium")
+
+[node name="DialogueUI" parent="." instance=ExtResource("8_ui")]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Whisper" type="Label" parent="HUD"]
+unique_name_in_owner = true
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -76.0
+offset_right = -40.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.72, 0.74, 0.85, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+text = ""
+
+[node name="StoryPanel" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+layer = 10
+visible = false
+
+[node name="Panel" type="TextureRect" parent="StoryPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_panel")
+expand_mode = 1
+stretch_mode = 6

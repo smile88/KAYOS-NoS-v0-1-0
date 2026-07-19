@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" path="res://threed/Player3D.tscn" id="3_player"]
 [ext_resource type="Texture2D" uid="uid://cfkfkkjxgxdk3" path="res://art/placeholders/CH-007_talindir_night.png" id="4_talindir"]
 [ext_resource type="PackedScene" path="res://ui/DialogueUI.tscn" id="5_ui"]
-[ext_resource type="Script" path="res://threed/Scriptorium3D.gd" id="6_scr"]
-[ext_resource type="Script" path="res://threed/RoomCoordinator3D.gd" id="7_coord"]
+[ext_resource type="Script" uid="uid://wnur80xldj38" path="res://threed/Scriptorium3D.gd" id="6_scr"]
+[ext_resource type="Script" uid="uid://b585dlfqymcxp" path="res://threed/RoomCoordinator3D.gd" id="7_coord"]
 
 [sub_resource type="Environment" id="env"]
 ambient_light_source = 2
@@ -31,7 +31,7 @@ shadow_enabled = true
 [node name="World" type="Node3D" parent="." unique_id=1435320599]
 script = ExtResource("1_world")
 
-[node name="Scriptorium" type="Node3D" parent="."]
+[node name="Scriptorium" type="Node3D" parent="." unique_id=1732657348]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -40, 0)
 script = ExtResource("6_scr")
 
@@ -44,10 +44,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 11)
 script = ExtResource("2_cam")
 target_path = NodePath("../Player3D")
 
-[node name="RoomCoordinator" type="Node3D" parent="."]
+[node name="RoomCoordinator" type="Node3D" parent="." unique_id=2003959602]
 script = ExtResource("7_coord")
 player_path = NodePath("../Player3D")
 rig_path = NodePath("../Camera3D")
 scriptorium_path = NodePath("../Scriptorium")
 
-[node name="DialogueUI" parent="." instance=ExtResource("5_ui")]
+[node name="DialogueUI" parent="." unique_id=1380760118 instance=ExtResource("5_ui")]

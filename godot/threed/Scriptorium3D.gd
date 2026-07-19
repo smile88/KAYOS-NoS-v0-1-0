@@ -219,3 +219,16 @@ func _build_stair_up() -> void:
 	stair.target_room = "balcony"
 	stair.position = base + Vector3(0, 0, 0.9)
 	add_child(stair)
+
+
+## The lamp goes out. Every lamp goes out. When the Song stops while the player is down here, the
+## director drains the room before it climbs them back up to the rail. Same shape as Balcony3D's.
+func drain_to_dark(over := 1.4) -> void:
+	var tw := create_tween().set_parallel(true)
+	for child in get_children():
+		if child is OmniLight3D:
+			tw.tween_property(child, "light_energy", 0.0, over)
+		elif child is MeshInstance3D:
+			var m: Material = (child as MeshInstance3D).material_override
+			if m is StandardMaterial3D and (m as StandardMaterial3D).emission_enabled:
+				tw.tween_property(m, "emission_energy_multiplier", 0.0, over)

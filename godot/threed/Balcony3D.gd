@@ -25,6 +25,7 @@ const PLACE := "res://art/placeholders/"
 
 func _ready() -> void:
 	_build_sky()
+	_build_substructure()
 	_build_platform()
 	_build_sun_mosaic()
 	_build_balustrade()
@@ -87,6 +88,17 @@ func _build_sky() -> void:
 	mi.material_override = m
 	mi.position = Vector3(0, 0, 0)
 	add_child(mi)
+
+
+func _build_substructure() -> void:
+	# The tower wall the balcony juts from: a tall dark mass directly under the platform. It makes the
+	# balcony read as high on a building rather than a slab floating in the night, and — because the
+	# scriptorium is parented 40 m below — it occludes that lower room from the balcony's wide, high
+	# angles (e.g. the Silence tableau), where the eye would otherwise see straight past the near edge
+	# down into it. It stops well above the scriptorium so it never fouls that room's own camera.
+	var mat := _mat(_tex(ART + "stone.png"), 4.0)
+	mat.albedo_color = Color(0.22, 0.23, 0.3)
+	_box(Vector3(PLATFORM_HALF_X * 2.0, 14.0, PLATFORM_HALF_Z * 2.0), Vector3(0, -0.4 - 7.0, 0), mat, "Substructure")
 
 
 func _build_platform() -> void:
@@ -322,3 +334,22 @@ func _build_stair() -> void:
 	stair.target_room = "scriptorium"
 	stair.position = base + Vector3(0, 0, 0.9)
 	add_child(stair)
+
+
+## The Song stops: every light the balcony makes drains to nothing — the city district by district,
+## the Tower, the festival star-lamps — in an expanding ring of quiet. The stars (the unshaded sky
+## dome) stay; only what the Song was lighting goes out. Driven by the Cold Open director at the
+## Silence. Left-to-right child order ≈ a spatial sweep, so a small per-child delay reads as a ripple.
+func drain_to_dark(over := 2.5) -> void:
+	var tw := create_tween().set_parallel(true)
+	var i := 0
+	for child in get_children():
+		var delay := minf(i * 0.03, 1.4)
+		if child is OmniLight3D:
+			tw.tween_property(child, "light_energy", 0.0, over).set_delay(delay)
+			i += 1
+		elif child is MeshInstance3D:
+			var m: Material = (child as MeshInstance3D).material_override
+			if m is StandardMaterial3D and (m as StandardMaterial3D).emission_enabled:
+				tw.tween_property(m, "emission_energy_multiplier", 0.0, over).set_delay(delay)
+				i += 1
