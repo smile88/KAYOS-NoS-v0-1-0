@@ -113,9 +113,12 @@ to the 2D version, the presentation layer is proven and Starfall gets built 3D-n
 
 ---
 
-## 5. Phase 3 — reusable 3D kit (so new zones are cheap)
+## 5. Phase 3 — reusable 3D kit (so new zones are cheap)  ✅ DONE (2026-07-19)
 
-Harden the `threed/` twins into the standard toolkit and document the recipe:
+Done: `threed/Zone3D.gd` base (the env toolkit `Balcony3D`/`Scriptorium3D` had duplicated — `_tex`/
+`_mat`/`_box`/`ART`/`PLACE`/`drain_to_dark`), both zones reparented onto it, and `docs/Building_a_3D_Zone.md`
+(conventions + building blocks + worked example + verify discipline). The `Zone3D` base rename to a
+`game/` location (§6.4) is still deferred. Original scope:
 - `Zone3D` base (env builder conventions: 1 unit = 1 m, +Z toward default camera, procedural
   primitive meshes + generated textures, billboard actors from `SpriteSheet`).
 - `Interactable3D` / `NPC3D` / `Wanderer3D` / `RoomStair3D` / `Player3D` / `CameraRig3D` as the
@@ -202,7 +205,7 @@ Docs that must change (in `docs/`):
 | 0 ✅ | A/D + freeze fixes | playtest works |
 | 1 ✅ | Camera: pitch+floor guard, free-look, first-person, controls | look up at Tower; FP toggles; free-look decouples |
 | 2 ✅ | Finish Cold Open 3D (F, G, H) | plays end-to-end, parity with 2D |
-| 3 | Harden the `threed/` zone kit | documented recipe |
+| 3 ✅ | Harden the `threed/` zone kit | documented recipe (`Zone3D` + `docs/Building_a_3D_Zone.md`) |
 | 4 ✅ | Tag 2D, merge to mainline, remove 2D presentation | `master` is 3D |
 | 5 | Rewrite GDD/specs/briefings | docs match code |
 | 6 | Asset reframing | map prompts are 3D briefs |
