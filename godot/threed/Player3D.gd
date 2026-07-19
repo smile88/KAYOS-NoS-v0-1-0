@@ -65,6 +65,10 @@ func _physics_process(_delta: float) -> void:
 	if _rig == null:
 		_rig = get_tree().get_first_node_in_group("camera_rig") as CameraRig3D
 
+	# In first person you're inside your own body — hide the billboard so it doesn't fill the view.
+	if _rig:
+		body.visible = not _rig.is_first_person()
+
 	if DialogueManager.is_active():
 		velocity = Vector3.ZERO
 		_animate(Vector3.ZERO)
