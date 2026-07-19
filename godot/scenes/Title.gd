@@ -2,8 +2,11 @@ extends Control
 ## Minimal title screen (placeholder for UI-011/012). New Game runs the Cold Open;
 ## Continue restores the last autosave. Swap the key art by dropping UI-011 into
 ## art/placeholders (or repointing the background TextureRect once it exists).
+##
+## Post-3D-pivot: New Game now launches the HD-2D 3D Cold Open (threed/ColdOpen3D.tscn).
+## The old 2D Cold Open is archived at git tag v0-2d-archive.
 
-const COLD_OPEN_ZONE := "res://scenes/zones/AstraThalasBalcony.tscn"
+const COLD_OPEN_ZONE := "res://threed/ColdOpen3D.tscn"
 const FALLBACK_ZONE := "res://scenes/zones/StarfallAcademy.tscn"
 
 @onready var new_game: Button = %NewGame
