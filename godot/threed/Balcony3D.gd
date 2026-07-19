@@ -1,4 +1,4 @@
-extends Node3D
+extends Zone3D
 class_name Balcony3D
 ## Procedurally builds the Astra Thalas balcony as primitive meshes for the HD-2D 3D Cold Open
 ## (locked approach: real 3D world, billboard characters). Ports the 2D balcony's shape
@@ -19,9 +19,6 @@ const RAIL_H := 1.05
 ## stair, but clear of its RoomStair3D zone so arriving doesn't immediately send them back down.
 const SPAWN := Vector3(-6.0, 0.0, 2.6)
 
-const ART := "res://art/3d/"
-const PLACE := "res://art/placeholders/"
-
 
 func _ready() -> void:
 	_build_sky()
@@ -37,40 +34,8 @@ func _ready() -> void:
 	_build_npcs()
 
 
-# --- helpers -----------------------------------------------------------------
-
-func _tex(path: String) -> Texture2D:
-	return load(path) as Texture2D
-
-
-func _mat(tex: Texture2D, uv_scale := 1.0, emission := 0.0) -> StandardMaterial3D:
-	var m := StandardMaterial3D.new()
-	if tex:
-		m.albedo_texture = tex
-		m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
-		m.uv1_scale = Vector3(uv_scale, uv_scale, 1.0)
-	if emission > 0.0:
-		m.emission_enabled = true
-		m.emission_texture = tex
-		m.emission = Color(1, 1, 1)
-		m.emission_energy_multiplier = emission
-	return m
-
-
-func _box(size: Vector3, pos: Vector3, mat: Material, name := "Box") -> MeshInstance3D:
-	var mesh := BoxMesh.new()
-	mesh.size = size
-	var mi := MeshInstance3D.new()
-	mi.name = name
-	mi.mesh = mesh
-	mi.position = pos
-	if mat:
-		mi.material_override = mat
-	add_child(mi)
-	return mi
-
-
 # --- pieces ------------------------------------------------------------------
+# Environment toolkit (_tex / _mat / _box / ART / PLACE) is inherited from Zone3D.
 
 func _build_sky() -> void:
 	# Big inverted sphere with the equirect star dome, unshaded — a cheap night sky you can orbit under.
@@ -335,21 +300,6 @@ func _build_stair() -> void:
 	stair.position = base + Vector3(0, 0, 0.9)
 	add_child(stair)
 
-
-## The Song stops: every light the balcony makes drains to nothing — the city district by district,
-## the Tower, the festival star-lamps — in an expanding ring of quiet. The stars (the unshaded sky
-## dome) stay; only what the Song was lighting goes out. Driven by the Cold Open director at the
-## Silence. Left-to-right child order ≈ a spatial sweep, so a small per-child delay reads as a ripple.
-func drain_to_dark(over := 2.5) -> void:
-	var tw := create_tween().set_parallel(true)
-	var i := 0
-	for child in get_children():
-		var delay := minf(i * 0.03, 1.4)
-		if child is OmniLight3D:
-			tw.tween_property(child, "light_energy", 0.0, over).set_delay(delay)
-			i += 1
-		elif child is MeshInstance3D:
-			var m: Material = (child as MeshInstance3D).material_override
-			if m is StandardMaterial3D and (m as StandardMaterial3D).emission_enabled:
-				tw.tween_property(m, "emission_energy_multiplier", 0.0, over).set_delay(delay)
-				i += 1
+# The Song stops: the city (district by district), the Tower and the festival star-lamps drain to
+# nothing while the stars stay — Zone3D.drain_to_dark, which the director calls with a small stagger
+# so the child order (left-to-right build ≈ a spatial sweep) reads as an expanding ring of quiet.

@@ -1,4 +1,4 @@
-extends Node3D
+extends Zone3D
 class_name Scriptorium3D
 ## Procedurally builds Talindir's scriptorium — the Astral Archive room below the balcony — as primitive
 ## meshes for the HD-2D 3D Cold Open. The second room of the single scene (in 2D it was AstraThalasBalcony
@@ -15,9 +15,6 @@ class_name Scriptorium3D
 ## it to the world). Kept clear of the stair-up so arriving doesn't immediately re-trigger it.
 const SPAWN := Vector3(-5.5, 0.0, -0.5)
 
-const ART := "res://art/3d/"
-const PLACE := "res://art/placeholders/"
-
 const HALF_X := 9.5
 const HALF_Z := 6.5
 const WALL_H := 4.0
@@ -32,38 +29,7 @@ func _ready() -> void:
 	_build_interactables()
 	_build_stair_up()
 
-
-# --- helpers (same conventions as Balcony3D) ---------------------------------
-
-func _tex(path: String) -> Texture2D:
-	return load(path) as Texture2D
-
-
-func _mat(tex: Texture2D, uv_scale := 1.0, emission := 0.0) -> StandardMaterial3D:
-	var m := StandardMaterial3D.new()
-	if tex:
-		m.albedo_texture = tex
-		m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
-		m.uv1_scale = Vector3(uv_scale, uv_scale, 1.0)
-	if emission > 0.0:
-		m.emission_enabled = true
-		m.emission_texture = tex
-		m.emission = Color(1, 1, 1)
-		m.emission_energy_multiplier = emission
-	return m
-
-
-func _box(size: Vector3, pos: Vector3, mat: Material, name := "Box") -> MeshInstance3D:
-	var mesh := BoxMesh.new()
-	mesh.size = size
-	var mi := MeshInstance3D.new()
-	mi.name = name
-	mi.mesh = mesh
-	mi.position = pos
-	if mat:
-		mi.material_override = mat
-	add_child(mi)
-	return mi
+# Environment toolkit (_tex / _mat / _box / ART / PLACE) is inherited from Zone3D.
 
 
 # 2D -> local mapping, matching the balcony's scheme. 2D x [0,1280] -> x [-9,9];
@@ -220,15 +186,5 @@ func _build_stair_up() -> void:
 	stair.position = base + Vector3(0, 0, 0.9)
 	add_child(stair)
 
-
-## The lamp goes out. Every lamp goes out. When the Song stops while the player is down here, the
-## director drains the room before it climbs them back up to the rail. Same shape as Balcony3D's.
-func drain_to_dark(over := 1.4) -> void:
-	var tw := create_tween().set_parallel(true)
-	for child in get_children():
-		if child is OmniLight3D:
-			tw.tween_property(child, "light_energy", 0.0, over)
-		elif child is MeshInstance3D:
-			var m: Material = (child as MeshInstance3D).material_override
-			if m is StandardMaterial3D and (m as StandardMaterial3D).emission_enabled:
-				tw.tween_property(m, "emission_energy_multiplier", 0.0, over)
+# "The lamp goes out. Every lamp goes out." When the Song stops while the player is down here, the
+# director calls the inherited Zone3D.drain_to_dark() before it climbs them back up to the rail.

@@ -205,7 +205,7 @@ func _run_silence() -> void:
 
 	# The Song stops: the city, the Tower and the festival lamps drain to dark, and the whole world
 	# goes muted and cold.
-	balcony.drain_to_dark(2.6)
+	balcony.drain_to_dark(2.6, 0.03)   # small per-light stagger = the ring of quiet spreading out
 	var tw := create_tween().set_parallel(true)
 	tw.tween_property(moonlight, "light_energy", MUTED_MOON_ENERGY, 3.0)
 	var env := world_env.environment
