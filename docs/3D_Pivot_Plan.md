@@ -44,7 +44,14 @@ target them.
 
 ---
 
-## 3. Phase 1 — Camera & controls overhaul (the three asks)
+## 3. Phase 1 — Camera & controls overhaul (the three asks)  ✅ DONE (commit dfefbd4)
+
+Delivered exactly as specced below: `Mode` enum (ORBIT/FIRST_PERSON), pitch 6–85° + manual
+spring-arm ray + `floor_min_y` guard, free-look via a split `move_yaw`/camera yaw (hold `Alt`),
+first-person toggle (`V`) that captures the mouse, moves look-relative, and hides the player billboard.
+`forward_xz()`/`right_xz()` return the movement frame (never the free-look offset). Verified headless +
+rendered (low orbit with the Tower up-frame, first-person looking up to the lit apex).
+
 
 The single `CameraRig3D` grows three modes plus a floor guard. Keep it one node so the player script
 reads one `camera_rig` group regardless of mode.
@@ -185,7 +192,7 @@ Docs that must change (in `docs/`):
 | Phase | What | Gate |
 |---|---|---|
 | 0 ✅ | A/D + freeze fixes | playtest works |
-| 1 | Camera: pitch+floor guard, free-look, first-person, controls | look up at Tower; FP toggles; free-look decouples |
+| 1 ✅ | Camera: pitch+floor guard, free-look, first-person, controls | look up at Tower; FP toggles; free-look decouples |
 | 2 | Finish Cold Open 3D (F, G, H) | plays end-to-end, parity with 2D |
 | 3 | Harden the `threed/` zone kit | documented recipe |
 | 4 | Tag 2D, merge to mainline, remove 2D presentation | `master` is 3D |
