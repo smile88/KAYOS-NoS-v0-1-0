@@ -38,8 +38,16 @@ broader. Doors ≈ 2.4 m. One storey ≈ 3.5 m.
 | **Umbraveil** (Noctari, but its own thing) | terraced, open-archwayed (**no doors**), light-channelled | twilight blue-violet, silver, **rationed warm amber** | twilight stone, crystal light-farm blades, amber light-conduits | the two-hour gold wedge; amber "lantern rivers" flowing downhill |
 | **The Silence / Age of Chaos** (post-event) | same geometry, drained | colour bleeds to grey; gold goes dead | as above but unlit, ash-filmed | the *absence* of the Song — flat, sourceless, cold |
 
-**The three eras a model may need to exist in:** Age of Order (lush, lit), the Night itself (draining),
-the Age of Chaos (347 AR — ruined, overgrown, only relevant for future projects). Default to Age of Order.
+**The theology behind the two elven cultures** (canon — see `Canon_Notes.md`): the **Solari** worship
+**Solara**, Weaver of Light (the gold, the Song, ordered time — their iconography is sun-discs and the
+first stars); the **Noctari** are aligned with **Umbrion**, Weaver of Shadow (void, dream, the
+Dreamweave — their iconography is star-crystal, the void-as-presence). Reality is the **Elder Song**;
+magic is manipulating it; the Night of Silence *silences the Song*. Let Solari assets glow with the Song
+and Noctari assets hold the void.
+
+**The three eras a model may need to exist in:** Age of Order (lush, lit), the Night itself (draining —
+the Song going out), the Age of Chaos/Renewal (347 AR — ruined; only for the *other* game). Default to
+Age of Order.
 
 ---
 
@@ -139,7 +147,8 @@ Canon PR-### props re-cut as 3D models. Several Cold-Open props exist as `PropMo
 
 | ID | Prop | Notes / Build | Part |
 |---|---|---|---|
-| PR-001/002/003 | **The Nullstone** (proto / sealed / active) | HERO. A dark crystalline void-stone; drinks light; the active form drains colour. Never speaks; the gravity of the game. | P1/P2 |
+| PR-001/002/003 | **The Nullstone** (proto / sealed / active) | HERO. Carved from **void-touched obsidian** around **the heart of a dying star**, powered by the sacrificed potential of 100 mages (canon; project codename *Aethelburg*). A dark stone that **drinks light**; the active form drains colour outward. Never speaks; the gravity of the game. | P1/P2 |
+| PR-024 | **Echo Stones** | Smaller Nullstone fragments seeded across elven lands that extend the suppression — the Night is a *network* activation. Grakkar's are **modified** to circumvent Elorin's safeguards. Dressing/interactable in P2 + the Silence. | P2 |
 | PR-008 | **The ledger / scribe papers / letter / broadsheet / roster / seal-kit / Volume the First** | scribe-set. **PLACEHOLDERS exist** (`"book"`, `"papers"`, `"satchel"`, `"seal"`, `"roster"`). | Cold Open/Coda |
 | PR-009 | **Elorin's journal** (hero item, IT-016) | HERO. Indigo-bound, void-sealed; THE READER's payload. | P1→P2 |
 | PR-010 | **The safeguard schematic** | HERO. A drafting sheet / the schematic table's plate; the buried flaw lives here. | P1 A2 |

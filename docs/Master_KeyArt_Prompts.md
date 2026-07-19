@@ -27,10 +27,12 @@ Where a name/fact isn't in canon it's marked *(invented — flag if wrong)*.
 - **Terran** (Durak, the undercroft): ochre, umber, granite, dim geomantic green-gold.
 
 **Recurring visual motifs to thread through everything:** the **Aether Ring** (a glowing iris-ring in a
-Ring-Bearer's eye); **the Song** (ambient gold light that fills things — star-lamps with no flame);
-**the Nullstone** (a dark crystal that *drinks* light); **the lights going out district by district**
-(the Night of Silence — an expanding ring of drained colour). The whole game is *gold light being
-switched off*, so let warmth be precious and its loss be the horror.
+Ring-Bearer's eye); **the Song** (canonically the *Elder Song* of the twin gods **Solara**/light and
+**Umbrion**/shadow — ambient gold light that fills things: star-lamps burn without flame because the Song
+fills them); **the Nullstone** (a **void-touched-obsidian** crystal that *drinks* light); **the lights
+going out district by district** (the Night of Silence — the *Song being silenced*, an expanding ring of
+drained colour). The whole game is *gold light being switched off*, so let warmth be precious and its loss
+be the horror. Solari art glows with Solara's Song; Noctari art holds Umbrion's void. (See `Canon_Notes.md`.)
 
 **Formats:** character key art → 2:3 portrait or 3:4. Location splash / loading → 16:9. Title/key art
 (UI-011) → 16:9 hero.
@@ -44,8 +46,9 @@ switched off*, so let warmth be precious and its loss be the horror.
 > formidable, in her forties — reserved, precise, watchful. Pale grey-violet skin, dark hair drawn back
 > severely, one eye carrying a faint **void-black Aether Ring** that seems to absorb the light around it.
 > Dark indigo void-scholar's robes with fine silver astronomical embroidery, a single restrained band of
-> antique gold at the collar. She holds, half-shadowed, a small dark crystalline fragment that drinks the
-> light near her hand (the Nullstone's promise). Three-quarter view, chest up, against a deep indigo-black
+> antique gold at the collar. She holds, half-shadowed, a small fragment of **void-touched obsidian** that drinks the
+> light near her hand (the Nullstone's promise — a piece of the Void she means to bring into the heart of
+> the Song, to halt an *essence decay* only she has seen). Three-quarter view, chest up, against a deep indigo-black
 > ground scattered with faint silver constellation lines. Cold pin-point key light from above-left;
 > everything else in rich shadow. Her expression: the exact moment a brilliant person realises what her
 > work will be used for — controlled, dry, a little haunted. Painterly, jewel-toned, illuminated-manuscript
@@ -135,7 +138,7 @@ switched off*, so let warmth be precious and its loss be the horror.
 > A 16:9 key art: the interior of a colossal Solari ceremonial tower — tiers of gilded galleries spiralling
 > up toward a distant lit apex — cutting down to a cold arcane vault far beneath it. In the vault, a dark
 > dais under a ring of towering **ward-pylons** (interlocking lattice geometry, faintly glowing glyph-floors),
-> and at the centre a single dark crystalline stone that **drinks the surrounding light**, a well of
+> and at the centre a single stone of **void-touched obsidian** that **drinks the surrounding light**, a well of
 > nothing in a room built of gold. Above warm and radiant, below cold and void; the vertical drop between
 > them is the whole story. Painterly, awed, ominous. No text.
 
@@ -187,6 +190,33 @@ switched off*, so let warmth be precious and its loss be the horror.
 > measure. Painterly, cinematic, poster-grade. Leave clean negative space at the top for the logo. No text.
 
 ---
+
+## PART 3 — DEITIES & ICONOGRAPHY (canon — for promo, religious art, UI)
+
+The gods of KAOS are real forces (see `Canon_Notes.md`). Icon/idol/stained-glass-style key art, mostly
+symbolic rather than literal figures — useful for faction iconography, loading motifs, and the Cold Open's
+festival dressing.
+
+### The Celestial Weavers — Solara & Umbrion (the Song)
+> A vertical diptych icon of the twin elven gods who sang reality into being. **Solara, Weaver of Light**
+> — a radiant veiled figure of white and antique gold, haloed by the first stars, hands drawing golden
+> threads of the **Elder Song**; ordered, warm, scholarly (the Solari's goddess, honoured at the
+> Luminarae). **Umbrion, Weaver of Shadow** — her twin, a quiet indigo-and-silver figure half-dissolved
+> into a field of dream-stars and void, hands cupping darkness like water; the Noctari's god of dream and
+> the void (Elorin's alignment). Between them the Song runs as a ribbon of light and dark twined. Painterly
+> illuminated-icon register, gold-leaf accents, symmetrical. No text.
+
+### The other faiths (one symbolic icon each)
+- **The Way of Silent Strength** (Orc): **Krogg** the Hammer-God (iron, unyielding, mountain-forging)
+  opposed to **Varlok** the Serpent-Whisperer (shifting, deceptive) — an iron hammer and a coiling serpent
+  locked in eternal struggle; rust, ember, black. *(Krogg is the god whose visions drive Grakkar.)*
+- **The Stone Voice** (Terran): **Petrocore** the Earth-Shaper (bedrock heart, weeping molten Arksilver)
+  and **Aetheria** the Crystal Weaver — a mountain cross-sectioned to a glowing crystal core; ochre,
+  granite, geomantic green-gold.
+- **Felari Spirit Dancing** (Beast): **Lyrion** the Moon-Prowler and **Mawen** the Memory-Keeper — a
+  dancing feline silhouette dissolving into a field of ancestral dream-stars; indigo, moonlight, warm earth.
+- **The Path of Adaptation** (Human): the **Architect of Variables** and the **Observer of Outcomes** — an
+  unseen hand casting a die beside an all-seeing recording eye; muted, empirical, clockwork.
 
 ## USAGE NOTES
 - **Text always comes out as gibberish** — generate label-free and set any type in Affinity (same note as

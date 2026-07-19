@@ -9,7 +9,8 @@ the numbers you type.
 **Precision key:** ▣ = **measured** (already built in engine — exact). ◆ = **specified** (designed here to
 buildable precision, grounded in canon/map docs). ○ = **extrapolated** (my call beyond canon — flag if wrong).
 Canon sources: GDD §10 (zone table), §4 (narrative), the map prompts (`KAYOS_Starfall_Map_Prompt.md`,
-`KAYOS_Umbraveil_Map_Prompt.md`). Culture kits & materials: `3D_Asset_Bible.md` §0/§3.
+`KAYOS_Umbraveil_Map_Prompt.md`), and the world lore set summarised in **`Canon_Notes.md`** (the Song,
+the gods, the Nullstone spec, the timeline). Culture kits & materials: `3D_Asset_Bible.md` §0/§3.
 
 **Scale reference:** adult elf/human model ≈ 2.1 m; orc ≈ 2.3 m; door ≈ 2.4 m; storey ≈ 3.5 m;
 comfortable single-room zone ≈ 18–24 m across; a "walk it in 20 s" plaza ≈ 40–60 m.
@@ -38,6 +39,10 @@ comfortable single-room zone ≈ 18–24 m across; a "walk it in 20 s" plaza ≈
 - **Lighting:** WorldEnvironment ambient (0.28,0.30,0.42) energy 0.9, glow threshold 1.1; cool MoonLight
   DirectionalLight energy 0.5.
 - **Orientation:** rail + city + Tower at −Z (the establishing view looks out over them).
+- **Canon context:** the festival is the **Luminarae**, honouring **Solara** and the **Elder Song**
+  (canon — `Canon_Notes.md`). The star-lamps burn without flame because the **Song** fills them; on the
+  Tower the Grand Archmage's **Celestial Invocation** draws the Song up through the spire. The Silence is
+  the **Song going out** — so `drain_to_dark` is theologically literal, not just a lighting effect.
 
 ### Z-02 ▣ Talindir's Scriptorium (EN-014/019) — `Scriptorium3D.gd`
 - **Footprint:** floor **19 m (X) × 13 m (Z)** (`HALF_X 9.5`, `HALF_Z 6.5`), parented at **world y = −40**
@@ -156,8 +161,11 @@ assembled at P2 A3 load-time from Part One flags (GDD §5.1).
   - **SEAL** (018c): monolithic sealed pylons → bypass = force/Vigor **or** the flaw.
 - **Legacy assembly:** `P1_FAILSAFE_CUT` opens a gap in the ring; `P1_FLAW_*` sets whether a clean
   activation route exists; `P1_TESTIMONY == EXPOSED` thins the Void Wardens (CH-017) posted here.
-- **The Stone (PR-001/002/003):** the dark crystal that **drinks light** — a void-well at the room's heart;
-  the active form (003) drains colour outward (FX-03/04). **THE SAME NIGHT happens on this dais.**
+- **The Stone (PR-001/002/003):** **void-touched obsidian** carved around **the heart of a dying star**
+  (canon; project codename *Aethelburg*) — a void-well that **drinks light**; the active form (003) drains
+  colour outward (FX-03/04). **THE SAME NIGHT happens on this dais.** Note the activation is really a
+  **network** event via seeded **echo stones (PR-024)** — the vault is the hand on the key, not the whole
+  mechanism.
 - **Light:** cold arcane glow from the pylons; the Stone eats it; at activation → SKY-05 drain.
 
 ---
