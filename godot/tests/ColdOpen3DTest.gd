@@ -58,19 +58,16 @@ func _ready() -> void:
 			print("  [FAIL] crowd NPC %s has nothing to say" % w.name)
 			break
 
-	# The billboards actually animate: every crowd body is an AnimatedSprite3D carrying the four walk
-	# directions, and walk_toward()/stop_walking() must change what is played.
+	# The crowd are 3D models that turn to face their heading (no billboard, no quantised diagonal):
+	# walk_toward() sets it moving and rotates it to the movement direction; stop_walking() halts it.
 	var sample := crowd[0] as Wanderer3D
-	var sbody := sample.body as AnimatedSprite3D
-	var anims := sbody.sprite_frames.get_animation_names()
-	_check(sbody.sprite_frames.get_frame_count("walk_down") == 4
-		and "walk_up" in anims and "walk_left" in anims and "walk_right" in anims,
-		"crowd NPCs carry a 4-direction, 4-frame walk sheet")
-	sample.walk_toward(-dir.rig.right_xz())      # screen-left in the current camera frame
-	_check(sbody.animation == "walk_left" and sbody.is_playing(),
-		"walk_toward()/stop_walking() drive the NPC's animation")
+	_check(sample.model is CharacterModel3D, "crowd NPCs are 3D hooded-figure models")
+	sample.walk_toward(Vector3(1, 0, 0))
+	_check(sample.model._moving, "walk_toward() sets the figure moving")
+	_check(absf(sample.model.rotation.y - atan2(1.0, 0.0)) < 0.01,
+		"walk_toward() turns the figure to face its heading (not the camera)")
 	sample.stop_walking()
-	_check(not sbody.is_playing() and sbody.frame == 0, "an idle NPC holds frame 0")
+	_check(not sample.model._moving, "stop_walking() halts it")
 
 	# The scriptorium is real and reachable, not set dressing behind a locked door.
 	_stair_to("scriptorium").interact()

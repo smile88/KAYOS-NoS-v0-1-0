@@ -37,7 +37,6 @@ script = ExtResource("6_scr")
 
 [node name="Player3D" parent="." unique_id=1847450579 instance=ExtResource("3_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.5)
-sheet = ExtResource("4_talindir")
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1537356309]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 11)

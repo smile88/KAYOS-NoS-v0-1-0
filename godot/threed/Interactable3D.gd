@@ -12,7 +12,10 @@ class_name Interactable3D
 @export_file("*.json", "*.tres") var dialogue: String = ""
 @export var flag_on_interact: String = ""
 @export var portrait_id: String = ""
-## Optional prop art to stand here as a billboard. Same pixel_size convention as the player.
+## Optional 3D model to stand here — a key into PropModels3D (e.g. "desk", "banner"). Preferred over
+## prop_texture now that the world is 3D models rather than billboards.
+@export var prop_model: String = ""
+## Legacy: a 2D billboard prop. Kept for anything not yet modelled; prop_model wins if both are set.
 @export var prop_texture: Texture2D
 @export var prop_pixel_size := 0.03
 ## How tall (world m) to lift the sprite so its base sits on the ground at this node's y.
@@ -21,7 +24,11 @@ class_name Interactable3D
 
 func _ready() -> void:
 	add_to_group("interactable3d")
-	if prop_texture:
+	if prop_model != "":
+		var m := PropModels3D.build(prop_model)
+		m.name = "PropModel"
+		add_child(m)
+	elif prop_texture:
 		var s := Sprite3D.new()
 		s.name = "Prop"
 		s.texture = prop_texture
