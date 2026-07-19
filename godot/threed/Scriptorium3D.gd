@@ -109,39 +109,39 @@ func _build_interactables() -> void:
 	# lower room) with their examine text verbatim. `tex` empty = an invisible zone on the environment
 	# (the window in the wall, the reading lamp). Positions map from the 2D layout via _sx/_sz.
 	var items := [
-		{"name": "The Duty Roster", "x": 200, "y": 900, "tex": "PR-008_roster",
+		{"name": "The Duty Roster", "x": 200, "y": 900, "model": "roster",
 		 "text": "Tonight's watch, in your own hand. Ninth bell: Sorrel. Tenth: Vashti. Eleventh: the Ferrin boy, whose name you never learned to spell. Every line struck through, each in its own apologetic ink, each with the same excuse written small beside it. They are all down there dancing. You did not strike your own name through. Nobody asked you to.",
 		 "lift": 1.4},
-		{"name": "Scroll Rack — Recent Years", "x": 300, "y": 900, "tex": "PR-007_scroll_rack",
+		{"name": "Scroll Rack — Recent Years", "x": 300, "y": 900, "model": "scroll_rack",
 		 "text": "The last two centuries, in the hands of eleven scribes, four of them yours. Harvest yields. Tower maintenance. A dispute about a boundary wall that ran forty years and was settled by both parties dying. Nothing in this rack has ever mattered. You have loved it more than you have loved most people.",
 		 "lift": 1.4},
-		{"name": "Scroll Rack — the Middle Ages", "x": 420, "y": 900, "tex": "PR-007_scroll_rack",
+		{"name": "Scroll Rack — the Middle Ages", "x": 420, "y": 900, "model": "scroll_rack",
 		 "text": "Eight hundred years compressed into one rack, because so little happened in them. The Age of Order is not a story. It is the absence of one. Somewhere in here is the year you arrived in this city, and you could find it in a moment, and you never have.",
 		 "lift": 1.4},
-		{"name": "Scroll Rack — the Empty Shelf", "x": 540, "y": 900, "tex": "PR-007_scroll_rack",
+		{"name": "Scroll Rack — the Empty Shelf", "x": 540, "y": 900, "model": "scroll_rack",
 		 "text": "The rack for the years still to come, built by an optimist two thousand years ago and not yet a third full. There is room on it for another six hundred years of harvest yields. You have never once looked at this shelf and felt what you feel looking at it now.",
 		 "lift": 1.4},
-		{"name": "The Scriptorium Window", "x": 900, "y": 900, "tex": "",
+		{"name": "The Scriptorium Window", "x": 900, "y": 900, "model": "",
 		 "z_override": -HALF_Z + 0.6,
 		 "text": "The festival, at a distance and through old glass, which is the way you have taken in most things. Gold light lies across the desks in long bars and does not warm them. From here the crowd makes no sound at all. You could watch the whole of it from this chair and never be in any of it. You have."},
-		{"name": "The Locked Cabinet", "x": 1140, "y": 900, "tex": "PR-020_cabinet",
+		{"name": "The Locked Cabinet", "x": 1140, "y": 900, "model": "cabinet",
 		 "text": "Indigo lacquer, and a keyhole you have the key to. This is where the letter lived for three hundred years — through four Grand Archmages, two plagues and a coronation, while you told yourself that the night she meant was not this one and had not come yet. You took it out this evening. You are aware that you took it out this evening. You have not let yourself look at why.",
 		 "lift": 1.4},
-		{"name": "Your Desk", "x": 400, "y": 1080, "tex": "EN-019_desk",
+		{"name": "Your Desk", "x": 400, "y": 1080, "model": "desk",
 		 "text": "Sixty years of the same chair, worn to the shape of you. Tonight's page is begun and abandoned: 'The two-thousandth Luminarae. The city is —' and there the ink stops, because you could not think of the word and went upstairs instead. The nib has dried. It will not be the sentence you finish tonight.",
 		 "lift": 0.9},
-		{"name": "A Cold Cup", "x": 320, "y": 1120, "tex": "EN-019_tea",
+		{"name": "A Cold Cup", "x": 320, "y": 1120, "model": "cup",
 		 "text": "Long cold, with a skin on it. You made it at the seventh bell, meaning to drink it, and then the light through the window went the colour it goes and you went up to look at the sky instead. It has been a very long time since anything made you forget a cup of tea."},
-		{"name": "Wax and Matrix", "x": 520, "y": 1140, "tex": "PR-008_seal_kit",
+		{"name": "Wax and Matrix", "x": 520, "y": 1140, "model": "seal",
 		 "text": "Your sealing wax is archive-grey, as every scribe's is. But there is one stick of indigo in the bottom of the drawer, and you did not buy it, and it has sat there three hundred years going slowly hard. The matrix that matches it is not here. She kept that. Of course she kept that."},
-		{"name": "Volume the First", "x": 700, "y": 1000, "tex": "PR-008_volume_one",
+		{"name": "Volume the First", "x": 700, "y": 1000, "model": "book",
 		 "text": "The oldest book in the room, in a hand two thousand years dead, opening the Age of Order with a sentence every apprentice copies out and none of them think about: 'Let it be recorded that on this day the Song was made steady, and will not fail, and there is therefore nothing further to record.' The rest of the volume is blank. He was so nearly right."},
-		{"name": "Document Chest", "x": 880, "y": 1180, "tex": "PR-020_chest",
+		{"name": "Document Chest", "x": 880, "y": 1180, "model": "chest",
 		 "text": "Deeds, mostly, and the tedious immortal paperwork of a city that expects to go on forever: water rights, tower levies, a folder of complaints about the bells. Underneath it all, a survey of the Songlines, drawn when someone still thought they were worth surveying. It is nine hundred years old. It is the newest one there is."},
-		{"name": "The Apprentice's Desk", "x": 1050, "y": 1280, "tex": "EN-019_desk",
+		{"name": "The Apprentice's Desk", "x": 1050, "y": 1280, "model": "desk",
 		 "text": "Sorrel's. Neat, which yours never was at her age. A half-copied inventory, a pressed flower doing duty as a bookmark, and a note in her round hand: 'Back before the ninth — don't tell.' She is nineteen. She has gone to watch the sky catch fire with a boy from the granary. You would not have told.",
 		 "lift": 0.9},
-		{"name": "The Reading Lamp", "x": 640, "y": 1300, "tex": "",
+		{"name": "The Reading Lamp", "x": 640, "y": 1300, "model": "",
 		 "text": "You have read by this lamp for sixty years and never once wondered where the light in it comes from, any more than you wonder where the floor comes from. It is the Song. Everything here is the Song. Put your hand near the glass: that faint pressure against your palm is the hum of the world holding itself together, and it has never, in two thousand years, so much as stuttered.",
 		 "lamp": true},
 	]
@@ -151,9 +151,7 @@ func _build_interactables() -> void:
 		it.display_name = d["name"]
 		it.examine_text = d["text"]
 		it.portrait_id = ""
-		var tex_name: String = d["tex"]
-		if tex_name != "":
-			it.prop_texture = _tex(PLACE + tex_name + ".png")
+		it.prop_model = d["model"]
 		var z: float = d["z_override"] if d.has("z_override") else _sz(float(d["y"]))
 		it.position = Vector3(_sx(float(d["x"])), 0.0, z)
 		add_child(it)

@@ -190,32 +190,32 @@ func _build_interactables() -> void:
 	# -> world x [-9,9]; balcony floor y [340,700] (rail..front) -> world z [-5,5]. `tex` empty means
 	# an invisible zone on a piece of the environment (rail, floor mosaic, the light orbs).
 	var items := [
-		{"name": "Festival Banner", "x": -5.6, "z": -3.6, "tex": "PR-021_festival_banner",
+		{"name": "Festival Banner", "x": -5.6, "z": -3.6, "model": "banner",
 		 "flag": "COLDOPEN_SAW_BANNER",
 		 "text": "Gold thread on white silk: THE TWO-THOUSANDTH LUMINARAE. Beneath the sun-sigil, in smaller stitching: 'May the Song hold.' It has held for two thousand years."},
-		{"name": "Festival Telescope", "x": 5.9, "z": -3.6, "tex": "PR-021_telescope",
+		{"name": "Festival Telescope", "x": 5.9, "z": -3.6, "model": "telescope",
 		 "flag": "COLDOPEN_SAW_TELESCOPE",
 		 "text": "Set out for the crowds, aimed at the Tower of Celestial Harmony. Through the lens: the whole spire alight, and a tiny silhouette upon it — the Grand Archmage, arms rising with the apex of the ceremony. For a heartbeat you think you see the lights below the Tower flicker. An old man's eyes. Surely."},
-		{"name": "Your Satchel", "x": -1.1, "z": 0.6, "tex": "PR-008_sealed_letter",
+		{"name": "Your Satchel", "x": -1.1, "z": 0.6, "model": "satchel",
 		 "flag": "COLDOPEN_SAW_LETTER",
 		 "text": "Ink, nibs, blotting sand — and beneath them, wrapped in oilcloth, a letter. The hand that wrote your name on it was precise, unhurried, three hundred years gone. The indigo wax seal — a void, held — is unbroken. 'You will know the night,' she said. You have carried it so long you had almost stopped believing there would be one."},
-		{"name": "Star-Lamp", "x": -7.0, "z": RAIL_Z + 0.1, "tex": "",
+		{"name": "Star-Lamp", "x": -7.0, "z": RAIL_Z + 0.1, "model": "",
 		 "text": "No flame in it. There has never been a flame in it — the Solari hang these and the Song fills them, the way water fills a cup you did not know was empty. Every child in Astra'Thalas learns the trick of cupping their hands round one to feel the hum. You do it now, an old man alone at the rail. It hums."},
-		{"name": "Star-Lamp", "x": 7.0, "z": RAIL_Z + 0.1, "tex": "",
+		{"name": "Star-Lamp", "x": 7.0, "z": RAIL_Z + 0.1, "model": "",
 		 "text": "The twin of the one at the far end, and of nine thousand others down in the districts, and of the great ones ringing the Tower. Nobody lights them. Nobody has ever lit them. That is not a thing anyone in this city has ever had to think about, and you are thinking about it now."},
-		{"name": "A Child's Sun-Mask", "x": -4.5, "z": 3.3, "tex": "PR-021_sun_mask",
+		{"name": "A Child's Sun-Mask", "x": -4.5, "z": 3.3, "model": "mask",
 		 "text": "Gold paper on a willow frame, the sun's nine rays cut out by hand. Dropped in the rush to see the Tower, and already trodden on once. Someone will cry about this tomorrow. You catch yourself on the word — tomorrow — and cannot say why it has gone cold in your mouth."},
-		{"name": "Your Ledger", "x": -2.4, "z": 2.8, "tex": "PR-008_ledger",
+		{"name": "Your Ledger", "x": -2.4, "z": 2.8, "model": "book",
 		 "text": "Sixty years of entries in your own narrowing hand. Weather. Deaths. The price of ink. The chronicle of a city that has never needed chronicling, because nothing here has ever changed. You have long thought your life's work one very long sentence with no verb in it. She promised you a verb."},
-		{"name": "Sun-Sigil Mosaic", "x": 0.0, "z": 0.5, "tex": "",
+		{"name": "Sun-Sigil Mosaic", "x": 0.0, "z": 0.5, "model": "",
 		 "text": "Gold tesserae, worn pale by two thousand years of feet. The Solari set these into every high place in the city so the Song would always have somewhere to land. You have never been certain whether that is theology or engineering. You have never been certain the Solari know either."},
-		{"name": "Order of Ceremony", "x": 2.1, "z": 2.8, "tex": "PR-008_broadsheet",
+		{"name": "Order of Ceremony", "x": 2.1, "z": 2.8, "model": "papers",
 		 "text": "THE ORDER OF THE TWO-THOUSANDTH LUMINARAE, struck in gold on cheap pulp. The apex is timed to the ninth bell: the Grand Archmage Sulvaine will draw the Song up through the Tower and return it to the city sevenfold. At the foot, in the smallest type the press could set: by the grace of the Song, which is eternal."},
-		{"name": "The Balustrade", "x": 0.0, "z": RAIL_Z, "tex": "",
+		{"name": "The Balustrade", "x": 0.0, "z": RAIL_Z, "model": "",
 		 "text": "Marble, worn smooth and faintly hollow at exactly the height of a man's forearms. Two thousand years of people leaning here to look at their own city. Sixty of those years are yours. Below, nine thousand move like one animal breathing, and under the streets the Songlines run faint and gold, the way veins run under skin. Nobody looks at them. Nobody has ever had to."},
-		{"name": "Initials, Cut in the Rail", "x": 3.7, "z": RAIL_Z, "tex": "EN-006_rail_carving",
+		{"name": "Initials, Cut in the Rail", "x": 3.7, "z": RAIL_Z, "model": "",
 		 "text": "Two sets of initials cut into the underside of the rail, where the wardens would not think to look. The cuts are old. You do not know who they were, and there is no one left to ask. That is the ordinary fate of very nearly everyone. It has never frightened you before tonight."},
-		{"name": "Two Cups, Left Behind", "x": 7.2, "z": 3.6, "tex": "PR-021_wine_cups",
+		{"name": "Two Cups, Left Behind", "x": 7.2, "z": 3.6, "model": "cups",
 		 "text": "Both empty, set side by side on the parapet. Someone brought a friend up here to look at the city and did not stay long. The rims are still sticky — honey, clove, and something floral the Solari have never agreed on a name for."},
 	]
 	for d in items:
@@ -225,9 +225,7 @@ func _build_interactables() -> void:
 		it.examine_text = d["text"]
 		if d.has("flag"):
 			it.flag_on_interact = d["flag"]
-		var tex_name: String = d["tex"]
-		if tex_name != "":
-			it.prop_texture = _tex(PLACE + tex_name + ".png")
+		it.prop_model = d["model"]
 		it.position = Vector3(d["x"], 0.0, d["z"])
 		add_child(it)
 
@@ -236,11 +234,19 @@ func _build_interactables() -> void:
 const FG_EARLY_DIALOGUE := "res://data/dialogue/coldopen_festivalgoer_early.json"
 
 
+## Muted festival-crowd robe colours so the seven read as different people (the 2D crowd shared one
+## silhouette). Cycled by index.
+const CROWD_ROBES := [
+	Color(0.44, 0.30, 0.22), Color(0.28, 0.36, 0.28), Color(0.42, 0.36, 0.24),
+	Color(0.30, 0.30, 0.40), Color(0.46, 0.40, 0.44), Color(0.24, 0.34, 0.38),
+	Color(0.40, 0.26, 0.28),
+]
+
+
 func _build_npcs() -> void:
-	# The seven balcony wanderers, ported from AstraThalasBalcony.tscn: same examine text (§8.4),
-	# same CH-027 citizen sheet, roam rects mapped from the 2D layout to the XZ ground
+	# The seven balcony wanderers, ported from AstraThalasBalcony.tscn: same examine text (§8.4), now
+	# 3D hooded figures in varied robe colours, roam rects mapped from the 2D layout to the XZ ground
 	# (Rect2 = minX, minZ, width, depth). They drift, pause, and — at the Silence — rush the rail.
-	var citizen := _tex(PLACE + "CH-027_athalas_citizen.png")
 	var crowd := [
 		{"name": "The Lamplighter", "x": -7.0, "z": -2.5, "roam": Rect2(-8.2, -3.9, 2.8, 3.6),
 		 "text": "\"Sixty-first Luminarae I've worked, and there's nothing to light. There's never anything to light. My father held the office, and his mother before him, and not one of us has ever struck a flame in this city.\" He turns his unlit taper over in his hands. \"Tonight of all nights, scribe, I'd like there to be something to light.\""},
@@ -257,22 +263,24 @@ func _build_npcs() -> void:
 		{"name": "A Bored Warden", "x": 7.7, "z": 3.1, "roam": Rect2(6.8, 1.4, 1.6, 3.3),
 		 "text": "\"Same duty every Luminarae: stop the balcony falling into the street.\" He does not look at the balcony. \"Two thousand years, and it has never once tried. I'll be here till the tenth bell and then I'll go and find my wife and she'll be drunk.\" He nods at the crowd, comfortable, incurious, entirely safe."},
 	]
+	var i := 0
 	for d in crowd:
 		var w := Wanderer3D.new()
 		w.name = "NPC_" + str(d["name"]).replace(" ", "").replace(",", "")
-		w.sheet = citizen
+		w.robe_color = CROWD_ROBES[i % CROWD_ROBES.size()]
 		w.display_name = d["name"]
 		w.examine_text = d["text"]
 		w.portrait_id = "PO-014"
 		w.roam_rect = d["roam"]
 		w.position = Vector3(d["x"], 0.0, d["z"])
 		add_child(w)
+		i += 1
 
 	# The festival-goer who will (step G) bring the player their one choice. For now she stands among
 	# the crowd; examining her opens her early, pre-bell exchange, exactly as before the bell in 2D.
 	var fg := NPC3D.new()
 	fg.name = "FestivalGoer"
-	fg.sheet = citizen
+	fg.robe_color = Color(0.50, 0.34, 0.40)   # a warmer rose so she stands out a little in the crowd
 	fg.display_name = "Festival-Goer"
 	fg.dialogue = FG_EARLY_DIALOGUE
 	fg.position = Vector3(2.5, 0.0, -2.2)
