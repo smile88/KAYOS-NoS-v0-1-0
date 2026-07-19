@@ -15,6 +15,10 @@ const PLATFORM_HALF_Z := 5.5
 const RAIL_Z := -PLATFORM_HALF_Z + 0.2   # balustrade just inside the far edge
 const RAIL_H := 1.05
 
+## Where the player stands after climbing up from the scriptorium (see RoomCoordinator3D). Near the
+## stair, but clear of its RoomStair3D zone so arriving doesn't immediately send them back down.
+const SPAWN := Vector3(-6.0, 0.0, 2.6)
+
 const ART := "res://art/3d/"
 const PLACE := "res://art/placeholders/"
 
@@ -309,3 +313,12 @@ func _build_stair() -> void:
 		var y := -0.25 * (i + 1)
 		var z := base.z + 0.45 * i
 		_box(Vector3(2.4, 0.25, 0.5), Vector3(base.x, y + 0.125, z), stone, "Step%d" % i)
+
+	# The invisible stair-down zone: examining it (F/Space) descends to the scriptorium. The
+	# RoomCoordinator3D owns the actual move; this just announces it, exactly as RoomStair does in 2D.
+	var stair := RoomStair3D.new()
+	stair.name = "StairDown"
+	stair.display_name = "The Stair Down"
+	stair.target_room = "scriptorium"
+	stair.position = base + Vector3(0, 0, 0.9)
+	add_child(stair)

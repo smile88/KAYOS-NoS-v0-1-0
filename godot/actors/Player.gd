@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 	if dir != Vector2.ZERO:
 		facing = dir.normalized()
 	move_and_slide()
-	_update_animation(d	ir)
+	_update_animation(dir)
 	_update_step_bob(dir, delta)
 
 
