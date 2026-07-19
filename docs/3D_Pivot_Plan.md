@@ -124,9 +124,17 @@ Harden the `threed/` twins into the standard toolkit and document the recipe:
 
 ---
 
-## 6. Phase 4 — make 3D the mainline, archive 2D
+## 6. Phase 4 — make 3D the mainline, archive 2D  ✅ DONE (2026-07-19)
 
-Recommended (reversible) sequence:
+Done as the hard pivot: 2D tagged `v0-2d-archive`; `cold-open-3d` merged to `master` (merge 0a3fdb7);
+the 2D Cold Open (`AstraThalasBalcony.tscn`, `ColdOpen.gd`, `ColdOpenTest`) removed (6962114) and
+`Title` New Game repointed to `threed/ColdOpen3D.tscn`; `run/main_scene` already on the 3D scene.
+**Exception to the literal §6.3:** `godot/actors/` and `scenes/zones/StarfallAcademy.tscn` were **kept**,
+not removed — the 3D Cold Open still hands off to the 2D Starfall zone, which isn't ported yet and
+still uses the 2D actors. They retire when Starfall goes 3D-native. `threed/` is still at `threed/`
+(the §6.4 promotion to `game/` is deferred, not blocking).
+
+Original recommended (reversible) sequence:
 1. Tag the current 2D state: `git tag v0-2d-archive` on `master` (nothing is ever lost).
 2. Land the Cold Open 3D slice on `cold-open-3d`; get it playing end-to-end.
 3. Merge `cold-open-3d` → `master` as the new mainline; **remove** `godot/scenes/`, `godot/actors/`,
@@ -193,9 +201,9 @@ Docs that must change (in `docs/`):
 |---|---|---|
 | 0 ✅ | A/D + freeze fixes | playtest works |
 | 1 ✅ | Camera: pitch+floor guard, free-look, first-person, controls | look up at Tower; FP toggles; free-look decouples |
-| 2 | Finish Cold Open 3D (F, G, H) | plays end-to-end, parity with 2D |
+| 2 ✅ | Finish Cold Open 3D (F, G, H) | plays end-to-end, parity with 2D |
 | 3 | Harden the `threed/` zone kit | documented recipe |
-| 4 | Tag 2D, merge to mainline, remove 2D presentation | `master` is 3D |
+| 4 ✅ | Tag 2D, merge to mainline, remove 2D presentation | `master` is 3D |
 | 5 | Rewrite GDD/specs/briefings | docs match code |
 | 6 | Asset reframing | map prompts are 3D briefs |
 
