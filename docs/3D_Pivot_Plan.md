@@ -1,5 +1,13 @@
 # KAYOS — The HD-2D 3D Pivot Plan
 
+> **⚑ UPDATE (2026-07-19, after Phase 4): billboards were retired in favour of true low-poly 3D
+> models.** The plan below was written for HD-2D *billboards* (2D sprites facing the camera). In
+> practice they fought the free-orbit + first-person camera (flat cards turning to look at you,
+> quantised diagonal walk), so characters became `CharacterModel3D` and props became `PropModels3D` —
+> real low-poly 3D models. Wherever this doc says "billboard" / "SpriteSheet" / "the 48×72 sheets carry
+> over", read that as superseded: the character/prop pipeline is now 3D modelling. The camera, zones,
+> director, and everything else stand. Phases 5–6 (docs/asset reframing) should reflect models, not sprites.
+
 **Decision (2026-07-19):** KAYOS moves from top-down 2D to the **HD-2D isometric-3D** approach
 prototyped on branch `cold-open-3d` — a real 3D world with billboard (Octopath-style) characters,
 an orbiting camera, and optional first-person view. The 2D presentation is retired. This document is

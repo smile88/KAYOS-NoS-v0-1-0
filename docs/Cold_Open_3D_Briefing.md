@@ -2,7 +2,7 @@
 
 This is the **3D twin** of the Cold Open. Same scene, same night, same beats, same writing, same
 clock, same one choice — only the *presentation* changed: the characters and props are the existing
-2D pixel sprites standing as billboards in a real 3D world (the Octopath / HD-2D look), and the
+low-poly 3D models in a real 3D world (billboards were tried then retired), and the
 camera orbits freely. For everything about **what the scene is trying to do** — the four beats, why
 nothing is gated, the complicity question, the clock — read `Cold_Open_Briefing.md` first; all of it
 still holds. This doc only covers what's different because it's 3D.
@@ -52,13 +52,13 @@ row (down/up/left/right) stay correct at any orbit angle.
 ## Known gaps specific to the 3D build
 
 - **The world is primitive placeholder geometry** — boxes, cylinders, planes with generated textures.
-  The billboards are the real 2D sprites; everything they stand in is scaffolding.
+  Characters (`CharacterModel3D`) and props (`PropModels3D`) are low-poly primitive placeholders.
 - **Rooms have no ceiling and an open front.** Deliberate: a closed box fights a 360° orbit camera.
   So the scriptorium (an interior) currently has stars overhead. It reads fine but isn't "right."
-- **Billboards are unshaded**, so at the Silence the crowd stays lit gold even as the world lights
-  drain. It happens to read well (the festival still on them), but it's not a lighting decision.
-- **Props are flat billboards**, so from a steep top-down angle a scroll rack or desk can look like
-  it's lying down. Keep the camera nearer eye level and it's fine.
+- **Everything is low-poly placeholder 3D** — primitive models, not final art. Real modelled/rigged
+  characters and props drop in over these.
+- **The character model is a single hooded silhouette** in varied robe colours; real per-character
+  models would give the crowd more variety.
 - **Nothing has real collision** beyond the ground — you walk through desks, shelves and NPCs, same
   as the 2D build.
 - **No pathing.** The festival-goer walks to you in a straight line; the crowd drifts dumbly.
@@ -74,7 +74,8 @@ Everything 3D is under `godot/threed/`, built procedurally (no hand-placed scene
 
 - `ColdOpen3D.gd` / `.tscn` — the director + the full scene. Port of `scenes/zones/ColdOpen.gd`.
 - `Balcony3D.gd`, `Scriptorium3D.gd` — the two rooms, built in `_ready()`.
-- `Player3D`, `NPC3D`, `Wanderer3D`, `Interactable3D`, `RoomStair3D` — the billboard actors.
+- `Player3D`, `NPC3D`, `Wanderer3D`, `Interactable3D`, `RoomStair3D` — the actors.
+- `CharacterModel3D`, `PropModels3D` — the low-poly character and prop models.
 - `CameraRig3D.gd` — the orbit / free-look / first-person camera.
 - `RoomCoordinator3D.gd` — the mechanical room change the director drives.
 
