@@ -76,6 +76,7 @@ func _ready() -> void:
 	_scatter_props()         # trees, lanterns, stalls, a fountain, a windmill — lived-in streets
 	_build_shore_plaza()
 	_build_causeway()
+	_pave_ways()             # kit road tiles on the causeway + shore plaza (the ceremonial way)
 	_build_island()
 	_build_open_house()
 	_build_interactables()
@@ -329,6 +330,22 @@ func _scatter_one(name: String, band: Array, scale_mul: float) -> void:
 func _rand() -> float:
 	_rng_state = (_rng_state * 1103515245 + 12345) & 0x7fffffff
 	return float(_rng_state) / 2147483647.0
+
+
+## Pave the causeway and the shore plaza with kit road tiles — the "one stone road" across the Mirror
+## (canon) and the plaza at its foot. Straight, flat, central: exactly where square road tiles fit.
+func _pave_ways() -> void:
+	var idn := Basis()
+	# the causeway (x = 0, from island to shore), three tiles wide
+	var z := R_ISLAND + 3.0
+	while z < R_SHORE - 1.0:
+		for xi in [-1.0, 0.0, 1.0]:
+			_mod("road", _mod_xf(Vector3(xi * CELL, 0.12, z), idn, 0.0, 0.0, 0.0, 0.0))
+		z += CELL
+	# the shore plaza at the processional foot (+Z front), a 5-wide apron
+	for xi in range(-2, 3):
+		for zi in range(0, 5):
+			_mod("road", _mod_xf(Vector3(xi * CELL, 0.12, R_SHORE - 2.0 - zi * CELL), idn, 0.0, 0.0, 0.0, 0.0))
 
 
 ## An invisible solid box — the building's collision, since the visual is now made of thin module shells.

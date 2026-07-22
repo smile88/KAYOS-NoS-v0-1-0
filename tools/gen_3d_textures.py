@@ -99,21 +99,60 @@ def window_glow():
     save(im, "window_glow")
 
 
+def flagstone(name, base, mortar, size=256, cells=7, rough=14):
+    """Offset-brick flagstone paving with mortar joints, per-slab colour variation and edge shading —
+    a stylised stone floor that sits well against the flat-shaded Kenney buildings."""
+    im = Image.new("RGBA", (size, size), tuple(mortar) + (255,))
+    d = ImageDraw.Draw(im)
+    step = size // cells
+    random.seed(sum(ord(ch) for ch in name))
+    for gy in range(-1, cells + 1):
+        off = step // 2 if gy % 2 else 0
+        for gx in range(-1, cells + 2):
+            x0, y0 = gx * step + off, gy * step
+            pad = max(2, step // 12)
+            v = random.randint(-rough, rough)
+            c = tuple(max(0, min(255, base[k] + v)) for k in range(3))
+            d.rectangle([x0 + pad, y0 + pad, x0 + step - pad, y0 + step - pad], fill=c + (255,))
+            hi = tuple(min(255, c[k] + 16) for k in range(3)) + (255,)
+            lo = tuple(max(0, c[k] - 18) for k in range(3)) + (255,)
+            d.line([(x0 + pad, y0 + pad), (x0 + step - pad, y0 + pad)], fill=hi)
+            d.line([(x0 + pad, y0 + step - pad), (x0 + step - pad, y0 + step - pad)], fill=lo)
+    _noise(im, 5)
+    save(im, name)
+
+
+def marble_paving(name, base, vein, size=256):
+    """Polished cool marble in large slabs with faint veining — the processional, causeway, island plaza."""
+    im = Image.new("RGBA", (size, size), tuple(base) + (255,))
+    d = ImageDraw.Draw(im)
+    seam = tuple(max(0, base[k] - 24) for k in range(3)) + (255,)
+    for g in range(0, size, size // 3):
+        d.line([(0, g), (size, g)], fill=seam, width=2)
+        d.line([(g, 0), (g, size)], fill=seam, width=2)
+    for _ in range(12):
+        y = random.randint(0, size)
+        pts = [(x, y + int(14 * math.sin(x / 26.0 + y))) for x in range(0, size, 4)]
+        d.line(pts, fill=tuple(vein) + (255,), width=1)
+    _noise(im, 5)
+    save(im, name)
+
+
 def basalt():
     """Dark volcanic stone — the caldera rim, the shore strand, the Academy island base."""
-    im = Image.new("RGBA", (128, 128), (30, 30, 40, 255))
+    size = 256
+    im = Image.new("RGBA", (size, size), (28, 30, 42, 255))
     d = ImageDraw.Draw(im)
     random.seed(31)
-    # columnar-basalt polygonal cracks
-    for _ in range(26):
-        x, y = random.randint(0, 128), random.randint(0, 128)
-        r = random.randint(10, 22)
+    for _ in range(64):
+        x, y = random.randint(0, size), random.randint(0, size)
+        r = random.randint(14, 32)
         pts = []
         for k in range(6):
             a = k * math.pi / 3 + random.uniform(-0.2, 0.2)
             pts.append((x + r * math.cos(a), y + r * math.sin(a)))
-        d.polygon(pts, outline=(18, 18, 26, 255))
-    _noise(im, 7)
+        d.polygon(pts, outline=(16, 17, 26, 255))
+    _noise(im, 6)
     save(im, "basalt")
 
 
@@ -177,15 +216,15 @@ def dome_verdigris():
 
 
 def terrace_stone():
-    """Lighter dressed stone for the habitable terraces — reads apart from the dark rim basalt."""
-    tile("terrace_stone", (72, 70, 90), (52, 50, 68), "stone")
+    """Cool blue-grey flagstone for the habitable terraces — the main walked pavement."""
+    flagstone("terrace_stone", (58, 64, 86), (32, 36, 52), 256, 7)
 
 
 def main():
     os.makedirs(OUT, exist_ok=True)
     print("Writing 3D textures to", OUT)
-    tile("marble_floor", (74, 68, 92), (104, 96, 120), "marble")   # night balcony marble
-    tile("stone", (58, 54, 74), (40, 37, 52), "stone")             # rail / structure
+    marble_paving("marble_floor", (88, 94, 120), (128, 136, 165))  # processional / causeway / plaza
+    flagstone("stone", (60, 64, 86), (38, 40, 56), 256, 9)         # cut stone: towers, monument, rails
     tile("scriptorium_floor", (58, 50, 44), (44, 38, 32), "wood")
     tile("scriptorium_wall", (44, 40, 46), (32, 29, 36), "stone")
     tile("shelf_wood", (72, 52, 34), (48, 34, 22), "wood")
