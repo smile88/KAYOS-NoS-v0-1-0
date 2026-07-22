@@ -26,6 +26,8 @@ static func build(kind: String) -> Node3D:
 		"telescope": _telescope(root)
 		"satchel": _satchel(root)
 		"seal": _seal(root)
+		"armillary": _armillary(root)
+		"fountain": _fountain(root)
 		_: _generic(root)
 	return root
 
@@ -198,6 +200,67 @@ static func _seal(p: Node3D) -> void:
 	_box(p, Vector3(0.3, 0.1, 0.22), Vector3(0, 0.05, 0), _wood())                                 # tray
 	_cyl(p, 0.03, 0.14, Vector3(-0.06, 0.12, 0), _flat(Color(0.22, 0.2, 0.42)))                    # indigo wax stick
 	_box(p, Vector3(0.09, 0.06, 0.09), Vector3(0.07, 0.09, 0), _flat(Color(0.6, 0.5, 0.28), 0.5))  # matrix
+
+
+static func _armillary(p: Node3D) -> void:
+	# The golden orrery on its plaza plinth — the signature monument from the Starfall concept art. A
+	# stepped stone base, a glowing star-sphere at its heart, and three gold rings (equator + two tilted
+	# meridians) hooping around it. ~3.4 m tall so it reads as a landmark, not a table ornament.
+	var stone := _flat(Color(0.30, 0.29, 0.38), 0.8)
+	_box(p, Vector3(2.4, 0.3, 2.4), Vector3(0, 0.15, 0), stone)              # base step
+	_box(p, Vector3(1.7, 0.3, 1.7), Vector3(0, 0.45, 0), stone)             # base step 2
+	_cyl(p, 0.35, 1.4, Vector3(0, 1.3, 0), stone)                           # column
+	var gold := StandardMaterial3D.new()
+	gold.albedo_color = Color(0.85, 0.68, 0.30)
+	gold.metallic = 0.7
+	gold.roughness = 0.35
+	gold.emission_enabled = true
+	gold.emission = Color(0.85, 0.68, 0.30)
+	gold.emission_energy_multiplier = 0.25
+	var cy := 2.7                                                            # ring centre height
+	var torus := TorusMesh.new()
+	torus.inner_radius = 0.82
+	torus.outer_radius = 0.9
+	for rot in [Vector3(PI / 2, 0, 0), Vector3(0, 0, 0), Vector3(PI / 2, 0, deg_to_rad(55))]:
+		var mi := MeshInstance3D.new()
+		mi.mesh = torus
+		mi.material_override = gold
+		mi.position = Vector3(0, cy, 0)
+		mi.rotation = rot
+		p.add_child(mi)
+	# the star at the heart
+	var core := SphereMesh.new()
+	core.radius = 0.28
+	core.height = 0.56
+	var ci := MeshInstance3D.new()
+	ci.mesh = core
+	var cm := StandardMaterial3D.new()
+	cm.emission_enabled = true
+	cm.emission = Color(0.7, 0.82, 1.0)
+	cm.emission_energy_multiplier = 3.0
+	cm.albedo_color = Color(0.8, 0.88, 1.0)
+	ci.material_override = cm
+	ci.position = Vector3(0, cy, 0)
+	p.add_child(ci)
+	var light := OmniLight3D.new()
+	light.position = Vector3(0, cy, 0)
+	light.light_color = Color(0.75, 0.82, 1.0)
+	light.light_energy = 2.2
+	light.omni_range = 12.0
+	p.add_child(light)
+
+
+static func _fountain(p: Node3D) -> void:
+	# A low ringed basin for the Academy gate plaza — stone rim, a dark star-water pool, a small jet.
+	var stone := _flat(Color(0.34, 0.33, 0.42), 0.8)
+	_cyl(p, 1.5, 0.5, Vector3(0, 0.25, 0), stone)
+	var water := StandardMaterial3D.new()
+	water.albedo_color = Color(0.06, 0.08, 0.16)
+	water.metallic = 0.6
+	water.roughness = 0.1
+	var pool := _cyl(p, 1.3, 0.1, Vector3(0, 0.5, 0), water)
+	pool.name = "Water"
+	_cyl(p, 0.12, 0.7, Vector3(0, 0.6, 0), stone)                           # jet plinth
 
 
 static func _generic(p: Node3D) -> void:

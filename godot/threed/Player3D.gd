@@ -11,6 +11,14 @@ class_name Player3D
 @export var interact_reach := 1.8
 ## Robe colour of the player figure. The Cold Open dresses Talindir in a cool grey-blue.
 @export var robe_color := Color(0.36, 0.40, 0.52)
+## Off = the Cold Open's flat-plane movement (Y never changes). On = a real terraced world: the body
+## falls, stands on floors and walks up/down ramps (Starfall). Kept opt-in so the Cold Open is unchanged.
+@export var gravity_enabled := false
+@export var gravity := 26.0
+## Upward launch speed for a jump (only when gravity_enabled). ~1.2 m hop at the default gravity.
+@export var jump_velocity := 8.0
+## Hold to move faster — handy for crossing a large zone. Uses the "run" action if present, else Shift.
+@export var run_multiplier := 1.9
 
 var model: CharacterModel3D
 var _rig: CameraRig3D
@@ -21,6 +29,9 @@ func _ready() -> void:
 	model.name = "Model"
 	model.robe_color = robe_color
 	add_child(model)
+	if gravity_enabled:
+		floor_snap_length = 0.6          # stay glued descending ramps/steps
+		floor_max_angle = deg_to_rad(50) # our terrace ramps sit well under this
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -55,7 +66,10 @@ func _physics_process(_delta: float) -> void:
 		model.visible = not _rig.is_first_person()
 
 	if DialogueManager.is_active():
-		velocity = Vector3.ZERO
+		velocity.x = 0.0
+		velocity.z = 0.0
+		if gravity_enabled and not is_on_floor():
+			velocity.y -= gravity * _delta
 		model.set_moving(false)
 		move_and_slide()
 		return
@@ -67,7 +81,22 @@ func _physics_process(_delta: float) -> void:
 		move = _rig.right_xz() * input.x - _rig.forward_xz() * input.y
 		move = move.normalized()
 
-	velocity = move * speed
+	if gravity_enabled:
+		# Real world: keep vertical velocity for gravity, drive only the ground plane from input.
+		var spd := speed
+		if Input.is_key_pressed(KEY_SHIFT) or (InputMap.has_action("run") and Input.is_action_pressed("run")):
+			spd *= run_multiplier
+		velocity.x = move.x * spd
+		velocity.z = move.z * spd
+		if is_on_floor():
+			if InputMap.has_action("jump") and Input.is_action_just_pressed("jump"):
+				velocity.y = jump_velocity
+			else:
+				velocity.y = -1.0        # small downward bias so floor snapping holds
+		else:
+			velocity.y -= gravity * _delta
+	else:
+		velocity = move * speed          # Cold Open: flat-plane movement, no gravity
 	move_and_slide()
 
 	if move != Vector3.ZERO:

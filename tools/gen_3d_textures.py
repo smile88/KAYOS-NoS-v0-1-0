@@ -99,6 +99,88 @@ def window_glow():
     save(im, "window_glow")
 
 
+def basalt():
+    """Dark volcanic stone — the caldera rim, the shore strand, the Academy island base."""
+    im = Image.new("RGBA", (128, 128), (30, 30, 40, 255))
+    d = ImageDraw.Draw(im)
+    random.seed(31)
+    # columnar-basalt polygonal cracks
+    for _ in range(26):
+        x, y = random.randint(0, 128), random.randint(0, 128)
+        r = random.randint(10, 22)
+        pts = []
+        for k in range(6):
+            a = k * math.pi / 3 + random.uniform(-0.2, 0.2)
+            pts.append((x + r * math.cos(a), y + r * math.sin(a)))
+        d.polygon(pts, outline=(18, 18, 26, 255))
+    _noise(im, 7)
+    save(im, "basalt")
+
+
+def canal_water():
+    """Dark indigo canal / lower-terrace water — faint reflected stars, a cold sheen."""
+    im = Image.new("RGBA", (128, 128), (14, 18, 40, 255))
+    d = ImageDraw.Draw(im)
+    random.seed(5)
+    for y in range(0, 128, 6):                          # ripple bands
+        d.line([(0, y), (128, y + random.randint(-2, 2))], fill=(22, 30, 60, 255), width=1)
+    for _ in range(40):                                 # reflected stars
+        x, y = random.randint(0, 127), random.randint(0, 127)
+        b = random.randint(120, 210)
+        d.point([(x, y)], fill=(b, b, 255, 255))
+    save(im, "canal_water")
+
+
+def ward_glyph():
+    """The Academy's warded structure floor: gold containment glyphs on dark stone."""
+    im = Image.new("RGBA", (128, 128), (18, 16, 30, 255))
+    d = ImageDraw.Draw(im)
+    g = (150, 122, 60, 255)
+    d.rectangle([6, 6, 121, 121], outline=g, width=2)
+    d.ellipse([20, 20, 107, 107], outline=g, width=2)
+    d.ellipse([40, 40, 87, 87], outline=g, width=1)
+    for k in range(8):                                  # radial ward spokes
+        a = k * math.pi / 4
+        d.line([(64, 64), (64 + 60 * math.cos(a), 64 + 60 * math.sin(a))], fill=g, width=1)
+    _noise(im, 5)
+    save(im, "ward_glyph")
+
+
+def comb_crystal():
+    """The crystal-comb ring: pale angled blades in honeycomb frames — frozen grey flame."""
+    im = Image.new("RGBA", (128, 128), (32, 38, 58, 255))
+    d = ImageDraw.Draw(im)
+    for gx in range(0, 128, 16):
+        for gy in range(0, 128, 22):
+            off = 8 if (gy // 22) % 2 else 0
+            x = gx + off
+            d.polygon([(x + 8, gy), (x + 15, gy + 11), (x + 8, gy + 22), (x + 1, gy + 11)],
+                      outline=(120, 140, 180, 255))
+            d.line([(x + 8, gy + 2), (x + 8, gy + 20)], fill=(150, 175, 220, 255), width=1)
+    _noise(im, 4)
+    save(im, "comb_crystal")
+
+
+def dome_verdigris():
+    """The great observatory dome: aged copper-green panelled glass (the green dome in Starfall_1)."""
+    im = Image.new("RGBA", (128, 128), (46, 92, 78, 255))
+    d = ImageDraw.Draw(im)
+    for gy in range(0, 128, 16):                        # panel seams
+        d.line([(0, gy), (128, gy)], fill=(28, 62, 52, 255), width=2)
+    for gx in range(0, 128, 16):
+        d.line([(gx, 0), (gx, 128)], fill=(28, 62, 52, 255), width=2)
+    for _ in range(60):                                 # patina flecks + faint glint
+        x, y = random.randint(0, 127), random.randint(0, 127)
+        d.point([(x, y)], fill=(90, 150, 130, 255))
+    _noise(im, 6)
+    save(im, "dome_verdigris")
+
+
+def terrace_stone():
+    """Lighter dressed stone for the habitable terraces — reads apart from the dark rim basalt."""
+    tile("terrace_stone", (72, 70, 90), (52, 50, 68), "stone")
+
+
 def main():
     os.makedirs(OUT, exist_ok=True)
     print("Writing 3D textures to", OUT)
@@ -110,6 +192,13 @@ def main():
     city_windows()
     star_dome()
     window_glow()
+    # --- Starfall city greybox additions ---
+    basalt()
+    canal_water()
+    ward_glyph()
+    comb_crystal()
+    dome_verdigris()
+    terrace_stone()
     print("Done.")
 
 

@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://0hdyu0uhfn1s"]
+
+[ext_resource type="Script" uid="uid://d127k01ksoamg" path="res://threed/StarfallCity3D.gd" id="1_city"]
+[ext_resource type="Script" uid="uid://cf3ox4t711t1k" path="res://threed/CameraRig3D.gd" id="2_cam"]
+[ext_resource type="PackedScene" path="res://threed/Player3D.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://ui/DialogueUI.tscn" id="4_ui"]
+
+[sub_resource type="Environment" id="env"]
+ambient_light_source = 2
+ambient_light_color = Color(0.32, 0.35, 0.48, 1)
+ambient_light_energy = 1.1
+tonemap_mode = 2
+glow_enabled = true
+glow_hdr_threshold = 1.2
+
+[node name="StarfallCity" type="Node3D" unique_id=299095145]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1186663835]
+environment = SubResource("env")
+
+[node name="MoonLight" type="DirectionalLight3D" parent="." unique_id=620710048]
+transform = Transform3D(0.86, -0.35, 0.37, 0, 0.72, 0.69, -0.5, -0.6, 0.62, 0, 20, 0)
+light_color = Color(0.6, 0.68, 0.9, 1)
+light_energy = 0.55
+shadow_enabled = true
+
+[node name="World" type="Node3D" parent="." unique_id=1003086028]
+script = ExtResource("1_city")
+
+[node name="Player3D" parent="." unique_id=1222894539 instance=ExtResource("3_player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45.6, 415)
+speed = 9.0
+gravity_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1027554488]
+transform = Transform3D(1, 0, 0, 0, 0.9, 0.44, 0, -0.44, 0.9, 0, 68, 445)
+script = ExtResource("2_cam")
+target_path = NodePath("../Player3D")
+distance = 22.0
+min_distance = 6.0
+max_distance = 70.0
+
+[node name="DialogueUI" parent="." unique_id=137242069 instance=ExtResource("4_ui")]

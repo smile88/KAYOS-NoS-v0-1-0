@@ -1,0 +1,573 @@
+extends Zone3D
+class_name StarfallCity3D
+## The whole exterior of Starfall as a walkable HD-2D greybox — built TO SCALE (see docs/Scale_Reference.md
+## and art/blueprints/Starfall_Blueprint.svg; all three share one geometry). Starfall is a ~900 m volcanic
+## caldera above the clouds: concentric terraces stepping DOWN ~46 m to a central star-lake ("the Mirror"),
+## nine ~85 m rim observatory towers (one a dead House), a crystal-comb ring, dense habitation quarters,
+## a railless causeway, and the Academy island at dead centre crowned by a ~110 m hero observatory that
+## dominates the skyline. +Z is "front": the causeway, the Grand Processional and the player spawn are all
+## on the +Z side, so the camera looks inward over the Mirror.
+##
+## Walkable for real: terraces are solid collision linked by GRAND STAIRCASES at four spokes — visible
+## stepped boxes over a hidden smooth ramp collider (Godot CharacterBody3D can't climb steps), so they look
+## like stairs AND work. The Player3D that drives this scene runs with gravity_enabled + jump. Everything is
+## placeholder primitives + tiling temp textures; real modelled art replaces it the same way in the Cold Open.
+
+# --- LOCKED geometry (metres) — matches Scale_Reference.md & the blueprint --------------------------
+const R_ISLAND := 75.0
+const R_LAKE := 210.0
+const R_SHORE := 225.0
+const R_L4 := 285.0    # canal quarter (lowest, densest terrace)
+const R_L3 := 340.0
+const R_L2 := 395.0
+const R_L1 := 450.0    # rim walk / the Nine Towers
+const R_TOWER := 422.0
+
+const Y_SHORE := 0.0
+const Y_L4 := 12.0
+const Y_L3 := 23.0
+const Y_L2 := 34.0
+const Y_RIM := 45.0
+const Y_LAKE := -1.0
+const Y_ISLAND := 2.0
+
+const DEAD_TOWER := 6   # which of the nine is the extinguished House
+
+## Where the player drops in: on the rim, front (+Z), in the gap between two towers, looking inward.
+const SPAWN := Vector3(0, Y_RIM + 0.6, 415.0)
+
+# the four processional spokes (radians; a=0 is +Z front / the Grand Processional)
+const SPOKES := [0.0, PI / 2.0, PI, -PI / 2.0]
+
+
+func _ready() -> void:
+	_build_sky()
+	_build_lake()
+	_build_terraces()
+	_build_stairs()
+	_build_parapet()
+	_build_crystal_combs()
+	_build_towers()
+	_build_habitation()
+	_build_shore_plaza()
+	_build_causeway()
+	_build_island()
+	_build_interactables()
+
+
+# --- helpers -----------------------------------------------------------------
+
+static func _dir(a: float) -> Vector3:
+	return Vector3(sin(a), 0.0, cos(a))
+
+
+## A textured box parented to `parent` (NOT the zone) — for sub-pieces (a building's windows, a door).
+static func _child_box(parent: Node3D, size: Vector3, pos: Vector3, mat: Material, name := "Part") -> MeshInstance3D:
+	var mesh := BoxMesh.new()
+	mesh.size = size
+	var mi := MeshInstance3D.new()
+	mi.name = name
+	mi.mesh = mesh
+	mi.position = pos
+	if mat:
+		mi.material_override = mat
+	parent.add_child(mi)
+	return mi
+
+
+## A solid annulus of collision boxes = one terrace ring: flat top at `top_y`, dropping to `bottom_y`, so
+## the taller outer rings' inner faces become the retaining walls of the terraces below them.
+func _ring(inner_r: float, outer_r: float, top_y: float, bottom_y: float, mat: Material, facet := 40.0, name := "Ring") -> void:
+	var mid := (inner_r + outer_r) * 0.5
+	var depth := outer_r - inner_r
+	var height := top_y - bottom_y
+	var n := maxi(32, int(TAU * mid / facet))
+	var width := 2.0 * mid * tan(PI / n) * 1.12
+	var cy := top_y - height * 0.5
+	for i in range(n):
+		var a := i * TAU / n
+		var d := _dir(a)
+		var box := _box(Vector3(width, height, depth), Vector3(d.x * mid, cy, d.z * mid), mat, name + str(i))
+		box.rotation.y = a
+		var body := StaticBody3D.new()
+		var cs := CollisionShape3D.new()
+		var shape := BoxShape3D.new()
+		shape.size = Vector3(width, height, depth)
+		cs.shape = shape
+		body.add_child(cs)
+		box.add_child(body)
+
+
+## A GRAND STAIRCASE from `low` (bottom, on the lower terrace) to `high` (top, on the upper terrace):
+## visible stepped boxes (no collision) forming the wedge, plus one hidden smooth ramp collider the player
+## actually walks on. This is the only reliable way to make climbable stairs on a CharacterBody3D.
+func _stair(low: Vector3, high: Vector3, width: float, n_steps: int, mat: Material, name := "Stair") -> void:
+	var delta := high - low
+	var run := Vector2(delta.x, delta.z).length()
+	var rise := delta.y
+	var horiz := Vector3(delta.x, 0, delta.z).normalized()
+	var yaw := atan2(delta.x, delta.z)
+	var base_y := low.y - 1.5
+	for i in range(n_steps):
+		var top_y := low.y + rise * float(i + 1) / n_steps
+		var seg_len := run / n_steps
+		var cxz := Vector3(low.x, 0, low.z) + horiz * (run * (float(i) + 0.5) / n_steps)
+		var h := top_y - base_y
+		var box := _box(Vector3(width, h, seg_len + 0.05), Vector3(cxz.x, base_y + h * 0.5, cxz.z), mat, name)
+		box.rotation.y = yaw
+	# hidden ramp collider — its top sits ~at the step nosings so feet appear on the steps
+	var mid := (low + high) * 0.5 + Vector3(0, -0.35, 0)
+	var length := sqrt(run * run + rise * rise)
+	var body := StaticBody3D.new()
+	body.name = name + "Collider"
+	var cs := CollisionShape3D.new()
+	var shape := BoxShape3D.new()
+	shape.size = Vector3(width, 1.0, length)
+	cs.shape = shape
+	body.add_child(cs)
+	body.position = mid
+	body.basis = Basis(Vector3.UP, yaw) * Basis(Vector3.RIGHT, -atan2(rise, run))
+	add_child(body)
+
+
+## A solid textured cylinder (tower drums, dome bases, plinths) — from Zone3D, re-declared? No: inherited.
+
+
+# --- sky & lake --------------------------------------------------------------
+
+func _build_sky() -> void:
+	var sphere := SphereMesh.new()
+	sphere.radius = 900.0
+	sphere.height = 1800.0
+	var mi := MeshInstance3D.new()
+	mi.name = "SkyDome"
+	mi.mesh = sphere
+	var m := StandardMaterial3D.new()
+	m.albedo_texture = _tex(ART + "star_dome.png")
+	m.cull_mode = BaseMaterial3D.CULL_FRONT
+	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	mi.material_override = m
+	add_child(mi)
+
+	var clouds := PlaneMesh.new()
+	clouds.size = Vector2(2400, 2400)
+	var ci := MeshInstance3D.new()
+	ci.name = "CloudSea"
+	ci.mesh = clouds
+	ci.position = Vector3(0, -120, 0)
+	var cm := StandardMaterial3D.new()
+	cm.albedo_color = Color(0.30, 0.32, 0.44)
+	cm.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	ci.material_override = cm
+	add_child(ci)
+
+
+func _build_lake() -> void:
+	# The Mirror: the caldera lake drawn as sky, not water — a star-field disc. A hidden collision disc
+	# under it keeps the player from falling into the void; the causeway is the intended crossing.
+	var collider := _col_cyl(R_LAKE, 1.0, Vector3(0, Y_LAKE - 0.5, 0), null, "MirrorFloor")
+	collider.visible = false
+	var disc := CylinderMesh.new()
+	disc.top_radius = R_LAKE
+	disc.bottom_radius = R_LAKE
+	disc.height = 0.1
+	var mi := MeshInstance3D.new()
+	mi.name = "Mirror"
+	mi.mesh = disc
+	mi.position = Vector3(0, Y_LAKE, 0)
+	var m := StandardMaterial3D.new()
+	m.albedo_texture = _tex(ART + "star_dome.png")
+	m.uv1_scale = Vector3(6, 6, 1)
+	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	mi.material_override = m
+	add_child(mi)
+
+
+# --- terraces & stairs -------------------------------------------------------
+
+func _build_terraces() -> void:
+	var basalt := _mat(_tex(ART + "basalt.png"), 8.0)
+	var terr := _mat(_tex(ART + "terrace_stone.png"), 8.0)
+	var terr2 := _mat(_tex(ART + "terrace_stone.png"), 8.0)
+	terr2.albedo_color = Color(0.86, 0.86, 0.96)
+	_ring(R_L2, R_L1, Y_RIM, -1.0, basalt, 42.0, "RimRing")
+	_ring(R_L3, R_L2, Y_L2, -1.0, terr2, 40.0, "Terrace2")
+	_ring(R_L4, R_L3, Y_L3, -1.0, terr2, 38.0, "Terrace3")
+	_ring(R_SHORE, R_L4, Y_L4, -1.0, terr, 36.0, "CanalRing")
+	_ring(R_LAKE, R_SHORE, Y_SHORE, -1.0, basalt, 30.0, "ShoreRing")
+
+
+func _build_stairs() -> void:
+	var stone := _mat(_tex(ART + "stone.png"), 6.0)
+	var marble := _mat(_tex(ART + "marble_floor.png"), 6.0)
+	# (low radius, low y, high radius, high y) — stair climbs OUTWARD (up a terrace)
+	var links := [
+		[220.0, Y_SHORE, 245.0, Y_L4],
+		[280.0, Y_L4, 305.0, Y_L3],
+		[335.0, Y_L3, 360.0, Y_L2],
+		[390.0, Y_L2, 415.0, Y_RIM],
+	]
+	for a in SPOKES:
+		var d := _dir(a)
+		var processional: bool = is_equal_approx(a, 0.0)
+		var w := 26.0 if processional else 13.0
+		var mat: Material = marble if processional else stone
+		for link in links:
+			var low := Vector3(d.x * link[0], link[1], d.z * link[0])
+			var high := Vector3(d.x * link[2], link[3], d.z * link[2])
+			_stair(low, high, w, 15, mat, "Stair")
+
+
+func _build_parapet() -> void:
+	var stone := _mat(_tex(ART + "basalt.png"), 3.0)
+	_ring(R_L1 - 2.0, R_L1, Y_RIM + 3.0, Y_RIM, stone, 24.0, "Parapet")
+
+
+func _build_crystal_combs() -> void:
+	var mat := _mat(_tex(ART + "comb_crystal.png"), 2.0, 0.14)
+	mat.albedo_color = Color(0.6, 0.68, 0.85)
+	var r := R_L2 + 3.0
+	var n := 120
+	for i in range(n):
+		var a := i * TAU / n
+		if _near_spoke(a):
+			continue
+		var d := _dir(a)
+		var blade := _box(Vector3(1.2, 9.0, 4.0), Vector3(d.x * r, Y_L2 + 4.5, d.z * r), mat, "Comb")
+		blade.rotation = Vector3(deg_to_rad(12), a, 0)
+
+
+# --- the nine towers ---------------------------------------------------------
+
+func _build_towers() -> void:
+	var drum_mat := _mat(_tex(ART + "stone.png"), 6.0)
+	var dead_mat := _mat(_tex(ART + "basalt.png"), 6.0)
+	dead_mat.albedo_color = Color(0.4, 0.4, 0.46)
+	for i in range(9):
+		var a := (i + 0.5) * TAU / 9.0   # half-step offset so the +Z processional falls in a GAP
+		var d := _dir(a)
+		var base := Vector3(d.x * R_TOWER, Y_RIM, d.z * R_TOWER)
+		var dead := (i == DEAD_TOWER)
+		var drum := _col_cyl(11.0, 40.0, base + Vector3(0, 20.0, 0), dead_mat if dead else drum_mat, "TowerDrum%d" % i)
+		if not dead:
+			var band := _mat(_tex(ART + "city_windows.png"), 8.0, 0.5)
+			band.albedo_color = Color(0.3, 0.32, 0.42)
+			var b := CylinderMesh.new()
+			b.top_radius = 11.3
+			b.bottom_radius = 11.3
+			b.height = 30.0
+			var bi := MeshInstance3D.new()
+			bi.mesh = b
+			bi.position = base + Vector3(0, 22.0, 0)
+			bi.material_override = band
+			drum.add_child(bi)
+		var dome := SphereMesh.new()
+		dome.radius = 13.0
+		dome.height = 16.0
+		dome.is_hemisphere = true
+		var di := MeshInstance3D.new()
+		di.mesh = dome
+		di.position = base + Vector3(0, 40.0, 0)
+		var dmat := _mat(_tex(ART + "basalt.png"), 4.0)
+		if dead:
+			dmat.albedo_color = Color(0.28, 0.28, 0.34)
+		di.material_override = dmat
+		add_child(di)
+		if dead:
+			var shard := _box(Vector3(1.4, 24.0, 1.4), base + Vector3(0, 50.0, 0), dmat, "DeadShard")
+			shard.rotation = Vector3(0, 0, deg_to_rad(28))
+		else:
+			var glow := StandardMaterial3D.new()
+			glow.emission_enabled = true
+			glow.emission = Color(1.0, 0.86, 0.55)
+			glow.emission_energy_multiplier = 3.0
+			glow.albedo_color = Color(1.0, 0.9, 0.6)
+			var fin := SphereMesh.new()
+			fin.radius = 2.4
+			fin.height = 4.8
+			var fi := MeshInstance3D.new()
+			fi.mesh = fin
+			fi.position = base + Vector3(0, 52.0, 0)
+			fi.material_override = glow
+			add_child(fi)
+			var l := OmniLight3D.new()
+			l.position = fi.position
+			l.light_color = Color(1.0, 0.85, 0.6)
+			l.light_energy = 3.0
+			l.omni_range = 80.0
+			add_child(l)
+
+
+# --- habitation --------------------------------------------------------------
+
+## A proper multi-storey building the player is dwarfed by and could walk into: a solid stone block with
+## storey window-bands and a 2.2 m doorway cut into the inward (street) face. Interiors are a later pass.
+func _building(pos: Vector3, w: float, d: float, h: float, face_a: float, warm: bool) -> void:
+	var body := _mat(_tex(ART + "terrace_stone.png"), 3.0)
+	body.albedo_color = Color(0.6, 0.58, 0.7) if not warm else Color(0.5, 0.45, 0.48)
+	var mi := _floor_box(Vector3(w, h, d), pos + Vector3(0, h * 0.5, 0), body, "Building")
+	mi.rotation.y = face_a
+	# window bands, one per storey, on the inward face (+Z local, which face_a points toward the street)
+	var win := _mat(_tex(ART + "city_windows.png"), maxf(1.0, w / 4.0), 0.42 if warm else 0.28)
+	win.albedo_color = Color(0.35, 0.3, 0.28) if warm else Color(0.3, 0.32, 0.44)
+	var storeys := int(h / 3.5)
+	for s in range(1, storeys):
+		var ly := -h * 0.5 + s * 3.5
+		_child_box(mi, Vector3(w * 0.82, 1.6, 0.1), Vector3(0, ly, d * 0.5 + 0.06), win, "WinF")
+		_child_box(mi, Vector3(w * 0.82, 1.6, 0.1), Vector3(0, ly, -d * 0.5 - 0.06), win, "WinB")
+	# doorway (dark recess) at the base of the street face
+	var dark := _flat_dark()
+	_child_box(mi, Vector3(1.4, 2.2, 0.35), Vector3(0, -h * 0.5 + 1.1, d * 0.5 + 0.02), dark, "Door")
+	# roof cap for silhouette
+	_child_box(mi, Vector3(w * 1.04, 0.8, d * 1.04), Vector3(0, h * 0.5 + 0.4, 0),
+		_mat(_tex(ART + "basalt.png"), 2.0), "Roof")
+
+
+func _flat_dark() -> StandardMaterial3D:
+	var m := StandardMaterial3D.new()
+	m.albedo_color = Color(0.08, 0.08, 0.12)
+	m.roughness = 1.0
+	return m
+
+
+func _build_habitation() -> void:
+	# Rings of properly-sized buildings on the three habitable terraces, in two rows each (an outer and
+	# inner street), skipping the processional spokes. Denser + warmer down in the canal quarter, sparser
+	# + cooler + taller up top. Buildings face inward (door + windows toward the centre).
+	# terrace: [inner_edge_r, top_y, warm, [ (row_radius, spacing, w, d, h_min, h_max) ... ] ]
+	var terraces := [
+		{"y": Y_L4, "warm": true, "rows": [[248.0, 22.0, 13.0, 11.0, 12.0, 20.0], [272.0, 24.0, 12.0, 10.0, 12.0, 18.0]]},
+		{"y": Y_L3, "warm": false, "rows": [[300.0, 26.0, 14.0, 12.0, 14.0, 22.0], [326.0, 28.0, 13.0, 11.0, 14.0, 20.0]]},
+		{"y": Y_L2, "warm": false, "rows": [[356.0, 30.0, 15.0, 13.0, 16.0, 26.0], [382.0, 32.0, 14.0, 12.0, 16.0, 22.0]]},
+	]
+	var seed := 40315
+	for terr in terraces:
+		var y: float = terr["y"]
+		var warm: bool = terr["warm"]
+		for row in terr["rows"]:
+			var r: float = row[0]
+			var spacing: float = row[1]
+			var n := int(TAU * r / spacing)
+			for i in range(n):
+				var a := i * TAU / n + 0.11
+				if _near_spoke(a):
+					continue
+				var d := _dir(a)
+				var hh := float(row[4]) + float((seed + i * 37) % 100) / 100.0 * (float(row[5]) - float(row[4]))
+				_building(Vector3(d.x * r, y, d.z * r), row[2], row[3], hh, a + PI, warm)
+			seed += 101
+	_build_canals()
+
+
+func _build_canals() -> void:
+	# Three curved star-water canals threading the canal quarter, each crossed by a stone footbridge.
+	var water := _mat(_tex(ART + "canal_water.png"), 6.0, 0.08)
+	var stone := _mat(_tex(ART + "stone.png"), 2.0)
+	for base_a in [0.7, 2.8, 4.7]:
+		for k in range(11):
+			var a: float = base_a + (k - 5) * 0.02
+			var rr := R_SHORE + 4.0 + k * (R_L4 - R_SHORE - 8.0) / 10.0
+			var d := _dir(a)
+			var seg := _box(Vector3(6.0, 0.3, 8.0), Vector3(d.x * rr, Y_L4 + 0.2, d.z * rr), water, "Canal")
+			seg.rotation.y = a
+		var md := _dir(base_a)
+		var mr := (R_SHORE + R_L4) * 0.5
+		var bridge := _box(Vector3(9.0, 1.0, 5.0), Vector3(md.x * mr, Y_L4 + 1.6, md.z * mr), stone, "Footbridge")
+		bridge.rotation.y = base_a
+
+
+func _near_spoke(a: float) -> bool:
+	for s in SPOKES:
+		var da := absf(wrapf(a - s, -PI, PI))
+		if da < 0.16:
+			return true
+	return false
+
+
+# --- shore, causeway, island -------------------------------------------------
+
+func _build_shore_plaza() -> void:
+	# The front plaza where the Processional meets the water: the golden armillary monument (scaled up to a
+	# true landmark ~24 m tall) on the +Z axis, flanked by tall star-lamps.
+	var mono := Interactable3D.new()
+	mono.name = "ArmillaryMonument"
+	mono.display_name = "The Armillary of the First Measure"
+	mono.examine_text = "A colossal golden orrery on a stepped plinth, three rings the size of ship's wheels hooping a caged star, the whole of it taller than the gatehouses. The Solari raised it where the Processional meets the water, so that anyone descending from the rim would pass the whole heavens in miniature before crossing to the Academy. The rings still turn, very slowly. Nobody remembers winding them."
+	mono.prop_model = "armillary"
+	mono.scale = Vector3(7, 7, 7)   # the armillary prop is ~3.4 m; scale it to a ~24 m landmark
+	mono.position = Vector3(0, Y_SHORE, R_SHORE - 10.0)
+	add_child(mono)
+	for sx in [-16.0, 16.0]:
+		var orb := SphereMesh.new()
+		orb.radius = 1.0
+		orb.height = 2.0
+		var oi := MeshInstance3D.new()
+		oi.mesh = orb
+		oi.position = Vector3(sx, Y_SHORE + 11.0, R_SHORE - 10.0)
+		var gm := StandardMaterial3D.new()
+		gm.emission_enabled = true
+		gm.emission = Color(0.8, 0.85, 1.0)
+		gm.emission_energy_multiplier = 3.0
+		gm.albedo_color = Color(0.85, 0.9, 1.0)
+		oi.material_override = gm
+		add_child(oi)
+		_box(Vector3(0.7, 11.0, 0.7), Vector3(sx, Y_SHORE + 5.5, R_SHORE - 10.0), _mat(_tex(ART + "stone.png"), 3.0), "LampPost")
+		var l := OmniLight3D.new()
+		l.position = oi.position
+		l.light_color = Color(0.75, 0.82, 1.0)
+		l.light_energy = 2.0
+		l.omni_range = 40.0
+		add_child(l)
+
+
+func _build_causeway() -> void:
+	# A single railless stone road from the shore straight across the Mirror to the island gate (+Z).
+	var marble := _mat(_tex(ART + "marble_floor.png"), 20.0)
+	var length := R_SHORE - R_ISLAND
+	var mid := (R_SHORE + R_ISLAND) * 0.5
+	_floor_box(Vector3(8.0, 0.6, length), Vector3(0, Y_SHORE - 0.3, mid), marble, "Causeway")
+	# short stair up onto the slightly-raised island
+	_stair(Vector3(0, Y_SHORE, R_ISLAND + 6.0), Vector3(0, Y_ISLAND, R_ISLAND - 2.0), 8.0, 4, marble, "CausewayStep")
+
+
+func _build_island() -> void:
+	# The Academy island at dead centre: a raised marble disc carrying the HERO observatory (~110 m to the
+	# apex — ~67 m above the rim, seen from everywhere), two wings joined by a moon-bridge, the warded vault,
+	# and a gate-plaza fountain facing the causeway. A balcony ring girdles the observatory drum (the Cold
+	# Open balcony is one such ledge — this is what it would look like from outside, and at what scale).
+	var basalt := _mat(_tex(ART + "basalt.png"), 10.0)
+	var marble := _mat(_tex(ART + "marble_floor.png"), 20.0)
+	var stone := _mat(_tex(ART + "stone.png"), 10.0)
+	_col_cyl(R_ISLAND, 4.0, Vector3(0, Y_ISLAND - 2.0, 0), basalt, "IslandBase")
+	var plaza := CylinderMesh.new()
+	plaza.top_radius = R_ISLAND
+	plaza.bottom_radius = R_ISLAND
+	plaza.height = 0.2
+	var pmi := MeshInstance3D.new()
+	pmi.name = "Plaza"
+	pmi.mesh = plaza
+	pmi.position = Vector3(0, Y_ISLAND + 0.1, 0)
+	pmi.material_override = marble
+	add_child(pmi)
+
+	# --- the hero observatory (drum -> balcony -> window drum -> verdigris dome -> spire) ---
+	var drum := _col_cyl(22.0, 60.0, Vector3(0, Y_ISLAND + 30.0, 0), stone, "ObservatoryDrum")
+	# balcony ring girdling the drum (the Cold Open balcony, at scale)
+	var balc := CylinderMesh.new()
+	balc.top_radius = 26.0
+	balc.bottom_radius = 26.0
+	balc.height = 1.4
+	var balci := MeshInstance3D.new()
+	balci.mesh = balc
+	balci.position = Vector3(0, Y_ISLAND + 40.0, 0)
+	balci.material_override = marble
+	drum.add_child(balci)
+	# lit window drum above the balcony
+	var band := _mat(_tex(ART + "city_windows.png"), 12.0, 0.45)
+	band.albedo_color = Color(0.3, 0.32, 0.42)
+	var bmesh := CylinderMesh.new()
+	bmesh.top_radius = 20.0
+	bmesh.bottom_radius = 22.0
+	bmesh.height = 22.0
+	var bi := MeshInstance3D.new()
+	bi.mesh = bmesh
+	bi.position = Vector3(0, Y_ISLAND + 51.0, 0)
+	bi.material_override = band
+	drum.add_child(bi)
+	# green verdigris dome
+	var dome := SphereMesh.new()
+	dome.radius = 24.0
+	dome.height = 30.0
+	dome.is_hemisphere = true
+	var domi := MeshInstance3D.new()
+	domi.name = "GreenDome"
+	domi.mesh = dome
+	domi.position = Vector3(0, Y_ISLAND + 62.0, 0)
+	domi.material_override = _mat(_tex(ART + "dome_verdigris.png"), 5.0)
+	add_child(domi)
+	# spire finial crowning the dome — the silhouette that dominates the skyline
+	_col_cyl(2.4, 34.0, Vector3(0, Y_ISLAND + 92.0, 0), stone, "Spire", 0.2)
+	var apexm := StandardMaterial3D.new()
+	apexm.emission_enabled = true
+	apexm.emission = Color(0.8, 0.86, 1.0)
+	apexm.emission_energy_multiplier = 5.0
+	apexm.albedo_color = Color(0.85, 0.9, 1.0)
+	var apex := SphereMesh.new()
+	apex.radius = 3.4
+	apex.height = 6.8
+	var ai := MeshInstance3D.new()
+	ai.mesh = apex
+	ai.position = Vector3(0, Y_ISLAND + 110.0, 0)
+	ai.material_override = apexm
+	add_child(ai)
+	var al := OmniLight3D.new()
+	al.position = ai.position
+	al.light_color = Color(0.75, 0.82, 1.0)
+	al.light_energy = 4.0
+	al.omni_range = 200.0
+	add_child(al)
+
+	# --- two wings + moon-bridge (flanking the dome on ±X) ---
+	for sx in [-1.0, 1.0]:
+		var wpos := Vector3(sx * 40.0, Y_ISLAND, 0)
+		var wing := _col_cyl(9.0, 44.0, wpos + Vector3(0, 22.0, 0), stone, "Wing")
+		var wband := _mat(_tex(ART + "city_windows.png"), 8.0, 0.35)
+		wband.albedo_color = Color(0.3, 0.32, 0.42)
+		var wm := CylinderMesh.new()
+		wm.top_radius = 9.2
+		wm.bottom_radius = 9.2
+		wm.height = 28.0
+		var wmi := MeshInstance3D.new()
+		wmi.mesh = wm
+		wmi.position = wpos + Vector3(0, 24.0, 0)
+		wmi.material_override = wband
+		wing.add_child(wmi)
+	# arched moon-bridge between the two wing tops
+	_box(Vector3(80.0, 2.0, 6.0), Vector3(0, Y_ISLAND + 40.0, 0), marble, "MoonBridge")
+
+	# --- the warded vault (back of the island, -Z) ---
+	var vaultmat := _mat(_tex(ART + "basalt.png"), 6.0)
+	vaultmat.albedo_color = Color(0.5, 0.5, 0.58)
+	_col_cyl(13.0, 18.0, Vector3(0, Y_ISLAND + 9.0, -40.0), vaultmat, "WardedVault")
+	var glyph := PlaneMesh.new()
+	glyph.size = Vector2(20.0, 20.0)
+	var gi := MeshInstance3D.new()
+	gi.mesh = glyph
+	gi.position = Vector3(0, Y_ISLAND + 0.2, -22.0)
+	gi.material_override = _mat(_tex(ART + "ward_glyph.png"), 1.0, 0.4)
+	add_child(gi)
+
+	# --- gate-plaza fountain facing the causeway (+Z) ---
+	var fnt := Interactable3D.new()
+	fnt.name = "GateFountain"
+	fnt.display_name = "The Gate Fountain"
+	fnt.examine_text = "Star-water, black and still, in a broad stone ring at the head of the causeway. Students crossing to their examinations trail a hand in it for luck. The water gives nothing back but a doubled sky."
+	fnt.prop_model = "fountain"
+	fnt.scale = Vector3(4, 4, 4)
+	fnt.position = Vector3(0, Y_ISLAND + 0.2, 40.0)
+	add_child(fnt)
+
+
+func _build_interactables() -> void:
+	# District plaques so walking the city is legible, in the Cold Open's examine register (GDD §8.4).
+	var d0 := _dir(0.0)
+	var dead := _dir((DEAD_TOWER + 0.5) * TAU / 9.0)
+	var items := [
+		{"name": "The Grand Processional", "pos": Vector3(d0.x * 402.0, Y_L2, d0.z * 402.0),
+		 "text": "The wide gold-paved stair, twenty-six paces broad, that drops from the rim to the water in four great flights, cut so an entire Luminarae procession can descend it abreast. Two thousand years of feet have hollowed the centre of every step. Tonight it is empty, and your own are the only ones on it."},
+		{"name": "The Rim Parapet", "pos": Vector3(d0.x * (R_L1 - 4.0), Y_RIM, d0.z * (R_L1 - 4.0)),
+		 "text": "Beyond the wall there is nothing but the cloud-sea, silver and slow, and a very long way down. Starfall does not sit on the world. It sits above it, and looks down, and always has. From here the whole caldera falls away beneath you in rings of light to the black star-lake at the bottom, and the great dome stands out of it like a needle out of a well."},
+		{"name": "The Dead House", "pos": Vector3(dead.x * (R_TOWER - 16.0), Y_RIM, dead.z * (R_TOWER - 16.0)),
+		 "text": "The unlit tower. Its dome is struck through with a single black shard and bears no sigil — a House ended, its name struck from the ring by a hand that did not explain itself. The other eight go on burning around the gap it leaves, and no one has ever proposed lighting it. Some absences are load-bearing."},
+		{"name": "The Mirror", "pos": Vector3(d0.x * (R_LAKE + 4.0), Y_SHORE, d0.z * (R_LAKE + 4.0)),
+		 "text": "The caldera lake, and it is not water — it is sky. Lean over the shore and you look DOWN into stars, a whole night sky held in a bowl of black basalt a quarter-mile across, the causeway a thread of stone laid across the heavens out to the island. The Solari built the whole city around this one impossible thing and then, over two thousand years, stopped finding it strange. You find it strange tonight."},
+		{"name": "The Causeway", "pos": Vector3(6.0, Y_SHORE, R_LAKE - 30.0),
+		 "text": "One stone road, eight paces wide, no rail, running a hundred and thirty paces straight out across the star-lake to the island. Children dare each other to run it. Archmages cross it slowly, in robes, once. Halfway across is the only place in Starfall from which you can see the whole ring of the city rising around you at once, terrace over terrace over terrace, turning very slowly like the rings of the monument at your back."},
+	]
+	for it_d in items:
+		var it := Interactable3D.new()
+		it.name = "IX_" + str(it_d["name"]).replace(" ", "")
+		it.display_name = it_d["name"]
+		it.examine_text = it_d["text"]
+		it.position = it_d["pos"]
+		add_child(it)

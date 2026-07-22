@@ -53,6 +53,79 @@ func _box(size: Vector3, pos: Vector3, mat: Material, name := "Box") -> MeshInst
 	return mi
 
 
+## --- walkable collision toolkit (added for Starfall) -------------------------
+## The Cold Open moves the player on a flat plane at fixed Y, so its boxes carry no collision. A
+## terraced city you actually descend needs real floors: these helpers add a StaticBody3D + shape so
+## a gravity-enabled Player3D (see Player3D.gravity_enabled) stands, walks and ramps on the geometry.
+## Purely additive — Balcony3D/Scriptorium3D never call them, so the Cold Open is untouched.
+
+## A textured box that is also solid: the workhorse floor/wall/step. Same signature as _box plus the
+## StaticBody3D + BoxShape3D collider. Returns the MeshInstance3D (the body is its child).
+func _floor_box(size: Vector3, pos: Vector3, mat: Material, name := "Floor") -> MeshInstance3D:
+	var mi := _box(size, pos, mat, name)
+	var body := StaticBody3D.new()
+	body.name = "Body"
+	var cs := CollisionShape3D.new()
+	var shape := BoxShape3D.new()
+	shape.size = size
+	cs.shape = shape
+	body.add_child(cs)
+	mi.add_child(body)
+	return mi
+
+
+## A solid textured ramp connecting two heights — the walkable link between terrace levels. `from` and
+## `to` are the centres of its low and high ends (on the ground); `width` is across. The Player3D walks
+## up/down it under gravity (kept below ~30° so it's always climbable). Returns the MeshInstance3D.
+func _ramp(from_pos: Vector3, to_pos: Vector3, width: float, mat: Material, name := "Ramp") -> MeshInstance3D:
+	var delta := to_pos - from_pos
+	var run := Vector2(delta.x, delta.z).length()
+	var rise := delta.y
+	var length := sqrt(run * run + rise * rise)
+	var mid := (from_pos + to_pos) * 0.5
+	var thick := 0.5
+	var mi := _box(Vector3(width, thick, length), mid, mat, name)
+	# yaw so +Z(local length) points along the run, then pitch up by the slope angle
+	var yaw := atan2(delta.x, delta.z)
+	var pitch := -atan2(rise, run)
+	mi.basis = Basis(Vector3.UP, yaw) * Basis(Vector3.RIGHT, pitch)
+	var body := StaticBody3D.new()
+	body.name = "Body"
+	var cs := CollisionShape3D.new()
+	var shape := BoxShape3D.new()
+	shape.size = Vector3(width, thick, length)
+	cs.shape = shape
+	body.add_child(cs)
+	mi.add_child(body)
+	return mi
+
+
+## A solid textured cylinder — tower drums, dome bases, monument plinths the player can't walk through.
+func _col_cyl(radius: float, height: float, pos: Vector3, mat: Material, name := "Cyl", top_radius := -1.0) -> MeshInstance3D:
+	var mesh := CylinderMesh.new()
+	mesh.bottom_radius = radius
+	mesh.top_radius = radius if top_radius < 0.0 else top_radius
+	mesh.height = height
+	mesh.radial_segments = 16
+	var mi := MeshInstance3D.new()
+	mi.name = name
+	mi.mesh = mesh
+	mi.position = pos
+	if mat:
+		mi.material_override = mat
+	add_child(mi)
+	var body := StaticBody3D.new()
+	body.name = "Body"
+	var cs := CollisionShape3D.new()
+	var shape := CylinderShape3D.new()
+	shape.radius = maxf(radius, mesh.top_radius)
+	shape.height = height
+	cs.shape = shape
+	body.add_child(cs)
+	mi.add_child(body)
+	return mi
+
+
 ## Tween every light and emissive surface this zone made down to dark — what the director calls when
 ## the Song stops. `stagger` delays each successive light/emissive child (capped at 1.4 s) so a large
 ## zone reads as an expanding ring of quiet rather than a single snap; leave it 0 for a plain fade.
