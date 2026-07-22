@@ -45,6 +45,12 @@ const SPOKES := [0.0, PI / 2.0, PI, -PI / 2.0]
 ## building bodies, towers, island) is untouched: it stays real nodes so the player still walks on it.
 var _pools := {}
 var _unit_box: BoxMesh
+
+# --- Kenney Fantasy Town Kit modules (real textured architecture) -------------
+const FTK := "res://assets/ftk/"
+const CELL := 3.0                     # metres per Kenney module cell (native module = 1 unit, scaled up)
+var _modcache := {}                   # module name -> Mesh (extracted from the imported .glb, shared)
+var _mpools := {}                     # module name -> {mesh, xf:Array[Transform3D]} -> one MultiMesh each
 # shared materials for the pooled building dressing (built once in _build_from_plan)
 var _win_warm_mat: StandardMaterial3D
 var _win_cool_mat: StandardMaterial3D
@@ -90,27 +96,68 @@ func _build_from_plan() -> void:
 	if typeof(data) != TYPE_DICTIONARY or not (data as Dictionary).has("structures"):
 		push_warning("Starfall: plan JSON malformed.")
 		return
-	# shared pooled-decoration materials for the plan buildings (windows/door/roof)
-	_win_warm_mat = _mat(_tex(ART + "city_windows.png"), 3.0, 0.42)
-	_win_warm_mat.albedo_color = Color(0.35, 0.3, 0.28)
-	_win_cool_mat = _mat(_tex(ART + "city_windows.png"), 3.0, 0.28)
-	_win_cool_mat.albedo_color = Color(0.3, 0.32, 0.44)
-	_door_mat = _flat_dark()
-	_roof_mat = _mat(_tex(ART + "basalt.png"), 2.0)
-	_roof_mat.albedo_color = Color(0.34, 0.34, 0.42)
-	_trim_mat = _mat(_tex(ART + "stone.png"), 2.0)
-	_trim_mat.albedo_color = Color(0.78, 0.80, 0.90)     # pale dressed stone that catches the moonlight
-	_glow_mat = StandardMaterial3D.new()
-	_glow_mat.emission_enabled = true
-	_glow_mat.emission = Color(0.85, 0.9, 1.0)
-	_glow_mat.emission_energy_multiplier = 3.0
-	_glow_mat.albedo_color = Color(0.85, 0.9, 1.0)
-
 	var placed := 0
 	for s in (data as Dictionary)["structures"]:
 		if _place_plan_structure(s as Dictionary):
 			placed += 1
+	_flush_mpools()
 	print("Starfall: placed %d plan buildings from %s" % [placed, PLAN_PATH])
+
+
+# --- module plumbing: extract meshes from the .glb kit and MultiMesh them ------
+
+## The shared Mesh inside a kit module's imported scene (cached; the .glb carries its own colormap
+## material on the mesh surface, so MultiMesh instances are textured with no material override).
+func _module_mesh(name: String) -> Mesh:
+	if not _modcache.has(name):
+		var ps := load(FTK + name + ".glb") as PackedScene
+		var mesh: Mesh = null
+		if ps:
+			var inst: Node = ps.instantiate()
+			var mi := _find_mesh_instance(inst)
+			if mi:
+				mesh = mi.mesh
+			inst.queue_free()
+		_modcache[name] = mesh
+	return _modcache[name]
+
+
+func _find_mesh_instance(n: Node) -> MeshInstance3D:
+	if n is MeshInstance3D and (n as MeshInstance3D).mesh:
+		return n
+	for c in n.get_children():
+		var r := _find_mesh_instance(c)
+		if r:
+			return r
+	return null
+
+
+## Queue one kit-module instance (by name) at a world transform, into that module's MultiMesh pool.
+func _mod(name: String, xf: Transform3D) -> void:
+	var mesh := _module_mesh(name)
+	if mesh == null:
+		return
+	if not _mpools.has(name):
+		_mpools[name] = {"mesh": mesh, "xf": []}
+	_mpools[name]["xf"].append(xf)
+
+
+func _flush_mpools() -> void:
+	for name in _mpools:
+		var p: Dictionary = _mpools[name]
+		var xfs: Array = p["xf"]
+		if xfs.is_empty():
+			continue
+		var mm := MultiMesh.new()
+		mm.transform_format = MultiMesh.TRANSFORM_3D
+		mm.mesh = p["mesh"]
+		mm.instance_count = xfs.size()
+		for i in range(xfs.size()):
+			mm.set_instance_transform(i, xfs[i])
+		var mmi := MultiMeshInstance3D.new()
+		mmi.name = "FTK_" + name
+		mmi.multimesh = mm         # no material_override -> uses the module's own colormap material
+		add_child(mmi)
 
 
 ## True if this structure got a building. Skips what the shell already builds, the hand-built Open House,
@@ -132,86 +179,93 @@ func _place_plan_structure(s: Dictionary) -> bool:
 	return true
 
 
-## Turn a plan structure into articulated Noctari architecture rather than a plain box: a plinth, a
-## body, corner pilasters, a cornice, a portalled doorway, glowing window bays, and a per-district
-## roofline. The BODY is the only collidable/real node; every bit of dressing is a pooled unit-cube
-## instance (drawn per-pool in one call), so a richly detailed city stays cheap.
+## Clad a plan structure with real Kenney Fantasy Town Kit modules: snap it to a CELL grid, wrap its
+## shell in textured wall/window/door panels per storey, and cap it with a roof. The only real node is
+## an invisible box collider (so you still can't walk through it); every module is pooled into a per-type
+## MultiMesh (_flush_mpools), so a city of thousands of pieces stays a handful of draw calls.
 func _plan_building(s: Dictionary, pos: Vector3, w: float, d: float, h: float, face_a: float, district: String) -> void:
-	var warm := district == "D-CANAL"
-	var body := _mat(_tex(ART + "terrace_stone.png"), 3.0)
-	match district:
-		"D-CANAL": body.albedo_color = Color(0.50, 0.45, 0.48)   # warm lower quarter
-		"D-MID":   body.albedo_color = Color(0.60, 0.58, 0.70)
-		"D-UPPER": body.albedo_color = Color(0.65, 0.63, 0.75)
-		"D-RIM":   body.albedo_color = Color(0.72, 0.71, 0.82)   # near-marble House seats
-		_:         body.albedo_color = Color(0.60, 0.58, 0.70)
-	var mi := _floor_box(Vector3(w, h, d), pos + Vector3(0, h * 0.5, 0), body, "B_" + str(s.get("id", "")))
-	mi.rotation.y = face_a
+	var cx_n := clampi(int(round(w / CELL)), 1, 7)
+	var cz_n := clampi(int(round(d / CELL)), 1, 7)
+	var floors := clampi(int(round(h / CELL)), 1, 5)
+	var bw := cx_n * CELL
+	var bd := cz_n * CELL
+	var bh := floors * CELL
+	_collider_box(Vector3(bw, bh, bd), pos + Vector3(0, bh * 0.5, 0), face_a, "B_" + str(s.get("id", "")))
 
-	var base := pos                                    # ground centre of the building
-	var face := Basis(Vector3.UP, face_a)
-	# local(x=width, y=up, z=depth toward the street) -> world
-	var L := func(x: float, y: float, z: float) -> Vector3: return base + face * Vector3(x, y, z)
+	var fb := Basis(Vector3.UP, face_a)
+	var sd := absi(str(s.get("id", "")).hash())
+	var door_ix := cx_n / 2               # the front-centre cell gets the door
+	# perimeter walls, floor by floor
+	for f in range(floors):
+		var fy := f * CELL
+		for ix in range(cx_n):
+			for iz in range(cz_n):
+				var x0 := ix == 0
+				var x1 := ix == cx_n - 1
+				var z0 := iz == 0
+				var z1 := iz == cz_n - 1
+				if not (x0 or x1 or z0 or z1):
+					continue
+				var lx := -bw * 0.5 + (ix + 0.5) * CELL
+				var lz := -bd * 0.5 + (iz + 0.5) * CELL
+				if x1: _mod(_wall_name(district, f, sd + ix * 7 + iz * 3, false), _mod_xf(pos, fb, lx, fy, lz, 0.0))
+				if x0: _mod(_wall_name(district, f, sd + ix * 11 + iz * 5, false), _mod_xf(pos, fb, lx, fy, lz, PI))
+				if z1: _mod(_wall_name(district, f, sd + ix * 13 + iz, f == 0 and ix == door_ix), _mod_xf(pos, fb, lx, fy, lz, -PI * 0.5))
+				if z0: _mod(_wall_name(district, f, sd + ix * 17 + iz, false), _mod_xf(pos, fb, lx, fy, lz, PI * 0.5))
+	# roof cap over every top cell
+	var ridge := "roof-gable" if district == "D-CANAL" else "roof-flat"
+	for ix in range(cx_n):
+		for iz in range(cz_n):
+			var lx := -bw * 0.5 + (ix + 0.5) * CELL
+			var lz := -bd * 0.5 + (iz + 0.5) * CELL
+			_mod(ridge, _mod_xf(pos, fb, lx, floors * CELL, lz, 0.0))
 
-	# plinth (a wider, low base that grounds it) + cornice (an overhanging band near the top)
-	_deco("trim", Vector3(w + 0.8, 0.7, d + 0.8), L.call(0, 0.35, 0), face_a, _trim_mat)
-	_deco("trim", Vector3(w + 0.5, 0.4, d + 0.5), L.call(0, h - 0.35, 0), face_a, _trim_mat)
-	# corner pilasters (vertical ribs)
-	var px := w * 0.5 - 0.3
-	var pz := d * 0.5 - 0.3
-	for sx in [-1.0, 1.0]:
-		for sz in [-1.0, 1.0]:
-			_deco("trim", Vector3(0.55, h - 0.8, 0.55), L.call(sx * px, (h - 0.8) * 0.5 + 0.5, sz * pz), face_a, _trim_mat)
-
-	# glowing window bays on the street face, one band per storey (recessed dark + a lit lattice)
-	var win_pool := "win_warm" if warm else "win_cool"
-	var win_mat: Material = _win_warm_mat if warm else _win_cool_mat
-	var storeys := maxi(1, int(h / 3.5))
-	for st in range(1, storeys + 1):
-		var ly := -h * 0.5 + st * (h / (storeys + 1))
-		_deco(win_pool, Vector3(w * 0.7, 1.7, 0.12), L.call(0, ly, d * 0.5 + 0.06), face_a, win_mat)
-
-	# a portalled doorway: a pale stone surround around a tall dark recess
-	_deco("trim", Vector3(2.2, 3.0, 0.25), L.call(0, 1.5, d * 0.5 + 0.02), face_a, _trim_mat)
-	_deco("door", Vector3(1.5, 2.4, 0.4), L.call(0, 1.2, d * 0.5 + 0.14), face_a, _door_mat)
-
-	_roofline(district, base, face, face_a, w, d, h)
-
-	# an examinable at the door, carrying the plan's identity (name, type, purpose)
+	# an examinable at the front door, carrying the plan's identity (name, type, purpose)
 	var it := Interactable3D.new()
 	it.name = "IX_" + str(s.get("id", ""))
 	it.display_name = str(s.get("name", ""))
 	it.examine_text = "%s — %s.\n\n%s" % [str(s.get("name", "")), str(s.get("type", "")), str(s.get("purpose", ""))]
-	it.position = base + face * Vector3(0, 1.4, d * 0.5 + 1.0)
+	it.position = pos + fb * Vector3(0, 1.4, bd * 0.5 + 1.2)
 	add_child(it)
 
 
-## The silhouette-maker: a different roof per district so the city reads as districts from a distance.
-func _roofline(district: String, base: Vector3, face: Basis, face_a: float, w: float, d: float, h: float) -> void:
-	var L := func(x: float, y: float, z: float) -> Vector3: return base + face * Vector3(x, y, z)
-	match district:
-		"D-CANAL":
-			# pitched gable: two slabs meeting at a ridge along the width — the common houses' peaked roofs
-			var rise: float = clampf(d * 0.4, 1.6, 4.0)
-			var ang := atan2(rise, d * 0.5)
-			var slab := sqrt(d * d * 0.25 + rise * rise)
-			for sz in [-1.0, 1.0]:
-				_deco("roof", Vector3(w * 1.06, 0.28, slab), L.call(0, h + rise * 0.5, sz * d * 0.25), face_a, _roof_mat, sz * ang)
-		"D-RIM":
-			# a House seat: flat cap, then a small observatory spire + a lit finial (echoes the towers)
-			_deco("roof", Vector3(w * 1.04, 0.5, d * 1.04), L.call(0, h + 0.25, 0), face_a, _roof_mat)
-			var sh: float = clampf(h * 0.45, 3.0, 9.0)
-			_deco("trim", Vector3(1.4, sh, 1.4), L.call(0, h + sh * 0.5, 0), face_a, _trim_mat)
-			_deco("glow", Vector3(0.9, 0.9, 0.9), L.call(0, h + sh + 0.6, 0), face_a, _glow_mat)
-		_:
-			# scholar terraces (upper/mid/shore): a flat roof with a parapet and corner pinnacles —
-			# and a hint of the rooftop observing platform every astronomer wants
-			_deco("roof", Vector3(w * 1.04, 0.5, d * 1.04), L.call(0, h + 0.25, 0), face_a, _roof_mat)
-			var px := w * 0.5 - 0.25
-			var pz := d * 0.5 - 0.25
-			for sx in [-1.0, 1.0]:
-				for sz in [-1.0, 1.0]:
-					_deco("trim", Vector3(0.5, 1.4, 0.5), L.call(sx * px, h + 0.9, sz * pz), face_a, _trim_mat)
+## Pick a wall module: a door on the marked cell, else windows (varied) mostly, some blank, seeded so a
+## building is consistent but the city isn't uniform. Canal quarter leans to timber, the terraces to stone.
+func _wall_name(district: String, floor: int, seed: int, is_door: bool) -> String:
+	var wood := district == "D-CANAL"
+	if is_door:
+		return "wall-wood-door" if wood else "wall-door"
+	var r := seed % 10
+	if floor == 0 and r == 0:
+		return "wall-wood-doorway-square" if wood else "wall-doorway-square"
+	if r < 4:
+		return "wall-window-shutters" if wood else "wall-window-glass"
+	if r < 6:
+		return "wall-window-small"
+	if r < 8:
+		return "wall-window-stone"
+	return "wall-wood-block" if wood else "wall"
+
+
+## World transform for a module at local cell-centre (lx,fy,lz), yawed `side` (which face), scaled to CELL.
+func _mod_xf(pos: Vector3, fb: Basis, lx: float, fy: float, lz: float, side: float) -> Transform3D:
+	var world_pos := pos + fb * Vector3(lx, fy, lz)
+	var basis := fb * Basis(Vector3.UP, side).scaled(Vector3(CELL, CELL, CELL))
+	return Transform3D(basis, world_pos)
+
+
+## An invisible solid box — the building's collision, since the visual is now made of thin module shells.
+func _collider_box(size: Vector3, pos: Vector3, yaw: float, name: String) -> void:
+	var body := StaticBody3D.new()
+	body.name = name
+	body.position = pos
+	body.rotation.y = yaw
+	var cs := CollisionShape3D.new()
+	var shape := BoxShape3D.new()
+	shape.size = size
+	cs.shape = shape
+	body.add_child(cs)
+	add_child(body)
 
 
 # --- MultiMesh decoration pools ----------------------------------------------
