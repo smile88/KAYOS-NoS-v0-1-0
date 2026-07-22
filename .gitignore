@@ -30,3 +30,4 @@ $CLAUDE_JOB_DIR/
 .~lock.*#
 ~$*
 *.af~lock~
+tools/__pycache__/

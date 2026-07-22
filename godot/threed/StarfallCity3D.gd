@@ -50,6 +50,8 @@ var _win_warm_mat: StandardMaterial3D
 var _win_cool_mat: StandardMaterial3D
 var _door_mat: StandardMaterial3D
 var _roof_mat: StandardMaterial3D
+var _trim_mat: StandardMaterial3D    # dressed silver stone: plinths, cornices, pilasters, spires
+var _glow_mat: StandardMaterial3D    # emissive rooftop finials
 
 
 func _ready() -> void:
@@ -95,6 +97,14 @@ func _build_from_plan() -> void:
 	_win_cool_mat.albedo_color = Color(0.3, 0.32, 0.44)
 	_door_mat = _flat_dark()
 	_roof_mat = _mat(_tex(ART + "basalt.png"), 2.0)
+	_roof_mat.albedo_color = Color(0.34, 0.34, 0.42)
+	_trim_mat = _mat(_tex(ART + "stone.png"), 2.0)
+	_trim_mat.albedo_color = Color(0.78, 0.80, 0.90)     # pale dressed stone that catches the moonlight
+	_glow_mat = StandardMaterial3D.new()
+	_glow_mat.emission_enabled = true
+	_glow_mat.emission = Color(0.85, 0.9, 1.0)
+	_glow_mat.emission_energy_multiplier = 3.0
+	_glow_mat.albedo_color = Color(0.85, 0.9, 1.0)
 
 	var placed := 0
 	for s in (data as Dictionary)["structures"]:
@@ -122,29 +132,86 @@ func _place_plan_structure(s: Dictionary) -> bool:
 	return true
 
 
+## Turn a plan structure into articulated Noctari architecture rather than a plain box: a plinth, a
+## body, corner pilasters, a cornice, a portalled doorway, glowing window bays, and a per-district
+## roofline. The BODY is the only collidable/real node; every bit of dressing is a pooled unit-cube
+## instance (drawn per-pool in one call), so a richly detailed city stays cheap.
 func _plan_building(s: Dictionary, pos: Vector3, w: float, d: float, h: float, face_a: float, district: String) -> void:
 	var warm := district == "D-CANAL"
 	var body := _mat(_tex(ART + "terrace_stone.png"), 3.0)
-	body.albedo_color = Color(0.5, 0.45, 0.48) if warm else Color(0.6, 0.58, 0.7)
+	match district:
+		"D-CANAL": body.albedo_color = Color(0.50, 0.45, 0.48)   # warm lower quarter
+		"D-MID":   body.albedo_color = Color(0.60, 0.58, 0.70)
+		"D-UPPER": body.albedo_color = Color(0.65, 0.63, 0.75)
+		"D-RIM":   body.albedo_color = Color(0.72, 0.71, 0.82)   # near-marble House seats
+		_:         body.albedo_color = Color(0.60, 0.58, 0.70)
 	var mi := _floor_box(Vector3(w, h, d), pos + Vector3(0, h * 0.5, 0), body, "B_" + str(s.get("id", "")))
 	mi.rotation.y = face_a
-	var center := pos + Vector3(0, h * 0.5, 0)
+
+	var base := pos                                    # ground centre of the building
 	var face := Basis(Vector3.UP, face_a)
+	# local(x=width, y=up, z=depth toward the street) -> world
+	var L := func(x: float, y: float, z: float) -> Vector3: return base + face * Vector3(x, y, z)
+
+	# plinth (a wider, low base that grounds it) + cornice (an overhanging band near the top)
+	_deco("trim", Vector3(w + 0.8, 0.7, d + 0.8), L.call(0, 0.35, 0), face_a, _trim_mat)
+	_deco("trim", Vector3(w + 0.5, 0.4, d + 0.5), L.call(0, h - 0.35, 0), face_a, _trim_mat)
+	# corner pilasters (vertical ribs)
+	var px := w * 0.5 - 0.3
+	var pz := d * 0.5 - 0.3
+	for sx in [-1.0, 1.0]:
+		for sz in [-1.0, 1.0]:
+			_deco("trim", Vector3(0.55, h - 0.8, 0.55), L.call(sx * px, (h - 0.8) * 0.5 + 0.5, sz * pz), face_a, _trim_mat)
+
+	# glowing window bays on the street face, one band per storey (recessed dark + a lit lattice)
 	var win_pool := "win_warm" if warm else "win_cool"
 	var win_mat: Material = _win_warm_mat if warm else _win_cool_mat
 	var storeys := maxi(1, int(h / 3.5))
-	for st in range(1, storeys):
-		var ly := -h * 0.5 + st * 3.5
-		_deco(win_pool, Vector3(w * 0.82, 1.6, 0.1), center + face * Vector3(0, ly, d * 0.5 + 0.06), face_a, win_mat)
-	_deco("door", Vector3(1.4, 2.2, 0.35), center + face * Vector3(0, -h * 0.5 + 1.1, d * 0.5 + 0.02), face_a, _door_mat)
-	_deco("roof", Vector3(w * 1.04, 0.8, d * 1.04), center + face * Vector3(0, h * 0.5 + 0.4, 0), face_a, _roof_mat)
+	for st in range(1, storeys + 1):
+		var ly := -h * 0.5 + st * (h / (storeys + 1))
+		_deco(win_pool, Vector3(w * 0.7, 1.7, 0.12), L.call(0, ly, d * 0.5 + 0.06), face_a, win_mat)
+
+	# a portalled doorway: a pale stone surround around a tall dark recess
+	_deco("trim", Vector3(2.2, 3.0, 0.25), L.call(0, 1.5, d * 0.5 + 0.02), face_a, _trim_mat)
+	_deco("door", Vector3(1.5, 2.4, 0.4), L.call(0, 1.2, d * 0.5 + 0.14), face_a, _door_mat)
+
+	_roofline(district, base, face, face_a, w, d, h)
+
 	# an examinable at the door, carrying the plan's identity (name, type, purpose)
 	var it := Interactable3D.new()
 	it.name = "IX_" + str(s.get("id", ""))
 	it.display_name = str(s.get("name", ""))
 	it.examine_text = "%s — %s.\n\n%s" % [str(s.get("name", "")), str(s.get("type", "")), str(s.get("purpose", ""))]
-	it.position = pos + face * Vector3(0, 1.4, d * 0.5 + 1.0)
+	it.position = base + face * Vector3(0, 1.4, d * 0.5 + 1.0)
 	add_child(it)
+
+
+## The silhouette-maker: a different roof per district so the city reads as districts from a distance.
+func _roofline(district: String, base: Vector3, face: Basis, face_a: float, w: float, d: float, h: float) -> void:
+	var L := func(x: float, y: float, z: float) -> Vector3: return base + face * Vector3(x, y, z)
+	match district:
+		"D-CANAL":
+			# pitched gable: two slabs meeting at a ridge along the width — the common houses' peaked roofs
+			var rise: float = clampf(d * 0.4, 1.6, 4.0)
+			var ang := atan2(rise, d * 0.5)
+			var slab := sqrt(d * d * 0.25 + rise * rise)
+			for sz in [-1.0, 1.0]:
+				_deco("roof", Vector3(w * 1.06, 0.28, slab), L.call(0, h + rise * 0.5, sz * d * 0.25), face_a, _roof_mat, sz * ang)
+		"D-RIM":
+			# a House seat: flat cap, then a small observatory spire + a lit finial (echoes the towers)
+			_deco("roof", Vector3(w * 1.04, 0.5, d * 1.04), L.call(0, h + 0.25, 0), face_a, _roof_mat)
+			var sh: float = clampf(h * 0.45, 3.0, 9.0)
+			_deco("trim", Vector3(1.4, sh, 1.4), L.call(0, h + sh * 0.5, 0), face_a, _trim_mat)
+			_deco("glow", Vector3(0.9, 0.9, 0.9), L.call(0, h + sh + 0.6, 0), face_a, _glow_mat)
+		_:
+			# scholar terraces (upper/mid/shore): a flat roof with a parapet and corner pinnacles —
+			# and a hint of the rooftop observing platform every astronomer wants
+			_deco("roof", Vector3(w * 1.04, 0.5, d * 1.04), L.call(0, h + 0.25, 0), face_a, _roof_mat)
+			var px := w * 0.5 - 0.25
+			var pz := d * 0.5 - 0.25
+			for sx in [-1.0, 1.0]:
+				for sz in [-1.0, 1.0]:
+					_deco("trim", Vector3(0.5, 1.4, 0.5), L.call(sx * px, h + 0.9, sz * pz), face_a, _trim_mat)
 
 
 # --- MultiMesh decoration pools ----------------------------------------------
