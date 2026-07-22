@@ -49,8 +49,9 @@ var _unit_box: BoxMesh
 # --- Kenney Fantasy Town Kit modules (real textured architecture) -------------
 const FTK := "res://assets/ftk/"
 const CELL := 3.0                     # metres per Kenney module cell (native module = 1 unit, scaled up)
-var _modcache := {}                   # module name -> Mesh (extracted from the imported .glb, shared)
-var _mpools := {}                     # module name -> {mesh, xf:Array[Transform3D]} -> one MultiMesh each
+var _modcache := {}                   # module name -> {mesh, mat} (extracted from the imported .glb, shared)
+var _mpools := {}                     # module name -> {mesh, mat, xf:Array[Transform3D]} -> one MultiMesh each
+var _rng_state := 20260723            # deterministic LCG for prop scatter
 # shared materials for the pooled building dressing (built once in _build_from_plan)
 var _win_warm_mat: StandardMaterial3D
 var _win_cool_mat: StandardMaterial3D
@@ -72,11 +73,13 @@ func _ready() -> void:
 	_build_towers()
 	_build_canals()          # the star-water canals (the generic habitation is now data-driven)
 	_build_from_plan()       # the REAL named buildings, placed from docs/city → res://data/starfall_city.json
+	_scatter_props()         # trees, lanterns, stalls, a fountain, a windmill — lived-in streets
 	_build_shore_plaza()
 	_build_causeway()
 	_build_island()
 	_build_open_house()
 	_build_interactables()
+	_flush_mpools()          # bake every kit module (buildings + props) into per-type MultiMeshes
 	_flush_pools()
 
 
@@ -100,25 +103,26 @@ func _build_from_plan() -> void:
 	for s in (data as Dictionary)["structures"]:
 		if _place_plan_structure(s as Dictionary):
 			placed += 1
-	_flush_mpools()
 	print("Starfall: placed %d plan buildings from %s" % [placed, PLAN_PATH])
 
 
-# --- module plumbing: extract meshes from the .glb kit and MultiMesh them ------
+# --- module plumbing: extract mesh+material from the .glb kit and MultiMesh them ---
 
-## The shared Mesh inside a kit module's imported scene (cached; the .glb carries its own colormap
-## material on the mesh surface, so MultiMesh instances are textured with no material override).
-func _module_mesh(name: String) -> Mesh:
+## The shared Mesh + colormap Material inside a kit module's imported scene (cached).
+func _module_data(name: String) -> Dictionary:
 	if not _modcache.has(name):
 		var ps := load(FTK + name + ".glb") as PackedScene
-		var mesh: Mesh = null
+		var d := {"mesh": null, "mat": null}
 		if ps:
 			var inst: Node = ps.instantiate()
 			var mi := _find_mesh_instance(inst)
 			if mi:
-				mesh = mi.mesh
+				d["mesh"] = mi.mesh
+				d["mat"] = mi.mesh.surface_get_material(0)
+				if d["mat"] == null:
+					d["mat"] = mi.get_active_material(0)
 			inst.queue_free()
-		_modcache[name] = mesh
+		_modcache[name] = d
 	return _modcache[name]
 
 
@@ -134,12 +138,33 @@ func _find_mesh_instance(n: Node) -> MeshInstance3D:
 
 ## Queue one kit-module instance (by name) at a world transform, into that module's MultiMesh pool.
 func _mod(name: String, xf: Transform3D) -> void:
-	var mesh := _module_mesh(name)
-	if mesh == null:
+	var md := _module_data(name)
+	if md["mesh"] == null:
 		return
 	if not _mpools.has(name):
-		_mpools[name] = {"mesh": mesh, "xf": []}
+		_mpools[name] = {"mesh": md["mesh"], "mat": md["mat"], "xf": []}
 	_mpools[name]["xf"].append(xf)
+
+
+## Darken + cool the bright Kenney colormap toward the Noctari palette (indigo-silver night). The albedo
+## texture is kept; a multiply tint on a duplicated material recolours a whole module type at once.
+func _noctari_tint(name: String, mat: Material) -> Material:
+	if mat == null or not (mat is BaseMaterial3D):
+		return mat
+	var m: BaseMaterial3D = mat.duplicate()
+	var tint: Color
+	if "roof" in name:
+		tint = Color(0.30, 0.42, 0.44)          # dark verdigris / lead
+	elif "tree" in name or "hedge" in name:
+		tint = Color(0.24, 0.36, 0.40)           # near-black night foliage
+	elif "wood" in name or "stall" in name or "cart" in name:
+		tint = Color(0.40, 0.40, 0.52)           # muted timber
+	else:
+		tint = Color(0.46, 0.52, 0.72)           # cool blue-grey stone
+	m.albedo_color = tint
+	m.roughness = 0.95
+	m.metallic = 0.0
+	return m
 
 
 func _flush_mpools() -> void:
@@ -156,7 +181,8 @@ func _flush_mpools() -> void:
 			mm.set_instance_transform(i, xfs[i])
 		var mmi := MultiMeshInstance3D.new()
 		mmi.name = "FTK_" + name
-		mmi.multimesh = mm         # no material_override -> uses the module's own colormap material
+		mmi.multimesh = mm
+		mmi.material_override = _noctari_tint(name, p["mat"])
 		add_child(mmi)
 
 
@@ -219,6 +245,11 @@ func _plan_building(s: Dictionary, pos: Vector3, w: float, d: float, h: float, f
 			var lx := -bw * 0.5 + (ix + 0.5) * CELL
 			var lz := -bd * 0.5 + (iz + 0.5) * CELL
 			_mod(ridge, _mod_xf(pos, fb, lx, floors * CELL, lz, 0.0))
+	# a chimney on about half the buildings, at a back roof corner
+	if sd % 2 == 0:
+		var clx := -bw * 0.5 + 0.5 * CELL
+		var clz := -bd * 0.5 + 0.5 * CELL
+		_mod("chimney", _mod_xf(pos, fb, clx, floors * CELL, clz, 0.0))
 
 	# an examinable at the front door, carrying the plan's identity (name, type, purpose)
 	var it := Interactable3D.new()
@@ -252,6 +283,52 @@ func _mod_xf(pos: Vector3, fb: Basis, lx: float, fy: float, lz: float, side: flo
 	var world_pos := pos + fb * Vector3(lx, fy, lz)
 	var basis := fb * Basis(Vector3.UP, side).scaled(Vector3(CELL, CELL, CELL))
 	return Transform3D(basis, world_pos)
+
+
+## Scatter kit props across the habitable terraces so the streets read as lived-in. Decorative only (no
+## collision); pooled into MultiMeshes like the buildings and tinted by _noctari_tint.
+func _scatter_props() -> void:
+	var bands: Array = [[232.0, 280.0, Y_L4], [290.0, 334.0, Y_L3], [346.0, 388.0, Y_L2]]
+	var trees: Array[String] = ["tree", "tree-high", "tree-crooked", "tree-high-round"]
+	var stalls: Array[String] = ["stall", "stall-green", "stall-red"]
+	var clutter: Array[String] = ["cart", "rock-wide", "rock-small"]
+	for i in range(150):
+		var b: Array = bands[int(_rand() * 3.0) % 3]
+		_scatter_one(trees[int(_rand() * 4.0) % 4], b, 0.9 + _rand() * 0.5)
+	for i in range(70):
+		var b: Array = bands[int(_rand() * 3.0) % 3]
+		_scatter_one("lantern", b, 1.0)
+	for i in range(34):
+		var b: Array = bands[0] if _rand() < 0.7 else bands[1]
+		_scatter_one(stalls[int(_rand() * 3.0) % 3], b, 1.0)
+	for i in range(26):
+		var b: Array = bands[int(_rand() * 3.0) % 3]
+		_scatter_one(clutter[int(_rand() * 3.0) % 3], b, 1.0)
+	var canal: Array = bands[0]
+	var upper: Array = bands[2]
+	_scatter_one("fountain-round", canal, 1.4)
+	_scatter_one("windmill", upper, 1.2)
+
+
+func _scatter_one(name: String, band: Array, scale_mul: float) -> void:
+	var inner: float = band[0]
+	var outer: float = band[1]
+	var y: float = band[2]
+	var a := 0.0
+	for _try in range(8):
+		a = _rand() * TAU
+		if not _near_spoke(a):
+			break
+	var r := inner + _rand() * (outer - inner)
+	var d := _dir(a)
+	var s := CELL * scale_mul
+	var basis := Basis(Vector3.UP, _rand() * TAU).scaled(Vector3(s, s, s))
+	_mod(name, Transform3D(basis, Vector3(d.x * r, y, d.z * r)))
+
+
+func _rand() -> float:
+	_rng_state = (_rng_state * 1103515245 + 12345) & 0x7fffffff
+	return float(_rng_state) / 2147483647.0
 
 
 ## An invisible solid box — the building's collision, since the visual is now made of thin module shells.
