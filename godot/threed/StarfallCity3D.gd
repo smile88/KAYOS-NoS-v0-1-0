@@ -45,7 +45,7 @@ const SPOKES := [0.0, PI / 2.0, PI, -PI / 2.0]
 ## building bodies, towers, island) is untouched: it stays real nodes so the player still walks on it.
 var _pools := {}
 var _unit_box: BoxMesh
-# shared materials for the pooled building dressing (built once in _build_habitation)
+# shared materials for the pooled building dressing (built once in _build_from_plan)
 var _win_warm_mat: StandardMaterial3D
 var _win_cool_mat: StandardMaterial3D
 var _door_mat: StandardMaterial3D
@@ -62,13 +62,89 @@ func _ready() -> void:
 	_build_parapet()
 	_build_crystal_combs()
 	_build_towers()
-	_build_habitation()
+	_build_canals()          # the star-water canals (the generic habitation is now data-driven)
+	_build_from_plan()       # the REAL named buildings, placed from docs/city → res://data/starfall_city.json
 	_build_shore_plaza()
 	_build_causeway()
 	_build_island()
 	_build_open_house()
 	_build_interactables()
 	_flush_pools()
+
+
+# --- data-driven city (the plan made walkable) -------------------------------
+## The single assembled city plan (tools/build_city.py writes it from docs/city/*). Each above-ground
+## structure becomes a real, examinable building at its surveyed coordinates, so walking the city matches
+## docs/Starfall_City_Codex.md. The locked shell (terraces, stairs, towers, lake, causeway, island) stays
+## procedural; the Under-Terraces and the Academy interiors are a later pass (no cavity/island interiors yet).
+const PLAN_PATH := "res://data/starfall_city.json"
+
+
+func _build_from_plan() -> void:
+	if not FileAccess.file_exists(PLAN_PATH):
+		push_warning("Starfall: plan not found at %s — run `python tools/build_city.py`." % PLAN_PATH)
+		return
+	var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(PLAN_PATH))
+	if typeof(data) != TYPE_DICTIONARY or not (data as Dictionary).has("structures"):
+		push_warning("Starfall: plan JSON malformed.")
+		return
+	# shared pooled-decoration materials for the plan buildings (windows/door/roof)
+	_win_warm_mat = _mat(_tex(ART + "city_windows.png"), 3.0, 0.42)
+	_win_warm_mat.albedo_color = Color(0.35, 0.3, 0.28)
+	_win_cool_mat = _mat(_tex(ART + "city_windows.png"), 3.0, 0.28)
+	_win_cool_mat.albedo_color = Color(0.3, 0.32, 0.44)
+	_door_mat = _flat_dark()
+	_roof_mat = _mat(_tex(ART + "basalt.png"), 2.0)
+
+	var placed := 0
+	for s in (data as Dictionary)["structures"]:
+		if _place_plan_structure(s as Dictionary):
+			placed += 1
+	print("Starfall: placed %d plan buildings from %s" % [placed, PLAN_PATH])
+
+
+## True if this structure got a building. Skips what the shell already builds, the hand-built Open House,
+## the cylinder towers, the subterranean Under-Terraces, the Academy island, and non-box pieces (canals).
+func _place_plan_structure(s: Dictionary) -> bool:
+	var district: String = s.get("district", "")
+	if district in ["D-UNDER", "D-ACADEMY", "D-MIRROR"]:
+		return false
+	if s.get("id", "") == "VS-U01":
+		return false
+	var fp: Dictionary = s.get("footprint", {})
+	if fp.get("shape", "") == "cylinder" or not (fp.has("w") and fp.has("d")):
+		return false
+	var posd: Dictionary = s.get("position", {})
+	var a := deg_to_rad(float(posd.get("a_deg", 0.0)))
+	var r := float(posd.get("r", 300.0))
+	var pos := Vector3(sin(a) * r, float(s.get("y_base", 0.0)), cos(a) * r)
+	_plan_building(s, pos, float(fp["w"]), float(fp["d"]), float(s.get("height_m", 8.0)), a + PI, district)
+	return true
+
+
+func _plan_building(s: Dictionary, pos: Vector3, w: float, d: float, h: float, face_a: float, district: String) -> void:
+	var warm := district == "D-CANAL"
+	var body := _mat(_tex(ART + "terrace_stone.png"), 3.0)
+	body.albedo_color = Color(0.5, 0.45, 0.48) if warm else Color(0.6, 0.58, 0.7)
+	var mi := _floor_box(Vector3(w, h, d), pos + Vector3(0, h * 0.5, 0), body, "B_" + str(s.get("id", "")))
+	mi.rotation.y = face_a
+	var center := pos + Vector3(0, h * 0.5, 0)
+	var face := Basis(Vector3.UP, face_a)
+	var win_pool := "win_warm" if warm else "win_cool"
+	var win_mat: Material = _win_warm_mat if warm else _win_cool_mat
+	var storeys := maxi(1, int(h / 3.5))
+	for st in range(1, storeys):
+		var ly := -h * 0.5 + st * 3.5
+		_deco(win_pool, Vector3(w * 0.82, 1.6, 0.1), center + face * Vector3(0, ly, d * 0.5 + 0.06), face_a, win_mat)
+	_deco("door", Vector3(1.4, 2.2, 0.35), center + face * Vector3(0, -h * 0.5 + 1.1, d * 0.5 + 0.02), face_a, _door_mat)
+	_deco("roof", Vector3(w * 1.04, 0.8, d * 1.04), center + face * Vector3(0, h * 0.5 + 0.4, 0), face_a, _roof_mat)
+	# an examinable at the door, carrying the plan's identity (name, type, purpose)
+	var it := Interactable3D.new()
+	it.name = "IX_" + str(s.get("id", ""))
+	it.display_name = str(s.get("name", ""))
+	it.examine_text = "%s — %s.\n\n%s" % [str(s.get("name", "")), str(s.get("type", "")), str(s.get("purpose", ""))]
+	it.position = pos + face * Vector3(0, 1.4, d * 0.5 + 1.0)
+	add_child(it)
 
 
 # --- MultiMesh decoration pools ----------------------------------------------
@@ -372,74 +448,11 @@ func _build_towers() -> void:
 
 # --- habitation --------------------------------------------------------------
 
-## A proper multi-storey building the player is dwarfed by and could walk into: a solid stone block with
-## storey window-bands and a 2.2 m doorway cut into the inward (street) face. Interiors are a later pass.
-## The BODY is a real collidable node (you can't walk through it); the windows, door and roof are
-## non-collidable dressing routed into shared MultiMesh pools (thousands of them, drawn in a few calls).
-func _building(pos: Vector3, w: float, d: float, h: float, face_a: float, warm: bool) -> void:
-	var body := _mat(_tex(ART + "terrace_stone.png"), 3.0)
-	body.albedo_color = Color(0.6, 0.58, 0.7) if not warm else Color(0.5, 0.45, 0.48)
-	var mi := _floor_box(Vector3(w, h, d), pos + Vector3(0, h * 0.5, 0), body, "Building")
-	mi.rotation.y = face_a
-	# decoration in world space (the pooled cubes aren't children of the rotated body, so bake the yaw in)
-	var center := pos + Vector3(0, h * 0.5, 0)
-	var face := Basis(Vector3.UP, face_a)
-	var win_pool := "win_warm" if warm else "win_cool"
-	var win_mat: Material = _win_warm_mat if warm else _win_cool_mat
-	# window bands, one per storey, on both faces (face_a points the front toward the street)
-	var storeys := int(h / 3.5)
-	for s in range(1, storeys):
-		var ly := -h * 0.5 + s * 3.5
-		_deco(win_pool, Vector3(w * 0.82, 1.6, 0.1), center + face * Vector3(0, ly, d * 0.5 + 0.06), face_a, win_mat)
-		_deco(win_pool, Vector3(w * 0.82, 1.6, 0.1), center + face * Vector3(0, ly, -d * 0.5 - 0.06), face_a, win_mat)
-	# doorway (dark recess) at the base of the street face
-	_deco("door", Vector3(1.4, 2.2, 0.35), center + face * Vector3(0, -h * 0.5 + 1.1, d * 0.5 + 0.02), face_a, _door_mat)
-	# roof cap for silhouette
-	_deco("roof", Vector3(w * 1.04, 0.8, d * 1.04), center + face * Vector3(0, h * 0.5 + 0.4, 0), face_a, _roof_mat)
-
-
 func _flat_dark() -> StandardMaterial3D:
 	var m := StandardMaterial3D.new()
 	m.albedo_color = Color(0.08, 0.08, 0.12)
 	m.roughness = 1.0
 	return m
-
-
-func _build_habitation() -> void:
-	# Shared materials for the pooled window/door/roof dressing (one per pool, built once).
-	_win_warm_mat = _mat(_tex(ART + "city_windows.png"), 3.0, 0.42)
-	_win_warm_mat.albedo_color = Color(0.35, 0.3, 0.28)
-	_win_cool_mat = _mat(_tex(ART + "city_windows.png"), 3.0, 0.28)
-	_win_cool_mat.albedo_color = Color(0.3, 0.32, 0.44)
-	_door_mat = _flat_dark()
-	_roof_mat = _mat(_tex(ART + "basalt.png"), 2.0)
-
-	# Rings of properly-sized buildings on the three habitable terraces, in two rows each (an outer and
-	# inner street), skipping the processional spokes. Denser + warmer down in the canal quarter, sparser
-	# + cooler + taller up top. Buildings face inward (door + windows toward the centre).
-	# terrace: [inner_edge_r, top_y, warm, [ (row_radius, spacing, w, d, h_min, h_max) ... ] ]
-	var terraces := [
-		{"y": Y_L4, "warm": true, "rows": [[248.0, 22.0, 13.0, 11.0, 12.0, 20.0], [272.0, 24.0, 12.0, 10.0, 12.0, 18.0]]},
-		{"y": Y_L3, "warm": false, "rows": [[300.0, 26.0, 14.0, 12.0, 14.0, 22.0], [326.0, 28.0, 13.0, 11.0, 14.0, 20.0]]},
-		{"y": Y_L2, "warm": false, "rows": [[356.0, 30.0, 15.0, 13.0, 16.0, 26.0], [382.0, 32.0, 14.0, 12.0, 16.0, 22.0]]},
-	]
-	var seed := 40315
-	for terr in terraces:
-		var y: float = terr["y"]
-		var warm: bool = terr["warm"]
-		for row in terr["rows"]:
-			var r: float = row[0]
-			var spacing: float = row[1]
-			var n := int(TAU * r / spacing)
-			for i in range(n):
-				var a := i * TAU / n + 0.11
-				if _near_spoke(a):
-					continue
-				var d := _dir(a)
-				var hh := float(row[4]) + float((seed + i * 37) % 100) / 100.0 * (float(row[5]) - float(row[4]))
-				_building(Vector3(d.x * r, y, d.z * r), row[2], row[3], hh, a + PI, warm)
-			seed += 101
-	_build_canals()
 
 
 func _build_canals() -> void:

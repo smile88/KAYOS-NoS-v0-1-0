@@ -43,6 +43,14 @@ func _ready() -> void:
 	_check(census.get("MeshInstance3D", 0) < 1800,
 		"visible-mesh node count is within the perf budget (<1800 MeshInstance3D)")
 
+	# --- the plan is walkable: real named buildings placed from res://data/starfall_city.json ---
+	var sounding := _find_examinable(scene, "The Sounding-Glass")
+	_check(sounding != null, "a named plan building is in the world (the Sounding-Glass inn, House Vael'Suran)")
+	var serenthil := _find_examinable(scene, "The Bell-Foundry")
+	_check(serenthil != null, "a second wedge's building is present too (the Bell-Foundry, House Serenthil)")
+	var ix := get_tree().get_nodes_in_group("interactable3d").size()
+	_check(ix >= 100, "the city plan populated the world with examinable buildings (%d interactables)" % ix)
+
 	# --- grounded on the rim, no fall-through ----------------------------------
 	await _physics(30)
 	_check(player.is_on_floor(), "the player settles grounded on the rim (doesn't fall through the terrace)")

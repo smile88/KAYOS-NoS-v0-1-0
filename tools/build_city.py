@@ -100,3 +100,10 @@ if __name__ == "__main__":
               "…" if len(dangling_home) > 12 else "")
     if not dangling_occ and not dangling_home:
         print("  cross-refs OK (all occupants & homes resolve)")
+
+    # emit the single assembled file the Godot runtime reads (res://data/starfall_city.json)
+    game = os.path.join(ROOT, "godot", "data", "starfall_city.json")
+    os.makedirs(os.path.dirname(game), exist_ok=True)
+    with open(game, "w", encoding="utf-8") as f:
+        json.dump(c, f, ensure_ascii=False)
+    print("  wrote game data:", os.path.relpath(game, ROOT))
