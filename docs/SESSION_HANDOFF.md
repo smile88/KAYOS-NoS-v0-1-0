@@ -28,6 +28,24 @@ new this session, 12/12; `ColdOpen3DTest` still 23/23):
 **Still open:** (5) bake to an editable `.tscn` — still **deferred, awaiting your call**; (6) interiors /
 canal shaping / real modelled art to replace primitives. See the list at the bottom.
 
+## City-plan system (2026-07-23) — the full Starfall design bible
+
+New: an authoritative, generated city plan. **Single source of truth: `docs/city/starfall_city.json`**
+(districts, every structure with polar coords/dims/rooms/occupants, every NPC's home; geometry LOCKED to
+`StarfallCity3D.gd`). Two generators read it (change JSON → re-run → all agree):
+- `tools/gen_starfall_codex.py` → **`docs/Starfall_City_Codex.md`** (human-readable book of the city).
+- `tools/gen_starfall_cityplan.py` → **`art/blueprints/Starfall_CityPlan.svg`** (gridded topographical
+  survey in the Plate register; 50 m grid; the exemplar wedge fully plotted; Under-Terraces = the dashed
+  "Other Map").
+
+Decisions locked with the user: **~3,000 souls**, **every structure bespoke**, **foundation + one
+exemplar wedge first**. Done this pass: the schema + all 9 Houses named/stubbed + **House Vael'Suran**
+(the wedge flanking the Grand Processional, containing the built Open House) fully specified — 22
+structures, ~301 souls, rim→Under-Terraces. Canon NPCs placed in-wedge: Talindir (apprentice scribe),
+Vara (human prodigy in a canal garret), Durak Ironthought (with the Terran deep-wrights below).
+**Next: author the other eight wedges (H1–H8) + the Academy island into the same JSON**, then re-run.
+Run `python tools/gen_starfall_codex.py && python tools/gen_starfall_cityplan.py` to regenerate.
+
 ## Where we are
 
 Building **Starfall**, the first big 3D zone, as a walkable greybox on the `godot/threed/` HD-2D kit
