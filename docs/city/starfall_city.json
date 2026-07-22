@@ -9,7 +9,7 @@
     "coordinate_system": "polar around the caldera centre (0,0). r = metres from centre; a_deg = degrees where 0 = +Z (front / the Grand Processional & causeway), increasing toward +X. world x = r*sin(a), z = r*cos(a). y = terrace top height (metres). Screen/plate angle = 180 - a_deg.",
     "source_of_truth": true,
     "generators": ["tools/gen_starfall_cityplan.py -> art/blueprints/Starfall_CityPlan.svg", "tools/gen_starfall_codex.py -> docs/Starfall_City_Codex.md"],
-    "status": "FOUNDATION + exemplar wedge (House Vael'Suran) fully specified; other eight Houses stubbed. Geometry LOCKED to godot/threed/StarfallCity3D.gd & docs/Scale_Reference.md.",
+    "status": "FOUNDATION + two wedges fully specified (House Vael'Suran H0, House Serenthil H8 — the pair flanking the Grand Processional). Seven Houses + the Academy island still stubbed. Geometry LOCKED to godot/threed/StarfallCity3D.gd & docs/Scale_Reference.md.",
     "theme": "Two maps of one city. The Plate (this visible survey) and the Ledger-map beneath it (the Under-Terraces) do not contain each other. That omission is the story of Part One."
   },
 
@@ -55,7 +55,7 @@
     {"id": "H5", "name": "House Corvane", "epithet": "Scholars of the Deep Field", "domain": "The dark between the stars — the void itself. The most Umbrion-aligned House; feared a little, and the one whose theory feeds the Academy's void-work. Elorin's intellectual kin, though not her blood.", "sigil": "an empty silver ring around unmarked indigo", "tower_a_deg": 220, "wedge_a": [200, 240], "status": "living", "head_npc": null, "detailed": false},
     {"id": "H6", "name": "House ————", "epithet": "the Dead House", "domain": "Unknown / struck from the record. Its dome is dark, its sigil scraped from the ring, its name unsaid. No one has ever proposed relighting it; some absences are load-bearing.", "sigil": "none — a dome struck through with one black shard", "tower_a_deg": 260, "wedge_a": [240, 280], "status": "dead", "head_npc": null, "detailed": false, "note": "The dead House of the greybox (DEAD_TOWER index). Its wedge is the city's quiet scar — under-tended terraces, cheaper rents, the district people move to when they wish not to be measured."},
     {"id": "H7", "name": "House Duskmere", "epithet": "Watchers of the Horizon", "domain": "The twilight band, risings and settings, the last and first light. The House of thresholds and departures; keeps the outer switchback stair and the rim gates.", "sigil": "a silver line of horizon under a half-sunk star", "tower_a_deg": 300, "wedge_a": [280, 320], "status": "living", "head_npc": null, "detailed": false},
-    {"id": "H8", "name": "House Serenthil", "epithet": "Keepers of the Meridian", "domain": "The meridian and the hour; timekeepers of Starfall. They ring the bells, including the ninth-bell count of every Luminarae. Flanks the Grand Processional opposite Vael'Suran.", "sigil": "a vertical silver meridian line through a single gold point", "tower_a_deg": 340, "wedge_a": [320, 360], "status": "living", "head_npc": null, "detailed": false}
+    {"id": "H8", "name": "House Serenthil", "epithet": "Keepers of the Meridian", "domain": "The meridian and the hour; timekeepers of Starfall. They ring the bells, including the ninth-bell count of every Luminarae — and the same bells that toll the festival toll the labour-shifts in the dark below. The House the whole city depends on and none reveres: a utility, not a glory. Flanks the Grand Processional opposite Vael'Suran.", "sigil": "a vertical silver meridian line through a single gold point", "tower_a_deg": 340, "wedge_a": [320, 360], "status": "living", "head_npc": "NPC-SR-001", "colours": "silver on indigo; one gold point at the meridian; verdigris on the bells", "detailed": true}
   ],
 
   "structures": [
@@ -315,6 +315,239 @@
       ],
       "occupants": ["NPC-VS-066"],
       "resident_count": 1, "notes": "Foreman Adric — over-city clothes, under-city hands. A natural quest-broker character."
+    },
+
+    {
+      "id": "SR-T01", "name": "The Meridian Tower", "house": "H8", "district": "D-RIM", "type": "clock-and-bell tower (House seat, upper)",
+      "position": {"r": 422, "a_deg": 340, "note": "the Serenthil rim tower — greybox tower i=8; the city's public timepiece, not a private observatory"},
+      "footprint": {"shape": "cylinder", "diameter": 22, "rot_deg": 340}, "height_m": 58, "storeys": 6, "y_base": 45,
+      "purpose": "Where Starfall's time is made and rung. Not a House hiding its instrument but a House whose instrument the whole city can hear — the nine bells that mark the hours, the ceremonies, and (a fact the rim prefers not to dwell on) the labour-shifts below. Vael'Suran keeps the eye; Serenthil keeps the ear.",
+      "rooms": [
+        {"name": "The Bell-Chamber", "w": 14, "d": 14, "h": 12, "purpose": "the nine verdigris bells in their frame; the ninth is the great one, rung only at the solstice count"},
+        {"name": "The Clockwork Hall", "w": 18, "d": 16, "h": 8, "purpose": "the master escapement driven by star-water from the cistern below; a floor of turning brass"},
+        {"name": "The Meridian Slit", "w": 8, "d": 6, "h": 10, "purpose": "a north-south roof-slit; noon is the instant a fixed star crosses it — time proved against the sky"},
+        {"name": "Strike-Master's watch-room", "w": 8, "d": 7, "h": 4, "purpose": "someone watches the clock every hour of every night; the post is never empty"},
+        {"name": "Ringers' loft & rope-race", "w": 10, "d": 6, "h": 30, "purpose": "the ropes drop from here — some to the belfry, some straight down into the dark to the shift-bells"}
+      ],
+      "occupants": ["NPC-SR-001", "NPC-SR-002", "NPC-SR-003"],
+      "resident_count": 6, "notes": "Head + Strike-Master + 4 live-in ringers/watch-keepers. Its lit finial is one of the greybox's nine rim domes."
+    },
+    {
+      "id": "SR-M01", "name": "The Serenthil Seat", "house": "H8", "district": "D-RIM", "type": "great house (manor)",
+      "position": {"r": 438, "a_deg": 333}, "footprint": {"w": 30, "d": 20, "rot_deg": 333, "faces": "inward"}, "height_m": 13, "storeys": 3, "y_base": 45,
+      "purpose": "Plainer than Vael'Suran's Seat and closer to the street — Serenthil money is civic money, made from keeping everyone's time, and the House wears its usefulness where the fixed-star grandees wear their view. Every room is on time; not one clock in it agrees to be wrong.",
+      "rooms": [
+        {"name": "The Striking Hall", "w": 12, "d": 9, "h": 6, "purpose": "reception; a wall of the House's retired clocks, each stopped at the hour of a death"},
+        {"name": "Head's chambers", "w": 9, "d": 7, "h": 4, "purpose": "Magister Toll Serenthil's rooms"},
+        {"name": "Family & apprentice rooms", "w": 16, "d": 7, "h": 4, "purpose": "family + two horology apprentices boarded in"},
+        {"name": "Kitchen, stores, staff", "w": 12, "d": 8, "h": 4, "purpose": "household below and attic"}
+      ],
+      "occupants": ["NPC-SR-004", "NPC-SR-005"],
+      "resident_count": 18, "notes": "Toll + family (5) + 2 boarded apprentices + 11 staff. Less grand, more lived-in than VS-M01."
+    },
+    {
+      "id": "SR-U01", "name": "The Strike-Master's Villa", "house": "H8", "district": "D-UPPER", "type": "senior officer's villa",
+      "position": {"r": 370, "a_deg": 355}, "footprint": {"w": 14, "d": 12, "rot_deg": 355, "faces": "inward"}, "height_m": 10, "storeys": 2, "y_base": 34,
+      "purpose": "Home of the Strike-Master, the commoner-born officer who actually decides when the bells ring — a heavier hand on the city's day than most House heads. His sightline matters less to him than his hearing-line: he can tell a mistuned bell from three terraces off.",
+      "rooms": [
+        {"name": "The Listening Room", "w": 9, "d": 7, "h": 5, "purpose": "shuttered, bare, acoustically true; he checks the bells' pitch from here"},
+        {"name": "Family rooms (x3)", "w": 13, "d": 6, "h": 4, "purpose": "the Strike-Master, spouse, 3 children"}
+      ],
+      "occupants": ["NPC-SR-010"],
+      "resident_count": 6, "notes": "Strike-Master Venn Ostreth + household."
+    },
+    {
+      "id": "SR-U02", "name": "The Horologist's Villa", "house": "H8", "district": "D-UPPER", "type": "senior scholar's villa",
+      "position": {"r": 366, "a_deg": 347}, "footprint": {"w": 13, "d": 11, "rot_deg": 347, "faces": "inward"}, "height_m": 9, "storeys": 2, "y_base": 34,
+      "purpose": "The villa of the House's chief horologist — the theorist of time itself, who argues that the Song has a beat and that a perfect clock would simply count it. Half the Academy thinks him a crank; the other half quietly borrows his figures.",
+      "rooms": [
+        {"name": "The Escapement Study", "w": 9, "d": 7, "h": 4, "purpose": "a study full of half-built regulators, each trying to find the Song's beat"},
+        {"name": "Living rooms", "w": 12, "d": 6, "h": 4, "purpose": "the horologist + a companion + one apprentice"}
+      ],
+      "occupants": ["NPC-SR-011"],
+      "resident_count": 5, "notes": "Chief horologist Marn Ilve + household. Provides a theory-thread toward the Academy's Song-work."
+    },
+    {
+      "id": "SR-U03", "name": "Sightline Villa — the Quiet House", "house": "H8", "district": "D-UPPER", "type": "senior dwelling (let out)",
+      "position": {"r": 372, "a_deg": 326}, "footprint": {"w": 13, "d": 11, "rot_deg": 326, "faces": "inward"}, "height_m": 8, "storeys": 2, "y_base": 34,
+      "purpose": "A Serenthil villa let, unusually, to a tenant from outside the House — an aged Noctari astronomer who wanted only quiet and a view, and pays for both. The House takes the coin and pretends the arrangement is temporary; it has been temporary for ninety years.",
+      "rooms": [
+        {"name": "The Study", "w": 9, "d": 7, "h": 4, "purpose": "an outsider's sightline, rented"},
+        {"name": "Rooms", "w": 12, "d": 6, "h": 4, "purpose": "the tenant + a single servant"}
+      ],
+      "occupants": ["NPC-SR-012"],
+      "resident_count": 5, "notes": "Tenant-astronomer Ollisan + 4 (companion, servant, 2 boarders). A wedge with rented rooms reads differently from Vael'Suran's closed bloodline."
+    },
+    {
+      "id": "SR-L01", "name": "The Bell-Foundry", "house": "H8", "district": "D-MID", "type": "foundry + guild-hall",
+      "position": {"r": 318, "a_deg": 349}, "footprint": {"w": 22, "d": 16, "rot_deg": 349, "faces": "inward"}, "height_m": 10, "storeys": 2, "y_base": 23,
+      "purpose": "Loud, hot, and the opposite of everything the rim pretends to be: the wedge's bells and clock-brass are cast and tuned here. A bell is tuned by shaving metal from its inside until its note is true — a craft of subtraction, done by ear, over weeks. The most important trade in Serenthil and the least gentrified.",
+      "rooms": [
+        {"name": "The Casting Floor", "w": 16, "d": 10, "h": 7, "purpose": "the bell-pit, the furnace, the crane; a floor no scholar visits twice"},
+        {"name": "The Tuning Bay", "w": 8, "d": 6, "h": 5, "purpose": "where a cast bell is shaved to its true note against a monochord"},
+        {"name": "Founders' dwelling", "w": 14, "d": 6, "h": 4, "purpose": "the master founder's family above the heat"},
+        {"name": "Journeymen's loft", "w": 12, "d": 5, "h": 3, "purpose": "boarded workers"}
+      ],
+      "occupants": ["NPC-SR-020"],
+      "resident_count": 14, "notes": "Master founder Hessa Drun + family + 8 journeymen. The vent-flue drops to the under-forge (SR-X04)."
+    },
+    {
+      "id": "SR-L02", "name": "The Horologists' Hall", "house": "H8", "district": "D-MID", "type": "guild-hall + workshop",
+      "position": {"r": 312, "a_deg": 340}, "footprint": {"w": 20, "d": 13, "rot_deg": 340, "faces": "inward"}, "height_m": 9, "storeys": 3, "y_base": 23,
+      "purpose": "The clockmakers: escapement-fitters, gear-cutters, dial-engravers, and the water-clock wrights who keep the city's public clepsydrae running. Fine, patient, indoor work — the bench-craft that turns the founder's raw brass into time.",
+      "rooms": [
+        {"name": "The Bench Floor", "w": 16, "d": 8, "h": 5, "purpose": "ranked benches under north light; a wall of running regulators for comparison"},
+        {"name": "The Wheel-Cutting Room", "w": 8, "d": 6, "h": 4, "purpose": "the dividing engine that cuts gear-teeth — the Hall's guarded secret"},
+        {"name": "Apprentices' dormitory", "w": 14, "d": 5, "h": 3, "purpose": "boarded apprentices"}
+      ],
+      "occupants": ["NPC-SR-021"],
+      "resident_count": 9, "notes": "Guild-warden Pel Corriden + 8 (fitters & apprentices)."
+    },
+    {
+      "id": "SR-L03", "name": "Lesser Timekeepers' Row", "house": "H8", "district": "D-MID", "type": "terrace of 6 dwellings",
+      "position": {"r": 300, "a_deg": 328}, "footprint": {"w": 42, "d": 8, "rot_deg": 328, "faces": "inward", "form": "row of 6"}, "height_m": 7, "storeys": 2, "y_base": 23,
+      "purpose": "Six joined houses of the wedge's lesser timekeepers — the hour-callers, dial-readers, water-tenders and rope-boys who serve the Tower without ever entering the bell-chamber. Respectable, sightless, and paid in the House's steady, unglamorous coin.",
+      "rooms": [
+        {"name": "Per-house: work-room + 2 chambers", "w": 6, "d": 7, "h": 4, "purpose": "6 households"}
+      ],
+      "occupants": ["NPC-SR-022"],
+      "resident_count": 22, "notes": "6 households, ~22 souls. Named: hour-caller old Renn, whose voice the whole wedge wakes to."
+    },
+    {
+      "id": "SR-K01", "name": "The Ninth Bell", "house": "H8", "district": "D-CANAL", "type": "inn (Strain-relief haven)",
+      "position": {"r": 268, "a_deg": 351}, "footprint": {"w": 16, "d": 12, "rot_deg": 351, "faces": "canal"}, "height_m": 8, "storeys": 2, "y_base": 12,
+      "purpose": "The wedge's inn, named for the great solstice bell you can feel in your chest from here — and the one place the day's timekeeping stops mattering. Rope-boys, off-shift founders, and the occasional deaf old ringer drink under a cracked bell hung over the bar. This wedge's Strain-relief haven.",
+      "rooms": [
+        {"name": "The Common Room", "w": 12, "d": 8, "h": 4, "purpose": "hearth, long tables, the cracked bell; a clock deliberately kept five minutes wrong, as a joke that is also a mercy"},
+        {"name": "Kitchen", "w": 6, "d": 5, "h": 4, "purpose": ""},
+        {"name": "Letting rooms (x5)", "w": 14, "d": 5, "h": 3, "purpose": "five rooms above"},
+        {"name": "Cellar", "w": 8, "d": 6, "h": 3, "purpose": "a canal-cooled store; a grille here opens onto the shift-bell undercroft — you hear the dark ringing through it"}
+      ],
+      "occupants": ["NPC-SR-030"],
+      "resident_count": 5, "notes": "Innkeeper Wenna Kob + 2 family + 2 staff. The cellar grille is Serenthil's over/under seam (to SR-X01)."
+    },
+    {
+      "id": "SR-K02", "name": "The Clepsydra-Works", "house": "H8", "district": "D-CANAL", "type": "waterworks + workshop",
+      "position": {"r": 258, "a_deg": 344}, "footprint": {"w": 18, "d": 14, "rot_deg": 344, "faces": "canal"}, "height_m": 8, "storeys": 2, "y_base": 12,
+      "purpose": "The public water-clocks of the whole city are built and regulated here, tapping the canal's star-water — the works that turns flowing water into counted time. A calm, dripping, faintly hypnotic place; its overflow feeds back to the canal, and its intake comes up from the Great Cistern below.",
+      "rooms": [
+        {"name": "The Flow Hall", "w": 12, "d": 8, "h": 5, "purpose": "tiered basins, float-gauges, the master clepsydra whose drip sets the Tower's water-drive"},
+        {"name": "The Regulator Room", "w": 8, "d": 6, "h": 4, "purpose": "where flow is trimmed to a true hour"},
+        {"name": "Wrights' dwelling", "w": 12, "d": 5, "h": 4, "purpose": "the water-wrights above"}
+      ],
+      "occupants": ["NPC-SR-031"],
+      "resident_count": 12, "notes": "Water-warden Iss Vellun + 11 (wrights & families). Mechanically ties the canal, the cistern and the Tower into one water-driven clock."
+    },
+    {
+      "id": "SR-K03", "name": "Sera's Lodging", "house": "H8", "district": "D-CANAL", "type": "rented rooms above the works",
+      "position": {"r": 262, "a_deg": 357}, "footprint": {"w": 7, "d": 6, "rot_deg": 357, "faces": "canal", "part_of": "over a dial-engraver's shop"}, "height_m": 3, "storeys": 1, "y_base": 20,
+      "purpose": "Two small rented rooms where Sera lodges — a Solari structural enchantress, a sun-elf alone in the night-city, on the Nullstone team and trusted by no faction on it. She chose the timekeepers' wedge on purpose: their bells are the one thing in Starfall that keep to a schedule she recognises, and she keeps a single forbidden sun-lamp she lights only when the shutters are closed.",
+      "rooms": [
+        {"name": "Work-room", "w": 7, "d": 3, "h": 3, "purpose": "structural models in silver wire; a Solari sun-disc turned to the wall"},
+        {"name": "Sleeping room", "w": 4, "d": 3, "h": 3, "purpose": "a cot, a shuttered window, the sun-lamp"}
+      ],
+      "occupants": ["NPC-SR-040"],
+      "resident_count": 1, "notes": "Sera (CH-008, PO-006) — 'the outsider's outsider.' Canonical Nullstone-team anchor in this wedge, deliberately mirroring Vara's garret in the Vael'Suran wedge."
+    },
+    {
+      "id": "SR-K04", "name": "Canal Dwellings — Watergate", "house": "H8", "district": "D-CANAL", "type": "tenement block, 8 dwellings",
+      "position": {"r": 245, "a_deg": 330}, "footprint": {"w": 24, "d": 14, "rot_deg": 330, "faces": "canal", "form": "block, 8 dwellings"}, "height_m": 11, "storeys": 3, "y_base": 12,
+      "purpose": "Dense canalside housing by the watergate, home to the rope-boys, water-tenders, dial-runners and canal-hands who keep the wedge's time-machinery fed and moving. The block wakes to old Renn's hour-call and sleeps to the ninth-of-night bell.",
+      "rooms": [
+        {"name": "Per dwelling: 2-3 rooms", "w": 6, "d": 6, "h": 3, "purpose": "8 dwellings, families of 3-6"}
+      ],
+      "occupants": ["NPC-SR-041"],
+      "resident_count": 40, "notes": "~40 souls. Named: the widow Ferrun, whose late husband fell from the belfry, and who counts every bell since."
+    },
+    {
+      "id": "SR-K05", "name": "The Hour-Market", "house": "H8", "district": "D-CANAL", "type": "market row (timed)",
+      "position": {"r": 252, "a_deg": 336}, "footprint": {"w": 28, "d": 10, "rot_deg": 336, "faces": "canal", "form": "row of 9 stalls/shops"}, "height_m": 6, "storeys": 2, "y_base": 12,
+      "purpose": "A market that opens and closes to the bell — nine stalls and shops selling by strict tolled hours (a Serenthil custom, and a small tyranny): a baker, a dial-shop, a candle-and-oil merchant, a rope-walk, a cook-stall, a scrivener, a herbalist. Live-over-the-shop trade timed to the death by the very House that sells them the clocks.",
+      "rooms": [
+        {"name": "Per unit: shopfront + room above", "w": 3, "d": 8, "h": 4, "purpose": "9 units, most with a family above"}
+      ],
+      "occupants": ["NPC-SR-042"],
+      "resident_count": 22, "notes": "9 shops, ~22 souls. Named: the baker Doln, who bribes a rope-boy to ring his opening a half-minute early."
+    },
+    {
+      "id": "SR-S01", "name": "The Bell-Gate & Processional Foot", "house": "H8", "district": "D-SHORE", "type": "civic threshold",
+      "position": {"r": 228, "a_deg": 357}, "footprint": {"w": 14, "d": 10, "rot_deg": 357, "faces": "processional"}, "height_m": 7, "storeys": 1, "y_base": 0,
+      "purpose": "Where the Grand Processional meets the shore on Serenthil's side: a gate with its own small bell that opens and closes the processional to ceremony, and a customs post twinned with Vael'Suran's across the way. The two Houses' gate-bells answer each other across the stair — the city's front door, in stereo.",
+      "rooms": [
+        {"name": "The Gate Hall", "w": 10, "d": 7, "h": 5, "purpose": "the gate-bell rope, a tally-desk, a warded night-strongroom"},
+        {"name": "Gatekeepers' room", "w": 5, "d": 4, "h": 4, "purpose": "the gate-warden and a clerk"}
+      ],
+      "occupants": ["NPC-SR-050"],
+      "resident_count": 0, "notes": "Gate-warden Ospren + clerk (day post; counted at their canal homes)."
+    },
+
+    {
+      "id": "SR-X01", "name": "The Shift-Bell Undercroft", "house": "H8", "district": "D-UNDER", "type": "under-belfry (service)",
+      "position": {"r": 250, "a_deg": 340, "depth_note": "directly under the Tower's rope-race"}, "footprint": {"w": 16, "d": 14, "rot_deg": 340}, "height_m": 8, "y_base": -12,
+      "purpose": "The dark twin of the bell-chamber. The same ropes that ring the festival's ninth bell drop through the whole city to here, where under-ringers pull the SHIFT-bells that govern the labour below — the cistern-gangs, the bell-wrights, the lift-crews. To the rim, the bell is glory; to the dark, the identical bell is a whip you can hear but not see. Serenthil rings both and calls it one service.",
+      "rooms": [
+        {"name": "The Under-Belfry", "w": 12, "d": 8, "h": 8, "purpose": "the shift-bells and the drop-ropes; a board chalked with the shift-count"},
+        {"name": "Under-ringers' bunk", "w": 10, "d": 5, "h": 3, "purpose": "the ringers live at their ropes; they have not seen a festival in years"}
+      ],
+      "occupants": ["NPC-SR-060"],
+      "resident_count": 8, "notes": "Under-ringer crew (8). The Sounding-metaphor made literal: one bell, two meanings, and only the dark hears both. The Ninth Bell inn's cellar grille opens near here."
+    },
+    {
+      "id": "SR-X02", "name": "The Clock-Water Gallery", "house": "H8", "district": "D-UNDER", "type": "conduit + water-race gallery",
+      "position": {"r": 260, "a_deg": 345, "depth_note": "radial run beneath the terraces"}, "footprint": {"length": 68, "width": 5, "rot_deg": 345}, "height_m": 4, "y_base": -10,
+      "purpose": "Twin runs in one gallery: the tuned Song-conduits that feed this wedge's star-lamps (as under Vael'Suran) AND the star-water race that carries the Great Cistern's water up to the clepsydra-works and the Tower's clock-drive. When a lamp burns or a clock ticks on the terraces above, its cause is in this tunnel, tended in the dark.",
+      "rooms": [
+        {"name": "The Long Gallery", "w": 5, "d": 68, "h": 4, "purpose": "conduit + water-race side by side; access ladders to each terrace"},
+        {"name": "Sluice niches (x3)", "w": 3, "d": 3, "h": 3, "purpose": "where water-wrights set the race's flow"}
+      ],
+      "occupants": ["NPC-SR-061"],
+      "resident_count": 6, "notes": "Conduit-and-race crew (6, mixed Terran & human). The literal plumbing of both light and time."
+    },
+    {
+      "id": "SR-X03", "name": "The Great Cistern", "house": "H8", "district": "D-UNDER", "type": "reservoir (novel civic works)",
+      "position": {"r": 245, "a_deg": 335, "depth_note": "a vaulted reservoir deep under the shore-mass"}, "footprint": {"w": 40, "d": 34, "rot_deg": 335, "form": "pillared vault, half-flooded"}, "height_m": 12, "y_base": -26,
+      "purpose": "Starfall's hidden heart of star-water: a vast pillared vault of black, still, faintly-starred water that drives every clock, feeds every canal-lock, and cools the whole under-city — a subterranean night sky underneath the lake that is a night sky. The single most impressive space in Starfall, and it is on no map, because the people who need it are not on the map either. Reached by boat across its own black surface.",
+      "rooms": [
+        {"name": "The Vault", "w": 34, "d": 28, "h": 12, "purpose": "forty stone pillars standing in still water; a rowed jetty; the water doubles the lamplight into a false depth"},
+        {"name": "The Pump-Floor", "w": 12, "d": 8, "h": 4, "purpose": "the great treadwheel pumps that lift water to the race — walked by the cistern-gangs"},
+        {"name": "Keepers' rooms", "w": 8, "d": 6, "h": 3, "purpose": "the cistern-keepers, who live beside the water and learn to read its level like a face"}
+      ],
+      "occupants": ["NPC-SR-062"],
+      "resident_count": 12, "notes": "Cistern-keepers + pump-crew (12). The wedge's 'novel and unique' landmark — a cathedral of dark water no citizen above has ever seen. Strong future hero-set-piece."
+    },
+    {
+      "id": "SR-X04", "name": "The Bell-Wrights' & Cistern-Gangs' Hall", "house": "H8", "district": "D-UNDER", "type": "mixed bunk-hall & under-forge",
+      "position": {"r": 250, "a_deg": 330, "depth_note": "cut beside the cistern"}, "footprint": {"w": 30, "d": 20, "rot_deg": 330, "form": "carved hall + riveted bunks"}, "height_m": 6, "y_base": -18,
+      "purpose": "The largest under-dwelling of the wedge: Terran bell-wrights (who tune the shift-bells and cast the clock-brass at an under-forge the foundry's flue feeds) alongside the human and orc cistern-gangs who walk the pumps. A rare mixed hall — the Song does not reach here, so the races that the city above keeps carefully apart share one warm, loud, glow-lit room.",
+      "rooms": [
+        {"name": "The Under-Forge", "w": 12, "d": 8, "h": 6, "purpose": "a small casting floor fed by the Bell-Foundry's flue; shift-bells are born and tuned here"},
+        {"name": "The Long Hall", "w": 16, "d": 8, "h": 5, "purpose": "shared eating-and-living hall; a Petrocore shrine and a scratched orc tally-board share a wall"},
+        {"name": "Sleeping galleries", "w": 26, "d": 6, "h": 3, "purpose": "bunk-niches for ~46 wrights and gang-hands"}
+      ],
+      "occupants": ["NPC-SR-063", "NPC-SR-064"],
+      "resident_count": 46, "notes": "~30 Terran bell-wrights + ~16 human/orc cistern-gang. The mixed hall varies the texture from Vael'Suran's segregated Terran/orc halls, and is a natural place for a cross-race scene."
+    },
+    {
+      "id": "SR-X05", "name": "The Undertoll Canteen", "house": "H8", "district": "D-UNDER", "type": "canteen / commons",
+      "position": {"r": 248, "a_deg": 342, "depth_note": "at the gallery crossing"}, "footprint": {"w": 16, "d": 12, "rot_deg": 342}, "height_m": 4, "y_base": -12,
+      "purpose": "The under-city's warm room for this wedge, named for the toll-bell that calls its meal-shifts. Under-ringers, cistern-gangs, bell-wrights and conduit-crews eat here between shifts; the canteen-keeper rings her own small bell for meals and, once a year, quietly rings it nine times for the dead.",
+      "rooms": [
+        {"name": "The Long Room", "w": 12, "d": 8, "h": 4, "purpose": "trestles, a great range, a wall of chalked names"},
+        {"name": "Kitchen & store", "w": 6, "d": 5, "h": 3, "purpose": "run by the keeper"}
+      ],
+      "occupants": ["NPC-SR-065"],
+      "resident_count": 4, "notes": "Canteen-keeper Old Sable + 3 helpers. Sister-room to Vael'Suran's Underspill; the two under-canteens know each other's runners."
+    },
+    {
+      "id": "SR-X06", "name": "The Foreman's Post", "house": "H8", "district": "D-UNDER", "type": "overseer post",
+      "position": {"r": 242, "a_deg": 348, "depth_note": "at the foot of the bell-gate stair"}, "footprint": {"w": 8, "d": 6, "rot_deg": 348}, "height_m": 3, "y_base": -12,
+      "purpose": "The seam-office of Serenthil's under-city, at the foot of the stair up to the Bell-Gate — where the shift-count is reconciled against the toll and sent up to the House. The foreman keeps time for people the timekeepers never count.",
+      "rooms": [
+        {"name": "The Office", "w": 5, "d": 4, "h": 3, "purpose": "a ledger-desk, a shift-book, a small answering bell wired to the undercroft"},
+        {"name": "Bunk", "w": 3, "d": 3, "h": 3, "purpose": "the foreman sleeps at the seam"}
+      ],
+      "occupants": ["NPC-SR-066"],
+      "resident_count": 1, "notes": "Foreman Quill — keeps the honest count in charcoal and the House's count in ink, and knows they differ."
     }
   ],
 
@@ -346,12 +579,38 @@
     {"id": "NPC-VS-063", "name": "The Deep-Wrights (43)", "gender": "mixed", "race": "Terran", "age": null, "role": "cut and hold up the Under-Terraces", "home": "VS-X03", "count": 43, "note": "Proud, glow-stone-warm, prouder than the rim. Keep a shrine to Petrocore in a city of the wrong god."},
     {"id": "NPC-VS-064", "name": "The Lift-Gang (30) — elder Ghesh", "gender": "mixed", "race": "Orc", "age": null, "role": "walk the lock capstans; carry what the barges bring", "home": "VS-X04", "count": 30, "note": "Where Elorin first SEES the labour (Narrative Outline Ch2). Ghesh counts the shifts. Part of the unnamed 778."},
     {"id": "NPC-VS-065", "name": "Mother Vesh + 3", "gender": "female", "race": "Orc", "age": 300, "role": "canteen-keeper of the Underspill", "home": "VS-X05", "work": "VS-X05", "count": 4, "note": "Feeds every race in the under-city the same good grey stew; chalks the dead on the wall."},
-    {"id": "NPC-VS-066", "name": "Foreman Adric", "gender": "male", "race": "Human", "age": 40, "role": "the seam between the two cities; answers to the over-city, works the under", "home": "VS-X06", "work": "VS-X06", "note": "Over-city clothes, under-city hands; trusted by neither map. Natural quest-broker."}
+    {"id": "NPC-VS-066", "name": "Foreman Adric", "gender": "male", "race": "Human", "age": 40, "role": "the seam between the two cities; answers to the over-city, works the under", "home": "VS-X06", "work": "VS-X06", "note": "Over-city clothes, under-city hands; trusted by neither map. Natural quest-broker."},
+
+    {"id": "NPC-SR-001", "name": "Magister Toll Serenthil", "gender": "male", "race": "Noctari", "age": 980, "role": "Head of House Serenthil; Keeper of the Meridian", "home": "SR-M01", "work": "SR-T01", "note": "Civic, dry, and quietly aware that his House's dignity rests on being useful rather than revered. Signs the city's time into law."},
+    {"id": "NPC-SR-002", "name": "Strike-Master Venn Ostreth", "gender": "male", "race": "Noctari", "age": 430, "role": "commoner-born officer who decides when the bells ring", "home": "SR-U01", "work": "SR-T01", "note": "A heavier hand on the city's day than most House heads; can hear a mistuned bell three terraces off."},
+    {"id": "NPC-SR-003", "name": "the Tower ringers & watch (4)", "gender": "mixed", "race": "Noctari", "age": null, "role": "live-in bell-ringers and clock-watchers", "home": "SR-T01", "work": "SR-T01", "count": 4},
+    {"id": "NPC-SR-004", "name": "the Serenthil family (5)", "gender": "mixed", "race": "Noctari", "age": null, "role": "House family + 2 boarded horology apprentices", "home": "SR-M01", "count": 7},
+    {"id": "NPC-SR-005", "name": "the Seat household staff (11)", "gender": "mixed", "race": "Noctari & 2 human", "age": null, "role": "cook, clock-keeper, porters, maids", "home": "SR-M01", "work": "SR-M01", "count": 11},
+    {"id": "NPC-SR-010", "name": "Venn Ostreth's household (5)", "gender": "mixed", "race": "Noctari", "age": null, "role": "the Strike-Master's spouse & 3 children", "home": "SR-U01", "count": 5, "note": "Listed with NPC-SR-002 who heads it."},
+    {"id": "NPC-SR-011", "name": "Chief Horologist Marn Ilve", "gender": "male", "race": "Noctari", "age": 610, "role": "theorist of time; argues the Song has a beat a perfect clock would count", "home": "SR-U02", "work": "SR-U02", "count": 5, "note": "Household of 5. A theory-thread toward the Academy's Song-work; half-crank, half-borrowed-from."},
+    {"id": "NPC-SR-012", "name": "Tenant-astronomer Ollisan", "gender": "nonbinary", "race": "Noctari", "age": 1040, "role": "outside tenant of a Serenthil villa; wanted only quiet and a view", "home": "SR-U03", "work": "SR-U03", "count": 5, "note": "Household of 5 incl. boarders. 'Temporary' for ninety years — a rented villa reads differently from a bloodline seat."},
+    {"id": "NPC-SR-020", "name": "Master founder Hessa Drun + household (14)", "gender": "female", "race": "Noctari", "age": 360, "role": "runs the Bell-Foundry; tunes bells by ear over weeks", "home": "SR-L01", "work": "SR-L01", "count": 14, "note": "Least gentrified, most essential trade in the wedge."},
+    {"id": "NPC-SR-021", "name": "Guild-warden Pel Corriden + hall (9)", "gender": "male", "race": "Noctari", "age": 520, "role": "clockmakers' guild; keeps the dividing engine's secret", "home": "SR-L02", "work": "SR-L02", "count": 9},
+    {"id": "NPC-SR-022", "name": "Lesser Timekeepers' Row (22) — hour-caller Renn", "gender": "mixed", "race": "Noctari, 1 human household", "age": null, "role": "hour-callers, dial-readers, water-tenders, rope-boys", "home": "SR-L03", "count": 22, "note": "Sightless service class; old Renn's voice wakes the wedge."},
+    {"id": "NPC-SR-030", "name": "Innkeeper Wenna Kob + house (5)", "gender": "female", "race": "Noctari", "age": 280, "role": "keeps The Ninth Bell", "home": "SR-K01", "work": "SR-K01", "count": 5, "note": "Keeps one clock deliberately five minutes wrong; knows about the cellar grille to the undercroft."},
+    {"id": "NPC-SR-031", "name": "Water-warden Iss Vellun + works (12)", "gender": "nonbinary", "race": "Noctari", "age": 470, "role": "runs the Clepsydra-Works; regulates the city's water-clocks", "home": "SR-K02", "work": "SR-K02", "count": 12, "note": "The human node between canal, cistern and Tower — all one water-driven clock."},
+    {"id": "NPC-SR-040", "name": "Sera", "gender": "female", "race": "Solari (sun elf)", "age": 340, "role": "structural enchantress on the Nullstone team; a sun-elf alone in the night-city", "home": "SR-K03", "work": "D-ACADEMY", "canon": "CH-008, PO-006", "note": "'The outsider's outsider.' Lodges in the timekeepers' wedge because the bells keep a schedule she recognises; a forbidden sun-lamp lit only behind shutters. Mirrors Vara's garret across the Processional."},
+    {"id": "NPC-SR-041", "name": "Watergate dwellings (40) — the widow Ferrun", "gender": "mixed", "race": "Noctari, some human", "age": null, "role": "rope-boys, water-tenders, dial-runners, canal-hands", "home": "SR-K04", "count": 40, "note": "Ferrun counts every bell since her husband fell from the belfry."},
+    {"id": "NPC-SR-042", "name": "The Hour-Market (22) — the baker Doln", "gender": "mixed", "race": "Noctari, 2 human", "age": null, "role": "baker, dial-shop, chandler, rope-walk, cook-stall, scrivener, herbalist", "home": "SR-K05", "work": "SR-K05", "count": 22, "note": "Trades by tolled hours; Doln bribes a rope-boy to ring his opening early."},
+    {"id": "NPC-SR-050", "name": "Gate-warden Ospren + clerk", "gender": "male", "race": "Noctari", "age": 300, "role": "works the Bell-Gate; twin to Vael'Suran's customs across the stair", "home": "SR-K04", "work": "SR-S01", "count": 2, "note": "Day post; the two gate-bells answer each other across the Processional."},
+    {"id": "NPC-SR-060", "name": "The Under-Ringers (8)", "gender": "mixed", "race": "Noctari & human", "age": null, "role": "pull the shift-bells that govern the labour below", "home": "SR-X01", "work": "SR-X01", "count": 8, "note": "Live at their ropes; have not seen a festival in years. One bell, two meanings — they hear both."},
+    {"id": "NPC-SR-061", "name": "The Conduit-and-Race Crew (6)", "gender": "mixed", "race": "Terran & human", "age": null, "role": "keep the Song-conduits and the clock-water race", "home": "SR-X04", "work": "SR-X02", "count": 6},
+    {"id": "NPC-SR-062", "name": "The Cistern-Keepers & pump-crew (12) — keeper Mave", "gender": "mixed", "race": "Terran, human, orc", "age": null, "role": "tend the Great Cistern; walk the treadwheel pumps; read the water-level like a face", "home": "SR-X03", "work": "SR-X03", "count": 12, "note": "Keeper Mave has lived beside the black water so long she navigates the vault in the dark."},
+    {"id": "NPC-SR-063", "name": "The Bell-Wrights (30) — under-founder Kragg", "gender": "mixed", "race": "Terran", "age": null, "role": "cast and tune the shift-bells and clock-brass at the under-forge", "home": "SR-X04", "count": 30, "note": "Keep a Petrocore shrine beside the orc tally-board in a shared hall."},
+    {"id": "NPC-SR-064", "name": "The Cistern-Gangs (16)", "gender": "mixed", "race": "human & orc", "age": null, "role": "walk the pumps; haul; the muscle of the water-system", "home": "SR-X04", "count": 16, "note": "Share the mixed hall with the bell-wrights — a rare place the city's races live in one room. Part of the unnamed 778."},
+    {"id": "NPC-SR-065", "name": "Canteen-keeper Old Sable + 3", "gender": "female", "race": "Orc", "age": 320, "role": "keeps the Undertoll Canteen", "home": "SR-X05", "work": "SR-X05", "count": 4, "note": "Rings her meal-bell nine times a year for the dead. Knows Mother Vesh (VS-X05) by their runners."},
+    {"id": "NPC-SR-066", "name": "Foreman Quill", "gender": "nonbinary", "race": "Human", "age": 37, "role": "the seam of Serenthil's under-city; reconciles the shift-count to the toll", "home": "SR-X06", "work": "SR-X06", "note": "Keeps the honest count in charcoal and the House's in ink, and knows they differ. Twin to Foreman Adric."}
   ],
 
-  "wedge0_population_tally": {
-    "rim_house": 26, "upper_terraces": 20, "middle_terraces": 45, "canal_quarter": 82,
-    "shore": 0, "under_terraces": 128, "note": "≈ 301 souls in House Vael'Suran's wedge (target ~333/wedge for a 3,000-city). The Under-Terraces hold nearly as many as the visible quarter above them, and appear on no official map — which is the whole point.",
-    "total": 301
+  "design_notes": {
+    "per_wedge_target": 333,
+    "tallies_are_computed": "Population per wedge and per district is summed from each structure's resident_count by the generators — never hand-maintained here, so it cannot drift.",
+    "over_under_balance": "In a finished wedge the Under-Terraces should hold roughly as many souls as the visible quarter above — and appear on no official map. That imbalance in plain sight is the theme.",
+    "distinct_wedges": "Wedges must not read as clones. Vael'Suran = the eye, pride, protected sightlines, a closed bloodline. Serenthil = the ear, the hour, civic utility, rented rooms, a mixed under-city. Each further House should get its own social texture from its celestial domain."
   }
 }
