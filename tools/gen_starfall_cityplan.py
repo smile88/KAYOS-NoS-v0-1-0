@@ -12,17 +12,16 @@ radii), so map, codex and walkable world agree. Population totals are computed.
 Re-runnable:  python tools/gen_starfall_cityplan.py
 Output: art/blueprints/Starfall_CityPlan.svg
 """
-import json
 import math
 import os
 import random
 
+import build_city
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = os.path.join(ROOT, "docs", "city", "starfall_city.json")
 OUT = os.path.join(ROOT, "art", "blueprints")
 
-with open(SRC, encoding="utf-8") as f:
-    C = json.load(f)
+C = build_city.load_city()
 G = C["geometry_locked"]
 
 # --- palette -----------------------------------------------------------------

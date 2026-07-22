@@ -13,15 +13,14 @@ tallies are COMPUTED from each structure's resident_count, so they never drift.
 Re-runnable:  python tools/gen_starfall_codex.py
 Output: docs/Starfall_City_Codex.md
 """
-import json
 import os
 
+import build_city
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-SRC = os.path.join(ROOT, "docs", "city", "starfall_city.json")
 OUT = os.path.join(ROOT, "docs", "Starfall_City_Codex.md")
 
-with open(SRC, encoding="utf-8") as f:
-    C = json.load(f)
+C = build_city.load_city()
 
 L = []
 def w(s=""):

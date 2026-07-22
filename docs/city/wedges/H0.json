@@ -1,0 +1,1341 @@
+{
+  "house_id": "H0",
+  "head_npc": "NPC-VS-001",
+  "structures": [
+    {
+      "id": "VS-T01",
+      "name": "The Gnomon Tower",
+      "house": "H0",
+      "district": "D-RIM",
+      "type": "observatory tower (House seat, upper)",
+      "position": {
+        "r": 422,
+        "a_deg": 20,
+        "note": "the Vael'Suran rim observatory — greybox tower i=0"
+      },
+      "footprint": {
+        "shape": "cylinder",
+        "diameter": 22,
+        "rot_deg": 20
+      },
+      "height_m": 56,
+      "storeys": 6,
+      "y_base": 45,
+      "purpose": "The master survey of the fixed stars is kept and corrected here; every protected sightline in Starfall is a copy of a line first drawn in this tower. The House's authority is literally the instrument on its top floor.",
+      "rooms": [
+        {
+          "name": "The Meridian Hall",
+          "w": 20,
+          "d": 20,
+          "h": 8,
+          "purpose": "ground instrument hall; the great mural quadrant fixed to the north wall"
+        },
+        {
+          "name": "The Chart Vault",
+          "w": 10,
+          "d": 8,
+          "h": 4,
+          "purpose": "fireproof silver-lined vault of the master plates; only the House head and First Surveyor hold keys"
+        },
+        {
+          "name": "Head's Study",
+          "w": 8,
+          "d": 7,
+          "h": 4,
+          "purpose": "Magister Ysolde's study, sightline due to the Mirror"
+        },
+        {
+          "name": "Computers' Room",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "where junior scholars reduce the night's readings by hand; ink, tables, and quiet"
+        },
+        {
+          "name": "The Gnomon Chamber",
+          "w": 12,
+          "d": 12,
+          "h": 10,
+          "purpose": "top floor; the great gnomon and the roof aperture; the reading is taken standing in the cold"
+        },
+        {
+          "name": "Servants' stair & lamp-room",
+          "w": 4,
+          "d": 4,
+          "h": 30,
+          "purpose": "the spiral stair; the star-lamp that crowns the dome is tended from here"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-001",
+        "NPC-VS-002",
+        "NPC-VS-003"
+      ],
+      "resident_count": 7,
+      "notes": "3 named + 4 live-in junior computers (dormitory on the 4th floor). The dome's lit finial is one of the nine on the greybox rim."
+    },
+    {
+      "id": "VS-M01",
+      "name": "The Vael'Suran Seat",
+      "house": "H0",
+      "district": "D-RIM",
+      "type": "great house (manor)",
+      "position": {
+        "r": 438,
+        "a_deg": 27
+      },
+      "footprint": {
+        "w": 34,
+        "d": 22,
+        "rot_deg": 27,
+        "faces": "inward (toward the Mirror)"
+      },
+      "height_m": 14,
+      "storeys": 3,
+      "y_base": 45,
+      "purpose": "The living seat of the House on the rim beside its tower — cold, immaculate, and arranged so that every principal room holds the same framed view of the star-lake. Status here is measured in windows.",
+      "rooms": [
+        {
+          "name": "The Hall of Sightlines",
+          "w": 14,
+          "d": 10,
+          "h": 7,
+          "purpose": "reception; nine framed sightline-drawings, one per generation of heads"
+        },
+        {
+          "name": "Ysolde's chambers",
+          "w": 10,
+          "d": 8,
+          "h": 4,
+          "purpose": "the matriarch's rooms, the best sightline in the House"
+        },
+        {
+          "name": "Family wing",
+          "w": 16,
+          "d": 8,
+          "h": 4,
+          "purpose": "four chambers for the near family"
+        },
+        {
+          "name": "Cold-court",
+          "w": 12,
+          "d": 12,
+          "h": 12,
+          "purpose": "an open inner court left deliberately unroofed to the sky — the House takes readings without leaving home"
+        },
+        {
+          "name": "Kitchen & stores",
+          "w": 10,
+          "d": 7,
+          "h": 4,
+          "purpose": "below the hall"
+        },
+        {
+          "name": "Staff quarters",
+          "w": 12,
+          "d": 6,
+          "h": 4,
+          "purpose": "attic rooms for the household staff"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-001",
+        "NPC-VS-004",
+        "NPC-VS-005",
+        "NPC-VS-006"
+      ],
+      "resident_count": 19,
+      "notes": "Ysolde + near family (5) + 13 household staff (cook, chart-porters, lamp-tender, a gate-lodge keeper, maids). Ysolde also keeps a study in the tower."
+    },
+    {
+      "id": "VS-U01",
+      "name": "The Corrected Chart (the Open House)",
+      "house": "H0",
+      "district": "D-UPPER",
+      "type": "senior astronomer's villa",
+      "position": {
+        "r": 373,
+        "a_deg": 5,
+        "world_xz": [
+          30,
+          372
+        ],
+        "note": "the enterable interior already built in godot/threed/StarfallCity3D.gd (_build_open_house)"
+      },
+      "footprint": {
+        "w": 14,
+        "d": 12,
+        "rot_deg": -90,
+        "faces": "toward the Grand Processional stair"
+      },
+      "height_m": 6,
+      "storeys": 1,
+      "y_base": 34,
+      "purpose": "Home and working room of Sub-Magister Aeliston Vael'Suran, a cousin of the House who keeps the running correction of the caldera's own sky from this terrace. A lifetime's chart is pinned to the lectern, corrected in a fine hand.",
+      "rooms": [
+        {
+          "name": "The Reading Room",
+          "w": 13,
+          "d": 11,
+          "h": 6,
+          "purpose": "one open room; the star-chart lectern against the back wall, a cot, a stove, a cold-shelf of instruments"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-010"
+      ],
+      "resident_count": 1,
+      "notes": "Ties the built Open House interior into canon. Aeliston lives alone by choice; the whole House thinks him eccentric for keeping his own hours and his own door."
+    },
+    {
+      "id": "VS-U02",
+      "name": "Sightline Villa — Halvenor",
+      "house": "H0",
+      "district": "D-UPPER",
+      "type": "senior astronomer's villa",
+      "position": {
+        "r": 368,
+        "a_deg": 14
+      },
+      "footprint": {
+        "w": 15,
+        "d": 13,
+        "rot_deg": 14,
+        "faces": "inward"
+      },
+      "height_m": 10,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "The household of First Surveyor Halvenor Daskei, the House's most important commoner-born scholar — the man who actually runs the survey Ysolde signs.",
+      "rooms": [
+        {
+          "name": "Ground hall & study",
+          "w": 14,
+          "d": 7,
+          "h": 4,
+          "purpose": "study with the protected sightline; a second-best mural quadrant"
+        },
+        {
+          "name": "Family rooms (x3)",
+          "w": 14,
+          "d": 6,
+          "h": 4,
+          "purpose": "Halvenor, his wife, three children"
+        },
+        {
+          "name": "Roof platform",
+          "w": 8,
+          "d": 8,
+          "h": 0,
+          "purpose": "a private observing platform — the perquisite of his post"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-011",
+        "NPC-VS-012"
+      ],
+      "resident_count": 6,
+      "notes": "Halvenor (First Surveyor), spouse Renne, 3 children, 1 live-in aunt."
+    },
+    {
+      "id": "VS-U03",
+      "name": "Sightline Villa — Corvane-in-marriage",
+      "house": "H0",
+      "district": "D-UPPER",
+      "type": "senior scholar's villa",
+      "position": {
+        "r": 372,
+        "a_deg": 23
+      },
+      "footprint": {
+        "w": 14,
+        "d": 12,
+        "rot_deg": 23,
+        "faces": "inward"
+      },
+      "height_m": 10,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "A Vael'Suran daughter married into House Corvane (the Deep Field) and kept her sightline; the villa quietly does void-adjacent work the fixed-star House disowns in public and funds in private.",
+      "rooms": [
+        {
+          "name": "Study of the Dark",
+          "w": 10,
+          "d": 8,
+          "h": 5,
+          "purpose": "shuttered by day; the sightline used at new-moon only"
+        },
+        {
+          "name": "Living rooms",
+          "w": 14,
+          "d": 6,
+          "h": 4,
+          "purpose": "the couple + 2 children"
+        },
+        {
+          "name": "Servant's room",
+          "w": 4,
+          "d": 4,
+          "h": 4,
+          "purpose": "one maid"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-013"
+      ],
+      "resident_count": 5,
+      "notes": "Magistra Ivrenne (née Vael'Suran) + husband + 2 children + 1 maid. A thread that connects wedge 0 to House Corvane (H5)."
+    },
+    {
+      "id": "VS-U04",
+      "name": "Sightline Villa — the Widow Sarrent",
+      "house": "H0",
+      "district": "D-UPPER",
+      "type": "senior scholar's villa (declining)",
+      "position": {
+        "r": 366,
+        "a_deg": 32
+      },
+      "footprint": {
+        "w": 13,
+        "d": 11,
+        "rot_deg": 32,
+        "faces": "inward"
+      },
+      "height_m": 7,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "A villa whose sightline is being slowly, legally encroached by a neighbour's new roofline — the great terror of the upper terrace. The widowed astronomer Sarrent is fighting it in the House court and losing.",
+      "rooms": [
+        {
+          "name": "Contested study",
+          "w": 9,
+          "d": 7,
+          "h": 4,
+          "purpose": "the sightline here is 4 degrees narrower than it was a decade ago"
+        },
+        {
+          "name": "Rooms",
+          "w": 12,
+          "d": 6,
+          "h": 4,
+          "purpose": "Sarrent + a companion"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-014"
+      ],
+      "resident_count": 3,
+      "notes": "Sarrent + companion Ol + one servant. A ready side-quest seed (the sightline suit)."
+    },
+    {
+      "id": "VS-L01",
+      "name": "The Scribes' Hall of the Fixed Stars",
+      "house": "H0",
+      "district": "D-MID",
+      "type": "guild-hall + lodging",
+      "position": {
+        "r": 312,
+        "a_deg": 11
+      },
+      "footprint": {
+        "w": 22,
+        "d": 14,
+        "rot_deg": 11,
+        "faces": "inward"
+      },
+      "height_m": 11,
+      "storeys": 3,
+      "y_base": 23,
+      "purpose": "Where the House's charts are fair-copied and bound, and where the apprentice scribes lodge. A young Noctari apprentice named Talindir keeps a cot and a candle here — he is eighty, which for an elf is a boy, and he copies faster and more beautifully than anyone will admit.",
+      "rooms": [
+        {
+          "name": "The Copying Floor",
+          "w": 20,
+          "d": 10,
+          "h": 5,
+          "purpose": "ranked sloped desks under high comb-crystal windows"
+        },
+        {
+          "name": "The Binding Room",
+          "w": 10,
+          "d": 8,
+          "h": 4,
+          "purpose": "presses, thread, silver leaf"
+        },
+        {
+          "name": "Apprentices' dormitory",
+          "w": 18,
+          "d": 6,
+          "h": 4,
+          "purpose": "12 cots; Talindir's is by the window"
+        },
+        {
+          "name": "Master-scribe's room",
+          "w": 6,
+          "d": 5,
+          "h": 4,
+          "purpose": "the hall's warden"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-020",
+        "NPC-VS-021"
+      ],
+      "resident_count": 14,
+      "notes": "Master-scribe Ovinn + 13 apprentices incl. Talindir (CH-006, here as an apprentice ~1450 AO — 550 years before the Cold Open). Canonical anchor."
+    },
+    {
+      "id": "VS-L02",
+      "name": "The Lens-Grinders' Court",
+      "house": "H0",
+      "district": "D-MID",
+      "type": "workshop + dwelling",
+      "position": {
+        "r": 320,
+        "a_deg": 20
+      },
+      "footprint": {
+        "w": 18,
+        "d": 16,
+        "rot_deg": 20,
+        "faces": "inward",
+        "form": "court with open centre"
+      },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 23,
+      "purpose": "Optical glass for the whole wedge is ground and figured here — the slow, wet, patient trade that makes the Houses' instruments possible and gets none of the credit. A family firm, three generations deep.",
+      "rooms": [
+        {
+          "name": "The Grinding Shed",
+          "w": 12,
+          "d": 8,
+          "h": 5,
+          "purpose": "pitch laps, abrasive tubs, the great figuring wheel"
+        },
+        {
+          "name": "The Testing Room",
+          "w": 8,
+          "d": 6,
+          "h": 4,
+          "purpose": "a dark room with a slit; lenses proved against a star-lamp"
+        },
+        {
+          "name": "Family dwelling",
+          "w": 14,
+          "d": 6,
+          "h": 4,
+          "purpose": "the Marn family above the shed"
+        },
+        {
+          "name": "The Court",
+          "w": 8,
+          "d": 8,
+          "h": 0,
+          "purpose": "open drying/working court"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-022"
+      ],
+      "resident_count": 9,
+      "notes": "Master optician Delu Marn + spouse + 4 children + 3 journeymen (lodged)."
+    },
+    {
+      "id": "VS-L03",
+      "name": "Lesser Scholars' Row",
+      "house": "H0",
+      "district": "D-MID",
+      "type": "terrace of 6 small dwellings",
+      "position": {
+        "r": 300,
+        "a_deg": 30
+      },
+      "footprint": {
+        "w": 42,
+        "d": 8,
+        "rot_deg": 30,
+        "faces": "inward",
+        "form": "row of 6"
+      },
+      "height_m": 7,
+      "storeys": 2,
+      "y_base": 23,
+      "purpose": "Six joined narrow houses of the wedge's lesser scholars — the reducers, correctors, and lecture-assistants who serve the Houses without a sightline of their own. Respectable, cramped, sightless.",
+      "rooms": [
+        {
+          "name": "Per-house: ground room + 2 up",
+          "w": 6,
+          "d": 7,
+          "h": 4,
+          "purpose": "each of the 6 houses: a work-room and two small chambers"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-023"
+      ],
+      "resident_count": 22,
+      "notes": "6 households, ~22 souls total (the reducer Kessa Von and family named; the rest counted). No protected sightline — a social border made of geometry."
+    },
+    {
+      "id": "VS-K01",
+      "name": "The Sounding-Glass",
+      "house": "H0",
+      "district": "D-CANAL",
+      "type": "inn (Strain-relief haven)",
+      "position": {
+        "r": 268,
+        "a_deg": 9
+      },
+      "footprint": {
+        "w": 16,
+        "d": 12,
+        "rot_deg": 9,
+        "faces": "canal"
+      },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "The wedge's inn, on the canal — warm, low-ceilinged, loud, and the one place a sightless scholar, an off-shift deep-wright, and a slumming House son drink in the same room. In game terms, the Strain-relief haven for this quarter (Zone_Atlas Z-06).",
+      "rooms": [
+        {
+          "name": "The Common Room",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "hearth, long tables, the cracked sounding-glass over the bar that gives the place its name"
+        },
+        {
+          "name": "Kitchen",
+          "w": 6,
+          "d": 5,
+          "h": 4,
+          "purpose": ""
+        },
+        {
+          "name": "Letting rooms (x5)",
+          "w": 14,
+          "d": 5,
+          "h": 3,
+          "purpose": "five rooms above for travellers and the newly-evicted"
+        },
+        {
+          "name": "Cellar",
+          "w": 8,
+          "d": 6,
+          "h": 3,
+          "purpose": "canal-cooled store; a hatch to the Under-Terraces the innkeeper pretends not to know about"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-030"
+      ],
+      "resident_count": 5,
+      "notes": "Innkeeper Bruin Hale + 2 family + 2 staff. The cellar hatch is a real connection to VS-X05 (a thing the Plate does not know)."
+    },
+    {
+      "id": "VS-K02",
+      "name": "The Instrument Market",
+      "house": "H0",
+      "district": "D-CANAL",
+      "type": "market row (brassworkers & opticians)",
+      "position": {
+        "r": 258,
+        "a_deg": 18
+      },
+      "footprint": {
+        "w": 30,
+        "d": 10,
+        "rot_deg": 18,
+        "faces": "canal",
+        "form": "row of 10 stalls/shops"
+      },
+      "height_m": 6,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "Ten stalls and shopfronts: brass-founders, tube-makers, engravers of scales, a dealer in second-hand quadrants, a paper-and-ink merchant. Live-over-the-shop trade.",
+      "rooms": [
+        {
+          "name": "Per unit: shopfront + workshop + room above",
+          "w": 3,
+          "d": 8,
+          "h": 4,
+          "purpose": "10 units, most with a family living above"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-031"
+      ],
+      "resident_count": 34,
+      "notes": "10 shops, ~34 souls. Named: brass-founder Ossa Kellen (whose foundry vents to an Under-Terrace flue), engraver the elder Pim."
+    },
+    {
+      "id": "VS-K03",
+      "name": "The Deepening",
+      "house": "H0",
+      "district": "D-CANAL",
+      "type": "shrine (Umbrion)",
+      "position": {
+        "r": 250,
+        "a_deg": 26
+      },
+      "footprint": {
+        "w": 12,
+        "d": 12,
+        "rot_deg": 26,
+        "faces": "inward"
+      },
+      "height_m": 9,
+      "storeys": 1,
+      "y_base": 12,
+      "purpose": "A small windowless shrine to Umbrion, Weaver of Shadow — dark on purpose, entered to sit in the friendly void the Noctari call presence, not absence. A keeper tends one silver lamp that is never lit.",
+      "rooms": [
+        {
+          "name": "The Dark Cell",
+          "w": 8,
+          "d": 8,
+          "h": 7,
+          "purpose": "no light; a bowl of still star-water; you find the seat by touch"
+        },
+        {
+          "name": "Keeper's cell",
+          "w": 4,
+          "d": 4,
+          "h": 3,
+          "purpose": "the shrine-keeper's room"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-032"
+      ],
+      "resident_count": 1,
+      "notes": "The keeper, blind Serae — chosen for the post because the dark costs her nothing. A quiet counterpoint to the Solari sun-worship of the Cold Open."
+    },
+    {
+      "id": "VS-K04",
+      "name": "Vara's Garret",
+      "house": "H0",
+      "district": "D-CANAL",
+      "type": "rented room over a workshop",
+      "position": {
+        "r": 262,
+        "a_deg": 33
+      },
+      "footprint": {
+        "w": 6,
+        "d": 6,
+        "rot_deg": 33,
+        "faces": "canal",
+        "part_of": "over a brass-founder's shop"
+      },
+      "height_m": 3,
+      "storeys": 1,
+      "y_base": 20,
+      "purpose": "A single rented attic room where Vara — the human prodigy the Academy uses and under-credits — lives. Books to the ceiling, a borrowed quadrant she is not supposed to have, and the longest walk to the island of anyone on the team, because a human is not given rooms on the rim.",
+      "rooms": [
+        {
+          "name": "The Garret",
+          "w": 6,
+          "d": 6,
+          "h": 3,
+          "purpose": "bed, desk, and more paper than floor; a skylight she uses as a poor man's aperture"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-040"
+      ],
+      "resident_count": 1,
+      "notes": "Vara (CH-010, PO-008) — canonical Nullstone-team anchor placed in wedge 0. 'Twice as good, half as credited' is literally spatial here: she has the worst room and the best mind in the wedge."
+    },
+    {
+      "id": "VS-K05",
+      "name": "Canal Dwellings — Lockside",
+      "house": "H0",
+      "district": "D-CANAL",
+      "type": "block of common dwellings",
+      "position": {
+        "r": 245,
+        "a_deg": 14
+      },
+      "footprint": {
+        "w": 24,
+        "d": 14,
+        "rot_deg": 14,
+        "faces": "canal",
+        "form": "tenement block, 8 dwellings"
+      },
+      "height_m": 11,
+      "storeys": 3,
+      "y_base": 12,
+      "purpose": "The densest housing on the visible city: eight dwellings stacked three storeys over the canal, home to the artisans, boatwrights, lamplighters and canal-workers who keep the quarter running.",
+      "rooms": [
+        {
+          "name": "Per dwelling: 2-3 rooms",
+          "w": 6,
+          "d": 6,
+          "h": 3,
+          "purpose": "8 dwellings, families of 3-6"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-041"
+      ],
+      "resident_count": 38,
+      "notes": "~38 souls. Named: lamplighter Corrun, who climbs the whole wedge every dusk, and knows a stair down that isn't drawn."
+    },
+    {
+      "id": "VS-C01",
+      "name": "The Vael'Suran Canal & its two bridges",
+      "house": "H0",
+      "district": "D-CANAL",
+      "type": "waterway",
+      "position": {
+        "r": 255,
+        "a_deg": 20,
+        "note": "one of the greybox's three canals, threading the wedge's canal quarter"
+      },
+      "footprint": {
+        "length": 60,
+        "width": 6,
+        "rot_deg": 20,
+        "form": "curved channel, base_a ~0.35 rad in greybox"
+      },
+      "y_base": 12,
+      "purpose": "Star-water — black, still, faintly starred — runs the canal that both drains the quarter and, through the lock below, connects to the barges of the Under-Terraces. Two arched stone footbridges cross it.",
+      "rooms": [],
+      "occupants": [],
+      "resident_count": 0,
+      "notes": "The canal is the visible top of an invisible system: what looks like a decorative channel is the throat of the cargo route the Plate omits (see VS-X01, the lock)."
+    },
+    {
+      "id": "VS-S01",
+      "name": "The Processional Foot & Customs Post",
+      "house": "H0",
+      "district": "D-SHORE",
+      "type": "civic threshold",
+      "position": {
+        "r": 228,
+        "a_deg": 3
+      },
+      "footprint": {
+        "w": 14,
+        "d": 10,
+        "rot_deg": 3,
+        "faces": "processional"
+      },
+      "height_m": 6,
+      "storeys": 1,
+      "y_base": 0,
+      "purpose": "Where the Grand Processional meets the shore on the wedge's side: a customs post that weighs and tallies everything coming up from below before it is allowed onto the terraces. The one official door between the two cities — and it faces up, never down.",
+      "rooms": [
+        {
+          "name": "The Weighing Hall",
+          "w": 10,
+          "d": 7,
+          "h": 4,
+          "purpose": "scales, tally-desks, a wardsealed strongroom"
+        },
+        {
+          "name": "Officers' room",
+          "w": 5,
+          "d": 4,
+          "h": 4,
+          "purpose": "the customs officer and two clerks"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-050"
+      ],
+      "resident_count": 3,
+      "notes": "Customs officer Trell + 2 clerks (day post, not resident overnight — counted at their canal homes; listed here as workplace)."
+    },
+    {
+      "id": "VS-X01",
+      "name": "Cael's Lock",
+      "house": "H0",
+      "district": "D-UNDER",
+      "type": "barge lock (service)",
+      "position": {
+        "r": 240,
+        "a_deg": 20,
+        "depth_note": "beneath the canal quarter"
+      },
+      "footprint": {
+        "w": 24,
+        "d": 12,
+        "rot_deg": 20
+      },
+      "height_m": 14,
+      "y_base": -14,
+      "purpose": "A stone chamber-lock that raises cargo barges from the world below the caldera up into the wedge's canal. The whole visible quarter's stone, glass, food and fuel arrives through here, lifted by chain-gangs. The Plate draws the pretty canal above it and stops.",
+      "rooms": [
+        {
+          "name": "The Lock Chamber",
+          "w": 20,
+          "d": 8,
+          "h": 14,
+          "purpose": "the flooding/emptying basin; the great counter-weighted gates"
+        },
+        {
+          "name": "The Capstan Floor",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "where the lift-gangs walk the capstans; named for a worker who died at them"
+        },
+        {
+          "name": "Tally hole",
+          "w": 4,
+          "d": 4,
+          "h": 3,
+          "purpose": "the under-clerk's niche"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-060"
+      ],
+      "resident_count": 0,
+      "notes": "Worked, not lived-in. Named: lock-master Dregg. The under-clerk here keeps the OTHER tally — the real one, on ledger-paper, in charcoal."
+    },
+    {
+      "id": "VS-X02",
+      "name": "The Conduit Gallery",
+      "house": "H0",
+      "district": "D-UNDER",
+      "type": "Song-conduit service tunnel",
+      "position": {
+        "r": 260,
+        "a_deg": 15,
+        "depth_note": "runs radially under the terraces"
+      },
+      "footprint": {
+        "length": 70,
+        "width": 5,
+        "rot_deg": 15
+      },
+      "height_m": 4,
+      "y_base": -10,
+      "purpose": "The Song does not fill the wedge's star-lamps by magic that tends itself. It is carried up this gallery in tuned crystal conduits that must be kept clean, aligned, and singing — hand-work, done in the dark, by people the light above never sees. When a lamp on the terrace 'simply burns,' someone down here made it.",
+      "rooms": [
+        {
+          "name": "The Long Gallery",
+          "w": 4,
+          "d": 70,
+          "h": 4,
+          "purpose": "the conduit run; access ladders up to each terrace's lamp-stems"
+        },
+        {
+          "name": "Tuning niches (x4)",
+          "w": 3,
+          "d": 3,
+          "h": 3,
+          "purpose": "where conduit-wrights kneel to true the crystal"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-061"
+      ],
+      "resident_count": 0,
+      "notes": "Worked by conduit-wrights (mostly Terran). Thematically the literal machinery behind the Cold Open's 'the star-lamps burn without flame because the Song fills them.'"
+    },
+    {
+      "id": "VS-X03",
+      "name": "The Deep-Wrights' Hall",
+      "house": "H0",
+      "district": "D-UNDER",
+      "type": "Terran bunk-hall & enclave",
+      "position": {
+        "r": 250,
+        "a_deg": 24,
+        "depth_note": "cut into the shore-mass"
+      },
+      "footprint": {
+        "w": 26,
+        "d": 18,
+        "rot_deg": 24,
+        "form": "carved hall, glow-stone lit"
+      },
+      "height_m": 6,
+      "y_base": -16,
+      "purpose": "Home and hall of the Terran stone-wrights who cut and maintain the Under-Terraces — the deep folk who literally hold the beautiful city up. Carved, warm with glow-stone, and prouder than anything on the rim. Durak Ironthought, the geomancer the Academy consults and the Houses condescend to, lodges here among his own kind when he is in Starfall.",
+      "rooms": [
+        {
+          "name": "The Carved Hall",
+          "w": 18,
+          "d": 10,
+          "h": 6,
+          "purpose": "a communal hall; a long stone table; the deep-folk do not build separate boxes to eat in"
+        },
+        {
+          "name": "Sleeping galleries",
+          "w": 22,
+          "d": 6,
+          "h": 3,
+          "purpose": "bunk-niches for ~40 wrights"
+        },
+        {
+          "name": "Durak's cell",
+          "w": 5,
+          "d": 5,
+          "h": 4,
+          "purpose": "a plain stone room; a geomancer's tuning-forks and a basin of still water"
+        },
+        {
+          "name": "The Shrine of Petrocore",
+          "w": 6,
+          "d": 6,
+          "h": 5,
+          "purpose": "a Stone-Voice shrine — the wrong god for this city, kept anyway"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-062",
+        "NPC-VS-063"
+      ],
+      "resident_count": 44,
+      "notes": "Durak Ironthought (CH-011, PO-009) + ~43 Terran deep-wrights. Canonical anchor; explains why Durak argues 'we would build a basin' — he lives with the people who build."
+    },
+    {
+      "id": "VS-X04",
+      "name": "The Lift-Gang Bunks",
+      "house": "H0",
+      "district": "D-UNDER",
+      "type": "orc labour bunk-hall",
+      "position": {
+        "r": 235,
+        "a_deg": 28,
+        "depth_note": "beside the lock"
+      },
+      "footprint": {
+        "w": 20,
+        "d": 14,
+        "rot_deg": 28,
+        "form": "riveted bunk-shacks under stone"
+      },
+      "height_m": 4,
+      "y_base": -18,
+      "purpose": "The bunk-hall of the orc lift-gangs who walk the lock capstans and carry what the barges bring. This is where the young Elorin, come down on some errand of theory, first SEES the labour the Academy is built on — the beat the Narrative Outline gives Ch2. Cruelty here is not spectacle; it is routine, and the routine is the point.",
+      "rooms": [
+        {
+          "name": "Bunk rows",
+          "w": 16,
+          "d": 10,
+          "h": 4,
+          "purpose": "riveted double-bunks for ~30; no window, because there is no outside to have one onto"
+        },
+        {
+          "name": "The Collar-room",
+          "w": 6,
+          "d": 4,
+          "h": 3,
+          "purpose": "where shift-tallies are logged; a quiet, bureaucratic horror"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-064"
+      ],
+      "resident_count": 30,
+      "notes": "~30 orc labourers. Named: the elder Ghesh, who counts. Foreshadows Part Two's Ashpile without stating it. Part of the unnamed 778 the whole game is about."
+    },
+    {
+      "id": "VS-X05",
+      "name": "The Underspill Canteen",
+      "house": "H0",
+      "district": "D-UNDER",
+      "type": "canteen / commons",
+      "position": {
+        "r": 248,
+        "a_deg": 19,
+        "depth_note": "at the junction of the galleries"
+      },
+      "footprint": {
+        "w": 16,
+        "d": 12,
+        "rot_deg": 19
+      },
+      "height_m": 4,
+      "y_base": -12,
+      "purpose": "The one warm shared room of the Under-Terraces: a canteen at the crossing of the galleries where deep-wrights, lift-gangs, conduit-crews and the occasional lost scholar eat the same grey, good stew. The real social heart of the wedge — the thing the Plate has no symbol for.",
+      "rooms": [
+        {
+          "name": "The Long Room",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "trestle tables, a great range, a wall where the dead are chalked"
+        },
+        {
+          "name": "Kitchen & store",
+          "w": 6,
+          "d": 5,
+          "h": 3,
+          "purpose": "run by the canteen-keeper"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-065"
+      ],
+      "resident_count": 4,
+      "notes": "Canteen-keeper Mother Vesh + 3 helpers (resident in a back nook). The cellar hatch of the Sounding-Glass (VS-K01) comes out near here — the only informal seam between the two cities."
+    },
+    {
+      "id": "VS-X06",
+      "name": "The Foreman's Post",
+      "house": "H0",
+      "district": "D-UNDER",
+      "type": "overseer post",
+      "position": {
+        "r": 242,
+        "a_deg": 12,
+        "depth_note": "at the foot of the customs stair"
+      },
+      "footprint": {
+        "w": 8,
+        "d": 6,
+        "rot_deg": 12
+      },
+      "height_m": 3,
+      "y_base": -12,
+      "purpose": "A small hard office at the foot of the stair up to the customs post — the point where the under-city answers to the over-city. The foreman is the only person who routinely crosses between the two maps, and is trusted by neither.",
+      "rooms": [
+        {
+          "name": "The Office",
+          "w": 5,
+          "d": 4,
+          "h": 3,
+          "purpose": "a ledger-desk, a lamp, a locked shift-book"
+        },
+        {
+          "name": "Bunk",
+          "w": 3,
+          "d": 3,
+          "h": 3,
+          "purpose": "the foreman sleeps at the seam"
+        }
+      ],
+      "occupants": [
+        "NPC-VS-066"
+      ],
+      "resident_count": 1,
+      "notes": "Foreman Adric — over-city clothes, under-city hands. A natural quest-broker character."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "NPC-VS-001",
+      "name": "Magister Ysolde Vael'Suran",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 1120,
+      "role": "Head of House Vael'Suran; Keeper of the Master Survey",
+      "home": "VS-M01",
+      "work": "VS-T01",
+      "note": "Ancient, exact, proud; signs the survey her First Surveyor actually runs. The city's sightlines are her family's word made law."
+    },
+    {
+      "id": "NPC-VS-002",
+      "name": "First Reader Pan-Ostrel",
+      "gender": "nonbinary",
+      "race": "Noctari",
+      "age": 640,
+      "role": "senior observer, the Gnomon Chamber",
+      "home": "VS-T01",
+      "work": "VS-T01",
+      "note": "Takes the cold midnight readings; they and the gnomon are the only two things in the House never wrong."
+    },
+    {
+      "id": "NPC-VS-003",
+      "name": "the junior computers (4)",
+      "gender": "mixed",
+      "race": "Noctari",
+      "age": null,
+      "role": "live-in calculating clerks",
+      "home": "VS-T01",
+      "work": "VS-T01",
+      "count": 4,
+      "note": "Reduce the night's numbers by hand; dream in tables."
+    },
+    {
+      "id": "NPC-VS-004",
+      "name": "Ilvenor Vael'Suran",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 300,
+      "role": "Ysolde's heir, bored and dangerous with it",
+      "home": "VS-M01",
+      "work": null,
+      "note": "Slums at the Sounding-Glass; will inherit sightlines he has never once looked along."
+    },
+    {
+      "id": "NPC-VS-005",
+      "name": "the near family (3)",
+      "gender": "mixed",
+      "race": "Noctari",
+      "age": null,
+      "role": "House family",
+      "home": "VS-M01",
+      "count": 3
+    },
+    {
+      "id": "NPC-VS-006",
+      "name": "the Seat household staff (13)",
+      "gender": "mixed",
+      "race": "Noctari & 2 human",
+      "age": null,
+      "role": "cook, chart-porters, lamp-tender, gate-keeper, maids",
+      "home": "VS-M01",
+      "work": "VS-M01",
+      "count": 13,
+      "note": "Includes two humans who may not dine in the rooms they clean."
+    },
+    {
+      "id": "NPC-VS-010",
+      "name": "Sub-Magister Aeliston Vael'Suran",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 800,
+      "role": "cousin of the House; keeper of the running correction of the caldera's own sky",
+      "home": "VS-U01",
+      "work": "VS-U01",
+      "note": "Lives alone with his door open; the Open House lectern is his life's chart. The eccentric the House indulges."
+    },
+    {
+      "id": "NPC-VS-011",
+      "name": "First Surveyor Halvenor Daskei",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 410,
+      "role": "commoner-born scholar who actually runs the survey",
+      "home": "VS-U02",
+      "work": "VS-T01",
+      "note": "The mind behind Ysolde's signature; keeps a private roof platform because the House will not give him a tower key."
+    },
+    {
+      "id": "NPC-VS-012",
+      "name": "Renne Daskei & 4 (family)",
+      "gender": "mixed",
+      "race": "Noctari",
+      "age": null,
+      "role": "Halvenor's household",
+      "home": "VS-U02",
+      "count": 5
+    },
+    {
+      "id": "NPC-VS-013",
+      "name": "Magistra Ivrenne (née Vael'Suran, m. Corvane)",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 520,
+      "role": "void-adjacent scholar; the House's disowned-and-funded research",
+      "home": "VS-U03",
+      "work": "VS-U03",
+      "note": "Household of 5. A living link to House Corvane (H5)."
+    },
+    {
+      "id": "NPC-VS-014",
+      "name": "Astronomer Sarrent",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 690,
+      "role": "widowed scholar losing a sightline suit",
+      "home": "VS-U04",
+      "work": "VS-U04",
+      "note": "Household of 3. Side-quest seed: the encroached sightline."
+    },
+    {
+      "id": "NPC-VS-020",
+      "name": "Master-scribe Ovinn",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 900,
+      "role": "warden of the Scribes' Hall",
+      "home": "VS-L01",
+      "work": "VS-L01"
+    },
+    {
+      "id": "NPC-VS-021",
+      "name": "Talindir",
+      "gender": "male",
+      "race": "Noctari (elven)",
+      "age": 80,
+      "role": "apprentice scribe, the fastest and finest hand in the hall",
+      "home": "VS-L01",
+      "work": "VS-L01",
+      "canon": "CH-006/007, PO-004/005",
+      "note": "The Cold Open's chronicler, 550 years younger. Copies the fixed-star charts; observation is already 'the only thing he does well enough for it to constitute protection.'"
+    },
+    {
+      "id": "NPC-VS-022",
+      "name": "Master optician Delu Marn + household (9)",
+      "gender": "mixed",
+      "race": "Noctari",
+      "age": null,
+      "role": "lens-grinders",
+      "home": "VS-L02",
+      "work": "VS-L02",
+      "count": 9
+    },
+    {
+      "id": "NPC-VS-023",
+      "name": "Lesser Scholars' Row (22)",
+      "gender": "mixed",
+      "race": "Noctari & 1 human household",
+      "age": null,
+      "role": "reducers, correctors, lecture-assistants; sightless",
+      "home": "VS-L03",
+      "count": 22,
+      "note": "Named principal: reducer Kessa Von. A social border made of geometry — no protected view."
+    },
+    {
+      "id": "NPC-VS-030",
+      "name": "Bruin Hale + house (5)",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 300,
+      "role": "innkeeper of the Sounding-Glass",
+      "home": "VS-K01",
+      "work": "VS-K01",
+      "count": 5,
+      "note": "Knows about the cellar hatch to the under-city and says nothing."
+    },
+    {
+      "id": "NPC-VS-031",
+      "name": "The Instrument Market (34)",
+      "gender": "mixed",
+      "race": "Noctari, 3 human, 1 Terran",
+      "age": null,
+      "role": "brass-founders, tube-makers, engravers, a paper merchant",
+      "home": "VS-K02",
+      "work": "VS-K02",
+      "count": 34,
+      "note": "Named: brass-founder Ossa Kellen; the elder engraver Pim."
+    },
+    {
+      "id": "NPC-VS-032",
+      "name": "Serae the shrine-keeper",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 260,
+      "role": "keeper of the Deepening (Umbrion shrine)",
+      "home": "VS-K03",
+      "work": "VS-K03",
+      "note": "Blind; chosen because the dark costs her nothing."
+    },
+    {
+      "id": "NPC-VS-040",
+      "name": "Vara",
+      "gender": "female",
+      "race": "Human",
+      "age": 24,
+      "role": "structural theorist on the Nullstone team; the wedge's best mind, worst room",
+      "home": "VS-K04",
+      "work": "D-ACADEMY",
+      "canon": "CH-010, PO-008",
+      "note": "'Twice as good, half as credited.' A human housed in a canal garret while lesser Noctari keep rim villas; walks the whole city to the island every day."
+    },
+    {
+      "id": "NPC-VS-041",
+      "name": "Lockside dwellings (38)",
+      "gender": "mixed",
+      "race": "Noctari, some human",
+      "age": null,
+      "role": "artisans, boatwrights, lamplighters, canal-workers",
+      "home": "VS-K05",
+      "count": 38,
+      "note": "Named: lamplighter Corrun, who knows a stair down that isn't drawn."
+    },
+    {
+      "id": "NPC-VS-050",
+      "name": "Customs officer Trell + 2 clerks",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 340,
+      "role": "weighs everything that comes up from below",
+      "home": "VS-K05",
+      "work": "VS-S01",
+      "count": 3,
+      "note": "Guards the one official door between the two cities; it only faces up."
+    },
+    {
+      "id": "NPC-VS-060",
+      "name": "Lock-master Dregg",
+      "gender": "male",
+      "race": "Terran",
+      "age": 190,
+      "role": "runs Cael's Lock",
+      "home": "VS-X03",
+      "work": "VS-X01",
+      "note": "The under-clerk beneath him keeps the real ledger — the Other Map's tally."
+    },
+    {
+      "id": "NPC-VS-061",
+      "name": "Conduit-wrights (crew of 6)",
+      "gender": "mixed",
+      "race": "Terran",
+      "age": null,
+      "role": "keep the Song singing up to the star-lamps",
+      "home": "VS-X03",
+      "work": "VS-X02",
+      "count": 6,
+      "note": "The literal hands behind 'the lamps simply burn.'"
+    },
+    {
+      "id": "NPC-VS-062",
+      "name": "Durak Ironthought",
+      "gender": "male",
+      "race": "Terran (geomancer)",
+      "age": 210,
+      "role": "geomancer; Nullstone-team consultant; lodges among the deep-wrights",
+      "home": "VS-X03",
+      "work": "D-ACADEMY",
+      "canon": "CH-011, PO-009",
+      "note": "'You are trying to redirect water; we would build a basin.' He lives with the people who actually build — the whole reason he sees what the elves miss."
+    },
+    {
+      "id": "NPC-VS-063",
+      "name": "The Deep-Wrights (43)",
+      "gender": "mixed",
+      "race": "Terran",
+      "age": null,
+      "role": "cut and hold up the Under-Terraces",
+      "home": "VS-X03",
+      "count": 43,
+      "note": "Proud, glow-stone-warm, prouder than the rim. Keep a shrine to Petrocore in a city of the wrong god."
+    },
+    {
+      "id": "NPC-VS-064",
+      "name": "The Lift-Gang (30) — elder Ghesh",
+      "gender": "mixed",
+      "race": "Orc",
+      "age": null,
+      "role": "walk the lock capstans; carry what the barges bring",
+      "home": "VS-X04",
+      "count": 30,
+      "note": "Where Elorin first SEES the labour (Narrative Outline Ch2). Ghesh counts the shifts. Part of the unnamed 778."
+    },
+    {
+      "id": "NPC-VS-065",
+      "name": "Mother Vesh + 3",
+      "gender": "female",
+      "race": "Orc",
+      "age": 300,
+      "role": "canteen-keeper of the Underspill",
+      "home": "VS-X05",
+      "work": "VS-X05",
+      "count": 4,
+      "note": "Feeds every race in the under-city the same good grey stew; chalks the dead on the wall."
+    },
+    {
+      "id": "NPC-VS-066",
+      "name": "Foreman Adric",
+      "gender": "male",
+      "race": "Human",
+      "age": 40,
+      "role": "the seam between the two cities; answers to the over-city, works the under",
+      "home": "VS-X06",
+      "work": "VS-X06",
+      "note": "Over-city clothes, under-city hands; trusted by neither map. Natural quest-broker."
+    }
+  ]
+}
