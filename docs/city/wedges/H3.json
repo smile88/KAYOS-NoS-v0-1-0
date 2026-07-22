@@ -1,0 +1,1284 @@
+{
+  "house_id": "H3",
+  "head_npc": "NPC-SB-001",
+  "structures": [
+    {
+      "id": "SB-T01",
+      "name": "The Long-Sight Tower",
+      "house": "H3",
+      "district": "D-RIM",
+      "type": "observatory tower (House seat, upper)",
+      "position": {
+        "r": 422,
+        "a_deg": 140,
+        "note": "the Sabreth rim observatory — greybox tower i=3; officially a comet-watch, in practice the finest private information-engine in Starfall"
+      },
+      "footprint": {
+        "shape": "cylinder",
+        "diameter": 22,
+        "rot_deg": 140
+      },
+      "height_m": 55,
+      "storeys": 6,
+      "y_base": 45,
+      "purpose": "Where the House watches for comets — the long-haired stars whose coming everyone fears and no one will be caught fearing. Sabreth reads them true and then sells them dressed: the same faint smear of light becomes a warning, a blessing, or a silence, depending on who is paying. The instrument on the top floor is genuinely excellent; it has to be, because a House that sold false omens would eventually be caught, and Sabreth is never caught.",
+      "rooms": [
+        {
+          "name": "The Watch Floor",
+          "w": 18,
+          "d": 18,
+          "h": 8,
+          "purpose": "the sweep-telescopes and the comet-ledgers; every new smear of light logged before dawn and priced by noon"
+        },
+        {
+          "name": "The Interpretation Room",
+          "w": 10,
+          "d": 8,
+          "h": 4,
+          "purpose": "windowless; where a true observation becomes a saleable omen — the House's real workshop, and the one room clients never see"
+        },
+        {
+          "name": "The Client-Book Vault",
+          "w": 6,
+          "d": 6,
+          "h": 4,
+          "purpose": "silver-locked; who asked what, and what they were told — worth more than any chart in the city"
+        },
+        {
+          "name": "Night-readers' loft",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "the live-in watchers who take the small hours; sworn to discretion, paid to keep it"
+        },
+        {
+          "name": "The Signal Cupola",
+          "w": 6,
+          "d": 6,
+          "h": 6,
+          "purpose": "a shuttered lamp at the very top; a chosen colour shown at a chosen hour tells a waiting client, across the whole caldera, what the stars decided"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-004"
+      ],
+      "resident_count": 8,
+      "notes": "8 live-in night-readers & interpreters. The lit finial is one of the greybox's nine rim domes. The signal cupola is a genuine over-city broadcast the Plate would never think to draw."
+    },
+    {
+      "id": "SB-M01",
+      "name": "The Sabreth Seat",
+      "house": "H3",
+      "district": "D-RIM",
+      "type": "great house (manor)",
+      "position": {
+        "r": 438,
+        "a_deg": 134
+      },
+      "footprint": {
+        "w": 34,
+        "d": 24,
+        "rot_deg": 134,
+        "faces": "inward"
+      },
+      "height_m": 15,
+      "storeys": 3,
+      "y_base": 45,
+      "purpose": "Richer than a comet-House has any honest right to be, and dressed to make you notice and then decide not to ask. Gold leaf the fixed-star Houses would call vulgar; a hall built for arrivals; more doors than a house needs, several of which are for leaving unseen. Every grand thing in it is real, which is precisely how you know the money is not.",
+      "rooms": [
+        {
+          "name": "The Hall of Welcomes",
+          "w": 16,
+          "d": 12,
+          "h": 8,
+          "purpose": "reception staged for effect; a ceiling painted with a comet whose tail points, if you follow it, at the strongroom"
+        },
+        {
+          "name": "The Magistra's chambers",
+          "w": 11,
+          "d": 8,
+          "h": 5,
+          "purpose": "Aubrelle Sabreth's rooms; a private stair down that is not on the House's own plans"
+        },
+        {
+          "name": "The Quiet Parlour",
+          "w": 9,
+          "d": 7,
+          "h": 5,
+          "purpose": "where the largest clients are received away from the Omen Court's theatre — no veils, no incense, just numbers"
+        },
+        {
+          "name": "Family & guest wing",
+          "w": 18,
+          "d": 8,
+          "h": 4,
+          "purpose": "family and the House's ever-present 'guests' — leverage, mostly, kept comfortable"
+        },
+        {
+          "name": "Kitchen, stores, staff & guard-room",
+          "w": 14,
+          "d": 8,
+          "h": 4,
+          "purpose": "a household larger and harder than a scholar's house should need"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-001",
+        "NPC-SB-002",
+        "NPC-SB-003"
+      ],
+      "resident_count": 24,
+      "notes": "Aubrelle + family (6) + 17 staff/guards. Grander than any other House Seat in the city, which everyone notices and no one mentions."
+    },
+    {
+      "id": "SB-U01",
+      "name": "The Long-Sight's Villa",
+      "house": "H3",
+      "district": "D-UPPER",
+      "type": "senior seer's villa",
+      "position": {
+        "r": 370,
+        "a_deg": 152
+      },
+      "footprint": {
+        "w": 15,
+        "d": 12,
+        "rot_deg": 152,
+        "faces": "inward"
+      },
+      "height_m": 10,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "Home of Nemora Sabreth, the Long-Sight — the House's one genuine prodigy, the cousin who can actually read a comet's path a season ahead and finds the whole trade of selling it slightly nauseating. Her sightline is the best in the wedge and she uses it, most nights, to look at nothing anyone will pay for.",
+      "rooms": [
+        {
+          "name": "The True Study",
+          "w": 10,
+          "d": 8,
+          "h": 5,
+          "purpose": "her real work, unsold; a wall of comet-paths drawn for their own sake"
+        },
+        {
+          "name": "Living rooms",
+          "w": 13,
+          "d": 6,
+          "h": 4,
+          "purpose": "Nemora, a companion, an aunt, three staff"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-005"
+      ],
+      "resident_count": 7,
+      "notes": "Nemora Sabreth + household of 7. The talent the whole House lives off, and the one Sabreth who'd leave if she had anywhere colder to go. A ready side-quest: buy, or free, an honest prediction."
+    },
+    {
+      "id": "SB-U02",
+      "name": "The Veilkeeper's Villa",
+      "house": "H3",
+      "district": "D-UPPER",
+      "type": "senior officer's villa",
+      "position": {
+        "r": 366,
+        "a_deg": 144
+      },
+      "footprint": {
+        "w": 14,
+        "d": 12,
+        "rot_deg": 144,
+        "faces": "inward"
+      },
+      "height_m": 10,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "Home of Sarnauld Vray, the Veilkeeper — not a Sabreth by blood but the man who decides which clients are seen, in what order, and at what price, and who remembers every one. He is the House's true engine and knows it; the family tolerate him the way a body tolerates its own heart, resentfully and without a choice.",
+      "rooms": [
+        {
+          "name": "The Appointment Room",
+          "w": 9,
+          "d": 7,
+          "h": 4,
+          "purpose": "a desk, a locked diary, and a second door for clients who must not meet in the corridor"
+        },
+        {
+          "name": "Living rooms",
+          "w": 14,
+          "d": 6,
+          "h": 4,
+          "purpose": "Vray, spouse, two children, four staff — comfortable, watchful, curtained"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-006"
+      ],
+      "resident_count": 8,
+      "notes": "Sarnauld Vray + household of 8. The commoner-born fixer who runs the wedge's real business, mirroring the commoner-First-Surveyor / Strike-Master pattern of the other Houses — but for vice, not science."
+    },
+    {
+      "id": "SB-U03",
+      "name": "The Comfortable House",
+      "house": "H3",
+      "district": "D-UPPER",
+      "type": "senior villa (front residence)",
+      "position": {
+        "r": 372,
+        "a_deg": 126
+      },
+      "footprint": {
+        "w": 13,
+        "d": 11,
+        "rot_deg": 126,
+        "faces": "inward"
+      },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "A villa owned by no one in particular and lived in by 'Lady' Ombrise, a charming retired nobody with a suspicious lack of past and an unlimited line of credit. She hosts the parties where deals are agreed without ever being spoken, and her sightline is worth more as a place to be seen than as a place to see from.",
+      "rooms": [
+        {
+          "name": "The Salon",
+          "w": 10,
+          "d": 8,
+          "h": 5,
+          "purpose": "where the wedge's laundered money puts on its best dress and dances"
+        },
+        {
+          "name": "Rooms",
+          "w": 12,
+          "d": 6,
+          "h": 4,
+          "purpose": "Ombrise + companion + five staff, all better-paid than staff should be"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-007"
+      ],
+      "resident_count": 7,
+      "notes": "'Lady' Ombrise + 7. A front residence — the respectable face the dirty money wears on the terrace. Answers the Serenthil 'Quiet House' tenant, but for a very different quiet."
+    },
+    {
+      "id": "SB-L01",
+      "name": "The Ephemeris-House",
+      "house": "H3",
+      "district": "D-MID",
+      "type": "printworks + guild-hall",
+      "position": {
+        "r": 320,
+        "a_deg": 150
+      },
+      "footprint": {
+        "w": 22,
+        "d": 15,
+        "rot_deg": 150,
+        "faces": "inward"
+      },
+      "height_m": 9,
+      "storeys": 2,
+      "y_base": 23,
+      "purpose": "Where omens are turned into product: almanacs, fortune-sheets, dated warnings and charmed calendars, printed by the ream and sold across the elven lands. The presses run all night and the ink smells of camphor and money. Officially Sabreth reads the future; here they manufacture it, in editions, with margins.",
+      "rooms": [
+        {
+          "name": "The Press Floor",
+          "w": 16,
+          "d": 9,
+          "h": 6,
+          "purpose": "silver-plate presses; the almanac in a dozen grades from gilt-vellum to gutter-pulp, each telling a slightly different fate"
+        },
+        {
+          "name": "The Composing Room",
+          "w": 8,
+          "d": 6,
+          "h": 4,
+          "purpose": "where the interpreters' wordings are set — a craft of exact, deniable vagueness"
+        },
+        {
+          "name": "Printers' dwelling",
+          "w": 14,
+          "d": 6,
+          "h": 4,
+          "purpose": "the master printer's family and the compositors above the presses"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-008"
+      ],
+      "resident_count": 18,
+      "notes": "Master printer Pellon Sabreth + 17 (compositors, pressmen, families). The wedge's most respectable-looking trade and its most quietly cynical."
+    },
+    {
+      "id": "SB-L02",
+      "name": "The Fate-Scriveners' Row",
+      "house": "H3",
+      "district": "D-MID",
+      "type": "terrace of 7 dwellings/workshops",
+      "position": {
+        "r": 305,
+        "a_deg": 133
+      },
+      "footprint": {
+        "w": 46,
+        "d": 8,
+        "rot_deg": 133,
+        "faces": "inward",
+        "form": "row of 7"
+      },
+      "height_m": 7,
+      "storeys": 2,
+      "y_base": 23,
+      "purpose": "Seven joined houses of the small fate-trade: chart-copyists, charm-writers, street-criers who shout the day's printed omen, and the freelance readers too cheap or too honest for the Court. They live over their work, take the House's piecework, and dream of a client of their own.",
+      "rooms": [
+        {
+          "name": "Per-house: workroom + 2 chambers",
+          "w": 6,
+          "d": 7,
+          "h": 4,
+          "purpose": "7 households of the fate-trade's underclass-that-still-counts-as-above"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-009"
+      ],
+      "resident_count": 24,
+      "notes": "7 households, ~24 souls. Named: the crier Vess, whose morning shout the wedge sets its mood by; and old Halden, who reads true for free and is quietly hated for it."
+    },
+    {
+      "id": "SB-L03",
+      "name": "The Perfumers' & Veil-Makers' Hall",
+      "house": "H3",
+      "district": "D-MID",
+      "type": "guild-hall + workshop",
+      "position": {
+        "r": 312,
+        "a_deg": 141
+      },
+      "footprint": {
+        "w": 18,
+        "d": 12,
+        "rot_deg": 141,
+        "faces": "inward"
+      },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 23,
+      "purpose": "The trade of atmosphere: the incense that makes the Omen Court smell of certainty, the veils clients hide behind, the dyed silks and dimmed lamps that turn a guess into a revelation. Sabreth understood before anyone that an omen is mostly staging, and this is where the staging is made.",
+      "rooms": [
+        {
+          "name": "The Still-Room",
+          "w": 8,
+          "d": 6,
+          "h": 4,
+          "purpose": "resins and oils; the House's proprietary incense, whose recipe is a guild secret worth killing for and never has been"
+        },
+        {
+          "name": "The Veil-Loom",
+          "w": 8,
+          "d": 6,
+          "h": 4,
+          "purpose": "the gauze veils, graded by opacity to the exact degree of anonymity a client pays for"
+        },
+        {
+          "name": "Makers' dwelling",
+          "w": 12,
+          "d": 5,
+          "h": 4,
+          "purpose": "the guild families above"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-010"
+      ],
+      "resident_count": 12,
+      "notes": "Guild-mistress Cael Onwe + 11. A trade that exists nowhere else in the city, because no other House needs to be believed."
+    },
+    {
+      "id": "SB-K01",
+      "name": "The Comet's Tail",
+      "house": "H3",
+      "district": "D-CANAL",
+      "type": "inn (Strain-relief haven)",
+      "position": {
+        "r": 270,
+        "a_deg": 151
+      },
+      "footprint": {
+        "w": 16,
+        "d": 12,
+        "rot_deg": 151,
+        "faces": "canal"
+      },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "A canalside inn a cut too glamorous for its street — mirrored, warm, a little disreputable, the kind of place where a scholar can lose an evening and a secret at the same time. This wedge's Strain-relief haven, though the relief here comes with the faint sense of being read. The wine is good and the walls, it's said, are good listeners.",
+      "rooms": [
+        {
+          "name": "The Mirror Room",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "hearth, silvered walls, a long bar; a resident 'reader' does palms for drinks and reports the interesting ones upstairs"
+        },
+        {
+          "name": "Kitchen",
+          "w": 6,
+          "d": 5,
+          "h": 4,
+          "purpose": ""
+        },
+        {
+          "name": "Letting rooms (x5)",
+          "w": 14,
+          "d": 5,
+          "h": 3,
+          "purpose": "five rooms above, two with doors clients use and never the same night"
+        },
+        {
+          "name": "Cellar",
+          "w": 8,
+          "d": 6,
+          "h": 3,
+          "purpose": "a canal-cooled store; a false wall gives onto the Veiled Water-Gate — how a client leaves without ever having arrived"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-011"
+      ],
+      "resident_count": 6,
+      "notes": "Innkeeper Dosca Rell + 5. The cellar's false wall is Sabreth's over/under seam (to SB-X07). Every wedge's inn hides a stair down; this one hides a stair down for the guilty."
+    },
+    {
+      "id": "SB-K02",
+      "name": "The Omen Court",
+      "house": "H3",
+      "district": "D-CANAL",
+      "type": "night-market of fates (novel landmark)",
+      "position": {
+        "r": 260,
+        "a_deg": 145
+      },
+      "footprint": {
+        "w": 26,
+        "d": 22,
+        "rot_deg": 145,
+        "faces": "canal",
+        "form": "colonnaded court, open centre, stalls under the arcade"
+      },
+      "height_m": 9,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "The beautiful open secret of Starfall: a colonnaded court that stands empty by day and, by the ninth bell of night, fills with veiled clients moving between curtained stalls where fate is sold at every price — a copper charm at the edge, a whispered comet-reading at the centre, and, in the shuttered back rooms, things that are not readings at all. Respectable Houses send servants; respectable people come themselves, veiled, and pretend in the morning they did not. Everyone knows it is here. No map has ever admitted it.",
+      "rooms": [
+        {
+          "name": "The Arcade",
+          "w": 22,
+          "d": 6,
+          "h": 5,
+          "purpose": "the public stalls: charms, printed fates, cheap readers — the honest-seeming edge that makes the rest plausible"
+        },
+        {
+          "name": "The Inner Ring",
+          "w": 12,
+          "d": 10,
+          "h": 6,
+          "purpose": "curtained booths for the real trade; incense so thick the faces don't matter, which is the point"
+        },
+        {
+          "name": "The Back Rooms",
+          "w": 8,
+          "d": 6,
+          "h": 4,
+          "purpose": "where a 'reading' becomes a loan, a threat, a name bought or a name buried"
+        },
+        {
+          "name": "The Mistress's box",
+          "w": 5,
+          "d": 5,
+          "h": 4,
+          "purpose": "Dalveen watches the whole floor through a gauze and misses nothing"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-012"
+      ],
+      "resident_count": 12,
+      "notes": "The wedge's 'novel and unique' landmark — a market of fates, live-in staff of 12 (readers, doormen, incense-boys, guards). A superb future set-piece: a level that is a social maze, not a physical one."
+    },
+    {
+      "id": "SB-K03",
+      "name": "The Charm-Market",
+      "house": "H3",
+      "district": "D-CANAL",
+      "type": "market row (superstition trade)",
+      "position": {
+        "r": 255,
+        "a_deg": 137
+      },
+      "footprint": {
+        "w": 30,
+        "d": 10,
+        "rot_deg": 137,
+        "faces": "canal",
+        "form": "row of 10 stalls/shops"
+      },
+      "height_m": 6,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "The daylight trade that feeds on the night one: charm-carvers, incense-sellers, ink-and-amulet shops, a dealer in 'comet-glass' (ordinary glass, sold with a story), a herbalist whose calming draughts the Court buys by the barrel. Live-over-the-shop, and every shopkeeper here owes the House a favour they can't quite name the size of.",
+      "rooms": [
+        {
+          "name": "Per unit: shopfront + workshop + room above",
+          "w": 3,
+          "d": 8,
+          "h": 4,
+          "purpose": "10 units, most with a family above, all leasing from Sabreth"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-013"
+      ],
+      "resident_count": 28,
+      "notes": "10 shops, ~28 souls. Named: the charm-carver Sesk, honest and poor; the comet-glass dealer Two-Fingers Voll, dishonest and comfortable."
+    },
+    {
+      "id": "SB-K04",
+      "name": "Canal Dwellings — Lantern Walk",
+      "house": "H3",
+      "district": "D-CANAL",
+      "type": "tenement block, 10 dwellings",
+      "position": {
+        "r": 245,
+        "a_deg": 129
+      },
+      "footprint": {
+        "w": 26,
+        "d": 14,
+        "rot_deg": 129,
+        "faces": "canal",
+        "form": "block, 10 dwellings"
+      },
+      "height_m": 11,
+      "storeys": 3,
+      "y_base": 12,
+      "purpose": "The wedge's densest housing, along the canal walk the Court's clients drift down by night — home to the readers, criers, doormen, incense-boys, boat-hands and market families who make the trade run and never rise in it. Warm, crowded, sharp-eyed, and full of people who have learned that the surest coin in Starfall is a secret.",
+      "rooms": [
+        {
+          "name": "Per dwelling: 2-3 rooms",
+          "w": 6,
+          "d": 6,
+          "h": 3,
+          "purpose": "10 dwellings, families of 3-6"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-014"
+      ],
+      "resident_count": 52,
+      "notes": "~52 souls. Named: the boat-girl Nella, who ferries veiled clients and could name half the city if she ever chose to."
+    },
+    {
+      "id": "SB-K05",
+      "name": "The Shrine of the Turning",
+      "house": "H3",
+      "district": "D-CANAL",
+      "type": "shrine (Umbrion, fate-cast)",
+      "position": {
+        "r": 250,
+        "a_deg": 156
+      },
+      "footprint": {
+        "w": 11,
+        "d": 11,
+        "rot_deg": 156,
+        "faces": "inward"
+      },
+      "height_m": 9,
+      "storeys": 1,
+      "y_base": 12,
+      "purpose": "A shrine to Umbrion turned toward fate rather than dream: a dark room with a slow silver wheel that the keeper turns once a night, so that the future 'moves' whether or not anyone reads it. The genuinely devout come here to be reminded that the comet means nothing and comes anyway — a quiet rebuke to the whole wedge above it, kept by the House as a kind of alibi.",
+      "rooms": [
+        {
+          "name": "The Wheel-Cell",
+          "w": 8,
+          "d": 8,
+          "h": 7,
+          "purpose": "the silver wheel; no omens sold, no coin taken — the one honest room in the district"
+        },
+        {
+          "name": "Keeper's cell",
+          "w": 3,
+          "d": 3,
+          "h": 3,
+          "purpose": "the shrine-keeper's room"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-015"
+      ],
+      "resident_count": 2,
+      "notes": "Keeper Anselm + a novice. The House funds it precisely because it undercuts the House — proof, to any suspicious Conclave visitor, of Sabreth's piety."
+    },
+    {
+      "id": "SB-S01",
+      "name": "The Sabreth Customs & Processional Foot",
+      "house": "H3",
+      "district": "D-SHORE",
+      "type": "civic threshold",
+      "position": {
+        "r": 228,
+        "a_deg": 154
+      },
+      "footprint": {
+        "w": 14,
+        "d": 10,
+        "rot_deg": 154,
+        "faces": "processional"
+      },
+      "height_m": 6,
+      "storeys": 1,
+      "y_base": 0,
+      "purpose": "The wedge's official customs post on the shore — the one the House makes sure is scrupulous, well-lit and slow, so that anyone watching the front door concludes Sabreth has nothing to hide. Everything worth hiding comes up through the Veiled Water-Gate below; the customs officer here is honest precisely so the House can afford to be watched.",
+      "rooms": [
+        {
+          "name": "The Weighing Hall",
+          "w": 10,
+          "d": 7,
+          "h": 4,
+          "purpose": "scales, tally-desks, and a strongroom that has never held anything interesting"
+        },
+        {
+          "name": "Officers' room",
+          "w": 5,
+          "d": 4,
+          "h": 4,
+          "purpose": "the customs officer and two clerks"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-016"
+      ],
+      "resident_count": 0,
+      "notes": "Customs officer Bren + 2 clerks (day post; counted at their canal homes). Deliberately, performatively clean."
+    },
+    {
+      "id": "SB-X01",
+      "name": "The Slack-Water Lock",
+      "house": "H3",
+      "district": "D-UNDER",
+      "type": "barge lock (service)",
+      "position": {
+        "r": 240,
+        "a_deg": 140,
+        "depth_note": "beneath the canal quarter"
+      },
+      "footprint": {
+        "w": 24,
+        "d": 12,
+        "rot_deg": 140
+      },
+      "height_m": 14,
+      "y_base": -14,
+      "purpose": "The wedge's public barge-lock, raising food, fuel and stone from the world below like any other — except that its lock-master keeps two logs, and the difference between them is the House's real import. What arrives on the honest log keeps the district fed; what arrives on the other keeps it rich.",
+      "rooms": [
+        {
+          "name": "The Lock Chamber",
+          "w": 20,
+          "d": 8,
+          "h": 14,
+          "purpose": "the flooding basin and counter-weighted gates; worked by the lift-gangs"
+        },
+        {
+          "name": "The Two-Log Office",
+          "w": 5,
+          "d": 4,
+          "h": 3,
+          "purpose": "the lock-master's niche; the honest ledger in ink, the other in a code only Vray can read"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-020"
+      ],
+      "resident_count": 0,
+      "notes": "Worked, not slept-in (crew home in SB-X04). Lock-master Ferrun Oskt keeps the double books — the point where the clean city and the dirty money change places."
+    },
+    {
+      "id": "SB-X02",
+      "name": "The Conduit Gallery",
+      "house": "H3",
+      "district": "D-UNDER",
+      "type": "Song-conduit service tunnel",
+      "position": {
+        "r": 260,
+        "a_deg": 146,
+        "depth_note": "runs radially under the terraces"
+      },
+      "footprint": {
+        "length": 68,
+        "width": 5,
+        "rot_deg": 146
+      },
+      "height_m": 4,
+      "y_base": -10,
+      "purpose": "The tuned crystal conduits that carry the Song up to this wedge's star-lamps, tended in the dark by crews the glamour above never sees — the same unglamorous truth under every House. Here the gallery is also a message-run: a tapped code along the conduit-crystal lets the Court signal the water-gate without a soul crossing the terraces.",
+      "rooms": [
+        {
+          "name": "The Long Gallery",
+          "w": 5,
+          "d": 68,
+          "h": 4,
+          "purpose": "the conduit run; access ladders up to each terrace's lamp-stems"
+        },
+        {
+          "name": "Tuning niches (x3)",
+          "w": 3,
+          "d": 3,
+          "h": 3,
+          "purpose": "where conduit-wrights kneel to true the crystal — and, quietly, to tap the House's signals"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-017"
+      ],
+      "resident_count": 6,
+      "notes": "Conduit-wrights (6, mostly Terran; home in SB-X04). The machinery behind 'the lamps simply burn,' doubling as the House's private telegraph."
+    },
+    {
+      "id": "SB-X03",
+      "name": "The Counting-Vault",
+      "house": "H3",
+      "district": "D-UNDER",
+      "type": "laundering hall & strongroom (novel)",
+      "position": {
+        "r": 246,
+        "a_deg": 134,
+        "depth_note": "deep beneath the Seat, reached by the Magistra's private stair"
+      },
+      "footprint": {
+        "w": 22,
+        "d": 16,
+        "rot_deg": 134,
+        "form": "vaulted counting-hall + cells"
+      },
+      "height_m": 7,
+      "y_base": -20,
+      "purpose": "Where the wedge's suspect wealth is made to look born-clean: coin weighed, recut, re-minted as Court fees, almanac sales and villa rents; debts bought and sold; the true client-books cross-checked against the false. A quiet, orderly, lamplit room of clerks and hard men, and the actual reason House Sabreth exists. The Plate draws a comet-House of scholars; this is the House.",
+      "rooms": [
+        {
+          "name": "The Counting Floor",
+          "w": 14,
+          "d": 8,
+          "h": 5,
+          "purpose": "reckoners at long tables turning dirty coin into clean ledger-lines"
+        },
+        {
+          "name": "The Strongroom",
+          "w": 6,
+          "d": 5,
+          "h": 4,
+          "purpose": "warded; the House's true reserve and its true client-book — the one worth more than the tower"
+        },
+        {
+          "name": "Reckoners' & guards' cells",
+          "w": 10,
+          "d": 5,
+          "h": 3,
+          "purpose": "the live-in staff, sworn and paid never to climb the stair by day"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-018"
+      ],
+      "resident_count": 16,
+      "notes": "The Reckoner Old Kesk + 15 (counters & guards), live-in for secrecy. The wedge's second 'novel' space — a laundering vault under a scholar-House, the Under-Terraces' darkest civic function."
+    },
+    {
+      "id": "SB-X04",
+      "name": "The Porters' Warren",
+      "house": "H3",
+      "district": "D-UNDER",
+      "type": "bunk-hall (Terran haulers)",
+      "position": {
+        "r": 250,
+        "a_deg": 138,
+        "depth_note": "cut into the shore-mass by the lock"
+      },
+      "footprint": {
+        "w": 28,
+        "d": 18,
+        "rot_deg": 138,
+        "form": "carved warren of bunk-niches"
+      },
+      "height_m": 6,
+      "y_base": -18,
+      "purpose": "Home of the Terran haulers and conduit-crews who move what the Slack-Water Lock brings up and keep the wedge's dark plumbing running. Carved, glow-stone-warm, and pointedly incurious: the Warren's one rule is that you carry the crate and never ask what sings inside it. They are paid a little better than deep-folk elsewhere, which is how the House buys their lack of questions.",
+      "rooms": [
+        {
+          "name": "The Carved Hall",
+          "w": 16,
+          "d": 9,
+          "h": 6,
+          "purpose": "a communal hall; a Petrocore shrine, a long stone table, and a house rule chalked on the wall: ASK NOTHING"
+        },
+        {
+          "name": "Sleeping galleries",
+          "w": 24,
+          "d": 6,
+          "h": 3,
+          "purpose": "bunk-niches for ~40 haulers and conduit-wrights"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-019"
+      ],
+      "resident_count": 40,
+      "notes": "~40 Terran haulers & conduit-crew. Better-paid, better-fed, more silent than most under-halls — bought discretion has a texture of its own."
+    },
+    {
+      "id": "SB-X05",
+      "name": "The Blindside Canteen",
+      "house": "H3",
+      "district": "D-UNDER",
+      "type": "canteen / commons",
+      "position": {
+        "r": 248,
+        "a_deg": 143,
+        "depth_note": "at the crossing of the galleries"
+      },
+      "footprint": {
+        "w": 16,
+        "d": 12,
+        "rot_deg": 143
+      },
+      "height_m": 4,
+      "y_base": -12,
+      "purpose": "The under-city's warm room for the wedge, so named because the one thing you learn to do here is not see. Haulers, reckoners' guards, water-gate crews and lock-hands eat the same grey stew and trade the same careful nothing; the canteen-keeper feeds everyone, keeps everyone's secrets, and is the most trusted person in the district precisely because she sells nothing.",
+      "rooms": [
+        {
+          "name": "The Long Room",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "trestles, a great range, and no chalked names on the wall — here even the dead are discreet"
+        },
+        {
+          "name": "Kitchen & store",
+          "w": 6,
+          "d": 5,
+          "h": 3,
+          "purpose": "run by the keeper"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-021"
+      ],
+      "resident_count": 4,
+      "notes": "Canteen-keeper Mother Ollen + 3. Sister-room to the other wedges' under-canteens; their runners meet, and Sabreth's runner is the one who listens more than she talks."
+    },
+    {
+      "id": "SB-X06",
+      "name": "The Foreman's Post",
+      "house": "H3",
+      "district": "D-UNDER",
+      "type": "overseer post",
+      "position": {
+        "r": 242,
+        "a_deg": 151,
+        "depth_note": "at the foot of the customs stair"
+      },
+      "footprint": {
+        "w": 8,
+        "d": 6,
+        "rot_deg": 151
+      },
+      "height_m": 3,
+      "y_base": -12,
+      "purpose": "The seam-office where Sabreth's under-city answers to its over-city — but the foreman here reports to the Veilkeeper, not the customs hall, and the two counts he keeps are not honest-versus-official but public-versus-real. He is the man who knows exactly how much the House is lying, which is why he never, ever writes it down twice.",
+      "rooms": [
+        {
+          "name": "The Office",
+          "w": 5,
+          "d": 4,
+          "h": 3,
+          "purpose": "a ledger-desk, a burn-bowl, and a signal-cord to the Counting-Vault"
+        },
+        {
+          "name": "Bunk",
+          "w": 3,
+          "d": 3,
+          "h": 3,
+          "purpose": "the foreman sleeps at the seam"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-022"
+      ],
+      "resident_count": 1,
+      "notes": "Foreman Adley — the seam-keeper who reports up the wrong stair. Twin-but-inverted to the other wedges' foremen: he protects a secret rather than reconciling a wrong."
+    },
+    {
+      "id": "SB-X07",
+      "name": "The Veiled Water-Gate",
+      "house": "H3",
+      "district": "D-UNDER",
+      "type": "private client dock (novel)",
+      "position": {
+        "r": 238,
+        "a_deg": 150,
+        "depth_note": "a hidden dock where a canal-branch meets the lock-water, under the Comet's Tail"
+      },
+      "footprint": {
+        "w": 14,
+        "d": 12,
+        "rot_deg": 150,
+        "form": "covered dock + waiting cells"
+      },
+      "height_m": 6,
+      "y_base": -16,
+      "purpose": "How a client of the Omen Court arrives and leaves without ever having crossed a terrace or passed a customs desk: a low, lamplit, covered dock where a curtained boat slips in from the lock-water, and a veiled passenger climbs a stair that comes out behind a false wall in the Comet's Tail. The single most useful architecture in the wedge, and the one the House would burn the district to keep off any map.",
+      "rooms": [
+        {
+          "name": "The Covered Dock",
+          "w": 10,
+          "d": 6,
+          "h": 5,
+          "purpose": "one boat-length of black water under a stone roof; no names spoken, no lamps bright"
+        },
+        {
+          "name": "The Waiting Cells",
+          "w": 8,
+          "d": 4,
+          "h": 3,
+          "purpose": "curtained alcoves where clients wait unseen by one another; live-in gate-keepers who see everyone"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-023"
+      ],
+      "resident_count": 6,
+      "notes": "6 live-in gate-keepers/boatmen. The wedge's third novel space and the literal machinery of the 'beautiful open secret' — everyone knows the Court is here; no one can prove they came."
+    },
+    {
+      "id": "SB-X08",
+      "name": "The Nightside Bunks",
+      "house": "H3",
+      "district": "D-UNDER",
+      "type": "bunk-hall (human & orc labour)",
+      "position": {
+        "r": 252,
+        "a_deg": 131,
+        "depth_note": "beside the warren"
+      },
+      "footprint": {
+        "w": 22,
+        "d": 15,
+        "rot_deg": 131,
+        "form": "riveted bunk-shacks under stone"
+      },
+      "height_m": 4,
+      "y_base": -18,
+      "purpose": "The bunk-hall of the human and orc labour who walk the lock capstans, pole the client-boats, and do the House's heavier and less mentionable errands. Kept apart from the Terran warren by old habit; kept quiet by the same well-paid discretion. The muscle of a House that pretends its trade is only paper and starlight.",
+      "rooms": [
+        {
+          "name": "Bunk rows",
+          "w": 18,
+          "d": 9,
+          "h": 4,
+          "purpose": "riveted bunks for ~30; no window, and a foreman's whistle instead of a bell"
+        },
+        {
+          "name": "The Cut-Room",
+          "w": 5,
+          "d": 4,
+          "h": 3,
+          "purpose": "where the boat-gangs are told their runs; a quiet, businesslike menace"
+        }
+      ],
+      "occupants": [
+        "NPC-SB-024"
+      ],
+      "resident_count": 30,
+      "notes": "~30 human & orc labourers — the House's hands. Part of the unnamed 778; the ones who move the secrets and are the least allowed to keep their own."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "NPC-SB-001",
+      "name": "Magistra Aubrelle Sabreth",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 870,
+      "role": "Head of House Sabreth; Reader of the Long-Haired Stars",
+      "home": "SB-M01",
+      "work": "SB-T01",
+      "note": "Gracious, exact, and entirely without illusions about what her House sells. Reads a comet true and prices the lie precisely. The most powerful person in Starfall no respectable person will admit to knowing."
+    },
+    {
+      "id": "NPC-SB-002",
+      "name": "the Sabreth family (6)",
+      "gender": "mixed",
+      "race": "Noctari",
+      "age": null,
+      "role": "House family + resident 'guests' (leverage)",
+      "home": "SB-M01",
+      "count": 6,
+      "note": "Some of the 'family' are hostages of a soft and comfortable kind."
+    },
+    {
+      "id": "NPC-SB-003",
+      "name": "the Seat household & guard (17)",
+      "gender": "mixed",
+      "race": "Noctari, 3 human, 2 orc",
+      "age": null,
+      "role": "cook, dressers, doormen, guards, a discreet physician",
+      "home": "SB-M01",
+      "work": "SB-M01",
+      "count": 17,
+      "note": "Larger and harder than a scholar's household; the orc guards are the only orcs in the city who sleep above ground."
+    },
+    {
+      "id": "NPC-SB-004",
+      "name": "the Night-Readers & interpreters (8)",
+      "gender": "mixed",
+      "race": "Noctari",
+      "age": null,
+      "role": "live-in comet-watchers who log the sky and price the omen",
+      "home": "SB-T01",
+      "work": "SB-T01",
+      "count": 8,
+      "note": "Sworn to discretion; the good ones are half-astronomer, half-actor."
+    },
+    {
+      "id": "NPC-SB-005",
+      "name": "Nemora Sabreth, the Long-Sight",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 240,
+      "role": "the House's true prodigy; reads comet-paths a season ahead",
+      "home": "SB-U01",
+      "work": "SB-U01",
+      "count": 7,
+      "note": "Household of 7. The genuine talent the whole trade rests on, sickened by the selling of it. Side-quest anchor: an honest prediction, freely given, at a cost to her."
+    },
+    {
+      "id": "NPC-SB-006",
+      "name": "Sarnauld Vray, the Veilkeeper",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 390,
+      "role": "commoner-born fixer; decides who is seen, when, and for what",
+      "home": "SB-U02",
+      "work": "SB-K02",
+      "count": 8,
+      "note": "Household of 8. The House's true engine; remembers every client and every price. Mirrors the other Houses' commoner-officers — but for vice."
+    },
+    {
+      "id": "NPC-SB-007",
+      "name": "'Lady' Ombrise + household (7)",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 300,
+      "role": "charming front-resident; hostess of the deals no one speaks aloud",
+      "home": "SB-U03",
+      "work": "SB-U03",
+      "count": 7,
+      "note": "A past that does not survive inspection and credit that never runs out. The laundered money's public face."
+    },
+    {
+      "id": "NPC-SB-008",
+      "name": "Master printer Pellon Sabreth + house (18)",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 410,
+      "role": "runs the Ephemeris-House; manufactures fate by the edition",
+      "home": "SB-L01",
+      "work": "SB-L01",
+      "count": 18,
+      "note": "Compositors, pressmen, families. The wedge's most respectable trade and its most cynical."
+    },
+    {
+      "id": "NPC-SB-009",
+      "name": "The Fate-Scriveners' Row (24) — the crier Vess, old Halden",
+      "gender": "mixed",
+      "race": "Noctari, some human",
+      "age": null,
+      "role": "chart-copyists, charm-writers, criers, cheap freelance readers",
+      "home": "SB-L02",
+      "count": 24,
+      "note": "The fate-trade's small fry. Halden reads true for free and is quietly hated for it."
+    },
+    {
+      "id": "NPC-SB-010",
+      "name": "Guild-mistress Cael Onwe + hall (12)",
+      "gender": "nonbinary",
+      "race": "Noctari",
+      "age": 500,
+      "role": "perfumers & veil-makers; makers of the Court's atmosphere",
+      "home": "SB-L03",
+      "work": "SB-L03",
+      "count": 12,
+      "note": "Keeps the incense recipe — a guild secret worth killing for that never has been, because the House needs it more than any one life."
+    },
+    {
+      "id": "NPC-SB-011",
+      "name": "Innkeeper Dosca Rell + house (6)",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 270,
+      "role": "keeps the Comet's Tail",
+      "home": "SB-K01",
+      "work": "SB-K01",
+      "count": 6,
+      "note": "Knows about the false cellar wall and rents the two client-doors upstairs; the walls, she says, are good listeners."
+    },
+    {
+      "id": "NPC-SB-012",
+      "name": "Dalveen, Mistress of the Omen Court",
+      "gender": "nonbinary",
+      "race": "Noctari",
+      "age": 350,
+      "role": "runs the night-market of fates; sees the whole floor, misses nothing",
+      "home": "SB-K02",
+      "work": "SB-K02",
+      "count": 12,
+      "note": "Dalveen + 11 live-in Court staff (readers, doormen, incense-boys, guards). The ringmaster of the beautiful open secret."
+    },
+    {
+      "id": "NPC-SB-013",
+      "name": "The Charm-Market (28) — Sesk, Two-Fingers Voll",
+      "gender": "mixed",
+      "race": "Noctari, 3 human",
+      "age": null,
+      "role": "charm-carvers, incense-sellers, comet-glass dealers, a herbalist",
+      "home": "SB-K03",
+      "work": "SB-K03",
+      "count": 28,
+      "note": "All leasing from the House, all owing a favour of unnamed size."
+    },
+    {
+      "id": "NPC-SB-014",
+      "name": "Lantern Walk dwellings (52) — the boat-girl Nella",
+      "gender": "mixed",
+      "race": "Noctari, some human",
+      "age": null,
+      "role": "readers, criers, doormen, incense-boys, boat-hands, market families",
+      "home": "SB-K04",
+      "count": 52,
+      "note": "Nella ferries veiled clients and could name half the city; she won't, which is the only reason she's alive to ferry them."
+    },
+    {
+      "id": "NPC-SB-015",
+      "name": "Shrine-keeper Anselm + novice",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 620,
+      "role": "keeps the Shrine of the Turning; sells nothing",
+      "home": "SB-K05",
+      "work": "SB-K05",
+      "count": 2,
+      "note": "Preaches that the comet means nothing and comes anyway — the one honest voice in the wedge, funded by the House as its alibi."
+    },
+    {
+      "id": "NPC-SB-016",
+      "name": "Customs officer Bren + 2 clerks",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 320,
+      "role": "runs the performatively-clean Sabreth customs post",
+      "home": "SB-K04",
+      "work": "SB-S01",
+      "count": 3,
+      "note": "Genuinely honest, and kept honest on purpose — the House's proof of nothing to hide, while everything comes up the water-gate."
+    },
+    {
+      "id": "NPC-SB-017",
+      "name": "The Conduit-wrights (6)",
+      "gender": "mixed",
+      "race": "Terran",
+      "age": null,
+      "role": "keep the Song singing to the star-lamps; tap the House's signal-code",
+      "home": "SB-X04",
+      "work": "SB-X02",
+      "count": 6,
+      "note": "The hands behind 'the lamps simply burn,' doubling as Sabreth's private telegraph."
+    },
+    {
+      "id": "NPC-SB-018",
+      "name": "The Reckoner, Old Kesk + counters & guards (16)",
+      "gender": "male",
+      "race": "Terran",
+      "age": 260,
+      "role": "master of the Counting-Vault; turns dirty coin into clean ledger-lines",
+      "home": "SB-X03",
+      "work": "SB-X03",
+      "count": 16,
+      "note": "Live-in for secrecy. Keeps the House's true reserve and truer client-book. A Terran trusted with the elves' filthiest arithmetic — and never allowed up the stair by day."
+    },
+    {
+      "id": "NPC-SB-019",
+      "name": "The Porters' Warren (40) — hall-elder Brud",
+      "gender": "mixed",
+      "race": "Terran",
+      "age": null,
+      "role": "haulers & conduit-crew; carry what the lock brings and ask nothing",
+      "home": "SB-X04",
+      "count": 40,
+      "note": "Better-paid than deep-folk elsewhere; the House buys their silence with comfort. Their one rule, chalked on the hall wall: ASK NOTHING."
+    },
+    {
+      "id": "NPC-SB-020",
+      "name": "Lock-master Ferrun Oskt",
+      "gender": "male",
+      "race": "Terran",
+      "age": 200,
+      "role": "runs the Slack-Water Lock; keeps the two logs",
+      "home": "SB-X04",
+      "work": "SB-X01",
+      "note": "The point where the clean city and the dirty money change places. The honest log in ink; the other in Vray's code."
+    },
+    {
+      "id": "NPC-SB-021",
+      "name": "Canteen-keeper Mother Ollen + 3",
+      "gender": "female",
+      "race": "Orc",
+      "age": 340,
+      "role": "keeps the Blindside Canteen",
+      "home": "SB-X05",
+      "work": "SB-X05",
+      "count": 4,
+      "note": "Feeds everyone, keeps everyone's secrets, sells nothing — the most trusted person in the district. Her runner listens more than she talks."
+    },
+    {
+      "id": "NPC-SB-022",
+      "name": "Foreman Adley",
+      "gender": "male",
+      "race": "Human",
+      "age": 44,
+      "role": "seam-keeper who reports up the wrong stair, to the Veilkeeper",
+      "home": "SB-X06",
+      "work": "SB-X06",
+      "note": "Knows exactly how much the House is lying, which is why he never writes it down twice. Twin-but-inverted to the other wedges' honest foremen."
+    },
+    {
+      "id": "NPC-SB-023",
+      "name": "The Veiled Water-Gate crew (6)",
+      "gender": "mixed",
+      "race": "human & Terran",
+      "age": null,
+      "role": "boatmen & gate-keepers who bring clients in unseen",
+      "home": "SB-X07",
+      "work": "SB-X07",
+      "count": 6,
+      "note": "See every veiled face in Starfall and will die before matching one to a name — because the House has made very sure they understand the alternative."
+    },
+    {
+      "id": "NPC-SB-024",
+      "name": "The Nightside Bunks (30) — boat-gang leader Ghurr",
+      "gender": "mixed",
+      "race": "human & orc",
+      "age": null,
+      "role": "capstan-labour, client-boat polers, the House's heavier errands",
+      "home": "SB-X08",
+      "count": 30,
+      "note": "The House's hands; move the secrets, least allowed to keep their own. Part of the unnamed 778, and the ones the Rebellion will one day remember."
+    }
+  ]
+}

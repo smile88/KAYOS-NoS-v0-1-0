@@ -1,0 +1,1369 @@
+{
+  "house_id": "H5",
+  "head_npc": "NPC-CV-001",
+  "structures": [
+    {
+      "id": "CV-T01",
+      "name": "The Tower of the Empty Ring",
+      "house": "H5",
+      "district": "D-RIM",
+      "type": "observatory tower (House seat, upper)",
+      "position": {
+        "r": 422,
+        "a_deg": 220,
+        "note": "the Corvane rim observatory — greybox tower i=5; aimed not at stars but at the dark between them"
+      },
+      "footprint": {
+        "shape": "cylinder",
+        "diameter": 22,
+        "rot_deg": 220
+      },
+      "height_m": 54,
+      "storeys": 6,
+      "y_base": 45,
+      "purpose": "Alone among the nine, this tower measures nothing. Its great instrument is trained on the deep field — the black gaps where no light is — and its records are ledgers of absence, columns of nothing observed, growing more precise each year. The other Houses light finials to be seen; Corvane's dome is the dimmest on the rim, on purpose, because you cannot read the dark by lamplight.",
+      "rooms": [
+        {
+          "name": "The Hall of the Empty Ring",
+          "w": 20,
+          "d": 20,
+          "h": 8,
+          "purpose": "ground instrument hall; a great ring-armature that frames a chosen patch of void and holds it steady for a lifetime of watching"
+        },
+        {
+          "name": "The Ledger of Absence",
+          "w": 10,
+          "d": 8,
+          "h": 4,
+          "purpose": "a vault of black-bound books recording what was not there; the House's true wealth and its unease"
+        },
+        {
+          "name": "Head's cell",
+          "w": 8,
+          "d": 7,
+          "h": 4,
+          "purpose": "Magister Vaelith's study — one chair, one shuttered slit, no lamp"
+        },
+        {
+          "name": "The Counting Dark",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "where junior scholars reduce the night's non-observations; they work by touch and memory more than sight"
+        },
+        {
+          "name": "The Aperture Chamber",
+          "w": 12,
+          "d": 12,
+          "h": 12,
+          "purpose": "top floor; the roof opens onto a single fixed patch of deep field; the reading is a long, cold act of not-looking-away"
+        },
+        {
+          "name": "Servants' stair & the unlit lamp",
+          "w": 4,
+          "d": 4,
+          "h": 28,
+          "purpose": "the spiral stair; a finial that is kept, and cleaned, and never lit"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-001",
+        "NPC-CV-002",
+        "NPC-CV-003"
+      ],
+      "resident_count": 6,
+      "notes": "Head works here, sleeps at the Seat. Senior observer + 5 live-in computers. The tower's dark dome is one of the nine on the greybox rim — the one visitors always mistake, at first, for the dead House."
+    },
+    {
+      "id": "CV-M01",
+      "name": "The Corvane Seat",
+      "house": "H5",
+      "district": "D-RIM",
+      "type": "great house (manor)",
+      "position": {
+        "r": 438,
+        "a_deg": 227
+      },
+      "footprint": {
+        "w": 32,
+        "d": 22,
+        "rot_deg": 227,
+        "faces": "inward (toward the Mirror)"
+      },
+      "height_m": 13,
+      "storeys": 3,
+      "y_base": 45,
+      "purpose": "An austere seat with fewer windows than any House on the rim — Corvane does not decorate itself with the view, it studies what the view leaves out. The halls are kept deliberately underlit; guests learn to move by the sound of their own feet. It is a proud, hushed, faintly dreaded house, and the other Houses accept its invitations rarely and leave early.",
+      "rooms": [
+        {
+          "name": "The Unlit Hall",
+          "w": 13,
+          "d": 10,
+          "h": 6,
+          "purpose": "reception in near-dark; the walls hung with framed patches of empty sky, each labelled with a date and a nothing"
+        },
+        {
+          "name": "Vaelith's chambers",
+          "w": 9,
+          "d": 8,
+          "h": 4,
+          "purpose": "the head's rooms; a window bricked up by a former head and never reopened"
+        },
+        {
+          "name": "Family wing",
+          "w": 15,
+          "d": 7,
+          "h": 4,
+          "purpose": "three chambers for the near family, who are few — the House does not breed freely"
+        },
+        {
+          "name": "The Listening Court",
+          "w": 12,
+          "d": 12,
+          "h": 12,
+          "purpose": "an open court roofed only by the deep field; the House sits here in silence at new-moon, together, saying nothing"
+        },
+        {
+          "name": "Kitchen, stores, staff",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "the household below and in the attics"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-001",
+        "NPC-CV-004",
+        "NPC-CV-005"
+      ],
+      "resident_count": 16,
+      "notes": "Magister Vaelith + near family (3) + 12 staff. The staff are paid above the rim's rate — Corvane servants are hard to keep."
+    },
+    {
+      "id": "CV-U01",
+      "name": "Villa of the Long Look",
+      "house": "H5",
+      "district": "D-UPPER",
+      "type": "senior scholar's villa",
+      "position": {
+        "r": 370,
+        "a_deg": 206
+      },
+      "footprint": {
+        "w": 14,
+        "d": 12,
+        "rot_deg": 206,
+        "faces": "inward"
+      },
+      "height_m": 10,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "Home of the scholar who has watched a single hand's-breadth of empty sky for two hundred and forty years, waiting for it to change. It has not. Her sightline is protected not toward the Mirror, like her neighbours', but past it and up, at nothing — a legal oddity the House court fought for decades to defend.",
+      "rooms": [
+        {
+          "name": "The Watching Room",
+          "w": 10,
+          "d": 8,
+          "h": 5,
+          "purpose": "a chair bolted to the floor at the one correct angle; a chart of a patch of dark, unchanged, re-inked yearly for the discipline of it"
+        },
+        {
+          "name": "Living rooms",
+          "w": 13,
+          "d": 6,
+          "h": 4,
+          "purpose": "the scholar, a companion, two grown students"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-010",
+        "NPC-CV-011"
+      ],
+      "resident_count": 5,
+      "notes": "Magistra Ysoreth of the Long Look + household of 4. A study in devotion to the unrewarding — the House's whole ethos in one villa."
+    },
+    {
+      "id": "CV-U02",
+      "name": "The Warded Study",
+      "house": "H5",
+      "district": "D-UPPER",
+      "type": "senior scholar's villa (restricted)",
+      "position": {
+        "r": 366,
+        "a_deg": 214
+      },
+      "footprint": {
+        "w": 13,
+        "d": 11,
+        "rot_deg": 214,
+        "faces": "inward"
+      },
+      "height_m": 9,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "The villa where the House keeps the theory it does not copy into the public halls — the dangerous mathematics of drawing the void toward you rather than merely watching it. Its door carries a real ward, and the Academy's own void-scholars visit it by night and sign no register. What is worked out here is a generation ahead of anything the Conclave has approved, and a generation is exactly long enough to be too late.",
+      "rooms": [
+        {
+          "name": "The Sealed Room",
+          "w": 8,
+          "d": 7,
+          "h": 5,
+          "purpose": "warded; the restricted theory in black ledgers chained to the shelf"
+        },
+        {
+          "name": "Warden's rooms",
+          "w": 12,
+          "d": 6,
+          "h": 4,
+          "purpose": "the keeper of the study and a single trusted student"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-012"
+      ],
+      "resident_count": 4,
+      "notes": "Magister Oren Corvane, keeper of the restricted theory, + household of 3. This is, quietly, where the intellectual seed of the Nullstone lives — the room the Academy borrows from without admitting it."
+    },
+    {
+      "id": "CV-U03",
+      "name": "The Vacant Villa",
+      "house": "H5",
+      "district": "D-UPPER",
+      "type": "senior villa (kept empty)",
+      "position": {
+        "r": 372,
+        "a_deg": 234
+      },
+      "footprint": {
+        "w": 13,
+        "d": 11,
+        "rot_deg": 234,
+        "faces": "inward"
+      },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "The villa of a scholar who, thirty years ago, walked out to his watching-chair one clear night and was simply not there in the morning — no body, no note, the chart still weighted open. The House pays a caretaker to keep it exactly as he left it, and pays her not to speak of why.",
+      "rooms": [
+        {
+          "name": "The Room As Left",
+          "w": 9,
+          "d": 7,
+          "h": 4,
+          "purpose": "dusted daily, the chair still angled at the dark, the chart still open to the same page"
+        },
+        {
+          "name": "Caretaker's room",
+          "w": 5,
+          "d": 4,
+          "h": 4,
+          "purpose": "the one warm corner of a cold house"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-013"
+      ],
+      "resident_count": 1,
+      "notes": "Caretaker Nel, alone. A quiet horror the wedge does not discuss; a strong side-quest seed (what the chart was open to)."
+    },
+    {
+      "id": "CV-L01",
+      "name": "The Hall of Negative Results",
+      "house": "H5",
+      "district": "D-MID",
+      "type": "guild-hall + lodging",
+      "position": {
+        "r": 314,
+        "a_deg": 209
+      },
+      "footprint": {
+        "w": 22,
+        "d": 14,
+        "rot_deg": 209,
+        "faces": "inward"
+      },
+      "height_m": 11,
+      "storeys": 3,
+      "y_base": 23,
+      "purpose": "Where the House's ledgers of absence are fair-copied, cross-checked and bound, and where its scribes lodge. To copy a Corvane ledger is to transcribe nothing, exactly, for a lifetime — a discipline that produces a particular kind of scribe: patient, unsmiling, and very hard to lie to. The most reliable hands in the city are trained here, and the strangest.",
+      "rooms": [
+        {
+          "name": "The Copying Dark",
+          "w": 20,
+          "d": 10,
+          "h": 5,
+          "purpose": "sloped desks under hooded lamps that light only the page, never the room"
+        },
+        {
+          "name": "The Cross-Check Room",
+          "w": 10,
+          "d": 8,
+          "h": 4,
+          "purpose": "where two scribes read absence against absence to catch the single night someone saw something"
+        },
+        {
+          "name": "Scribes' dormitory",
+          "w": 18,
+          "d": 6,
+          "h": 4,
+          "purpose": "14 cots; the quietest sleepers in Starfall"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-020",
+        "NPC-CV-021"
+      ],
+      "resident_count": 15,
+      "notes": "Master-scribe Corriden + 14 scribes and lodgers. Twin in function to Vael'Suran's Scribes' Hall, opposite in temperament."
+    },
+    {
+      "id": "CV-L02",
+      "name": "The Black-Mirror Workshop",
+      "house": "H5",
+      "district": "D-MID",
+      "type": "workshop + dwelling",
+      "position": {
+        "r": 320,
+        "a_deg": 221
+      },
+      "footprint": {
+        "w": 18,
+        "d": 15,
+        "rot_deg": 221,
+        "faces": "inward",
+        "form": "court with open centre"
+      },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 23,
+      "purpose": "Makers of the instruments that drink light instead of gathering it — black speculum mirrors, void-glass, the hooded lamps and light-baffles the whole wedge runs on. A wet, patient, slightly feared trade; the family that keeps it has learned to grind a mirror so dark it shows you the room behind your own head.",
+      "rooms": [
+        {
+          "name": "The Figuring Shed",
+          "w": 12,
+          "d": 8,
+          "h": 5,
+          "purpose": "pitch laps and the black-glass melt; a speculum is polished for months to hold a perfect nothing"
+        },
+        {
+          "name": "The Proving Dark",
+          "w": 6,
+          "d": 5,
+          "h": 4,
+          "purpose": "a lightless room where a finished mirror is proved against the absence of any star"
+        },
+        {
+          "name": "Family dwelling",
+          "w": 14,
+          "d": 6,
+          "h": 4,
+          "purpose": "the Vess family above the shed"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-022"
+      ],
+      "resident_count": 10,
+      "notes": "Master mirror-wright Dela Vess + household + journeymen (10). The black-glass melt vents to an Under-Terrace flue."
+    },
+    {
+      "id": "CV-L03",
+      "name": "Lesser Scholars' Row",
+      "house": "H5",
+      "district": "D-MID",
+      "type": "terrace of 6 small dwellings",
+      "position": {
+        "r": 300,
+        "a_deg": 231
+      },
+      "footprint": {
+        "w": 42,
+        "d": 8,
+        "rot_deg": 231,
+        "faces": "inward",
+        "form": "row of 6"
+      },
+      "height_m": 7,
+      "storeys": 2,
+      "y_base": 23,
+      "purpose": "Six joined houses of the wedge's lesser scholars — the reducers and copyists who serve the ledgers of absence without a watching-chair of their own. Sightless, sunless, and paid in the House's steady, cold coin. They keep, between them, a shared candle they light only for births and deaths.",
+      "rooms": [
+        {
+          "name": "Per-house: work-room + 2 chambers",
+          "w": 6,
+          "d": 7,
+          "h": 4,
+          "purpose": "6 households"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-023"
+      ],
+      "resident_count": 20,
+      "notes": "6 households, ~20 souls. Named: the copyist Wren, who has begun, against every rule, to hope the dark she records will one day answer."
+    },
+    {
+      "id": "CV-K01",
+      "name": "The Last Lamp",
+      "house": "H5",
+      "district": "D-CANAL",
+      "type": "inn (Strain-relief haven)",
+      "position": {
+        "r": 268,
+        "a_deg": 207
+      },
+      "footprint": {
+        "w": 16,
+        "d": 12,
+        "rot_deg": 207,
+        "faces": "canal"
+      },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "The wedge's inn, named for the single lamp the keeper swears he will never let go out — the joke and the comfort of a quarter that spends its days staring into the dark. Dimmer and quieter than any other inn in the city, but warmer for it; the place Corvane scholars come to be, for one evening, in a lit room full of noise.",
+      "rooms": [
+        {
+          "name": "The Common Room",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "hearth, low tables, the one lamp kept burning above the bar like a small defiance"
+        },
+        {
+          "name": "Kitchen",
+          "w": 6,
+          "d": 5,
+          "h": 4,
+          "purpose": ""
+        },
+        {
+          "name": "Letting rooms (x5)",
+          "w": 14,
+          "d": 5,
+          "h": 3,
+          "purpose": "five rooms above"
+        },
+        {
+          "name": "Cellar",
+          "w": 8,
+          "d": 6,
+          "h": 3,
+          "purpose": "canal-cooled store; a hatch to the Under-Terraces the keeper pretends not to know about"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-030"
+      ],
+      "resident_count": 6,
+      "notes": "Innkeeper Halb Oren + 3 family + 2 staff. The cellar hatch is Corvane's over/under seam (to CV-X05)."
+    },
+    {
+      "id": "CV-K02",
+      "name": "The Mourning Market",
+      "house": "H5",
+      "district": "D-CANAL",
+      "type": "market row (dark instruments & mourning goods)",
+      "position": {
+        "r": 258,
+        "a_deg": 216
+      },
+      "footprint": {
+        "w": 30,
+        "d": 10,
+        "rot_deg": 216,
+        "faces": "canal",
+        "form": "row of 10 stalls/shops"
+      },
+      "height_m": 6,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "The wedge's market leans, by long habit, into the House's temperament: sellers of black-glass and hooded lamps, of mourning-silks and grave-silver, of the still, dark things the rest of the city buys only when someone has died and then comes here to buy. Quietly, it is the richest market in Starfall — grief keeps steadier hours than fashion.",
+      "rooms": [
+        {
+          "name": "Per unit: shopfront + workshop + room above",
+          "w": 3,
+          "d": 8,
+          "h": 4,
+          "purpose": "10 units, most with a family living above"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-031"
+      ],
+      "resident_count": 28,
+      "notes": "10 shops, ~28 souls. Named: the silversmith Made, who casts grave-tokens, and the lamp-hooder Sulen."
+    },
+    {
+      "id": "CV-K03",
+      "name": "The Deep Shrine of Umbrion",
+      "house": "H5",
+      "district": "D-CANAL",
+      "type": "shrine (Umbrion — the great shrine)",
+      "position": {
+        "r": 250,
+        "a_deg": 225
+      },
+      "footprint": {
+        "w": 14,
+        "d": 14,
+        "rot_deg": 225,
+        "faces": "inward"
+      },
+      "height_m": 11,
+      "storeys": 1,
+      "y_base": 12,
+      "purpose": "Not a small shrine like the Vael'Suran Deepening but THE shrine — the great dark heart of Umbrion-worship in Starfall, tended by the House that understands the god best. You descend a black stair into a cold sphere and are asked to sit until the difference between your eyes open and closed stops mattering. The devout come out changed; a few do not come out at all until they are ready, and the shrine feeds them and waits.",
+      "rooms": [
+        {
+          "name": "The Descent",
+          "w": 4,
+          "d": 8,
+          "h": 6,
+          "purpose": "a black stair down; the last light is left at the top"
+        },
+        {
+          "name": "The Sphere",
+          "w": 10,
+          "d": 10,
+          "h": 9,
+          "purpose": "a round dark cell where the void is offered as presence; a bowl of still star-water at the centre, found by memory"
+        },
+        {
+          "name": "Keepers' cells",
+          "w": 5,
+          "d": 4,
+          "h": 3,
+          "purpose": "the shrine-keeper and two acolytes"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-032"
+      ],
+      "resident_count": 3,
+      "notes": "Keeper Onn and two acolytes. The theological centre of the wedge's whole disposition — and of Elorin Voidweaver's own faith, though she is not from here."
+    },
+    {
+      "id": "CV-K04",
+      "name": "Canal Dwellings — Nightside",
+      "house": "H5",
+      "district": "D-CANAL",
+      "type": "tenement block, 9 dwellings",
+      "position": {
+        "r": 245,
+        "a_deg": 233
+      },
+      "footprint": {
+        "w": 26,
+        "d": 14,
+        "rot_deg": 233,
+        "faces": "canal",
+        "form": "block, 9 dwellings"
+      },
+      "height_m": 11,
+      "storeys": 3,
+      "y_base": 12,
+      "purpose": "The wedge's densest housing, on the shaded canal-bank that never takes the reflected lake-light — the artisans, lamp-hooders, mirror-wrights' families and canal-hands who keep the dark quarter running. A close, quiet, watchful block; neighbours here know each other's silences.",
+      "rooms": [
+        {
+          "name": "Per dwelling: 2-3 rooms",
+          "w": 6,
+          "d": 6,
+          "h": 3,
+          "purpose": "9 dwellings, families of 3-6"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-041",
+        "NPC-CV-050"
+      ],
+      "resident_count": 44,
+      "notes": "~44 souls, including the customs officer's household (counted here, works at the shore post CV-S01). Named: the widow Oll, who reads the ledger of absence for pleasure."
+    },
+    {
+      "id": "CV-K05",
+      "name": "The Watcher's House",
+      "house": "H5",
+      "district": "D-CANAL",
+      "type": "small dwelling (private observatory)",
+      "position": {
+        "r": 262,
+        "a_deg": 238
+      },
+      "footprint": {
+        "w": 8,
+        "d": 8,
+        "rot_deg": 238,
+        "faces": "canal"
+      },
+      "height_m": 6,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "A narrow canal-side house belonging to an amateur — a retired lamp-hooder who taught himself the House's discipline and now keeps, from his own roof, a private ledger of a patch of dark no scholar bothers with. The House tolerates him; one or two of its magisters quietly check his numbers.",
+      "rooms": [
+        {
+          "name": "Ground room",
+          "w": 6,
+          "d": 6,
+          "h": 3,
+          "purpose": "the family's living space"
+        },
+        {
+          "name": "The roof-watch",
+          "w": 6,
+          "d": 6,
+          "h": 3,
+          "purpose": "a home-made ring-armature and a stool; his life's second work"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-042"
+      ],
+      "resident_count": 4,
+      "notes": "Old Pell + household of 4. Proof the House's obsession is contagious; a warm side-character."
+    },
+    {
+      "id": "CV-C01",
+      "name": "The Corvane Canal & its bridge",
+      "house": "H5",
+      "district": "D-CANAL",
+      "type": "waterway",
+      "position": {
+        "r": 255,
+        "a_deg": 220,
+        "note": "the wedge's stretch of the third greybox canal"
+      },
+      "footprint": {
+        "length": 58,
+        "width": 6,
+        "rot_deg": 220,
+        "form": "curved channel"
+      },
+      "height_m": 0,
+      "y_base": 12,
+      "purpose": "Star-water — black, still, and here so untroubled by lamplight that the Corvane canal is the one stretch where you can lean over the parapet and see the deep field doubled in the water at your feet. One plain stone bridge crosses it. People come from other wedges to look, and leave quickly.",
+      "rooms": [],
+      "occupants": [],
+      "resident_count": 0,
+      "notes": "The canal drains to the Nightbarge Lock below (CV-X01). Its unnatural stillness is a small local legend."
+    },
+    {
+      "id": "CV-S01",
+      "name": "The Still Shore & Customs Post",
+      "house": "H5",
+      "district": "D-SHORE",
+      "type": "civic threshold",
+      "position": {
+        "r": 228,
+        "a_deg": 204
+      },
+      "footprint": {
+        "w": 14,
+        "d": 10,
+        "rot_deg": 204,
+        "faces": "shore"
+      },
+      "height_m": 6,
+      "storeys": 1,
+      "y_base": 0,
+      "purpose": "The Corvane stretch of the black basalt strand is the quietest shore in Starfall, and the one people come to when they need to look a long time into the Mirror without being spoken to. The House keeps a customs post here for the goods that come up from below — and, unofficially, a bench, because someone should be near when a person stands too long at the water's edge.",
+      "rooms": [
+        {
+          "name": "The Weighing Hall",
+          "w": 10,
+          "d": 7,
+          "h": 4,
+          "purpose": "scales, tally-desks, a wardsealed strongroom"
+        },
+        {
+          "name": "Officers' room",
+          "w": 5,
+          "d": 4,
+          "h": 4,
+          "purpose": "the customs officer and a clerk; a lantern kept for the shore, not the desk"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-050"
+      ],
+      "resident_count": 0,
+      "notes": "Day post; the officer's household is counted at CV-K04. The unofficial watch over the water's edge is a quiet, humane note in a grim wedge."
+    },
+    {
+      "id": "CV-X01",
+      "name": "The Nightbarge Lock",
+      "house": "H5",
+      "district": "D-UNDER",
+      "type": "barge lock (service)",
+      "position": {
+        "r": 240,
+        "a_deg": 220,
+        "depth_note": "beneath the canal quarter"
+      },
+      "footprint": {
+        "w": 24,
+        "d": 12,
+        "rot_deg": 220
+      },
+      "height_m": 14,
+      "y_base": -14,
+      "purpose": "The chamber-lock that lifts cargo barges from the world below into the Corvane canal. The wedge's stone, black-glass sand, ledger-paper and grave-silver all rise through here on chain-gangs. The lock-crews say the water in this lock is stiller than any other — that it does not want to be disturbed — and they work it fast and speak little.",
+      "rooms": [
+        {
+          "name": "The Lock Chamber",
+          "w": 20,
+          "d": 8,
+          "h": 14,
+          "purpose": "the flooding basin and the counter-weighted gates"
+        },
+        {
+          "name": "The Capstan Floor",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "where the lift-gangs walk the capstans"
+        },
+        {
+          "name": "Tally hole",
+          "w": 4,
+          "d": 4,
+          "h": 3,
+          "purpose": "the under-clerk's niche; the real ledger, in charcoal"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-060"
+      ],
+      "resident_count": 0,
+      "notes": "Worked, not lived-in. Lock-master Grael keeps the honest tally the Plate does not."
+    },
+    {
+      "id": "CV-X02",
+      "name": "The Conduit Gallery",
+      "house": "H5",
+      "district": "D-UNDER",
+      "type": "Song-conduit service tunnel",
+      "position": {
+        "r": 260,
+        "a_deg": 213,
+        "depth_note": "runs radially under the terraces"
+      },
+      "footprint": {
+        "length": 68,
+        "width": 5,
+        "rot_deg": 213
+      },
+      "height_m": 4,
+      "y_base": -10,
+      "purpose": "The tuned crystal conduits that carry the Song up to the wedge's few, dim star-lamps run through here, tended in the dark by crews who barely need lamps of their own. In the Corvane gallery the conduit-wrights report a thing they will not put in writing: that here, nearer the House's watching, the Song runs a shade fainter, as if something a long way off were beginning, very slightly, to listen the other way.",
+      "rooms": [
+        {
+          "name": "The Long Gallery",
+          "w": 4,
+          "d": 68,
+          "h": 4,
+          "purpose": "the conduit run; access ladders to each terrace's lamp-stems"
+        },
+        {
+          "name": "Tuning niches (x4)",
+          "w": 3,
+          "d": 3,
+          "h": 3,
+          "purpose": "where conduit-wrights kneel to true the crystal"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-061"
+      ],
+      "resident_count": 0,
+      "notes": "Worked by conduit-wrights (home at the Warren). The faint-Song detail is quiet foreshadowing of the Silence — a thing measured and not believed."
+    },
+    {
+      "id": "CV-X03",
+      "name": "The Deep-Wrights' Warren",
+      "house": "H5",
+      "district": "D-UNDER",
+      "type": "Terran bunk-hall & enclave",
+      "position": {
+        "r": 250,
+        "a_deg": 226,
+        "depth_note": "cut into the shore-mass"
+      },
+      "footprint": {
+        "w": 28,
+        "d": 18,
+        "rot_deg": 226,
+        "form": "carved hall, glow-stone lit"
+      },
+      "height_m": 6,
+      "y_base": -16,
+      "purpose": "Home and hall of the Terran stone-wrights who cut and hold up the Corvane under-terraces — and who like this posting least of all the wedges, because the deep folk feel the House's dark in the rock and say the stone here 'keeps its own counsel.' They cut fast, shore hard, and keep their glow-stone burning a little brighter than they need to.",
+      "rooms": [
+        {
+          "name": "The Carved Hall",
+          "w": 18,
+          "d": 10,
+          "h": 6,
+          "purpose": "a communal hall, warm with glow-stone; the deep folk crowd the light here more than in other wedges"
+        },
+        {
+          "name": "Sleeping galleries",
+          "w": 24,
+          "d": 6,
+          "h": 3,
+          "purpose": "bunk-niches for the wrights and the conduit crews"
+        },
+        {
+          "name": "The Shrine of Petrocore",
+          "w": 6,
+          "d": 6,
+          "h": 5,
+          "purpose": "a Stone-Voice shrine; here, unusually, it is never left unlit"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-062",
+        "NPC-CV-063",
+        "NPC-CV-061"
+      ],
+      "resident_count": 50,
+      "notes": "Warren-elder Bruk + ~43 deep-wrights + a 6-strong conduit crew. The one place in the wedge that insists on light."
+    },
+    {
+      "id": "CV-X04",
+      "name": "The Silent Bunks",
+      "house": "H5",
+      "district": "D-UNDER",
+      "type": "labour bunk-hall",
+      "position": {
+        "r": 236,
+        "a_deg": 232,
+        "depth_note": "beside the lock"
+      },
+      "footprint": {
+        "w": 22,
+        "d": 14,
+        "rot_deg": 232,
+        "form": "riveted bunk-shacks under stone"
+      },
+      "height_m": 4,
+      "y_base": -18,
+      "purpose": "The bunk-hall of the orc and human lift-gangs who walk the Nightbarge capstans. It is called the Silent Bunks because sound carries strangely this deep under the Corvane watching, and the crews have simply given up on noise; they sign to each other, and sleep hard, and count the days to a transfer that rarely comes.",
+      "rooms": [
+        {
+          "name": "Bunk rows",
+          "w": 18,
+          "d": 10,
+          "h": 4,
+          "purpose": "riveted double-bunks; no window, and here no one jokes about wanting one"
+        },
+        {
+          "name": "The Collar-room",
+          "w": 6,
+          "d": 4,
+          "h": 3,
+          "purpose": "where shift-tallies are logged — the same bureaucratic horror as every wedge, quieter"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-064"
+      ],
+      "resident_count": 46,
+      "notes": "~46 orc and human labourers. Named: the elder Vosk, who has taught the whole hall a hand-language. Part of the unnamed 778."
+    },
+    {
+      "id": "CV-X05",
+      "name": "The Underhush Canteen",
+      "house": "H5",
+      "district": "D-UNDER",
+      "type": "canteen / commons",
+      "position": {
+        "r": 248,
+        "a_deg": 218,
+        "depth_note": "at the gallery crossing"
+      },
+      "footprint": {
+        "w": 16,
+        "d": 12,
+        "rot_deg": 218
+      },
+      "height_m": 4,
+      "y_base": -12,
+      "purpose": "The warm room of the Corvane under-city, and the loudest place in the whole dark wedge on purpose — the canteen-keeper bangs her pots, keeps three lamps, and will not have silence at her tables, because she has watched what the quiet does to people down here and decided to fight it with soup and noise.",
+      "rooms": [
+        {
+          "name": "The Long Room",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "trestles, a great range, three lamps kept deliberately bright, a wall of chalked names"
+        },
+        {
+          "name": "Kitchen & store",
+          "w": 6,
+          "d": 5,
+          "h": 3,
+          "purpose": "run by the keeper"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-065"
+      ],
+      "resident_count": 6,
+      "notes": "Canteen-keeper Mama Dren + 5 helpers. Knows the other wedges' canteen-keepers by their runners; the Last Lamp's cellar hatch surfaces near here."
+    },
+    {
+      "id": "CV-X06",
+      "name": "The Foreman's Post",
+      "house": "H5",
+      "district": "D-UNDER",
+      "type": "overseer post",
+      "position": {
+        "r": 242,
+        "a_deg": 210,
+        "depth_note": "at the foot of the customs stair"
+      },
+      "footprint": {
+        "w": 8,
+        "d": 6,
+        "rot_deg": 210
+      },
+      "height_m": 3,
+      "y_base": -12,
+      "purpose": "The seam-office of the Corvane under-city, where the shift-count is reconciled and sent up to the House. The foreman here is the only one of the wedge's overseers who has ever sat a night in the Void Chamber, and the crews trust him more for it and fear him a little.",
+      "rooms": [
+        {
+          "name": "The Office",
+          "w": 5,
+          "d": 4,
+          "h": 3,
+          "purpose": "a ledger-desk, a lamp, a locked shift-book"
+        },
+        {
+          "name": "Bunk",
+          "w": 3,
+          "d": 3,
+          "h": 3,
+          "purpose": "the foreman sleeps at the seam"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-066"
+      ],
+      "resident_count": 1,
+      "notes": "Foreman Ist — keeps the honest count in charcoal and the House's in ink. Twin to the foremen of every wedge."
+    },
+    {
+      "id": "CV-X07",
+      "name": "The Void Chamber",
+      "house": "H5",
+      "district": "D-UNDER",
+      "type": "anechoic dark hall (NOVEL landmark)",
+      "position": {
+        "r": 244,
+        "a_deg": 222,
+        "depth_note": "the deepest room in the wedge, cut directly beneath the tower's sightline"
+      },
+      "footprint": {
+        "w": 22,
+        "d": 22,
+        "rot_deg": 222,
+        "form": "a hollow sphere within a cube of shore-mass"
+      },
+      "height_m": 18,
+      "y_base": -30,
+      "purpose": "The House's greatest and least-spoken-of work: a perfect hollow sphere cut deep under the tower's own sightline, lined so that no light and almost no sound survive it. Initiates sit inside, one at a time, for as long as they can bear — hours, days — until, the House says, they stop needing light to think, and begin to hear the shape of the dark the way the tower above only measures it. It is where Corvane theory stops being mathematics and becomes something closer to prayer, or preparation.",
+      "rooms": [
+        {
+          "name": "The Antechamber",
+          "w": 8,
+          "d": 6,
+          "h": 4,
+          "purpose": "where the last lamp is surrendered and the initiate waits to be led in by touch"
+        },
+        {
+          "name": "The Sphere",
+          "w": 16,
+          "d": 16,
+          "h": 16,
+          "purpose": "the anechoic void itself; no light, no echo, no floor you can feel the edge of; a single seat at the centre"
+        },
+        {
+          "name": "Attendants' cells",
+          "w": 6,
+          "d": 5,
+          "h": 3,
+          "purpose": "the keeper and initiates who live at the chamber's mouth, tending those inside"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-067"
+      ],
+      "resident_count": 12,
+      "notes": "The wedge's novel landmark and a future hero set-piece. This is the room that taught the student Elorin Voidweaver to look into the dark without flinching — she sat the Sphere young, and it made her, and it is a straight line from this seat to the Nullstone. The under-city here is unusually quiet, as if the Sphere's silence leaks into the surrounding rock."
+    },
+    {
+      "id": "CV-X08",
+      "name": "The Barge-Hands' Bunks",
+      "house": "H5",
+      "district": "D-UNDER",
+      "type": "labour bunk-hall",
+      "position": {
+        "r": 258,
+        "a_deg": 214,
+        "depth_note": "along the barge gallery"
+      },
+      "footprint": {
+        "w": 22,
+        "d": 14,
+        "rot_deg": 214,
+        "form": "riveted bunk-shacks under stone"
+      },
+      "height_m": 4,
+      "y_base": -20,
+      "purpose": "A second labour hall for the barge-hands and haulers who move cargo along the under-gallery from the lock to the terrace hoists — mostly human and orc, worked in long shifts, housed deep. They are the muscle that turns the pretty stillness of the Corvane canal into food on rim tables, and no one on the rim could name a single one of them.",
+      "rooms": [
+        {
+          "name": "Bunk rows",
+          "w": 18,
+          "d": 10,
+          "h": 4,
+          "purpose": "riveted bunks for the haul-gangs"
+        },
+        {
+          "name": "The Gear-store",
+          "w": 6,
+          "d": 4,
+          "h": 3,
+          "purpose": "harness, hooks, hand-carts; a shift-board by the door"
+        }
+      ],
+      "occupants": [
+        "NPC-CV-068"
+      ],
+      "resident_count": 42,
+      "notes": "~42 human and orc haulers. Part of the unnamed 778. Named: the hauler Renk, who is teaching himself the deep-wrights' letters."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "NPC-CV-001",
+      "name": "Magister Vaelith Corvane",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 1340,
+      "role": "Head of House Corvane; Keeper of the Ledger of Absence",
+      "home": "CV-M01",
+      "work": "CV-T01",
+      "note": "The oldest and least-visited House head on the rim; speaks rarely and is never wrong about what is not there. The Conclave fears her opinions and asks for them anyway."
+    },
+    {
+      "id": "NPC-CV-002",
+      "name": "First Watcher Oel-Vane",
+      "gender": "nonbinary",
+      "race": "Noctari",
+      "age": 720,
+      "role": "senior observer of the deep field, the Aperture Chamber",
+      "home": "CV-T01",
+      "work": "CV-T01",
+      "note": "Has not seen the sun's side of the caldera in a century; navigates the tower blind and prefers it."
+    },
+    {
+      "id": "NPC-CV-003",
+      "name": "the void-computers (5)",
+      "gender": "mixed",
+      "race": "Noctari",
+      "age": null,
+      "role": "live-in clerks who record the night's absences",
+      "home": "CV-T01",
+      "work": "CV-T01",
+      "count": 5,
+      "note": "Reduce columns of nothing; the steadiest, strangest young scholars in the House."
+    },
+    {
+      "id": "NPC-CV-004",
+      "name": "the Corvane near family (3)",
+      "gender": "mixed",
+      "race": "Noctari",
+      "age": null,
+      "role": "House family",
+      "home": "CV-M01",
+      "count": 3,
+      "note": "Few, quiet; the House does not breed freely."
+    },
+    {
+      "id": "NPC-CV-005",
+      "name": "the Seat household staff (12)",
+      "gender": "mixed",
+      "race": "Noctari & 2 human",
+      "age": null,
+      "role": "cook, porters, lamp-tender, maids",
+      "home": "CV-M01",
+      "work": "CV-M01",
+      "count": 12,
+      "note": "Paid above the rim's rate; Corvane servants are hard to keep and know it."
+    },
+    {
+      "id": "NPC-CV-010",
+      "name": "Magistra Ysoreth of the Long Look",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 560,
+      "role": "scholar of a single unchanging patch of deep field",
+      "home": "CV-U01",
+      "work": "CV-U01",
+      "note": "240 years watching one hand's-breadth of dark for a change that has not come; the House's whole ethos in one obsessive, courteous person."
+    },
+    {
+      "id": "NPC-CV-011",
+      "name": "Ysoreth's household (4)",
+      "gender": "mixed",
+      "race": "Noctari",
+      "age": null,
+      "role": "companion and two grown students",
+      "home": "CV-U01",
+      "count": 4
+    },
+    {
+      "id": "NPC-CV-012",
+      "name": "Magister Oren Corvane",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 610,
+      "role": "keeper of the Warded Study; guardian of the restricted void-theory",
+      "home": "CV-U02",
+      "work": "CV-U02",
+      "count": 4,
+      "note": "Household of 4. Signs no register when the Academy's void-scholars visit by night. The intellectual seed of the Nullstone lives on his shelves, chained."
+    },
+    {
+      "id": "NPC-CV-013",
+      "name": "Caretaker Nel",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 190,
+      "role": "keeps the Vacant Villa exactly as its vanished scholar left it",
+      "home": "CV-U03",
+      "work": "CV-U03",
+      "note": "Paid to keep the room, and paid more not to say why. Knows what the open chart is pointed at."
+    },
+    {
+      "id": "NPC-CV-020",
+      "name": "Master-scribe Corriden",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 840,
+      "role": "warden of the Hall of Negative Results",
+      "home": "CV-L01",
+      "work": "CV-L01",
+      "note": "Trains the most reliable and least deceivable scribes in the city."
+    },
+    {
+      "id": "NPC-CV-021",
+      "name": "the ledger-scribes (14)",
+      "gender": "mixed",
+      "race": "Noctari",
+      "age": null,
+      "role": "copy and cross-check the ledgers of absence; lodge in the hall",
+      "home": "CV-L01",
+      "work": "CV-L01",
+      "count": 14,
+      "note": "The quietest sleepers in Starfall."
+    },
+    {
+      "id": "NPC-CV-022",
+      "name": "Master mirror-wright Dela Vess + household (10)",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 400,
+      "role": "grinds black speculum mirrors and void-glass",
+      "home": "CV-L02",
+      "work": "CV-L02",
+      "count": 10,
+      "note": "Can figure a mirror so dark it shows the room behind your head. Feared a little, courted much."
+    },
+    {
+      "id": "NPC-CV-023",
+      "name": "Lesser Scholars' Row (20) — the copyist Wren",
+      "gender": "mixed",
+      "race": "Noctari & 1 human household",
+      "age": null,
+      "role": "reducers and copyists; sightless service class",
+      "home": "CV-L03",
+      "count": 20,
+      "note": "Wren has begun, against every rule, to hope the dark she records will answer. A side-character with a small, dangerous faith."
+    },
+    {
+      "id": "NPC-CV-030",
+      "name": "Halb Oren + house (6)",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 320,
+      "role": "innkeeper of the Last Lamp",
+      "home": "CV-K01",
+      "work": "CV-K01",
+      "count": 6,
+      "note": "Swears he will never let the one lamp go out. Knows about the cellar hatch and says nothing."
+    },
+    {
+      "id": "NPC-CV-031",
+      "name": "The Mourning Market (28)",
+      "gender": "mixed",
+      "race": "Noctari, 2 human, 1 Terran",
+      "age": null,
+      "role": "sellers of black-glass, hooded lamps, mourning-silk, grave-silver",
+      "home": "CV-K02",
+      "work": "CV-K02",
+      "count": 28,
+      "note": "Named: silversmith Made (grave-tokens), lamp-hooder Sulen. Quietly the richest market in Starfall."
+    },
+    {
+      "id": "NPC-CV-032",
+      "name": "Keeper Onn + two acolytes",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 480,
+      "role": "keeper of the Deep Shrine of Umbrion",
+      "home": "CV-K03",
+      "work": "CV-K03",
+      "count": 3,
+      "note": "Tends the god the whole wedge understands best; feeds the ones who cannot yet come out of the dark."
+    },
+    {
+      "id": "NPC-CV-041",
+      "name": "Nightside dwellings (44) — the widow Oll",
+      "gender": "mixed",
+      "race": "Noctari, some human",
+      "age": null,
+      "role": "artisans, lamp-hooders, mirror-wrights' families, canal-hands",
+      "home": "CV-K04",
+      "count": 44,
+      "note": "Includes the customs officer's household. Oll reads the ledger of absence for pleasure. Neighbours who know each other's silences."
+    },
+    {
+      "id": "NPC-CV-042",
+      "name": "Old Pell + household (4)",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 300,
+      "role": "retired lamp-hooder; self-taught amateur watcher of the deep field",
+      "home": "CV-K05",
+      "work": "CV-K05",
+      "count": 4,
+      "note": "Keeps a private ledger of a patch no scholar bothers with; two magisters quietly check his numbers. Proof the obsession is contagious."
+    },
+    {
+      "id": "NPC-CV-050",
+      "name": "Customs officer Sael + clerk",
+      "gender": "nonbinary",
+      "race": "Noctari",
+      "age": 290,
+      "role": "weighs the goods that come up from below; keeps an unofficial watch over the water's edge",
+      "home": "CV-K04",
+      "work": "CV-S01",
+      "note": "Household counted at CV-K04. Keeps a lantern for the shore, not the desk — someone should be near when a person stands too long at the Mirror."
+    },
+    {
+      "id": "NPC-CV-060",
+      "name": "Lock-master Grael",
+      "gender": "male",
+      "race": "Terran",
+      "age": 200,
+      "role": "runs the Nightbarge Lock",
+      "home": "CV-X03",
+      "work": "CV-X01",
+      "note": "Works the stillest water in the city fast and speaks little. Counted within the Warren."
+    },
+    {
+      "id": "NPC-CV-061",
+      "name": "Conduit-wrights (crew of 6)",
+      "gender": "mixed",
+      "race": "Terran & human",
+      "age": null,
+      "role": "keep the Song singing up to the wedge's dim star-lamps",
+      "home": "CV-X03",
+      "work": "CV-X02",
+      "count": 6,
+      "note": "Report, off the record, that the Song here runs a shade fainter each year. Measured, not believed."
+    },
+    {
+      "id": "NPC-CV-062",
+      "name": "Warren-elder Bruk",
+      "gender": "male",
+      "race": "Terran",
+      "age": 240,
+      "role": "elder of the Deep-Wrights' Warren",
+      "home": "CV-X03",
+      "work": "CV-X03",
+      "note": "Says the Corvane stone 'keeps its own counsel'; keeps the glow-stone brighter than any other wedge's."
+    },
+    {
+      "id": "NPC-CV-063",
+      "name": "The Deep-Wrights (43)",
+      "gender": "mixed",
+      "race": "Terran",
+      "age": null,
+      "role": "cut and hold up the Corvane under-terraces",
+      "home": "CV-X03",
+      "count": 43,
+      "note": "Like this posting least of all the wedges; crowd the light. Keep a Petrocore shrine that is never left unlit."
+    },
+    {
+      "id": "NPC-CV-064",
+      "name": "The Silent Bunks (46) — the elder Vosk",
+      "gender": "mixed",
+      "race": "Orc & human",
+      "age": null,
+      "role": "walk the Nightbarge capstans; carry what the barges bring",
+      "home": "CV-X04",
+      "count": 46,
+      "note": "Vosk has taught the whole hall a hand-language, because sound carries wrong this deep. Part of the unnamed 778."
+    },
+    {
+      "id": "NPC-CV-065",
+      "name": "Mama Dren + 5",
+      "gender": "female",
+      "race": "Orc",
+      "age": 310,
+      "role": "canteen-keeper of the Underhush",
+      "home": "CV-X05",
+      "work": "CV-X05",
+      "count": 6,
+      "note": "Fights the wedge's silence with soup and noise on purpose; keeps three bright lamps. Knows the other under-canteens by their runners."
+    },
+    {
+      "id": "NPC-CV-066",
+      "name": "Foreman Ist",
+      "gender": "male",
+      "race": "Human",
+      "age": 44,
+      "role": "the seam of Corvane's under-city; reconciles the shift-count to the House",
+      "home": "CV-X06",
+      "work": "CV-X06",
+      "note": "The only overseer who has sat a night in the Void Chamber; the crews trust and fear him for it. Keeps the honest count in charcoal, the House's in ink."
+    },
+    {
+      "id": "NPC-CV-067",
+      "name": "The Void Chamber initiates & keeper (12)",
+      "gender": "mixed",
+      "race": "Noctari, 1 human",
+      "age": null,
+      "role": "sit the Sphere and tend those inside it",
+      "home": "CV-X07",
+      "work": "CV-X07",
+      "count": 12,
+      "note": "Keeper Sael-Dun and eleven initiates who live at the chamber's mouth. The room that made Elorin Voidweaver; a straight line from this seat to the Nullstone."
+    },
+    {
+      "id": "NPC-CV-068",
+      "name": "The Barge-Hands (42) — the hauler Renk",
+      "gender": "mixed",
+      "race": "Human & orc",
+      "age": null,
+      "role": "move cargo along the under-gallery from lock to hoist",
+      "home": "CV-X08",
+      "count": 42,
+      "note": "The muscle behind the pretty still canal; unnamed by the rim. Renk is teaching himself the deep-wrights' letters. Part of the unnamed 778."
+    }
+  ]
+}

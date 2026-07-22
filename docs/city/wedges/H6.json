@@ -1,0 +1,1100 @@
+{
+  "house_id": "H6",
+  "head_npc": "NPC-DH-001",
+  "structures": [
+    {
+      "id": "DH-T01",
+      "name": "The Struck Tower",
+      "house": "H6",
+      "district": "D-RIM",
+      "type": "sealed dead observatory (the erased House)",
+      "position": {
+        "r": 422,
+        "a_deg": 260,
+        "note": "the dead House's rim tower — greybox tower i=6; dome dark, sigil scraped from the ring, name unsaid"
+      },
+      "footprint": {
+        "shape": "cylinder",
+        "diameter": 22,
+        "rot_deg": 260
+      },
+      "height_m": 54,
+      "storeys": 6,
+      "y_base": 45,
+      "purpose": "The unlit tower, its dome struck through with a single black shard, its sigil scraped down to bare stone by a hand that never explained itself. The great door is sealed — not by the city, but from the inside, which no one likes to mention. Eight domes go on burning around the gap it leaves and no one has ever proposed relighting the ninth. Some absences are load-bearing.",
+      "rooms": [
+        {
+          "name": "The sealed door",
+          "w": 3,
+          "d": 1,
+          "h": 4,
+          "purpose": "barred from within; the bar has never been found from without, and no one has tried hard"
+        },
+        {
+          "name": "The scraped ring",
+          "w": 2,
+          "d": 2,
+          "h": 1,
+          "purpose": "the stone panel where the House sigil was; you can still feel the ghost of it with a fingertip"
+        },
+        {
+          "name": "The dark drum",
+          "w": 18,
+          "d": 18,
+          "h": 40,
+          "purpose": "unknown; the interior is unseen in living memory. Children dare each other to knock and run"
+        }
+      ],
+      "occupants": [],
+      "resident_count": 0,
+      "notes": "The mystery anchor of the wedge. WHY the House died is unresolved — sealed from inside, scraped, unnamed. Do not answer it. Its extinguished finial is the greybox's one dead rim dome."
+    },
+    {
+      "id": "DH-M01",
+      "name": "The Hollow Seat",
+      "house": "H6",
+      "district": "D-RIM",
+      "type": "abandoned manor, now a squatted commons",
+      "position": {
+        "r": 438,
+        "a_deg": 266
+      },
+      "footprint": {
+        "w": 30,
+        "d": 20,
+        "rot_deg": 266,
+        "faces": "inward"
+      },
+      "height_m": 13,
+      "storeys": 3,
+      "y_base": 45,
+      "purpose": "The dead House's great seat, left open when the House ended and never reclaimed — so the wedge took it. Where a magister once received sightline-suits, the community now holds its loose, argued, unofficial council under the same cold coffered ceiling, and anyone may speak. It is the nearest thing the wedge has to a government, and it governs by not quite deciding.",
+      "rooms": [
+        {
+          "name": "The Open Hall",
+          "w": 14,
+          "d": 10,
+          "h": 7,
+          "purpose": "the old reception; now a commons with a hearth built crookedly into a fireplace meant only for show"
+        },
+        {
+          "name": "The Reeve's corner",
+          "w": 8,
+          "d": 6,
+          "h": 4,
+          "purpose": "where the Unwarden keeps her ledger of favours owed both ways; the only tally in the wedge kept in the open"
+        },
+        {
+          "name": "Squatters' chambers",
+          "w": 18,
+          "d": 8,
+          "h": 4,
+          "purpose": "the family wing, partitioned with hung cloth into a dozen homes"
+        },
+        {
+          "name": "The cold-court",
+          "w": 12,
+          "d": 12,
+          "h": 12,
+          "purpose": "the roofless observing court; someone has planted vegetables in it, which no true House would ever have allowed"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-001",
+        "NPC-DH-002"
+      ],
+      "resident_count": 28,
+      "notes": "Head of the wedge is an INFORMAL elder, not a magister. The over-city grandeur repurposed for the under-city's people — the wedge's whole thesis in one building."
+    },
+    {
+      "id": "DH-U01",
+      "name": "The Roofless Row",
+      "house": "H6",
+      "district": "D-UPPER",
+      "type": "under-tended villas (part-ruined, part-squatted)",
+      "position": {
+        "r": 360,
+        "a_deg": 250
+      },
+      "footprint": {
+        "w": 40,
+        "d": 10,
+        "rot_deg": 250,
+        "faces": "inward",
+        "form": "row of 5 villas, two roofless"
+      },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "Sightline villas that no one maintains, because a protected sightline is worth nothing when there is no House court to enforce it. Two have lost their roofs and stand open to the sky, which the squatters below them have decided to call a skylight. Rank once measured in windows; here the windows are free, and so is the rank.",
+      "rooms": [
+        {
+          "name": "Per villa: what's left",
+          "w": 8,
+          "d": 8,
+          "h": 4,
+          "purpose": "5 shells; the two roofless ones tarped over in the rains, prized in the dry season for the view"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-010"
+      ],
+      "resident_count": 14,
+      "notes": "The upper terrace inverted: the elite band become the cheapest rooms in the city, and the sightline — the whole point of the district — is worthless the moment no one is keeping the ledger."
+    },
+    {
+      "id": "DH-U02",
+      "name": "The Last Villa",
+      "house": "H6",
+      "district": "D-UPPER",
+      "type": "occupied villa (a holdout)",
+      "position": {
+        "r": 372,
+        "a_deg": 270
+      },
+      "footprint": {
+        "w": 14,
+        "d": 12,
+        "rot_deg": 270,
+        "faces": "inward"
+      },
+      "height_m": 9,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "The one villa still kept as it was — swept, shuttered, its sightline clear — by the last servant of the dead House, who stayed when everyone else was told to go and was never told why. He is very old even for a Noctari, and he remembers the House's name, and he has kept the single promise he ever kept in his life, which was to never say it.",
+      "rooms": [
+        {
+          "name": "The Kept Study",
+          "w": 9,
+          "d": 7,
+          "h": 4,
+          "purpose": "dusted daily; the sightline clear to the Mirror, aimed at nothing anyone can name"
+        },
+        {
+          "name": "The Sealed Cabinet",
+          "w": 3,
+          "d": 2,
+          "h": 2,
+          "purpose": "the House papers, he says; he has not opened it in three hundred years and will not"
+        },
+        {
+          "name": "Rooms",
+          "w": 10,
+          "d": 6,
+          "h": 4,
+          "purpose": "the old servant and two who look after him now that he cannot"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-011"
+      ],
+      "resident_count": 3,
+      "notes": "The mystery's living keeper. Drops the atmosphere of a secret without the secret. He knows and will not say; the wedge lets him be."
+    },
+    {
+      "id": "DH-U03",
+      "name": "The Cloth Terrace",
+      "house": "H6",
+      "district": "D-UPPER",
+      "type": "squatted villa cluster",
+      "position": {
+        "r": 350,
+        "a_deg": 256
+      },
+      "footprint": {
+        "w": 30,
+        "d": 14,
+        "rot_deg": 256,
+        "faces": "inward",
+        "form": "3 villas subdivided"
+      },
+      "height_m": 9,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "Three grand villas long since subdivided with hung cloth and salvaged board into perhaps twenty small homes, their old sightlines shared out room by room like slices of a great pale cake. Washing crosses between the columns. It is, quietly, one of the pleasanter places to live in Starfall, which is precisely the kind of thing that does not get onto a Plate.",
+      "rooms": [
+        {
+          "name": "Per home: a partition & a window-share",
+          "w": 5,
+          "d": 5,
+          "h": 4,
+          "purpose": "~20 small homes; sightlines held in common, unmeasured and unenforced"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-012"
+      ],
+      "resident_count": 16,
+      "notes": "Freedom rendered as architecture: the sightline, once a possession, becomes a commons."
+    },
+    {
+      "id": "DH-L01",
+      "name": "The Menders' Yard",
+      "house": "H6",
+      "district": "D-MID",
+      "type": "improvised guild (fixers & scavengers)",
+      "position": {
+        "r": 320,
+        "a_deg": 248
+      },
+      "footprint": {
+        "w": 20,
+        "d": 16,
+        "rot_deg": 248,
+        "faces": "inward",
+        "form": "court with lean-to workshops"
+      },
+      "height_m": 7,
+      "storeys": 2,
+      "y_base": 23,
+      "purpose": "There is no chartered guild in a wedge with no House to charter one, so the fixers chartered themselves. Anything broken in the whole city that isn't worth a real guild's price comes here — cracked lenses re-ground rough, dead clocks made to lie convincingly, salvage from the other eight wedges given a second life. Skilled, unlicensed, and cheaper than anyone admits to using.",
+      "rooms": [
+        {
+          "name": "The Yard",
+          "w": 10,
+          "d": 8,
+          "h": 0,
+          "purpose": "open working court; a mountain of other people's discards, sorted with obsessive care"
+        },
+        {
+          "name": "The Fixing Sheds",
+          "w": 12,
+          "d": 6,
+          "h": 4,
+          "purpose": "benches for glass, metal, clockwork, cloth — one mender to a trade, all self-taught"
+        },
+        {
+          "name": "Menders' dwelling",
+          "w": 12,
+          "d": 5,
+          "h": 4,
+          "purpose": "the yard's families above and behind the sheds"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-020"
+      ],
+      "resident_count": 16,
+      "notes": "The wedge's real economy — the city depends on it and does not name it. The other Houses send work here through intermediaries who pretend they didn't."
+    },
+    {
+      "id": "DH-L02",
+      "name": "The Free School",
+      "house": "H6",
+      "district": "D-MID",
+      "type": "improvised school (novel)",
+      "position": {
+        "r": 312,
+        "a_deg": 264
+      },
+      "footprint": {
+        "w": 16,
+        "d": 12,
+        "rot_deg": 264,
+        "faces": "inward"
+      },
+      "height_m": 6,
+      "storeys": 2,
+      "y_base": 23,
+      "purpose": "A school with no charter, no fee, and no god — where anyone who knows a thing teaches it to anyone who wants it, an hour at a time, letters and numbers and the reading of stars to people the Academy would never enrol. It is the most subversive building in Starfall and looks like a draughty room with a slate wall, because that is what it is.",
+      "rooms": [
+        {
+          "name": "The Slate Room",
+          "w": 10,
+          "d": 8,
+          "h": 4,
+          "purpose": "one wall painted black and written on daily; benches salvaged from the Menders' Yard"
+        },
+        {
+          "name": "Teacher's rooms",
+          "w": 6,
+          "d": 5,
+          "h": 4,
+          "purpose": "the teacher and a few boarded pupils with nowhere else"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-021"
+      ],
+      "resident_count": 10,
+      "notes": "The humane heart of the wedge. Teaches literacy to the unlicensed and the under-city — the exact thing the beautiful city is built on NOT doing. A natural early-Elorin beat (she 'first sees' what the institution refuses to see)."
+    },
+    {
+      "id": "DH-L03",
+      "name": "The Unnumbered Row",
+      "house": "H6",
+      "district": "D-MID",
+      "type": "row of common dwellings",
+      "position": {
+        "r": 300,
+        "a_deg": 272
+      },
+      "footprint": {
+        "w": 44,
+        "d": 8,
+        "rot_deg": 272,
+        "faces": "inward",
+        "form": "row of ~9 dwellings"
+      },
+      "height_m": 7,
+      "storeys": 2,
+      "y_base": 23,
+      "purpose": "A long terrace of small houses that appear on no rent-roll, because the roll died with the House and no one ever wrote another. The people here are the fled, the discreetly poor, the between-things — those who came to the dead House's wedge precisely because it is the one place in the city where you are not counted, taxed, tallied, or watched.",
+      "rooms": [
+        {
+          "name": "Per house: 2-3 rooms",
+          "w": 6,
+          "d": 7,
+          "h": 4,
+          "purpose": "~9 households; nobody asks the next door's name unless offered"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-022"
+      ],
+      "resident_count": 32,
+      "notes": "The district of the un-measured. To live here is to be off the Plate on purpose."
+    },
+    {
+      "id": "DH-K01",
+      "name": "The Blind Lamp",
+      "house": "H6",
+      "district": "D-CANAL",
+      "type": "taphouse (Strain-relief haven, rough)",
+      "position": {
+        "r": 268,
+        "a_deg": 252
+      },
+      "footprint": {
+        "w": 16,
+        "d": 12,
+        "rot_deg": 252,
+        "faces": "canal"
+      },
+      "height_m": 7,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "The wedge's taphouse, named for the dead star-lamp over its door that has never once been lit in living memory — the Song does not come cleanly to a wedge whose House stopped paying to route it. So the Blind Lamp burns cheap tallow instead, which is illegal, which is the point. Rougher than the Sounding-Glass or the Ninth Bell, and warmer than either.",
+      "rooms": [
+        {
+          "name": "The Tallow Room",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "real flame, real smoke, real shadows; the one room in Starfall lit like the world below"
+        },
+        {
+          "name": "Kitchen & cellar",
+          "w": 6,
+          "d": 5,
+          "h": 4,
+          "purpose": "the cellar stair goes straight down to the Open Stair — here there is no grille, no seam, no pretending"
+        },
+        {
+          "name": "Letting rooms (x4)",
+          "w": 12,
+          "d": 5,
+          "h": 3,
+          "purpose": "four rooms above, let by the night to whoever, no name asked"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-030"
+      ],
+      "resident_count": 5,
+      "notes": "This wedge's Strain-relief haven. The unlit lamp is a quiet, precise symbol: the light the rest of the city takes for granted was never free — it was a service the dead House stopped buying."
+    },
+    {
+      "id": "DH-K02",
+      "name": "The Unmarket",
+      "house": "H6",
+      "district": "D-CANAL",
+      "type": "unlicensed market",
+      "position": {
+        "r": 256,
+        "a_deg": 260
+      },
+      "footprint": {
+        "w": 30,
+        "d": 12,
+        "rot_deg": 260,
+        "faces": "canal",
+        "form": "sprawl of stalls & barrows"
+      },
+      "height_m": 5,
+      "storeys": 1,
+      "y_base": 12,
+      "purpose": "A market that keeps no hours because there is no bell to keep them by and no House to charge a stall-fee. It runs on barter as much as coin, sells the salvage of the Menders' Yard and the produce of the cold-courts, and asks no questions about the provenance of anything. Serenthil sells time to the death; the Unmarket gives it away.",
+      "rooms": [
+        {
+          "name": "The Sprawl",
+          "w": 26,
+          "d": 8,
+          "h": 4,
+          "purpose": "barrows, cloth-shaded pitches, a barter-post where debts are chalked and rubbed out by trust"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-031"
+      ],
+      "resident_count": 30,
+      "notes": "The economic mirror of the Hour-Market across the city: no hours, no fees, no measure. The un-timed market of the un-timed House."
+    },
+    {
+      "id": "DH-K03",
+      "name": "The Empty Niche",
+      "house": "H6",
+      "district": "D-CANAL",
+      "type": "shrine (to the unnamed)",
+      "position": {
+        "r": 250,
+        "a_deg": 244
+      },
+      "footprint": {
+        "w": 10,
+        "d": 10,
+        "rot_deg": 244,
+        "faces": "inward"
+      },
+      "height_m": 8,
+      "storeys": 1,
+      "y_base": 12,
+      "purpose": "A shrine built around an absence: a stone niche with no idol in it, no name over it, and one worn place on the floor where people kneel anyway. Some come for the dead House. Some come for their own erased and unspoken things. The keeper does not ask which, because the keeper's own name was struck from a ledger long ago too, and never restored.",
+      "rooms": [
+        {
+          "name": "The Niche",
+          "w": 6,
+          "d": 6,
+          "h": 6,
+          "purpose": "an empty carved recess; offerings left are small, wordless, and never idols"
+        },
+        {
+          "name": "Keeper's cell",
+          "w": 3,
+          "d": 3,
+          "h": 3,
+          "purpose": "the nameless keeper's room"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-032"
+      ],
+      "resident_count": 2,
+      "notes": "Novel: a shrine TO erasure itself, in a city of gods of light and shadow. The theological answer to the whole wedge — you can worship an absence, and people do."
+    },
+    {
+      "id": "DH-K04",
+      "name": "Canal Dwellings — the Mingle",
+      "house": "H6",
+      "district": "D-CANAL",
+      "type": "dense mixed-race tenements",
+      "position": {
+        "r": 244,
+        "a_deg": 268
+      },
+      "footprint": {
+        "w": 26,
+        "d": 15,
+        "rot_deg": 268,
+        "faces": "canal",
+        "form": "warren, ~12 dwellings"
+      },
+      "height_m": 12,
+      "storeys": 4,
+      "y_base": 12,
+      "purpose": "The densest housing in the wedge, and the only place above ground in all Starfall where Noctari, human, Terran and orc keep house side by side as a matter of course rather than a scandal — because the House that would have forbidden it is dead, and no one has troubled to invent the rule again. The over-city calls it the Mingle, and does not visit.",
+      "rooms": [
+        {
+          "name": "Per dwelling: 2-4 rooms",
+          "w": 6,
+          "d": 6,
+          "h": 3,
+          "purpose": "~12 dwellings stacked four deep, families of every race and several of no single one"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-033"
+      ],
+      "resident_count": 52,
+      "notes": "The wedge's central humane fact: the segregation the rest of the city enforces simply lapsed here. The Under-Terraces' mixed halls, but above ground and by choice."
+    },
+    {
+      "id": "DH-K05",
+      "name": "The Common Wash",
+      "house": "H6",
+      "district": "D-CANAL",
+      "type": "wash-house & commons",
+      "position": {
+        "r": 262,
+        "a_deg": 276
+      },
+      "footprint": {
+        "w": 14,
+        "d": 10,
+        "rot_deg": 276,
+        "faces": "canal"
+      },
+      "height_m": 5,
+      "storeys": 1,
+      "y_base": 12,
+      "purpose": "A wash-house on the canal, steam-warm, where the wedge does its laundry and, incidentally, most of its living — births are announced here, disputes settled, the sick minded. It was a House bath-house once. The community keeps the boiler going by collective agreement and no small effort, and treats it as the nearest thing they have to a temple that works.",
+      "rooms": [
+        {
+          "name": "The Steam Hall",
+          "w": 10,
+          "d": 7,
+          "h": 4,
+          "purpose": "stone tubs, a scavenged boiler, benches worn smooth by gossip"
+        },
+        {
+          "name": "The Minding Room",
+          "w": 5,
+          "d": 4,
+          "h": 3,
+          "purpose": "a warm back room where the sick and the newborn are kept; the wash-women take turns"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-034"
+      ],
+      "resident_count": 8,
+      "notes": "Humane detail: the mutual-aid of a place with no institutions doing the institutions' job, warmer than any of them."
+    },
+    {
+      "id": "DH-S01",
+      "name": "The Untended Gate",
+      "house": "H6",
+      "district": "D-SHORE",
+      "type": "derelict customs post (self-manned)",
+      "position": {
+        "r": 228,
+        "a_deg": 262
+      },
+      "footprint": {
+        "w": 14,
+        "d": 10,
+        "rot_deg": 262,
+        "faces": "processional"
+      },
+      "height_m": 6,
+      "storeys": 1,
+      "y_base": 0,
+      "purpose": "Where the dead House's processional foot meets the shore stands a customs post with no customs officer — the House that appointed one is gone, and the Conclave never bothered to replace the post over a wedge worth nothing to tax. So the community keeps a volunteer at the door, not to weigh goods but to warn the wedge who is coming down the stair. The one gate in Starfall that watches the over-city, and not the under.",
+      "rooms": [
+        {
+          "name": "The Empty Weighing Hall",
+          "w": 10,
+          "d": 7,
+          "h": 4,
+          "purpose": "scales long since sold; the strongroom stands open and is used to store the wash-house coal"
+        },
+        {
+          "name": "The Watcher's stool",
+          "w": 4,
+          "d": 3,
+          "h": 4,
+          "purpose": "one chair by the door, kept warm in shifts by whoever the wedge can spare"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-040"
+      ],
+      "resident_count": 2,
+      "notes": "The customs post inverted: it exists to watch the rich descend, not to tax the poor ascending. Structurally twins Vael'Suran's and Serenthil's official gates, and refutes them."
+    },
+    {
+      "id": "DH-X01",
+      "name": "The Open Stair",
+      "house": "H6",
+      "district": "D-UNDER",
+      "type": "over/under connection (novel inversion)",
+      "position": {
+        "r": 250,
+        "a_deg": 262,
+        "depth_note": "runs from the canal quarter straight down into the under-terraces, unbarred"
+      },
+      "footprint": {
+        "w": 6,
+        "d": 18,
+        "rot_deg": 262
+      },
+      "height_m": 20,
+      "y_base": -10,
+      "purpose": "Everywhere else in Starfall the two cities meet at a locked seam — a grille, a customs door, a foreman's post. Here the stair between the terraces and the under-terraces simply stands open, and always has, because the House that kept the door shut is dead and no one rehung it. People go up and down it carrying laundry and gossip and bread. It is the single most quietly radical object in the city: a door that isn't there.",
+      "rooms": [
+        {
+          "name": "The Stair",
+          "w": 4,
+          "d": 18,
+          "h": 20,
+          "purpose": "broad worn steps, no gate, lit at the turns by tallow because the conduits here are failing"
+        }
+      ],
+      "occupants": [],
+      "resident_count": 0,
+      "notes": "The wedge's thesis made into architecture: the two-map divide physically broken. The 'Other Map' and the Plate share a staircase here, and neither minds."
+    },
+    {
+      "id": "DH-X02",
+      "name": "The Slack Lock",
+      "house": "H6",
+      "district": "D-UNDER",
+      "type": "barge lock (under-used)",
+      "position": {
+        "r": 240,
+        "a_deg": 256,
+        "depth_note": "beneath the canal quarter"
+      },
+      "footprint": {
+        "w": 24,
+        "d": 12,
+        "rot_deg": 256
+      },
+      "height_m": 14,
+      "y_base": -14,
+      "purpose": "The wedge's barge lock still works, because the city below still needs a way up whether the House above it lives or dies — but it runs slack and half-idle, worked by volunteers off the Mingle when a barge comes, not by a chained gang on a bell. It lifts less than any lock in the city and is, by every account of the people who work it, the only pleasant one to crew.",
+      "rooms": [
+        {
+          "name": "The Lock Chamber",
+          "w": 20,
+          "d": 8,
+          "h": 14,
+          "purpose": "the basin and gates; worked when needed, quiet when not"
+        },
+        {
+          "name": "The Capstan Floor",
+          "w": 12,
+          "d": 6,
+          "h": 4,
+          "purpose": "no chain-gang; the capstans walked by whoever the wedge sends, for a share of the cargo"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-052"
+      ],
+      "resident_count": 0,
+      "notes": "Worked, not lived-in; crewed from the Undercroft Bunks (DH-X04). The labour that is compulsion elsewhere is cooperative here."
+    },
+    {
+      "id": "DH-X03",
+      "name": "The Failing Gallery",
+      "house": "H6",
+      "district": "D-UNDER",
+      "type": "conduit gallery (decaying)",
+      "position": {
+        "r": 260,
+        "a_deg": 268,
+        "depth_note": "radial run under the terraces"
+      },
+      "footprint": {
+        "length": 60,
+        "width": 5,
+        "rot_deg": 268
+      },
+      "height_m": 4,
+      "y_base": -10,
+      "purpose": "The Song-conduits that should light the wedge's star-lamps, kept barely alive by a crew too small for the work since the House stopped funding it. The crystal goes untuned, the light fails terrace by terrace, and that is exactly why the wedge burns tallow above — the failing gallery is the reason the Blind Lamp is blind. They keep the last few conduits singing out of stubbornness and to sell a little light to the Menders.",
+      "rooms": [
+        {
+          "name": "The Dimming Run",
+          "w": 5,
+          "d": 60,
+          "h": 4,
+          "purpose": "conduits going dark one by one; the crew tunes what they can reach and mourns the rest"
+        },
+        {
+          "name": "Crew niche",
+          "w": 4,
+          "d": 4,
+          "h": 3,
+          "purpose": "where the conduit-crew sleep beside their failing charge"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-051"
+      ],
+      "resident_count": 6,
+      "notes": "Concrete cause of the wedge's darkness: light in Starfall was always a service that had to be paid for, and this House stopped paying. Decay you can see the reason for."
+    },
+    {
+      "id": "DH-X04",
+      "name": "The Undercroft Bunks",
+      "house": "H6",
+      "district": "D-UNDER",
+      "type": "under-dwelling (chosen, not segregated)",
+      "position": {
+        "r": 250,
+        "a_deg": 250,
+        "depth_note": "cut beneath the mid terraces"
+      },
+      "footprint": {
+        "w": 28,
+        "d": 18,
+        "rot_deg": 250,
+        "form": "carved hall + salvaged partitions"
+      },
+      "height_m": 6,
+      "y_base": -16,
+      "purpose": "A bunk-hall like the other wedges' — except that here no one is confined to it. With the Open Stair unbarred and the Mingle open above, the under-dwellers who work the lock and the gallery live below by choice, habit, or the plain warmth of glow-stone, and go up whenever they please. It is the same architecture of segregation as the other wedges, emptied of its cruelty and left standing as merely a home.",
+      "rooms": [
+        {
+          "name": "The Carved Hall",
+          "w": 16,
+          "d": 8,
+          "h": 6,
+          "purpose": "a communal hall; the same long table as every under-hall, but the door out is never locked"
+        },
+        {
+          "name": "Sleeping galleries",
+          "w": 24,
+          "d": 6,
+          "h": 3,
+          "purpose": "bunk-niches, many of them empty now that people may live above if they like"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-052"
+      ],
+      "resident_count": 40,
+      "notes": "The same structure the other wedges use to keep labour out of sight — here rendered harmless by the simple fact that the door is open. Houses the lock and gallery crews."
+    },
+    {
+      "id": "DH-X05",
+      "name": "The Open Table",
+      "house": "H6",
+      "district": "D-UNDER",
+      "type": "canteen / commons",
+      "position": {
+        "r": 248,
+        "a_deg": 260,
+        "depth_note": "at the foot of the Open Stair"
+      },
+      "footprint": {
+        "w": 16,
+        "d": 12,
+        "rot_deg": 260
+      },
+      "height_m": 4,
+      "y_base": -12,
+      "purpose": "The under-canteen of the wedge, set where the Open Stair lands — so that, uniquely in Starfall, the people from above and the people from below eat at one table without a wall or a rule between them. The same grey good stew as every under-canteen; the difference is who is allowed to sit.",
+      "rooms": [
+        {
+          "name": "The Long Room",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "trestles under the stairhead; a wall of chalked names shared between over and under, which no other wedge's wall is"
+        },
+        {
+          "name": "Kitchen",
+          "w": 5,
+          "d": 4,
+          "h": 3,
+          "purpose": "run by the keeper on donated stores"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-053"
+      ],
+      "resident_count": 4,
+      "notes": "Sister-room to the Underspill (VS-X05) and the Undertoll (SR-X05) — but here the over-city sits down too. The one integrated table in the city."
+    },
+    {
+      "id": "DH-X06",
+      "name": "The Empty Post",
+      "house": "H6",
+      "district": "D-UNDER",
+      "type": "abandoned overseer post (novel inversion)",
+      "position": {
+        "r": 242,
+        "a_deg": 266,
+        "depth_note": "at the seam where a foreman would sit"
+      },
+      "footprint": {
+        "w": 8,
+        "d": 6,
+        "rot_deg": 266
+      },
+      "height_m": 3,
+      "y_base": -12,
+      "purpose": "Every other wedge has a foreman at the seam, keeping one honest ledger and one dishonest one and knowing they differ. This wedge's post stands empty — the House that would appoint the overseer is dead — and the astonishing, quietly damning fact the over-city cannot afford to notice is that the work still gets done. One volunteer keeps a single open tally on the desk that no one above demands and no one below resents.",
+      "rooms": [
+        {
+          "name": "The Ledger Desk",
+          "w": 5,
+          "d": 4,
+          "h": 3,
+          "purpose": "one book, kept in the open, in one hand, honest because no one is made to lie to it"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-054"
+      ],
+      "resident_count": 1,
+      "notes": "The wedge's sharpest political point: remove the overseer and the labour organizes itself and works anyway. Twins the Foreman's Posts (VS-X06, SR-X06) and refutes their necessity."
+    },
+    {
+      "id": "DH-X07",
+      "name": "The Drowned Terrace",
+      "house": "H6",
+      "district": "D-UNDER",
+      "type": "flooded under-level (novel)",
+      "position": {
+        "r": 246,
+        "a_deg": 272,
+        "depth_note": "a whole service level that flooded when the pumps stopped"
+      },
+      "footprint": {
+        "w": 34,
+        "d": 24,
+        "rot_deg": 272,
+        "form": "half-flooded pillared level"
+      },
+      "height_m": 8,
+      "y_base": -20,
+      "purpose": "A service terrace that drowned when the dead House's pumps fell silent and no one paid to restart them — a still black flood standing waist-deep among the pillars, roofed by the living wedge above. The community did not drain it. They learned to use it: they fish the star-water for the pale blind things that breed in it, the children swim in the warm dark, and the flood doubles the tallow-light into a low uncanny second city that is not on even the Other Map.",
+      "rooms": [
+        {
+          "name": "The Flood",
+          "w": 30,
+          "d": 20,
+          "h": 4,
+          "purpose": "waist-deep still water among pillars; punted, fished, swum; the drowned doorways lead nowhere anyone returns from"
+        },
+        {
+          "name": "The Fishers' ledge",
+          "w": 8,
+          "d": 5,
+          "h": 3,
+          "purpose": "a dry shelf where the fisher-folk of the flood keep their nets and their homes"
+        }
+      ],
+      "occupants": [
+        "NPC-DH-055"
+      ],
+      "resident_count": 8,
+      "notes": "Novel & eerie & tied to the House's death (the pumps stopped when the House did). A place beneath the 'Other Map' itself — a third city no map contains. Strong future set-piece; leaves an unanswered edge (the drowned doorways)."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "NPC-DH-001",
+      "name": "Anneth Correa, the Unwarden",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 540,
+      "role": "informal elder of the dead House's wedge; keeps the one open ledger of favours",
+      "home": "DH-M01",
+      "work": "DH-M01",
+      "note": "Not a magister and refuses to be called one. Came here fled from something she does not discuss and stayed to hold the loose place together. Governs by listening and by not quite deciding. The head of a wedge that has no head."
+    },
+    {
+      "id": "NPC-DH-002",
+      "name": "the Hollow Seat commons (27)",
+      "gender": "mixed",
+      "race": "Noctari, human, Terran, orc",
+      "age": null,
+      "role": "squatter-families housed in the abandoned manor; the wedge's loose council",
+      "home": "DH-M01",
+      "count": 27,
+      "note": "Every race under one dead House's roof, partitioned by hung cloth. Grow vegetables in the observing court."
+    },
+    {
+      "id": "NPC-DH-010",
+      "name": "the Roofless Row squatters (14)",
+      "gender": "mixed",
+      "race": "Noctari & human",
+      "age": null,
+      "role": "occupants of the ruined sightline villas",
+      "home": "DH-U01",
+      "count": 14,
+      "note": "Live free under the best views in the city, and under tarps when it rains. Named: the tinker Osk, who chose a roofless room for the stars."
+    },
+    {
+      "id": "NPC-DH-011",
+      "name": "Sennox the Last",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 1460,
+      "role": "the dead House's final servant; keeper of its name and its silence",
+      "home": "DH-U02",
+      "work": "DH-U02",
+      "note": "Very old even for a Noctari. Kept the House's last villa exactly as it was for three centuries; remembers the name and has promised, once, to never say it — the only promise he ever kept. Knows why the House died. Will not tell. Do not resolve it."
+    },
+    {
+      "id": "NPC-DH-012",
+      "name": "the Cloth Terrace (16) — the weaver Illa Mott",
+      "gender": "mixed",
+      "race": "Noctari, human",
+      "age": null,
+      "role": "families in the subdivided villas; sightlines held in common",
+      "home": "DH-U03",
+      "count": 16,
+      "note": "Illa hangs the washing between the old columns and calls the shared view 'everyone's window.'"
+    },
+    {
+      "id": "NPC-DH-020",
+      "name": "Cord Vellamy, the Head Mender + yard (16)",
+      "gender": "nonbinary",
+      "race": "Terran",
+      "age": 240,
+      "role": "self-appointed head of the Menders' Yard; fixes what the guilds won't",
+      "home": "DH-L01",
+      "work": "DH-L01",
+      "count": 16,
+      "note": "Chartered themselves when no House would. The city's cheapest repairs and its worst-kept secret; the other Houses send work through cut-outs."
+    },
+    {
+      "id": "NPC-DH-021",
+      "name": "Teacher Meret + pupils (10)",
+      "gender": "female",
+      "race": "Human",
+      "age": 52,
+      "role": "runs the Free School; teaches letters, numbers and the stars to anyone",
+      "home": "DH-L02",
+      "work": "DH-L02",
+      "count": 10,
+      "note": "A human who was refused the Academy and teaches its knowledge for free below it. Boards the pupils with nowhere else. The most subversive person in Starfall and the gentlest."
+    },
+    {
+      "id": "NPC-DH-022",
+      "name": "the Unnumbered Row (32)",
+      "gender": "mixed",
+      "race": "Noctari, human, Terran, orc",
+      "age": null,
+      "role": "the fled, the discreetly poor, the between-things; on no rent-roll",
+      "home": "DH-L03",
+      "count": 32,
+      "note": "Came to the dead wedge to be un-measured. Nobody asks the next door's name unless it is offered. Some are hiding; most are simply tired of being counted."
+    },
+    {
+      "id": "NPC-DH-030",
+      "name": "Bram Nolt + house (5)",
+      "gender": "male",
+      "race": "Human",
+      "age": 46,
+      "role": "keeps the Blind Lamp taphouse",
+      "home": "DH-K01",
+      "work": "DH-K01",
+      "count": 5,
+      "note": "Burns illegal tallow because the Song won't come here; lets rooms by the night, no name asked. Warmer than any legal inn."
+    },
+    {
+      "id": "NPC-DH-031",
+      "name": "the Unmarket traders (30) — the barter-clerk Sable-of-no-House",
+      "gender": "mixed",
+      "race": "Noctari, human, Terran, orc",
+      "age": null,
+      "role": "barrow-traders and barterers; keep no hours and pay no stall-fee",
+      "home": "DH-K02",
+      "work": "DH-K02",
+      "count": 30,
+      "note": "Debts chalked and rubbed out on trust. The un-timed market of the un-timed House."
+    },
+    {
+      "id": "NPC-DH-032",
+      "name": "the Nameless Keeper + a companion",
+      "gender": "nonbinary",
+      "race": "Noctari",
+      "age": 300,
+      "role": "tends the Empty Niche; a shrine to the unnamed and the erased",
+      "home": "DH-K03",
+      "work": "DH-K03",
+      "count": 2,
+      "note": "Was themselves struck from a ledger long ago and never restored, and so keeps the shrine to erasure. Asks no one why they kneel."
+    },
+    {
+      "id": "NPC-DH-033",
+      "name": "the Mingle (52)",
+      "gender": "mixed",
+      "race": "Noctari, human, Terran, orc, and several of no single race",
+      "age": null,
+      "role": "the mixed-race warren of the canal quarter",
+      "home": "DH-K04",
+      "count": 52,
+      "note": "The only above-ground place in Starfall where every race keeps house side by side as a matter of course. The rule against it lapsed with the House and no one rebuilt it. Includes the city's few openly mixed-race children."
+    },
+    {
+      "id": "NPC-DH-034",
+      "name": "the wash-women of the Common Wash (8) — Gerta Voss",
+      "gender": "female",
+      "race": "mixed (Noctari, human, orc)",
+      "age": null,
+      "role": "keep the wash-house and, incidentally, mind the wedge's sick and newborn",
+      "home": "DH-K05",
+      "work": "DH-K05",
+      "count": 8,
+      "note": "Keep the salvaged boiler alive by collective effort; do the work no institution here exists to do. Gerta has delivered half the Mingle's children."
+    },
+    {
+      "id": "NPC-DH-040",
+      "name": "the Gate-Watchers (2) — old Pell",
+      "gender": "mixed",
+      "race": "Noctari & human",
+      "age": null,
+      "role": "volunteer watch at the untended customs post",
+      "home": "DH-S01",
+      "work": "DH-S01",
+      "count": 2,
+      "note": "Watch not for goods coming up but for the rich coming down the stair; warn the wedge who is descending. The one gate in Starfall aimed at the over-city."
+    },
+    {
+      "id": "NPC-DH-051",
+      "name": "the Failing-Gallery crew (6) — the tuner Orin Deep",
+      "gender": "mixed",
+      "race": "Terran & human",
+      "age": null,
+      "role": "keep the last few Song-conduits singing as the rest go dark",
+      "home": "DH-X03",
+      "work": "DH-X03",
+      "count": 6,
+      "note": "Sleep beside their failing charge; sell a little of the last light to the Menders. The reason the Blind Lamp is blind is that this crew is losing."
+    },
+    {
+      "id": "NPC-DH-052",
+      "name": "the Undercroft dwellers (40) — the lock-caller Mudge",
+      "gender": "mixed",
+      "race": "Terran, human, orc",
+      "age": null,
+      "role": "crew the Slack Lock and live below by choice, not confinement",
+      "home": "DH-X04",
+      "work": "DH-X02",
+      "count": 40,
+      "note": "Work the lock cooperatively for a share of cargo; come and go up the Open Stair as they please. Segregation's architecture, emptied of its cruelty."
+    },
+    {
+      "id": "NPC-DH-053",
+      "name": "the Open Table keeper Bess + 3",
+      "gender": "female",
+      "race": "Orc",
+      "age": 280,
+      "role": "keeps the under-canteen at the foot of the Open Stair",
+      "home": "DH-X05",
+      "work": "DH-X05",
+      "count": 4,
+      "note": "Feeds over and under at one table — the only integrated board in the city. Knows Mother Vesh (VS-X05) and Old Sable (SR-X05) by their runners, and pities their walled rooms."
+    },
+    {
+      "id": "NPC-DH-054",
+      "name": "the volunteer tally-keeper, young Wrenn",
+      "gender": "nonbinary",
+      "race": "Human",
+      "age": 22,
+      "role": "keeps the one open ledger at the abandoned foreman's post, unpaid and undemanded",
+      "home": "DH-X06",
+      "work": "DH-X06",
+      "note": "Keeps an honest count no one above requires — proof, sitting in the dark, that the labour organizes itself and works without an overseer. Would be a foreman's clerk in any other wedge; here, just a person who counts to be useful."
+    },
+    {
+      "id": "NPC-DH-055",
+      "name": "the fisher-folk of the Drowned Terrace (8) — the punt-woman Calla",
+      "gender": "mixed",
+      "race": "Terran & human",
+      "age": null,
+      "role": "fish and live on the flooded under-level the pumps stopped draining",
+      "home": "DH-X07",
+      "count": 8,
+      "note": "Netting the pale blind things that breed in the star-water; punting children over the drowned doorways. Live beneath even the Other Map. Calla will not say where the deepest drowned doors lead, and has stopped going to find out."
+    }
+  ]
+}

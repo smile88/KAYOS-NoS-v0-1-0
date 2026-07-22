@@ -1,0 +1,1354 @@
+{
+  "house_id": "H7",
+  "head_npc": "NPC-DK-001",
+  "structures": [
+    {
+      "id": "DK-T01",
+      "name": "The Horizon Tower",
+      "house": "H7",
+      "district": "D-RIM",
+      "type": "observatory tower (House seat, upper)",
+      "position": {
+        "r": 422,
+        "a_deg": 300,
+        "note": "the Duskmere rim observatory — greybox tower i=7; also the city's landward beacon"
+      },
+      "footprint": {
+        "shape": "cylinder",
+        "diameter": 22,
+        "rot_deg": 300
+      },
+      "height_m": 57,
+      "storeys": 6,
+      "y_base": 45,
+      "purpose": "Alone among the nine, this tower half-turns its back on the Mirror to watch the rim of the world instead — every rising and every setting, the exact degree at which a star first clears the cloud-sea and the exact degree at which it drowns. Its lamp is not only a finial but a beacon, the highest light in Starfall and the first thing a traveller climbing the outer stair sees for two days.",
+      "rooms": [
+        {
+          "name": "The Rising Hall",
+          "w": 20,
+          "d": 20,
+          "h": 8,
+          "purpose": "ground instrument floor; a low horizon-quadrant ringed to the walls, aimed outward not down"
+        },
+        {
+          "name": "The Ephemeris of Departures",
+          "w": 10,
+          "d": 8,
+          "h": 4,
+          "purpose": "the register of first-and-last lights; travellers pay to have an auspicious hour named for setting out"
+        },
+        {
+          "name": "Head's Study",
+          "w": 8,
+          "d": 7,
+          "h": 4,
+          "purpose": "Magister Corvenn's study; the only one in the House that faces outward, over the stair"
+        },
+        {
+          "name": "The Beacon Room",
+          "w": 10,
+          "d": 8,
+          "h": 4,
+          "purpose": "where the great landward lamp is trimmed and shuttered; a code of shutterings tells the stair-foot what weather waits above"
+        },
+        {
+          "name": "The Setting Chamber",
+          "w": 12,
+          "d": 12,
+          "h": 10,
+          "purpose": "top floor; the outward aperture; the reading of last-light is taken standing in the wind off the cloud-sea"
+        },
+        {
+          "name": "Watch-stair & lamp-loft",
+          "w": 4,
+          "d": 4,
+          "h": 30,
+          "purpose": "the spiral stair; the beacon is tended in shifts through the night"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-002",
+        "NPC-DK-003"
+      ],
+      "resident_count": 7,
+      "notes": "First Watcher + 6 live-in watchers/beacon-keepers. The beacon doubles as the greybox rim finial; it also faces outward, the one lamp that looks away from the city."
+    },
+    {
+      "id": "DK-M01",
+      "name": "The Duskmere Seat",
+      "house": "H7",
+      "district": "D-RIM",
+      "type": "great house (manor)",
+      "position": {
+        "r": 438,
+        "a_deg": 294
+      },
+      "footprint": {
+        "w": 32,
+        "d": 22,
+        "rot_deg": 294,
+        "faces": "outward (toward the rim gate and the stair)"
+      },
+      "height_m": 14,
+      "storeys": 3,
+      "y_base": 45,
+      "purpose": "The only House seat arranged around a view of the way out rather than the Mirror — a house built for leaving, hung with the maps of roads no other House keeps and the trophies of journeys down. Half its rooms are always shut, their people away; the family measures its status not in windows but in how far its members have gone and come back.",
+      "rooms": [
+        {
+          "name": "The Hall of Roads",
+          "w": 14,
+          "d": 10,
+          "h": 7,
+          "purpose": "reception; a floor inlaid with the outer roads, worn palest where the family walks its own routes in thought"
+        },
+        {
+          "name": "Corvenn's chambers",
+          "w": 10,
+          "d": 8,
+          "h": 4,
+          "purpose": "the head's rooms, facing the beacon and the stair-head"
+        },
+        {
+          "name": "The Shut Wing",
+          "w": 16,
+          "d": 8,
+          "h": 4,
+          "purpose": "chambers of the family who are travelling; kept aired and ready, sometimes for decades"
+        },
+        {
+          "name": "The Returns Court",
+          "w": 12,
+          "d": 10,
+          "h": 6,
+          "purpose": "a court with a single lit lamp burning for whoever is on the road — put out only when all are home, which is almost never"
+        },
+        {
+          "name": "Kitchen & stores",
+          "w": 10,
+          "d": 7,
+          "h": 4,
+          "purpose": "below the hall; provisioned for departures as much as meals"
+        },
+        {
+          "name": "Staff quarters",
+          "w": 12,
+          "d": 6,
+          "h": 4,
+          "purpose": "attic rooms for the household"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-001",
+        "NPC-DK-004",
+        "NPC-DK-005"
+      ],
+      "resident_count": 16,
+      "notes": "Corvenn + resident family (5) + 10 staff. The Returns lamp is the House's soul: a light kept for the absent."
+    },
+    {
+      "id": "DK-G01",
+      "name": "The Stair-Head Gatehouse",
+      "house": "H7",
+      "district": "D-RIM",
+      "type": "great gatehouse (novel landmark)",
+      "position": {
+        "r": 446,
+        "a_deg": 309,
+        "note": "crowns the outer switchback stair where it meets the rim — the plate's zigzag line off the edge starts here"
+      },
+      "footprint": {
+        "w": 26,
+        "d": 18,
+        "rot_deg": 309,
+        "faces": "outward, straddling the stair-head"
+      },
+      "height_m": 18,
+      "storeys": 3,
+      "y_base": 45,
+      "purpose": "The one land gate of Starfall: a fortified house straddling the top of the long outer switchback stair, the only walked road down to the world far below the cloud-sea. Everything and everyone that does not come up a barge-lock comes through here — counted, tolled, and named in the gate-book. Its double portcullis is warded shut at the ninth bell, and after that the city is, quite literally, unreachable by foot.",
+      "rooms": [
+        {
+          "name": "The Passage",
+          "w": 6,
+          "d": 18,
+          "h": 8,
+          "purpose": "the warded gate-tunnel; two portcullises with a killing-dark between, a relic of a fear no living Noctari remembers the cause of"
+        },
+        {
+          "name": "The Gate-Book Hall",
+          "w": 12,
+          "d": 8,
+          "h": 5,
+          "purpose": "where every arrival is named and every departure marked; the most complete list of who is in the city that exists — and it lists no one from below"
+        },
+        {
+          "name": "The Toll Room",
+          "w": 8,
+          "d": 6,
+          "h": 4,
+          "purpose": "gate-customs on foot-traffic and pack-loads; the strongroom under it"
+        },
+        {
+          "name": "Guard barracks",
+          "w": 14,
+          "d": 8,
+          "h": 4,
+          "purpose": "the resident gate-guard company; the only standing armed body in a city that pretends it needs none"
+        },
+        {
+          "name": "The Beacon-mirror loft",
+          "w": 6,
+          "d": 5,
+          "h": 5,
+          "purpose": "answers the Horizon Tower's shutter-code down the stair to the way-stations"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-007"
+      ],
+      "resident_count": 12,
+      "notes": "Gate-serjeant Ollun-Rekk + a resident guard company of 11. The gate-book is a quiet theme-piece: the city's official census of souls, which by design cannot see the Under-Terraces or the world below."
+    },
+    {
+      "id": "DK-U01",
+      "name": "Sightline Villa — the Warden's House",
+      "house": "H7",
+      "district": "D-UPPER",
+      "type": "senior officer's villa",
+      "position": {
+        "r": 368,
+        "a_deg": 288
+      },
+      "footprint": {
+        "w": 14,
+        "d": 12,
+        "rot_deg": 288,
+        "faces": "inward"
+      },
+      "height_m": 10,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "Home of the Warden of the Stair, the commoner-born officer who actually holds the gate and the descent — a heavier authority than any House head, because the Warden decides who comes into the city at all. Keeps a sightline to the Mirror out of rank and never once looks at it; the window that matters faces the stair.",
+      "rooms": [
+        {
+          "name": "The Duty Study",
+          "w": 9,
+          "d": 7,
+          "h": 4,
+          "purpose": "the gate-rosters, the toll-ledgers, a spyglass trained down the switchbacks"
+        },
+        {
+          "name": "Family rooms",
+          "w": 13,
+          "d": 6,
+          "h": 4,
+          "purpose": "the Warden, a spouse, two children, a ward taken off the stair years ago"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-006"
+      ],
+      "resident_count": 6,
+      "notes": "Warden Hesk Ollun + household of 5. Real power in the wedge; the House defers to the Warden and resents it."
+    },
+    {
+      "id": "DK-U02",
+      "name": "Sightline Villa — the Caravan-Master's House",
+      "house": "H7",
+      "district": "D-UPPER",
+      "type": "senior dwelling (bought-in)",
+      "position": {
+        "r": 372,
+        "a_deg": 297
+      },
+      "footprint": {
+        "w": 13,
+        "d": 11,
+        "rot_deg": 297,
+        "faces": "inward"
+      },
+      "height_m": 9,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "A rim villa bought — scandalously, with trade money — by a retired human caravan-master who spent sixty years hauling up the stair and now owns a view the old blood thinks he has no right to. He keeps the door open and the wine good, and the House cannot afford to snub him, because he still owns half the mule-lines.",
+      "rooms": [
+        {
+          "name": "The Map Room",
+          "w": 9,
+          "d": 7,
+          "h": 4,
+          "purpose": "walls of trade-roads; the sightline used, unusually, to actually look at the lake"
+        },
+        {
+          "name": "Living rooms",
+          "w": 12,
+          "d": 6,
+          "h": 4,
+          "purpose": "Tovek, his wife, a grandchild, a manservant"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-008"
+      ],
+      "resident_count": 5,
+      "notes": "Caravan-master Tovek Sarn (human) + household. New money on the rim — an affront and a fact. Side-quest seed: buying respectability."
+    },
+    {
+      "id": "DK-U03",
+      "name": "Sightline Villa — the Empty House",
+      "house": "H7",
+      "district": "D-UPPER",
+      "type": "senior dwelling (mostly absent)",
+      "position": {
+        "r": 364,
+        "a_deg": 312
+      },
+      "footprint": {
+        "w": 13,
+        "d": 11,
+        "rot_deg": 312,
+        "faces": "inward"
+      },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "A Duskmere villa whose whole family is a decade into a survey of the drowned coasts and is not expected back this generation. A caretaker keeps the lamp, dusts the instruments, and answers the door to no one — the most enviable sightline in the wedge, held by an empty house and a woman who is not allowed to sit at its window.",
+      "rooms": [
+        {
+          "name": "The Shrouded Study",
+          "w": 9,
+          "d": 7,
+          "h": 4,
+          "purpose": "instruments under cloth; the sightline unused for eleven years"
+        },
+        {
+          "name": "Caretaker's rooms",
+          "w": 10,
+          "d": 6,
+          "h": 4,
+          "purpose": "the caretaker and her three lodgers, who are not supposed to be there"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-009"
+      ],
+      "resident_count": 4,
+      "notes": "Caretaker Nell + 3 quiet lodgers she takes rent from and does not report. A wedge of departures leaves houses like this everywhere."
+    },
+    {
+      "id": "DK-L01",
+      "name": "The Wayfarers' Hall",
+      "house": "H7",
+      "district": "D-MID",
+      "type": "guild-hall + lodging",
+      "position": {
+        "r": 315,
+        "a_deg": 292
+      },
+      "footprint": {
+        "w": 22,
+        "d": 14,
+        "rot_deg": 292,
+        "faces": "inward"
+      },
+      "height_m": 11,
+      "storeys": 3,
+      "y_base": 23,
+      "purpose": "The guild of guides, road-cartographers and stair-pilots — the people who know the switchbacks in fog, the safe camps, the season the lower road floods. They draw the maps no Plate would deign to include (the outward roads, the world below) and lodge the guild's own in the floors above. The one hall in Starfall where the city is treated as a place you leave.",
+      "rooms": [
+        {
+          "name": "The Road-Room",
+          "w": 20,
+          "d": 8,
+          "h": 5,
+          "purpose": "long tables of outward maps; a relief-model of the whole switchback stair in carved slate"
+        },
+        {
+          "name": "The Pilots' Register",
+          "w": 8,
+          "d": 6,
+          "h": 4,
+          "purpose": "who is licensed to guide the descent; a stair-pilot's word is worth a House seal down below"
+        },
+        {
+          "name": "Guild dormitory",
+          "w": 18,
+          "d": 6,
+          "h": 4,
+          "purpose": "lodging for pilots between runs; cots that smell of the outside"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-010"
+      ],
+      "resident_count": 13,
+      "notes": "Guild-warden Ilsa Wend + 12 lodged pilots/cartographers. The Road-Room's outward maps are the over-city cousin of the Under-Terraces' 'Other Map' — knowledge the Plate refuses."
+    },
+    {
+      "id": "DK-L02",
+      "name": "The Gatewrights' Court",
+      "house": "H7",
+      "district": "D-MID",
+      "type": "workshop + dwelling",
+      "position": {
+        "r": 322,
+        "a_deg": 303
+      },
+      "footprint": {
+        "w": 18,
+        "d": 16,
+        "rot_deg": 303,
+        "faces": "inward",
+        "form": "court with open centre"
+      },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 23,
+      "purpose": "Where the gate-mechanisms, the portcullis counterweights, the mule-harness and the stair's iron are made and mended — the heavy, greasy trade that keeps the one door working. A family firm that has held the gate-contract for four generations and guards its winch-designs like a House guards a sightline.",
+      "rooms": [
+        {
+          "name": "The Iron Shed",
+          "w": 12,
+          "d": 8,
+          "h": 5,
+          "purpose": "forge, winch-benches, the great counterweight-jigs"
+        },
+        {
+          "name": "The Harness Room",
+          "w": 8,
+          "d": 6,
+          "h": 4,
+          "purpose": "mule-tack and stair-litters for the loads too heavy to carry"
+        },
+        {
+          "name": "Family dwelling",
+          "w": 14,
+          "d": 6,
+          "h": 4,
+          "purpose": "the Rekk family above the forge"
+        },
+        {
+          "name": "The Court",
+          "w": 8,
+          "d": 8,
+          "h": 0,
+          "purpose": "open assembly yard for gate-iron"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-011"
+      ],
+      "resident_count": 9,
+      "notes": "Master gatewright Dorn Rekk + household + journeymen. Kin to the gate-serjeant; the Rekks are the gate, above and below."
+    },
+    {
+      "id": "DK-L03",
+      "name": "Doorkeepers' Row",
+      "house": "H7",
+      "district": "D-MID",
+      "type": "terrace of 6 small dwellings",
+      "position": {
+        "r": 300,
+        "a_deg": 311
+      },
+      "footprint": {
+        "w": 42,
+        "d": 8,
+        "rot_deg": 311,
+        "faces": "inward",
+        "form": "row of 6"
+      },
+      "height_m": 7,
+      "storeys": 2,
+      "y_base": 23,
+      "purpose": "Six joined houses of the wedge's doorkeepers — gate-clerks, toll-tallymen, stair-lamplighters and the runners who carry the gate-book's news up to the House. Respectable, sightless service to the threshold; they know everyone's comings and goings and are paid to forget them.",
+      "rooms": [
+        {
+          "name": "Per-house: work-room + 2 chambers",
+          "w": 6,
+          "d": 7,
+          "h": 4,
+          "purpose": "6 households"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-012"
+      ],
+      "resident_count": 22,
+      "notes": "6 households, ~22 souls. Named: toll-tallyman Vess, who has memorised every face that came up the stair in forty years and never once written a name he was paid to lose."
+    },
+    {
+      "id": "DK-K01",
+      "name": "The Last Lamp",
+      "house": "H7",
+      "district": "D-CANAL",
+      "type": "inn (Strain-relief haven)",
+      "position": {
+        "r": 270,
+        "a_deg": 296
+      },
+      "footprint": {
+        "w": 16,
+        "d": 12,
+        "rot_deg": 296,
+        "faces": "canal"
+      },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "The wedge's inn, and by old custom the last warm light a traveller passes going down and the first coming up — its sign a lamp that is never let go out. Half its trade is farewells and half is homecomings, and the innkeeper has learned to tell, from the door, which a stranger needs. This quarter's Strain-relief haven.",
+      "rooms": [
+        {
+          "name": "The Common Room",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "hearth, long tables, the never-dark lamp over the door; a wall of tokens left by travellers who meant to come back"
+        },
+        {
+          "name": "Kitchen",
+          "w": 6,
+          "d": 5,
+          "h": 4,
+          "purpose": ""
+        },
+        {
+          "name": "Letting rooms (x5)",
+          "w": 14,
+          "d": 5,
+          "h": 3,
+          "purpose": "five rooms above, more often taken for one hard-slept night than a stay"
+        },
+        {
+          "name": "Cellar",
+          "w": 8,
+          "d": 6,
+          "h": 3,
+          "purpose": "a stair-cool store; a low door that lets onto the Undergate, which the innkeeper swears is bricked up"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-013"
+      ],
+      "resident_count": 5,
+      "notes": "Innkeeper Wenna Sarr + 2 family + 2 staff. The cellar door is this wedge's over/under seam — to the Undergate (DK-X07)."
+    },
+    {
+      "id": "DK-K02",
+      "name": "The Caravanserai of the First Night",
+      "house": "H7",
+      "district": "D-CANAL",
+      "type": "way-inn / caravanserai (novel landmark)",
+      "position": {
+        "r": 262,
+        "a_deg": 305,
+        "note": "the largest single footprint in the wedge — a courtyarded stopping-house"
+      },
+      "footprint": {
+        "w": 40,
+        "d": 34,
+        "rot_deg": 305,
+        "faces": "inward",
+        "form": "great court ringed by galleries"
+      },
+      "height_m": 11,
+      "storeys": 3,
+      "y_base": 12,
+      "purpose": "A vast galleried courtyard where the outside world sleeps its first night in Starfall: muleteers, pilgrims, traders, envoys, and the merely lost, stacked in tiers of let-rooms around a central yard loud with beasts and languages. The most cosmopolitan single building in a city that prides itself on knowing exactly who everyone is — and the one place that, for a night, does not. A churning, half-transient population no census ever fixes.",
+      "rooms": [
+        {
+          "name": "The Great Court",
+          "w": 24,
+          "d": 24,
+          "h": 0,
+          "purpose": "open yard; a well, a fire-pit, mule-lines, and every dusk a different crowd"
+        },
+        {
+          "name": "The Tier Galleries",
+          "w": 36,
+          "d": 5,
+          "h": 3,
+          "purpose": "three storeys of let-rooms opening onto the court; the cheapest are highest and coldest"
+        },
+        {
+          "name": "The Long Stable",
+          "w": 20,
+          "d": 6,
+          "h": 4,
+          "purpose": "beasts of the road; the smell of the outside, which the rim finds unspeakable"
+        },
+        {
+          "name": "The Keeper's House",
+          "w": 10,
+          "d": 6,
+          "h": 4,
+          "purpose": "Old Mireth and her people, who never sleep the same night twice"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-014"
+      ],
+      "resident_count": 44,
+      "notes": "Caravanserai-keeper Old Mireth + ~14 permanent staff + ~30 long-stay transients counted this season (the number is never the same twice). The city's true melting-pot; a natural quest and information hub."
+    },
+    {
+      "id": "DK-K03",
+      "name": "The Arrival Market",
+      "house": "H7",
+      "district": "D-CANAL",
+      "type": "market row (outfitters & changers)",
+      "position": {
+        "r": 256,
+        "a_deg": 314,
+        "form": "row of 9 stalls/shops"
+      },
+      "footprint": {
+        "w": 28,
+        "d": 10,
+        "rot_deg": 314,
+        "faces": "canal"
+      },
+      "height_m": 6,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "The market of the freshly-arrived and the about-to-leave: money-changers who take any coin, outfitters, a letter-writer for those who cannot, a physician for stair-broken legs, a dealer in second-hand everything left behind by people who did not make it back for it. Prices tuned to exactly what a tired stranger will pay.",
+      "rooms": [
+        {
+          "name": "Per unit: shopfront + room above",
+          "w": 3,
+          "d": 8,
+          "h": 4,
+          "purpose": "9 units, most with a family above"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-015"
+      ],
+      "resident_count": 24,
+      "notes": "9 shops, ~24 souls. Named: the changer Oshka (who fences what the Undergate brings up) and the letter-writer old Pell (who knows every secret in the wedge and sells none)."
+    },
+    {
+      "id": "DK-K04",
+      "name": "Canal Dwellings — Gateside",
+      "house": "H7",
+      "district": "D-CANAL",
+      "type": "tenement block, 8 dwellings",
+      "position": {
+        "r": 244,
+        "a_deg": 289
+      },
+      "footprint": {
+        "w": 24,
+        "d": 14,
+        "rot_deg": 289,
+        "faces": "canal",
+        "form": "block, 8 dwellings"
+      },
+      "height_m": 11,
+      "storeys": 3,
+      "y_base": 12,
+      "purpose": "Dense canalside housing for the wedge's settled working folk — the porters, gate-clerks, stable-hands, changers' families and off-shift customs-men who work the threshold and, unlike the trade that passes through, actually stay. The block that anchors a wedge otherwise made of people leaving.",
+      "rooms": [
+        {
+          "name": "Per dwelling: 2-3 rooms",
+          "w": 6,
+          "d": 6,
+          "h": 3,
+          "purpose": "8 dwellings, families of 3-6"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-016",
+        "NPC-DK-018"
+      ],
+      "resident_count": 40,
+      "notes": "~40 souls incl. the customs officer's household (counted here, day-posted to the gate-foot). Named: portress Grella, who has carried loads up the stair since she was nine and will not speak of what she has seen come down it."
+    },
+    {
+      "id": "DK-K05",
+      "name": "The Threshold Shrine",
+      "house": "H7",
+      "district": "D-CANAL",
+      "type": "shrine (Umbrion, of the between)",
+      "position": {
+        "r": 250,
+        "a_deg": 300
+      },
+      "footprint": {
+        "w": 10,
+        "d": 10,
+        "rot_deg": 300,
+        "faces": "inward"
+      },
+      "height_m": 8,
+      "storeys": 1,
+      "y_base": 12,
+      "purpose": "A shrine to Umbrion in his aspect of the threshold — the god of dusk being the god of the moment between, of doorways, of the step you have half-taken. Travellers touch its cold sill going down and coming up; the keeper marks a tally-stone for every soul who prays to leave and does not return, and the wall of them is long.",
+      "rooms": [
+        {
+          "name": "The Between-Cell",
+          "w": 6,
+          "d": 6,
+          "h": 6,
+          "purpose": "a doorless doorway of black stone; you pray standing in it, neither in nor out"
+        },
+        {
+          "name": "Keeper's cell",
+          "w": 4,
+          "d": 4,
+          "h": 3,
+          "purpose": "the shrine-keeper's room, walled in tally-stones of the un-returned"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-017"
+      ],
+      "resident_count": 1,
+      "notes": "Keeper Onwe, who came up the stair once, meaning to go back, and never has. A quiet counterpart to House Vael'Suran's Deepening."
+    },
+    {
+      "id": "DK-S01",
+      "name": "The Gate-Foot Customs & Processional Foot",
+      "house": "H7",
+      "district": "D-SHORE",
+      "type": "civic threshold",
+      "position": {
+        "r": 228,
+        "a_deg": 303
+      },
+      "footprint": {
+        "w": 14,
+        "d": 10,
+        "rot_deg": 303,
+        "faces": "processional"
+      },
+      "height_m": 6,
+      "storeys": 1,
+      "y_base": 0,
+      "purpose": "Where this wedge's processional meets the shore: the second customs post of Duskmere, twinned with the gatehouse far above — the gatehouse tolls what comes overland from the world, this post tolls what the barge-lock lifts from directly below. Between the two, in theory, nothing enters Starfall uncounted. In practice, there is the Undergate.",
+      "rooms": [
+        {
+          "name": "The Weighing Hall",
+          "w": 10,
+          "d": 7,
+          "h": 4,
+          "purpose": "scales, tally-desks, a warded strongroom"
+        },
+        {
+          "name": "Officers' room",
+          "w": 5,
+          "d": 4,
+          "h": 4,
+          "purpose": "the customs officer and clerks"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-018"
+      ],
+      "resident_count": 0,
+      "notes": "Customs officer Brae + 2 clerks (day post; housed at DK-K04). 'In theory nothing enters uncounted' is the wedge's central irony."
+    },
+    {
+      "id": "DK-X01",
+      "name": "The Duskmere Lock",
+      "house": "H7",
+      "district": "D-UNDER",
+      "type": "barge lock (service)",
+      "position": {
+        "r": 240,
+        "a_deg": 300,
+        "depth_note": "beneath the canal quarter"
+      },
+      "footprint": {
+        "w": 24,
+        "d": 12,
+        "rot_deg": 300
+      },
+      "height_m": 14,
+      "y_base": -14,
+      "purpose": "The chamber-lock that raises cargo barges from the world directly below the caldera up into the wedge's canal — the fast route, for goods too heavy or too discreet for the long stair. The gate above counts mules; the lock below lifts the tonnage; and the difference between what each records is where a great deal of the wedge's real wealth lives.",
+      "rooms": [
+        {
+          "name": "The Lock Chamber",
+          "w": 20,
+          "d": 8,
+          "h": 14,
+          "purpose": "the flooding basin and counter-weighted gates"
+        },
+        {
+          "name": "The Capstan Floor",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "walked by the lift-gangs"
+        },
+        {
+          "name": "Tally hole",
+          "w": 4,
+          "d": 4,
+          "h": 3,
+          "purpose": "the under-clerk's niche and his charcoal ledger"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-019"
+      ],
+      "resident_count": 0,
+      "notes": "Worked, not lived-in. Lock-master Braff. The gap between the gate-book above and the lock-tally below is the wedge's open secret."
+    },
+    {
+      "id": "DK-X02",
+      "name": "The Conduit Gallery",
+      "house": "H7",
+      "district": "D-UNDER",
+      "type": "Song-conduit service tunnel",
+      "position": {
+        "r": 260,
+        "a_deg": 296,
+        "depth_note": "runs radially under the terraces"
+      },
+      "footprint": {
+        "length": 68,
+        "width": 5,
+        "rot_deg": 296
+      },
+      "height_m": 4,
+      "y_base": -10,
+      "purpose": "The tuned crystal conduits that carry the Song up to this wedge's star-lamps — including the great landward beacon, which drinks more Song than any lamp in the city and so keeps a whole crew climbing in the dark to feed a light that faces away from them. When the beacon burns for a traveller, it burns on their backs.",
+      "rooms": [
+        {
+          "name": "The Long Gallery",
+          "w": 4,
+          "d": 68,
+          "h": 4,
+          "purpose": "the conduit run; a heavy branch climbs to the beacon-stem"
+        },
+        {
+          "name": "Tuning niches (x4)",
+          "w": 3,
+          "d": 3,
+          "h": 3,
+          "purpose": "where conduit-wrights true the crystal"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-020"
+      ],
+      "resident_count": 0,
+      "notes": "Worked by a conduit crew of 6 (housed at DK-X04). The beacon's hunger is a small cruelty the wedge does not think about."
+    },
+    {
+      "id": "DK-X03",
+      "name": "The Stair-Gangs' Hall",
+      "house": "H7",
+      "district": "D-UNDER",
+      "type": "mixed bunk-hall (porters & lift-gangs)",
+      "position": {
+        "r": 250,
+        "a_deg": 308,
+        "depth_note": "cut beneath the caravanserai"
+      },
+      "footprint": {
+        "w": 30,
+        "d": 20,
+        "rot_deg": 308,
+        "form": "riveted bunk-galleries under stone"
+      },
+      "height_m": 5,
+      "y_base": -18,
+      "purpose": "The bunk-hall of the muscle of the threshold: the stair-porters who carry loads no mule can up the switchbacks, and the barge lift-gangs who walk the lock capstans. Human and orc, road-hard and lock-hard, they are the two halves of how weight gets into Starfall — and neither half is on the gate-book, because the gate-book counts arrivals, and they never leave.",
+      "rooms": [
+        {
+          "name": "The Porters' Gallery",
+          "w": 20,
+          "d": 8,
+          "h": 4,
+          "purpose": "bunks for the stair-gangs; a rack of carry-frames worn to the shape of specific backs"
+        },
+        {
+          "name": "The Lift-Gang Gallery",
+          "w": 18,
+          "d": 6,
+          "h": 4,
+          "purpose": "bunks for the capstan-walkers; a wall of notches, one per season survived"
+        },
+        {
+          "name": "The Wash",
+          "w": 8,
+          "d": 5,
+          "h": 3,
+          "purpose": "the one place the road-dust and the lock-damp come off"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-021"
+      ],
+      "resident_count": 50,
+      "notes": "~28 human/orc stair-porters + ~22 lift-gang. Named: the stair-elder Karsk, who has climbed the equivalent of off the world and back many times over. Part of the unnamed 778."
+    },
+    {
+      "id": "DK-X04",
+      "name": "The Stairwrights' Hall",
+      "house": "H7",
+      "district": "D-UNDER",
+      "type": "Terran bunk-hall & enclave",
+      "position": {
+        "r": 248,
+        "a_deg": 293,
+        "depth_note": "cut into the outer shore-mass, nearest the stair's roots"
+      },
+      "footprint": {
+        "w": 28,
+        "d": 18,
+        "rot_deg": 293,
+        "form": "carved hall, glow-stone lit"
+      },
+      "height_m": 6,
+      "y_base": -20,
+      "purpose": "Home and hall of the Terran stairwrights — the deep-folk who cut, shore and endlessly repair the outer switchback stair and the gate's roots, the most dangerous stone-work in Starfall because it hangs over the cloud-sea on the outside of the world. Carved, glow-warm, and grimly proud: every course of the stair a traveller trusts was set by a hand in this hall, and lost fingers are counted here as a kind of rank.",
+      "rooms": [
+        {
+          "name": "The Carved Hall",
+          "w": 18,
+          "d": 10,
+          "h": 6,
+          "purpose": "communal hall; a long stone table and the roll of the stair-dead, cut into the wall"
+        },
+        {
+          "name": "Sleeping galleries",
+          "w": 22,
+          "d": 6,
+          "h": 3,
+          "purpose": "bunk-niches for the wrights, the lock-master and the conduit crew who bunk with them"
+        },
+        {
+          "name": "The Shrine of Petrocore",
+          "w": 6,
+          "d": 6,
+          "h": 5,
+          "purpose": "a Stone-Voice shrine facing outward, toward the exposed cut — the wrong god, the right prayer"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-022",
+        "NPC-DK-019",
+        "NPC-DK-020"
+      ],
+      "resident_count": 49,
+      "notes": "~42 Terran stairwrights + lock-master Braff + the 6-strong conduit crew who bunk here. Kin-connected to House Vael'Suran's deep-wrights; the two Terran halls trade apprentices and grief."
+    },
+    {
+      "id": "DK-X05",
+      "name": "The Waygate Canteen",
+      "house": "H7",
+      "district": "D-UNDER",
+      "type": "canteen / commons",
+      "position": {
+        "r": 252,
+        "a_deg": 301,
+        "depth_note": "at the gallery crossing under the caravanserai"
+      },
+      "footprint": {
+        "w": 16,
+        "d": 12,
+        "rot_deg": 301
+      },
+      "height_m": 4,
+      "y_base": -12,
+      "purpose": "The under-city's warm room for the wedge, and the strangest table in Starfall: stair-porters, lift-gangs, stairwrights, conduit-crews and, now and then, an outsider come up the Undergate who has nowhere else to be, all eating the same grey good stew. The canteen-keeper feeds anyone who comes down the right passage and asks no gate-book question at all.",
+      "rooms": [
+        {
+          "name": "The Long Room",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "trestles, a great range, a wall chalked with the dead of the stair and the lock"
+        },
+        {
+          "name": "Kitchen & store",
+          "w": 6,
+          "d": 5,
+          "h": 3,
+          "purpose": "run by the keeper"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-023"
+      ],
+      "resident_count": 4,
+      "notes": "Canteen-keeper Bem + 3 helpers. Sister-room to the Underspill and the Undertoll; the three under-canteens run a quiet grapevine the length of the city."
+    },
+    {
+      "id": "DK-X06",
+      "name": "The Foreman's Post",
+      "house": "H7",
+      "district": "D-UNDER",
+      "type": "overseer post",
+      "position": {
+        "r": 242,
+        "a_deg": 305,
+        "depth_note": "at the foot of the gate-foot stair"
+      },
+      "footprint": {
+        "w": 8,
+        "d": 6,
+        "rot_deg": 305
+      },
+      "height_m": 3,
+      "y_base": -12,
+      "purpose": "The seam-office where the under-city of the threshold answers to the over-city — where the lock-tally, the porter-shifts and the awkward matter of the Undergate are all reconciled into whatever number the House is willing to hear. The foreman keeps three ledgers: one for the House, one that is true, and one he burns.",
+      "rooms": [
+        {
+          "name": "The Office",
+          "w": 5,
+          "d": 4,
+          "h": 3,
+          "purpose": "a ledger-desk, a lamp, a strongbox with a false bottom"
+        },
+        {
+          "name": "Bunk",
+          "w": 3,
+          "d": 3,
+          "h": 3,
+          "purpose": "the foreman sleeps at the seam"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-024"
+      ],
+      "resident_count": 1,
+      "notes": "Foreman Idris — the one who decides what the Undergate is allowed to be. Trusted by neither map; feared by both. Prime quest-broker."
+    },
+    {
+      "id": "DK-X07",
+      "name": "The Undergate",
+      "house": "H7",
+      "district": "D-UNDER",
+      "type": "unofficial lower gate (novel landmark)",
+      "position": {
+        "r": 238,
+        "a_deg": 312,
+        "depth_note": "where the outer stair's lowest flights breach the under-city, off the plate"
+      },
+      "footprint": {
+        "w": 14,
+        "d": 12,
+        "rot_deg": 312,
+        "form": "a breached gallery, half-walled, lamp-lit in rust"
+      },
+      "height_m": 5,
+      "y_base": -22,
+      "purpose": "The city's other door: a place low on the outer stair where a broken flight lets into the under-galleries, and those who cannot pay the gatehouse toll — or cannot afford to be written in the gate-book — come up into Starfall through the dark instead. Not a secret, exactly; a thing the foreman manages, the changers fence for, and the Plate could not draw if it tried, because officially it is a rockfall. The truest threshold in a wedge of thresholds.",
+      "rooms": [
+        {
+          "name": "The Breach",
+          "w": 8,
+          "d": 6,
+          "h": 5,
+          "purpose": "the broken gate; a plank bridge over the drop, and a rust lamp that means 'open tonight'"
+        },
+        {
+          "name": "The Waiting Dark",
+          "w": 8,
+          "d": 5,
+          "h": 4,
+          "purpose": "where the un-booked wait to be let up; some for a night, some for years; a squat-camp of the truly uncounted"
+        }
+      ],
+      "occupants": [
+        "NPC-DK-025"
+      ],
+      "resident_count": 8,
+      "notes": "Gate-shadow Kobb + ~7 long-term squatters of the Waiting Dark. The single sharpest image of the two-maps theme in the wedge: a door the city insists is a wall."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "NPC-DK-001",
+      "name": "Magister Corvenn Duskmere",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 1040,
+      "role": "Head of House Duskmere; Warden of the Horizon",
+      "home": "DK-M01",
+      "work": "DK-T01",
+      "note": "Watches the settings; keeps the outward-facing seat and the Returns lamp. Prouder of who his House has sent out into the world than of any sightline — the one head who thinks the city is a place you leave."
+    },
+    {
+      "id": "NPC-DK-002",
+      "name": "First Watcher Ysolt Vane",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 580,
+      "role": "senior observer of first-and-last light",
+      "home": "DK-T01",
+      "work": "DK-T01",
+      "note": "Names the auspicious hours travellers pay to set out on; privately believes no hour is auspicious and every departure a small death."
+    },
+    {
+      "id": "NPC-DK-003",
+      "name": "the watchers & beacon-keepers (6)",
+      "gender": "mixed",
+      "race": "Noctari",
+      "age": null,
+      "role": "live-in observers and beacon-tenders",
+      "home": "DK-T01",
+      "work": "DK-T01",
+      "count": 6,
+      "note": "Keep the landward lamp and the shutter-code through every watch of the night."
+    },
+    {
+      "id": "NPC-DK-004",
+      "name": "the resident Duskmere family (5)",
+      "gender": "mixed",
+      "race": "Noctari",
+      "age": null,
+      "role": "House family currently at home",
+      "home": "DK-M01",
+      "count": 5,
+      "note": "The half of the family not on the road; they keep the Returns lamp for the other half."
+    },
+    {
+      "id": "NPC-DK-005",
+      "name": "the Seat household staff (10)",
+      "gender": "mixed",
+      "race": "Noctari & 2 human",
+      "age": null,
+      "role": "cook, map-keeper, lamp-tender, porters, maids",
+      "home": "DK-M01",
+      "work": "DK-M01",
+      "count": 10
+    },
+    {
+      "id": "NPC-DK-006",
+      "name": "Warden Hesk Ollun + household (6)",
+      "gender": "nonbinary",
+      "race": "Noctari",
+      "age": 360,
+      "role": "Warden of the Stair; commoner-born officer who holds the gate and the descent",
+      "home": "DK-U01",
+      "work": "DK-G01",
+      "count": 6,
+      "note": "Decides who enters Starfall at all — a heavier hand than any House head, and resented for it. Household of 6 incl. a ward taken off the stair as a child."
+    },
+    {
+      "id": "NPC-DK-007",
+      "name": "Gate-serjeant Ollun-Rekk + guard company (12)",
+      "gender": "male",
+      "race": "Noctari & mixed",
+      "age": 300,
+      "role": "commands the resident gate-guard; keeps the gate-book",
+      "home": "DK-G01",
+      "work": "DK-G01",
+      "count": 12,
+      "note": "Kin to both the Warden and the gatewrights; the Rekks are the gate. The only standing armed body in a city that pretends it needs none."
+    },
+    {
+      "id": "NPC-DK-008",
+      "name": "Caravan-master Tovek Sarn + household (5)",
+      "gender": "male",
+      "race": "Human",
+      "age": 71,
+      "role": "retired trade-master; new money on the rim",
+      "home": "DK-U02",
+      "work": null,
+      "count": 5,
+      "note": "Sixty years up and down the stair; bought a sightline the old blood says he has no right to, and still owns half the mule-lines. An affront and a fact."
+    },
+    {
+      "id": "NPC-DK-009",
+      "name": "Caretaker Nell + lodgers (4)",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 230,
+      "role": "keeps the Empty House for a family a decade away",
+      "home": "DK-U03",
+      "count": 4,
+      "note": "Dusts an unused sightline she is not permitted to sit at; quietly rents its spare rooms to three she does not report."
+    },
+    {
+      "id": "NPC-DK-010",
+      "name": "Guild-warden Ilsa Wend + pilots (13)",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 480,
+      "role": "warden of the Wayfarers' Hall; road-cartographer",
+      "home": "DK-L01",
+      "work": "DK-L01",
+      "count": 13,
+      "note": "Draws the outward maps the Plate refuses; her stair-pilots' word is worth a House seal in the world below."
+    },
+    {
+      "id": "NPC-DK-011",
+      "name": "Master gatewright Dorn Rekk + household (9)",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 410,
+      "role": "holds the gate-contract; makes and mends the gate-iron",
+      "home": "DK-L02",
+      "work": "DK-L02",
+      "count": 9,
+      "note": "Guards his winch-designs like a House guards a sightline. Kin to the gate-serjeant."
+    },
+    {
+      "id": "NPC-DK-012",
+      "name": "Doorkeepers' Row (22) — tallyman Vess",
+      "gender": "mixed",
+      "race": "Noctari, 1 human household",
+      "age": null,
+      "role": "gate-clerks, toll-tallymen, stair-lamplighters, gate-runners",
+      "home": "DK-L03",
+      "count": 22,
+      "note": "Vess has memorised every face up the stair in forty years and never written a name he was paid to lose. Sightless service to the threshold."
+    },
+    {
+      "id": "NPC-DK-013",
+      "name": "Innkeeper Wenna Sarr + house (5)",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 290,
+      "role": "keeps The Last Lamp",
+      "home": "DK-K01",
+      "work": "DK-K01",
+      "count": 5,
+      "note": "Can tell from the door whether a stranger needs a farewell or a homecoming. Swears the cellar door to the Undergate is bricked up."
+    },
+    {
+      "id": "NPC-DK-014",
+      "name": "Caravanserai-keeper Old Mireth + house (44)",
+      "gender": "female",
+      "race": "Human",
+      "age": 63,
+      "role": "keeps the Caravanserai of the First Night",
+      "home": "DK-K02",
+      "work": "DK-K02",
+      "count": 44,
+      "note": "~14 permanent staff + ~30 long-stay transients this season (never the same number twice). Runs the most cosmopolitan roof in a city that prides itself on knowing everyone; a quest and rumour hub."
+    },
+    {
+      "id": "NPC-DK-015",
+      "name": "The Arrival Market (24) — the changer Oshka, the letter-writer Pell",
+      "gender": "mixed",
+      "race": "mixed (Noctari, human, 1 Terran)",
+      "age": null,
+      "role": "money-changers, outfitters, a physician, a letter-writer, second-hand dealers",
+      "home": "DK-K03",
+      "work": "DK-K03",
+      "count": 24,
+      "note": "Oshka fences what the Undergate brings up; Pell knows every secret in the wedge and sells none. Prices tuned to a tired stranger."
+    },
+    {
+      "id": "NPC-DK-016",
+      "name": "Gateside dwellings (37) — portress Grella",
+      "gender": "mixed",
+      "race": "Noctari, some human, some orc",
+      "age": null,
+      "role": "porters, stable-hands, gate-clerks' and changers' families",
+      "home": "DK-K04",
+      "count": 37,
+      "note": "The settled folk of a wedge made of leavers. Grella has carried loads up the stair since she was nine and will not speak of what she has seen come down it."
+    },
+    {
+      "id": "NPC-DK-017",
+      "name": "Keeper Onwe",
+      "gender": "nonbinary",
+      "race": "Noctari",
+      "age": 250,
+      "role": "keeper of the Threshold Shrine",
+      "home": "DK-K05",
+      "work": "DK-K05",
+      "note": "Came up the stair once meaning to go back and never has; marks a tally-stone for every soul who prays to leave and does not return."
+    },
+    {
+      "id": "NPC-DK-018",
+      "name": "Customs officer Brae + 2 clerks",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 330,
+      "role": "runs the gate-foot customs; tolls what the lock lifts from below",
+      "home": "DK-K04",
+      "work": "DK-S01",
+      "count": 3,
+      "note": "Day post (household counted at DK-K04). Between her post and the gatehouse, in theory nothing enters uncounted — the wedge's central irony."
+    },
+    {
+      "id": "NPC-DK-019",
+      "name": "Lock-master Braff",
+      "gender": "male",
+      "race": "Terran",
+      "age": 200,
+      "role": "runs the Duskmere Lock",
+      "home": "DK-X04",
+      "work": "DK-X01",
+      "note": "The under-clerk beneath him keeps the charcoal tally; the gap between it and the gate-book above is where the wedge's real wealth hides."
+    },
+    {
+      "id": "NPC-DK-020",
+      "name": "Conduit crew (6)",
+      "gender": "mixed",
+      "race": "Terran",
+      "age": null,
+      "role": "keep the Song singing up to the star-lamps and the beacon",
+      "home": "DK-X04",
+      "work": "DK-X02",
+      "count": 6,
+      "note": "Climb in the dark to feed the landward beacon, the hungriest lamp in the city — a light that faces away from them."
+    },
+    {
+      "id": "NPC-DK-021",
+      "name": "The Stair-Gangs (50) — stair-elder Karsk",
+      "gender": "mixed",
+      "race": "human & orc",
+      "age": null,
+      "role": "stair-porters and barge lift-gangs; the muscle of the threshold",
+      "home": "DK-X03",
+      "count": 50,
+      "note": "~28 porters + ~22 lift-gang. Karsk has climbed the equivalent of off the world and back many times over. On no gate-book, because the book counts arrivals and they never leave. Part of the unnamed 778."
+    },
+    {
+      "id": "NPC-DK-022",
+      "name": "The Stairwrights (42) — under-mother Tesk",
+      "gender": "mixed",
+      "race": "Terran",
+      "age": null,
+      "role": "cut, shore and repair the outer stair and the gate's roots",
+      "home": "DK-X04",
+      "count": 42,
+      "note": "The most dangerous stone-work in Starfall, hanging over the cloud-sea on the outside of the world; lost fingers counted as rank. Kin to House Vael'Suran's deep-wrights."
+    },
+    {
+      "id": "NPC-DK-023",
+      "name": "Canteen-keeper Bem + 3",
+      "gender": "male",
+      "race": "Orc",
+      "age": 280,
+      "role": "keeps the Waygate Canteen",
+      "home": "DK-X05",
+      "work": "DK-X05",
+      "count": 4,
+      "note": "Feeds anyone who comes down the right passage and asks no gate-book question. Runs a grapevine with the Underspill and Undertoll canteens."
+    },
+    {
+      "id": "NPC-DK-024",
+      "name": "Foreman Idris",
+      "gender": "male",
+      "race": "Human",
+      "age": 44,
+      "role": "the seam of Duskmere's under-city; manages the Undergate",
+      "home": "DK-X06",
+      "work": "DK-X06",
+      "note": "Keeps three ledgers — one for the House, one that is true, one he burns. Decides what the Undergate is allowed to be; trusted by neither map. Prime quest-broker."
+    },
+    {
+      "id": "NPC-DK-025",
+      "name": "Gate-shadow Kobb + squatters (8)",
+      "gender": "male",
+      "race": "Human",
+      "age": 38,
+      "role": "keeps the Undergate; lets the un-booked up into the city through the dark",
+      "home": "DK-X07",
+      "count": 8,
+      "note": "Kobb + ~7 long-term squatters of the Waiting Dark — the truly uncounted, come up a door the city insists is a rockfall. The sharpest image of the two-maps theme in the wedge."
+    }
+  ]
+}

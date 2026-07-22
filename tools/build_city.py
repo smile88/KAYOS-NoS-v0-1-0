@@ -42,12 +42,17 @@ def load_city(strict=False):
             frag = json.load(f)
         hid = frag.get("house_id")
         h = house_by_id.get(hid)
-        if h is None:
-            _warn(strict, f"{os.path.basename(fp)}: unknown house_id {hid!r}")
-            continue
-        h["detailed"] = True
-        if frag.get("head_npc"):
-            h["head_npc"] = frag["head_npc"]
+        if h is not None:
+            h["detailed"] = True
+            if frag.get("head_npc"):
+                h["head_npc"] = frag["head_npc"]
+        elif frag.get("institution"):
+            # a non-House institution (the Academy island) — recorded, not a rim wedge
+            city.setdefault("institutions", []).append(
+                {"id": hid, "head_npc": frag.get("head_npc"), "note": frag.get("note", "")})
+        else:
+            _warn(strict, f"{os.path.basename(fp)}: unknown house_id {hid!r} (add it to houses, "
+                          f"or set \"institution\": true)")
         for s in frag.get("structures", []):
             if s["id"] in seen_struct:
                 _warn(strict, f"duplicate structure id {s['id']!r} (in {os.path.basename(fp)})")

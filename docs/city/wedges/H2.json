@@ -1,0 +1,1304 @@
+{
+  "house_id": "H2",
+  "head_npc": "NPC-OR-001",
+  "structures": [
+    {
+      "id": "OR-T01",
+      "name": "The Wanderers' Tower",
+      "house": "H2",
+      "district": "D-RIM",
+      "type": "observatory tower (House seat, upper)",
+      "position": {
+        "r": 422,
+        "a_deg": 100,
+        "note": "the Oravelle rim observatory — greybox tower i=2; where the five wandering lights are logged nightly and the city's dates are made"
+      },
+      "footprint": {
+        "shape": "cylinder",
+        "diameter": 22,
+        "rot_deg": 100
+      },
+      "height_m": 54,
+      "storeys": 6,
+      "y_base": 45,
+      "purpose": "The wandering lights are tracked from here and their positions turned, floor by floor, into the ephemeris the whole realm sets its calendar by. Vael'Suran keeps the stars that never move; Oravelle keeps the five that do, and has learned that a thing which moves can be sold a prediction of where it will be. The Conclave dates its decrees from readings taken in this drum, which is the quiet root of the House's fortune.",
+      "rooms": [
+        {
+          "name": "The Observing Drum",
+          "w": 20,
+          "d": 20,
+          "h": 8,
+          "purpose": "the equatorial mounting and the graduated circles; the five wanderers logged against the fixed stars each clear night"
+        },
+        {
+          "name": "The Reckoning Floor",
+          "w": 18,
+          "d": 16,
+          "h": 5,
+          "purpose": "banks of computers reducing positions into the running ephemeris; the loudest quiet room in Starfall, all pen-scratch and abacus"
+        },
+        {
+          "name": "The Ephemeris Vault",
+          "w": 10,
+          "d": 8,
+          "h": 4,
+          "purpose": "brass-bound, humidity-sealed; the master tables back two thousand years, the only copy the House will not sell"
+        },
+        {
+          "name": "Head's cabinet",
+          "w": 8,
+          "d": 7,
+          "h": 4,
+          "purpose": "Magister Corandine's study, sightline to the Mirror, a wall of sealed contracts framed like art"
+        },
+        {
+          "name": "Computers' dormitory",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "cots for the live-in reckoners, who are paid in board and the promise of a clerkship"
+        },
+        {
+          "name": "Servants' stair & lamp-room",
+          "w": 4,
+          "d": 4,
+          "h": 28,
+          "purpose": "the spiral stair; the crowning star-lamp is tended from here"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-001",
+        "NPC-OR-002",
+        "NPC-OR-003"
+      ],
+      "resident_count": 8,
+      "notes": "Head + First Reckoner + 6 live-in computers. One of the nine lit rim domes of the greybox."
+    },
+    {
+      "id": "OR-M01",
+      "name": "The Oravelle Counting-Seat",
+      "house": "H2",
+      "district": "D-RIM",
+      "type": "great house (manor + counting-house)",
+      "position": {
+        "r": 438,
+        "a_deg": 107
+      },
+      "footprint": {
+        "w": 36,
+        "d": 24,
+        "rot_deg": 107,
+        "faces": "inward (toward the Mirror)"
+      },
+      "height_m": 15,
+      "storeys": 3,
+      "y_base": 45,
+      "purpose": "The richest seat on this arc of the rim, and the only one that is also a place of business: half manor, half counting-house, its ground floor a hall of sealing-desks where the House's bonded almanacs are stamped and its guarantees underwritten. The Oravelle do not measure status in windows, as Vael'Suran do, but in ledgers — and theirs are the longest in the city. Every room smells of sealing-wax and money.",
+      "rooms": [
+        {
+          "name": "The Sealing Hall",
+          "w": 16,
+          "d": 12,
+          "h": 7,
+          "purpose": "public-facing; long counters, the great House seal on a chained press, clients who arrive by appointment and leave with a stamped future"
+        },
+        {
+          "name": "The Strongroom",
+          "w": 8,
+          "d": 6,
+          "h": 4,
+          "purpose": "warded; the bond-reserve that backs the guarantees, and the register of who owes the House a favour"
+        },
+        {
+          "name": "Corandine's chambers",
+          "w": 10,
+          "d": 8,
+          "h": 4,
+          "purpose": "the head's private rooms, best sightline in the House"
+        },
+        {
+          "name": "Family wing",
+          "w": 16,
+          "d": 8,
+          "h": 4,
+          "purpose": "chambers for the near family and the two clerk-cousins being groomed to inherit the desks"
+        },
+        {
+          "name": "Kitchen, stores, staff",
+          "w": 14,
+          "d": 8,
+          "h": 4,
+          "purpose": "household below and attic rooms above"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-001",
+        "NPC-OR-004",
+        "NPC-OR-005"
+      ],
+      "resident_count": 24,
+      "notes": "Corandine + near family (6) + 17 household and counting-house staff. The seat doubles as the House's public office, unusual for the rim."
+    },
+    {
+      "id": "OR-U01",
+      "name": "Sightline Villa — the First Reckoner",
+      "house": "H2",
+      "district": "D-UPPER",
+      "type": "senior officer's villa",
+      "position": {
+        "r": 372,
+        "a_deg": 86
+      },
+      "footprint": {
+        "w": 15,
+        "d": 13,
+        "rot_deg": 86,
+        "faces": "inward"
+      },
+      "height_m": 10,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "Home of First Reckoner Hessa Vun, the commoner-born computer who actually derives the ephemeris the House sells and Corandine signs. Her sightline is real and her figures are exact, and she is the one person in Starfall who could ruin House Oravelle with a single honest sentence about how often the guarantees are simply bets the House can afford to lose.",
+      "rooms": [
+        {
+          "name": "The Working Study",
+          "w": 10,
+          "d": 8,
+          "h": 5,
+          "purpose": "the protected sightline; a private reckoning-desk and a locked drawer of the errors the published tables do not admit"
+        },
+        {
+          "name": "Family rooms",
+          "w": 14,
+          "d": 6,
+          "h": 4,
+          "purpose": "Hessa, her husband, two children"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-010"
+      ],
+      "resident_count": 6,
+      "notes": "Hessa Vun + household of 6. The Halvenor-role of this wedge: the mind behind the signature. A strong side-quest lever (what the errata drawer holds)."
+    },
+    {
+      "id": "OR-U02",
+      "name": "Sightline Villa — the Bonded Notary",
+      "house": "H2",
+      "district": "D-UPPER",
+      "type": "senior scholar's villa",
+      "position": {
+        "r": 368,
+        "a_deg": 95
+      },
+      "footprint": {
+        "w": 14,
+        "d": 12,
+        "rot_deg": 95,
+        "faces": "inward"
+      },
+      "height_m": 10,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "The villa of Notary-Magister Selvane, whose seal turns a computed date into a binding one. A prosperous, cautious household that has grown rich witnessing other people's certainty; the study is lined with the counterfoils of forty years of stamped tomorrows.",
+      "rooms": [
+        {
+          "name": "The Sealing Study",
+          "w": 9,
+          "d": 7,
+          "h": 4,
+          "purpose": "the notarial seal, the witness-bench, a sightline used mostly to impress clients"
+        },
+        {
+          "name": "Living rooms",
+          "w": 14,
+          "d": 6,
+          "h": 4,
+          "purpose": "Selvane, a spouse, one grown child, two servants"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-011"
+      ],
+      "resident_count": 6,
+      "notes": "Notary-Magister Selvane + household of 6."
+    },
+    {
+      "id": "OR-U03",
+      "name": "Sightline Villa — the Voided Magister",
+      "house": "H2",
+      "district": "D-UPPER",
+      "type": "senior scholar's villa (in disgrace)",
+      "position": {
+        "r": 366,
+        "a_deg": 114
+      },
+      "footprint": {
+        "w": 13,
+        "d": 11,
+        "rot_deg": 114,
+        "faces": "inward"
+      },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "The villa of Magister Orrin Tallowe, who once sealed a planting-date for an entire Terran province and was wrong by a season, ruining a harvest and, quietly, himself. The House honoured the guarantee — that is the whole point of the guarantee — but it took the cost out of Orrin, who now keeps a sightline he can no longer afford and computes, obsessively, the single reading he got wrong, looking for the House's error instead of his own.",
+      "rooms": [
+        {
+          "name": "The Reproach Study",
+          "w": 9,
+          "d": 7,
+          "h": 4,
+          "purpose": "one wall entirely given to the recomputation of a date fourteen years gone"
+        },
+        {
+          "name": "Rooms",
+          "w": 12,
+          "d": 6,
+          "h": 4,
+          "purpose": "Orrin, an unpaid companion, one loyal old servant"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-012"
+      ],
+      "resident_count": 4,
+      "notes": "Orrin Tallowe + household of 4. Side-quest seed: was the voided date his error or the House's? Hessa Vun's errata drawer may know."
+    },
+    {
+      "id": "OR-L01",
+      "name": "The Ephemeris Manufactory",
+      "house": "H2",
+      "district": "D-MID",
+      "type": "computing-and-copying manufactory (guild-hall + lodging)",
+      "position": {
+        "r": 318,
+        "a_deg": 90
+      },
+      "footprint": {
+        "w": 24,
+        "d": 16,
+        "rot_deg": 90,
+        "faces": "inward"
+      },
+      "height_m": 11,
+      "storeys": 3,
+      "y_base": 23,
+      "purpose": "A factory of paper and patience: rooms of clerks who take the tower's raw readings and grind them into thousands of fair-copied almanacs, tide-tables and lucky-day sheets for sale across the realm. The work is divided so finely that no single clerk understands the whole calculation — a deliberate arrangement, since a clerk who understood the whole could set up in competition, or in blackmail.",
+      "rooms": [
+        {
+          "name": "The Calculating Floor",
+          "w": 20,
+          "d": 10,
+          "h": 5,
+          "purpose": "ranked desks; each clerk performs one step of a computation they are forbidden to see the ends of"
+        },
+        {
+          "name": "The Fair-Copy Room",
+          "w": 16,
+          "d": 8,
+          "h": 4,
+          "purpose": "scribes multiplying the finished tables by hand under the manufactory's tallow reek"
+        },
+        {
+          "name": "The Binding & Sealing Loft",
+          "w": 14,
+          "d": 6,
+          "h": 4,
+          "purpose": "where sheets become bonded almanacs and take the small House seal"
+        },
+        {
+          "name": "Clerks' dormitory",
+          "w": 20,
+          "d": 6,
+          "h": 4,
+          "purpose": "boarded clerks, four to a room, docked for a blotted line"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-020"
+      ],
+      "resident_count": 28,
+      "notes": "Overseer Marn Quell + ~27 boarded clerks and copyists. The engine of the House's fortune, and the least-credited labour in the wedge above ground."
+    },
+    {
+      "id": "OR-L02",
+      "name": "The Sealers' & Notaries' Hall",
+      "house": "H2",
+      "district": "D-MID",
+      "type": "guild-hall + workshop",
+      "position": {
+        "r": 312,
+        "a_deg": 101
+      },
+      "footprint": {
+        "w": 20,
+        "d": 13,
+        "rot_deg": 101,
+        "faces": "inward"
+      },
+      "height_m": 9,
+      "storeys": 3,
+      "y_base": 23,
+      "purpose": "The guild that makes and guards the seals — the bonded matrices without which no Oravelle guarantee is worth its wax. Engravers cut the dies, assayers weigh the wax, and a warden keeps the register of which seals are live and which have been struck void, because a stolen live seal could counterfeit the future itself.",
+      "rooms": [
+        {
+          "name": "The Die-Cutting Room",
+          "w": 10,
+          "d": 7,
+          "h": 4,
+          "purpose": "engravers at the bonded matrices; a guarded, jeweller-quiet trade"
+        },
+        {
+          "name": "The Register",
+          "w": 8,
+          "d": 6,
+          "h": 4,
+          "purpose": "the warden's book of live and voided seals; a locked room within a locked room"
+        },
+        {
+          "name": "Guild dormitory",
+          "w": 14,
+          "d": 5,
+          "h": 3,
+          "purpose": "boarded engravers and apprentices"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-021"
+      ],
+      "resident_count": 12,
+      "notes": "Seal-warden Ippa Dross + 11 engravers/apprentices."
+    },
+    {
+      "id": "OR-L03",
+      "name": "Lesser Clerks' Row",
+      "house": "H2",
+      "district": "D-MID",
+      "type": "terrace of 7 small dwellings",
+      "position": {
+        "r": 300,
+        "a_deg": 112
+      },
+      "footprint": {
+        "w": 48,
+        "d": 8,
+        "rot_deg": 112,
+        "faces": "inward",
+        "form": "row of 7"
+      },
+      "height_m": 7,
+      "storeys": 2,
+      "y_base": 23,
+      "purpose": "Seven joined narrow houses of the wedge's tenured clerks — the reckoners, sealers'-assistants and register-keepers who have risen just high enough to hold a lease and a title but never a sightline. The most anxious street in Starfall: every family here is one blotted ledger from the dormitory they climbed out of.",
+      "rooms": [
+        {
+          "name": "Per-house: counting-room + 2 chambers",
+          "w": 6,
+          "d": 7,
+          "h": 4,
+          "purpose": "each of the 7 houses: a private desk and two small rooms"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-022"
+      ],
+      "resident_count": 24,
+      "notes": "7 households, ~24 souls. Named: register-keeper Voss, who knows exactly what everyone above and below him earns and resents both."
+    },
+    {
+      "id": "OR-K01",
+      "name": "The Ledger & Compass",
+      "house": "H2",
+      "district": "D-CANAL",
+      "type": "inn (Strain-relief haven)",
+      "position": {
+        "r": 268,
+        "a_deg": 85
+      },
+      "footprint": {
+        "w": 16,
+        "d": 12,
+        "rot_deg": 85,
+        "faces": "canal"
+      },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "The wedge's inn, and the one place in House Oravelle where nobody keeps a tally: the innkeeper runs a slate but rubs it clean at year's turn, a small local heresy in a district that binds everything else in triplicate. Clerks come here to be, for one evening, a person rather than a step in a calculation. The wedge's Strain-relief haven.",
+      "rooms": [
+        {
+          "name": "The Common Room",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "hearth, long tables, an old ship's compass over the bar that no longer points anywhere and is beloved for it"
+        },
+        {
+          "name": "Kitchen",
+          "w": 6,
+          "d": 5,
+          "h": 4,
+          "purpose": ""
+        },
+        {
+          "name": "Letting rooms (x5)",
+          "w": 14,
+          "d": 5,
+          "h": 3,
+          "purpose": "five rooms above for travellers come to buy dates and for clerks between lodgings"
+        },
+        {
+          "name": "Cellar",
+          "w": 8,
+          "d": 6,
+          "h": 3,
+          "purpose": "canal-cooled store; a grille to the Under-Terraces the innkeeper swears is only for the draught"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-030"
+      ],
+      "resident_count": 6,
+      "notes": "Innkeeper Delph Ravin + 3 family + 2 staff. The cellar grille is this wedge's over/under seam (to OR-X05)."
+    },
+    {
+      "id": "OR-K02",
+      "name": "The Almanac Market",
+      "house": "H2",
+      "district": "D-CANAL",
+      "type": "market row (calendars, almanacs, date-charts)",
+      "position": {
+        "r": 258,
+        "a_deg": 96
+      },
+      "footprint": {
+        "w": 32,
+        "d": 10,
+        "rot_deg": 96,
+        "faces": "canal",
+        "form": "row of 11 stalls/shops"
+      },
+      "height_m": 6,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "Eleven stalls and shopfronts where the House's product meets the street: printed almanacs, wedding-date charts, sailing-tables, cheap lucky-day sheets, and the second-hand almanac dealer who sells last year's certainties at a discount. The public face of prediction — retail fate, sold over a canal counter with the small seal that makes it feel binding.",
+      "rooms": [
+        {
+          "name": "Per unit: shopfront + back-room + room above",
+          "w": 3,
+          "d": 8,
+          "h": 4,
+          "purpose": "11 units, most with a family living above"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-031"
+      ],
+      "resident_count": 30,
+      "notes": "11 shops, ~30 souls. Named: almanac-seller the widow Pell, and the second-hand dealer Osk, who reads the discounted sheets to the illiterate for a coin."
+    },
+    {
+      "id": "OR-K03",
+      "name": "The Chapel of Variables",
+      "house": "H2",
+      "district": "D-CANAL",
+      "type": "shrine (Path of Adaptation — human faith)",
+      "position": {
+        "r": 250,
+        "a_deg": 104
+      },
+      "footprint": {
+        "w": 10,
+        "d": 10,
+        "rot_deg": 104,
+        "faces": "inward"
+      },
+      "height_m": 8,
+      "storeys": 1,
+      "y_base": 12,
+      "purpose": "A small human-kept chapel to the Architect of Variables and the Observer of Outcomes — a faith that holds the world to be a running experiment — tolerated in this wedge alone because a House that sells prediction finds it good for morale that its human clerks worship a god of odds. The Noctari majority think it charmingly superstitious; the clerks who pray here think the same of the almanacs they copy.",
+      "rooms": [
+        {
+          "name": "The Chapel",
+          "w": 7,
+          "d": 7,
+          "h": 6,
+          "purpose": "two facing altars — one for the change, one for the watching; a wall of votive tokens, each a settled bet"
+        },
+        {
+          "name": "Keeper's cell",
+          "w": 3,
+          "d": 3,
+          "h": 3,
+          "purpose": "the lay-keeper's room"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-032"
+      ],
+      "resident_count": 3,
+      "notes": "Lay-keeper Ansel Roe (human) + 2 lodging pilgrims. Canon-aware: the human Path of Adaptation (Canon_Notes) given a foothold in a prediction House. A quiet counterweight to Noctari Umbrion-worship."
+    },
+    {
+      "id": "OR-K04",
+      "name": "The Assurance House",
+      "house": "H2",
+      "district": "D-CANAL",
+      "type": "date-guarantee office (NOVEL — proto-insurance)",
+      "position": {
+        "r": 240,
+        "a_deg": 110
+      },
+      "footprint": {
+        "w": 18,
+        "d": 14,
+        "rot_deg": 110,
+        "faces": "canal"
+      },
+      "height_m": 9,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "The wedge's novel invention and its most quietly sinister room: a canalside office where, for a fee, House Oravelle will not merely predict a date but GUARANTEE it — underwriting your harvest, your voyage, your wedding against the sky being wrong. In practice the House pools the fees, pays the rare claim, and keeps the difference, so a hall of scholars has become, without ever quite noticing, a bank that sells the future as a hedge. The queue outside is the real proof of the House's power: the whole city has agreed to be afraid of dates on Oravelle's terms.",
+      "rooms": [
+        {
+          "name": "The Assuring Hall",
+          "w": 12,
+          "d": 8,
+          "h": 5,
+          "purpose": "petition-desks where a farmer or a captain buys certainty; the great odds-board chalked and rechalked"
+        },
+        {
+          "name": "The Pool-Room",
+          "w": 6,
+          "d": 5,
+          "h": 4,
+          "purpose": "warded; the fee-reserve that pays out the losing guarantees, and the actuary's forbidden tables"
+        },
+        {
+          "name": "Assurers' lodging",
+          "w": 10,
+          "d": 5,
+          "h": 4,
+          "purpose": "the resident assurers, who sleep above the money"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-033"
+      ],
+      "resident_count": 10,
+      "notes": "Chief Assurer Wend Colu + 9 resident assurers/clerks. The wedge's novel landmark: prediction turned into a hedge-fund. Rich quest and theme material — the actuary's tables know the House loses more guarantees than it admits."
+    },
+    {
+      "id": "OR-K05",
+      "name": "Canal Dwellings — Inkside",
+      "house": "H2",
+      "district": "D-CANAL",
+      "type": "tenement block, 9 dwellings",
+      "position": {
+        "r": 245,
+        "a_deg": 90
+      },
+      "footprint": {
+        "w": 26,
+        "d": 14,
+        "rot_deg": 90,
+        "faces": "canal",
+        "form": "block, 9 dwellings"
+      },
+      "height_m": 11,
+      "storeys": 3,
+      "y_base": 12,
+      "purpose": "Dense canalside housing stained perpetually blue-black at the ground floor, home to the printers, ink-makers, paper-porters and copy-runners who feed the manufactory above. Ink comes up the canal by barge and the whole block smells of iron-gall and reed; the children are born with stained hands.",
+      "rooms": [
+        {
+          "name": "Per dwelling: 2-3 rooms",
+          "w": 6,
+          "d": 6,
+          "h": 3,
+          "purpose": "9 dwellings, families of 3-6"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-040"
+      ],
+      "resident_count": 46,
+      "notes": "~46 souls. Named: ink-master Corrl, whose recipe the whole wedge depends on and whose lungs it is quietly ruining."
+    },
+    {
+      "id": "OR-C01",
+      "name": "The Oravelle Canal & its two bridges",
+      "house": "H2",
+      "district": "D-CANAL",
+      "type": "waterway",
+      "position": {
+        "r": 255,
+        "a_deg": 98,
+        "note": "one of the greybox's three canals, threading this wedge's canal quarter"
+      },
+      "footprint": {
+        "length": 60,
+        "width": 6,
+        "rot_deg": 98,
+        "form": "curved channel"
+      },
+      "y_base": 12,
+      "purpose": "Star-water and cargo-water both: the canal drains the quarter and, through the lock below, carries in the reed, rag and ink the paper-machine runs on, and carries out the crated almanacs by barge. Two arched footbridges cross it, their parapets chained with the small brass tallies of goods that have passed — the canal itself kept as a ledger.",
+      "rooms": [],
+      "occupants": [],
+      "resident_count": 0,
+      "notes": "The visible throat of the invisible paper-supply chain (see OR-X01 the lock and OR-X04 the pulp-works)."
+    },
+    {
+      "id": "OR-S01",
+      "name": "The Reckoners' Gate & Customs Post",
+      "house": "H2",
+      "district": "D-SHORE",
+      "type": "civic threshold",
+      "position": {
+        "r": 228,
+        "a_deg": 98
+      },
+      "footprint": {
+        "w": 14,
+        "d": 10,
+        "rot_deg": 98,
+        "faces": "processional"
+      },
+      "height_m": 6,
+      "storeys": 1,
+      "y_base": 0,
+      "purpose": "Where this wedge's processional meets the shore: a customs post that does not merely weigh what comes up from below but DATES it, stamping every barge-load with the licensed day it may be sold — a small, profitable tyranny by which the House converts the labour of the under-city into paper the moment it surfaces. The one official door here faces up, and it charges for the privilege.",
+      "rooms": [
+        {
+          "name": "The Dating Hall",
+          "w": 10,
+          "d": 7,
+          "h": 4,
+          "purpose": "scales, tally-desks, the licensing-stamp, a wardsealed strongroom"
+        },
+        {
+          "name": "Officers' room",
+          "w": 5,
+          "d": 4,
+          "h": 4,
+          "purpose": "the customs-dater and two clerks"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-050"
+      ],
+      "resident_count": 0,
+      "notes": "Customs-dater Ollen + 2 clerks (day post; counted at their canal homes; listed here as workplace)."
+    },
+    {
+      "id": "OR-X01",
+      "name": "The Reed-Lock",
+      "house": "H2",
+      "district": "D-UNDER",
+      "type": "barge lock (service)",
+      "position": {
+        "r": 240,
+        "a_deg": 96,
+        "depth_note": "beneath the canal quarter"
+      },
+      "footprint": {
+        "w": 24,
+        "d": 12,
+        "rot_deg": 96
+      },
+      "height_m": 14,
+      "y_base": -14,
+      "purpose": "A stone chamber-lock that lifts the barges of reed, rag, lime and ink up from the world below into the wedge's canal — the raw throat of the paper-machine. The whole glittering trade in printed certainty begins as sodden reed hauled up this shaft in the dark by gangs the almanacs will never mention. The Plate draws the canal and stops at the waterline.",
+      "rooms": [
+        {
+          "name": "The Lock Chamber",
+          "w": 20,
+          "d": 8,
+          "h": 14,
+          "purpose": "the flooding basin; the counter-weighted gates; a permanent stink of wet reed"
+        },
+        {
+          "name": "The Capstan Floor",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "where the lift-gangs walk the capstans against the barge-weight"
+        },
+        {
+          "name": "Tally hole",
+          "w": 4,
+          "d": 4,
+          "h": 3,
+          "purpose": "the under-clerk's niche, where the real weight is logged before the over-city halves it"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-060"
+      ],
+      "resident_count": 0,
+      "notes": "Worked, not lived-in. Lock-master Bral. The under-clerk keeps the honest tonnage in charcoal — the Other Map's paper."
+    },
+    {
+      "id": "OR-X02",
+      "name": "The Conduit Gallery",
+      "house": "H2",
+      "district": "D-UNDER",
+      "type": "Song-conduit service tunnel",
+      "position": {
+        "r": 260,
+        "a_deg": 92,
+        "depth_note": "runs radially under the terraces"
+      },
+      "footprint": {
+        "length": 70,
+        "width": 5,
+        "rot_deg": 92
+      },
+      "height_m": 4,
+      "y_base": -10,
+      "purpose": "The wedge's run of tuned crystal conduits, carrying the Song up to the star-lamps of the counting-terraces so that the manufactory can compute through the night. The clerks above write by a light that people down here keep singing by hand; when a lamp over a desk 'simply burns,' a conduit-wright in the dark is the reason the ledger can be balanced past dusk.",
+      "rooms": [
+        {
+          "name": "The Long Gallery",
+          "w": 4,
+          "d": 70,
+          "h": 4,
+          "purpose": "the conduit run; access ladders to each terrace's lamp-stems"
+        },
+        {
+          "name": "Tuning niches (x4)",
+          "w": 3,
+          "d": 3,
+          "h": 3,
+          "purpose": "where the wrights kneel to true the crystal"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-061"
+      ],
+      "resident_count": 0,
+      "notes": "Worked by conduit-wrights (mostly Terran), lodged in OR-X03. The literal machinery behind the manufactory's endless light."
+    },
+    {
+      "id": "OR-X03",
+      "name": "The Under-Reckoners' Hall",
+      "house": "H2",
+      "district": "D-UNDER",
+      "type": "Terran bunk-hall & enclave",
+      "position": {
+        "r": 250,
+        "a_deg": 106,
+        "depth_note": "cut into the shore-mass"
+      },
+      "footprint": {
+        "w": 26,
+        "d": 18,
+        "rot_deg": 106,
+        "form": "carved hall, glow-stone lit"
+      },
+      "height_m": 6,
+      "y_base": -16,
+      "purpose": "Home of the Terran deep-wrights and conduit-crews who cut and hold up the counting-house wedge — and, unusually, of a knot of Terran under-reckoners the House quietly employs to check the manufactory's figures below the record, because the deep-folk count in a base the elves find awkward and cannot easily cook. A proud, warm, glow-lit hall that does the House's most trusted arithmetic and receives none of its credit.",
+      "rooms": [
+        {
+          "name": "The Carved Hall",
+          "w": 18,
+          "d": 10,
+          "h": 6,
+          "purpose": "a communal hall; a long stone table scored with a reckoning-grid the deep-folk compute on directly"
+        },
+        {
+          "name": "Sleeping galleries",
+          "w": 22,
+          "d": 6,
+          "h": 3,
+          "purpose": "bunk-niches for ~40 wrights and under-reckoners"
+        },
+        {
+          "name": "The Shrine of Petrocore",
+          "w": 6,
+          "d": 6,
+          "h": 5,
+          "purpose": "a Stone-Voice shrine; the deep-folk keep the right god in the wrong city"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-062",
+        "NPC-OR-063"
+      ],
+      "resident_count": 44,
+      "notes": "Deep-warden Torv Greel + ~43 Terran deep-wrights, conduit-crew and under-reckoners. Novel wrinkle: the House's most trusted sums are done, off the books, by the people it will not seat."
+    },
+    {
+      "id": "OR-X04",
+      "name": "The Pulp-Works & Rag-Halls",
+      "house": "H2",
+      "district": "D-UNDER",
+      "type": "paper manufactory & bunk-hall (NOVEL)",
+      "position": {
+        "r": 246,
+        "a_deg": 112,
+        "depth_note": "a flooded works cut beside the reed-lock"
+      },
+      "footprint": {
+        "w": 34,
+        "d": 22,
+        "rot_deg": 112,
+        "form": "vaulted works, vats & drying-lofts"
+      },
+      "height_m": 8,
+      "y_base": -20,
+      "purpose": "The hidden factory that MAKES the paper the whole glittering House is printed on: a sweating, roaring vault of stamping-hammers, lime-vats and rag-halls where reed and cast-off cloth are beaten to pulp, drawn into sheets, and hung to dry on endless underground lines. Every bonded almanac and stamped guarantee in Starfall began as filth boiled in this dark by human and orc gangs who cannot read a word of what they make. The single most industrial space in Starfall, and the most invisible — a paper-mill directly beneath a House that sells paper.",
+      "rooms": [
+        {
+          "name": "The Stamping Floor",
+          "w": 18,
+          "d": 10,
+          "h": 6,
+          "purpose": "water-driven trip-hammers beating rag to pulp; a noise you feel in the teeth"
+        },
+        {
+          "name": "The Vat-Hall",
+          "w": 14,
+          "d": 8,
+          "h": 5,
+          "purpose": "the lime and pulp vats; the vat-workers, whose hands go pale and then numb"
+        },
+        {
+          "name": "The Drying Lofts",
+          "w": 20,
+          "d": 8,
+          "h": 5,
+          "purpose": "warm racks of drying sheets, lit by waste-heat; the one comfortable air in the under-city, and forbidden to linger in"
+        },
+        {
+          "name": "Rag-hall bunks",
+          "w": 22,
+          "d": 6,
+          "h": 3,
+          "purpose": "bunk-niches for the pulp-gangs, who live inside the noise"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-064"
+      ],
+      "resident_count": 58,
+      "notes": "~58 human and orc pulp- and rag-workers, elder Osma of the rag-halls named. The wedge's second novel landmark: a paper-mill under a paper-House, the literal ground of the Other Map's theme. Part of the unnamed 778."
+    },
+    {
+      "id": "OR-X05",
+      "name": "The Reed-Bottom Canteen",
+      "house": "H2",
+      "district": "D-UNDER",
+      "type": "canteen / commons",
+      "position": {
+        "r": 248,
+        "a_deg": 100,
+        "depth_note": "at the junction of the galleries"
+      },
+      "footprint": {
+        "w": 16,
+        "d": 12,
+        "rot_deg": 100
+      },
+      "height_m": 4,
+      "y_base": -12,
+      "purpose": "The warm shared room of this under-city: a canteen at the gallery-crossing where deep-wrights, pulp-gangs, conduit-crews and lock-hands eat the same grey, good stew and, at the long table, teach each other to read from stolen almanac off-cuts — the one place in the wedge where the House's paper is used against the House's grain.",
+      "rooms": [
+        {
+          "name": "The Long Room",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "trestles, a great range, a wall where the dead are chalked and a corner where letters are learned"
+        },
+        {
+          "name": "Kitchen & store",
+          "w": 6,
+          "d": 5,
+          "h": 3,
+          "purpose": "run by the canteen-keeper"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-065"
+      ],
+      "resident_count": 4,
+      "notes": "Canteen-keeper Old Ghu + 3 helpers. The clandestine literacy corner foreshadows Part Two's SQ-P2-01 (The First Book) 300 years early. The Ledger & Compass cellar grille surfaces near here."
+    },
+    {
+      "id": "OR-X06",
+      "name": "The Foreman's Post",
+      "house": "H2",
+      "district": "D-UNDER",
+      "type": "overseer post",
+      "position": {
+        "r": 242,
+        "a_deg": 89,
+        "depth_note": "at the foot of the customs stair"
+      },
+      "footprint": {
+        "w": 8,
+        "d": 6,
+        "rot_deg": 89
+      },
+      "height_m": 3,
+      "y_base": -12,
+      "purpose": "The seam-office at the foot of the stair up to the Reckoners' Gate, where the under-city's real tonnage is reconciled against the dated, halved, licensed figure the over-city will accept. The foreman keeps both numbers and the arithmetic between them, and is the only person permitted to know how large the difference is.",
+      "rooms": [
+        {
+          "name": "The Office",
+          "w": 5,
+          "d": 4,
+          "h": 3,
+          "purpose": "a ledger-desk, a lamp, a locked reconciliation-book"
+        },
+        {
+          "name": "Bunk",
+          "w": 3,
+          "d": 3,
+          "h": 3,
+          "purpose": "the foreman sleeps at the seam"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-066"
+      ],
+      "resident_count": 1,
+      "notes": "Foreman Sarn — keeps the honest tonnage in charcoal and the House's in ink, and is paid precisely to know they differ. Twin to Foreman Adric (H0)."
+    },
+    {
+      "id": "OR-X07",
+      "name": "The Dead-Letter Vault",
+      "house": "H2",
+      "district": "D-UNDER",
+      "type": "archive of voided predictions (NOVEL)",
+      "position": {
+        "r": 262,
+        "a_deg": 116,
+        "depth_note": "a dry catacomb off the far gallery"
+      },
+      "footprint": {
+        "w": 14,
+        "d": 12,
+        "rot_deg": 116,
+        "form": "vaulted stack-catacomb"
+      },
+      "height_m": 5,
+      "y_base": -22,
+      "purpose": "A dry stone catacomb where House Oravelle buries its mistakes: every superseded ephemeris, voided guarantee and wrong-dated almanac, shelved and sealed rather than destroyed, because a prediction House cannot be seen to burn its errors and cannot bear to let a client find them. A silent underground library of every tomorrow the House got wrong — including, somewhere on the shelves, the voided date that ruined Magister Orrin Tallowe, and the errata that might exonerate him.",
+      "rooms": [
+        {
+          "name": "The Stacks of Voided Days",
+          "w": 10,
+          "d": 8,
+          "h": 5,
+          "purpose": "sealed cases of failed predictions, filed by the date they were proved wrong"
+        },
+        {
+          "name": "Registrar's cell",
+          "w": 4,
+          "d": 4,
+          "h": 3,
+          "purpose": "the one keeper's room, lit by a single conduit-lamp"
+        }
+      ],
+      "occupants": [
+        "NPC-OR-067"
+      ],
+      "resident_count": 2,
+      "notes": "Registrar of Voided Days Miral Enn + one assistant. Novel landmark: a bureaucratic catacomb of wrong futures. Direct quest hook to OR-U03 (Orrin's exoneration) and the Assurance House's hidden loss-rate."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "NPC-OR-001",
+      "name": "Magister Corandine Oravelle",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 940,
+      "role": "Head of House Oravelle; Keeper of the Ephemeris; underwriter of the realm's dates",
+      "home": "OR-M01",
+      "work": "OR-T01",
+      "note": "Gracious, papered, and entirely certain that selling certainty is a public service. Signs an ephemeris her First Reckoner computes and guarantees she privately knows the odds on."
+    },
+    {
+      "id": "NPC-OR-002",
+      "name": "First Reckoner Hessa Vun",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 380,
+      "role": "commoner-born chief computer; derives the ephemeris the House sells",
+      "home": "OR-U01",
+      "work": "OR-T01",
+      "note": "The mind behind Corandine's seal; keeps a locked drawer of the errors the published tables omit. Could unmake the House with one honest sentence."
+    },
+    {
+      "id": "NPC-OR-003",
+      "name": "the live-in computers (6)",
+      "gender": "mixed",
+      "race": "Noctari",
+      "age": null,
+      "role": "junior calculating clerks reducing the wanderers' positions",
+      "home": "OR-T01",
+      "work": "OR-T01",
+      "count": 6,
+      "note": "Paid in board and the promise of a clerkship; dream in columns."
+    },
+    {
+      "id": "NPC-OR-004",
+      "name": "the Oravelle near family (6)",
+      "gender": "mixed",
+      "race": "Noctari",
+      "age": null,
+      "role": "House family + 2 clerk-cousins in line for the desks",
+      "home": "OR-M01",
+      "count": 6
+    },
+    {
+      "id": "NPC-OR-005",
+      "name": "the Counting-Seat staff (17)",
+      "gender": "mixed",
+      "race": "Noctari & 3 human",
+      "age": null,
+      "role": "sealing-clerks, cook, porters, strongroom-warden, maids",
+      "home": "OR-M01",
+      "work": "OR-M01",
+      "count": 17,
+      "note": "The seat is half household, half office; the human clerks pray at the Chapel of Variables."
+    },
+    {
+      "id": "NPC-OR-010",
+      "name": "Hessa Vun's household (5)",
+      "gender": "mixed",
+      "race": "Noctari",
+      "age": null,
+      "role": "the First Reckoner's husband and two children + a lodging aunt",
+      "home": "OR-U01",
+      "count": 5,
+      "note": "Listed with NPC-OR-002 who heads it."
+    },
+    {
+      "id": "NPC-OR-011",
+      "name": "Notary-Magister Selvane + household (6)",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 610,
+      "role": "bonded notary; his seal makes a computed date binding",
+      "home": "OR-U02",
+      "work": "OR-M01",
+      "count": 6,
+      "note": "Grown rich witnessing other people's certainty."
+    },
+    {
+      "id": "NPC-OR-012",
+      "name": "Magister Orrin Tallowe + household (4)",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 520,
+      "role": "disgraced date-sealer; recomputes the reading that ruined him",
+      "home": "OR-U03",
+      "work": "OR-U03",
+      "count": 4,
+      "note": "Voided a whole province's planting-date by a season; the House honoured the guarantee and billed him for it. Side-quest: was it his error or the House's? See OR-X07."
+    },
+    {
+      "id": "NPC-OR-020",
+      "name": "Overseer Marn Quell + clerks (28)",
+      "gender": "male",
+      "race": "Noctari, several human",
+      "age": 300,
+      "role": "runs the Ephemeris Manufactory; keeps the computation divided so no clerk sees the whole",
+      "home": "OR-L01",
+      "work": "OR-L01",
+      "count": 28,
+      "note": "The engine of the House's fortune; docks a clerk for a blotted line."
+    },
+    {
+      "id": "NPC-OR-021",
+      "name": "Seal-warden Ippa Dross + guild (12)",
+      "gender": "nonbinary",
+      "race": "Noctari",
+      "age": 470,
+      "role": "warden of the bonded seals; keeps the register of live and voided matrices",
+      "home": "OR-L02",
+      "work": "OR-L02",
+      "count": 12,
+      "note": "Guards the dies that could counterfeit the future."
+    },
+    {
+      "id": "NPC-OR-022",
+      "name": "Lesser Clerks' Row (24) — register-keeper Voss",
+      "gender": "mixed",
+      "race": "Noctari, 1 human household",
+      "age": null,
+      "role": "tenured reckoners, sealers'-assistants, register-keepers; sightless",
+      "home": "OR-L03",
+      "count": 24,
+      "note": "Voss knows what everyone above and below earns and resents both. The most anxious street in the city."
+    },
+    {
+      "id": "NPC-OR-030",
+      "name": "Innkeeper Delph Ravin + house (6)",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 290,
+      "role": "keeps The Ledger & Compass; rubs his slate clean each year",
+      "home": "OR-K01",
+      "work": "OR-K01",
+      "count": 6,
+      "note": "Runs the one untallied room in a district of triplicate. Knows about the cellar grille."
+    },
+    {
+      "id": "NPC-OR-031",
+      "name": "The Almanac Market (30) — the widow Pell & the dealer Osk",
+      "gender": "mixed",
+      "race": "Noctari, some human",
+      "age": null,
+      "role": "almanac-sellers, chart-makers, a second-hand date dealer",
+      "home": "OR-K02",
+      "work": "OR-K02",
+      "count": 30,
+      "note": "Osk reads discounted lucky-day sheets aloud to the illiterate for a coin — retail fate."
+    },
+    {
+      "id": "NPC-OR-032",
+      "name": "Lay-keeper Ansel Roe + 2",
+      "gender": "male",
+      "race": "Human",
+      "age": 44,
+      "role": "keeper of the Chapel of Variables (Path of Adaptation)",
+      "home": "OR-K03",
+      "work": "OR-K03",
+      "count": 3,
+      "note": "Tends a god of odds in a House that sells them; thinks the almanacs the superstition, not his faith."
+    },
+    {
+      "id": "NPC-OR-033",
+      "name": "Chief Assurer Wend Colu + assurers (10)",
+      "gender": "nonbinary",
+      "race": "Noctari",
+      "age": 410,
+      "role": "runs the Assurance House; underwrites dates as a hedge",
+      "home": "OR-K04",
+      "work": "OR-K04",
+      "count": 10,
+      "note": "Keeps the actuary's forbidden tables — which show the House loses more guarantees than it lets the rim believe. Sleeps above the money."
+    },
+    {
+      "id": "NPC-OR-040",
+      "name": "Inkside dwellings (46) — ink-master Corrl",
+      "gender": "mixed",
+      "race": "Noctari, some human",
+      "age": null,
+      "role": "printers, ink-makers, paper-porters, copy-runners",
+      "home": "OR-K05",
+      "count": 46,
+      "note": "Corrl's iron-gall recipe the wedge depends on and his lungs pay for. The block's children are born with stained hands."
+    },
+    {
+      "id": "NPC-OR-050",
+      "name": "Customs-dater Ollen + 2 clerks",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 350,
+      "role": "dates and licenses everything that comes up from below",
+      "home": "OR-K05",
+      "work": "OR-S01",
+      "count": 3,
+      "note": "Day post. Converts under-city labour into dated, sellable paper at the waterline."
+    },
+    {
+      "id": "NPC-OR-060",
+      "name": "Lock-master Bral",
+      "gender": "male",
+      "race": "Terran",
+      "age": 200,
+      "role": "runs the Reed-Lock; lifts the paper-machine's raw reed from below",
+      "home": "OR-X03",
+      "work": "OR-X01",
+      "note": "The under-clerk beneath him keeps the honest tonnage in charcoal."
+    },
+    {
+      "id": "NPC-OR-061",
+      "name": "Conduit-wrights (crew of 6)",
+      "gender": "mixed",
+      "race": "Terran",
+      "age": null,
+      "role": "keep the Song singing up to the manufactory's lamps",
+      "home": "OR-X03",
+      "work": "OR-X02",
+      "count": 6,
+      "note": "The reason the ledger can be balanced past dusk."
+    },
+    {
+      "id": "NPC-OR-062",
+      "name": "Deep-warden Torv Greel",
+      "gender": "male",
+      "race": "Terran (geomancer-trained)",
+      "age": 230,
+      "role": "warden of the Under-Reckoners' Hall; leads the deep-wrights",
+      "home": "OR-X03",
+      "work": "OR-X03",
+      "note": "The House's most trusted sums pass through his people, off the books, because the deep-folk count in a base the elves cannot easily cook."
+    },
+    {
+      "id": "NPC-OR-063",
+      "name": "The Under-Reckoners & Deep-Wrights (43)",
+      "gender": "mixed",
+      "race": "Terran",
+      "age": null,
+      "role": "cut and hold the wedge; check the manufactory's figures below the record",
+      "home": "OR-X03",
+      "count": 43,
+      "note": "Do the House's most trusted arithmetic and receive none of its seat. Keep a Petrocore shrine in the wrong city."
+    },
+    {
+      "id": "NPC-OR-064",
+      "name": "The Pulp- & Rag-Gangs (58) — elder Osma",
+      "gender": "mixed",
+      "race": "human & orc",
+      "age": null,
+      "role": "beat reed and rag to pulp; make the paper the House is printed on",
+      "home": "OR-X04",
+      "count": 58,
+      "note": "Cannot read a word of what they make. Live inside the stamping-noise. Part of the unnamed 778; Osma keeps the rag-halls' own count."
+    },
+    {
+      "id": "NPC-OR-065",
+      "name": "Canteen-keeper Old Ghu + 3",
+      "gender": "nonbinary",
+      "race": "Orc",
+      "age": 310,
+      "role": "keeps the Reed-Bottom Canteen; hosts the secret letters-corner",
+      "home": "OR-X05",
+      "work": "OR-X05",
+      "count": 4,
+      "note": "Teaches the under-city to read from stolen almanac off-cuts — the House's paper turned against its grain. Knows Mother Vesh (H0) and Old Sable (H8) by their runners."
+    },
+    {
+      "id": "NPC-OR-066",
+      "name": "Foreman Sarn",
+      "gender": "male",
+      "race": "Human",
+      "age": 43,
+      "role": "the seam of Oravelle's under-city; reconciles real tonnage to the dated figure",
+      "home": "OR-X06",
+      "work": "OR-X06",
+      "note": "Paid precisely to know how large the difference is. Twin to Foreman Adric (H0) and Foreman Quill (H8)."
+    },
+    {
+      "id": "NPC-OR-067",
+      "name": "Registrar of Voided Days Miral Enn + 1",
+      "gender": "nonbinary",
+      "race": "Noctari",
+      "age": 560,
+      "role": "sole keeper of the Dead-Letter Vault of failed predictions",
+      "home": "OR-X07",
+      "work": "OR-X07",
+      "count": 2,
+      "note": "Lives underground among every tomorrow the House got wrong. Holds, somewhere, the errata that could exonerate Orrin Tallowe (OR-U03) and the true loss-rate of the Assurance House (OR-K04)."
+    }
+  ]
+}

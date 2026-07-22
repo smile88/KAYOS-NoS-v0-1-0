@@ -1,0 +1,1215 @@
+{
+  "house_id": "H4",
+  "head_npc": "NPC-IL-001",
+  "structures": [
+    {
+      "id": "IL-T01",
+      "name": "The Tideglass Tower",
+      "house": "H4",
+      "district": "D-RIM",
+      "type": "observatory tower (House seat, upper)",
+      "position": {
+        "r": 422,
+        "a_deg": 180,
+        "note": "the Ilmyra rim tower — greybox tower i=4; stands at the dead back of the city, opposite the causeway"
+      },
+      "footprint": {
+        "shape": "cylinder",
+        "diameter": 22,
+        "rot_deg": 180
+      },
+      "height_m": 56,
+      "storeys": 6,
+      "y_base": 45,
+      "purpose": "Where Starfall reads the moons and the slow tide the Song makes in all still water. Not a tower of fixed certainties like Vael'Suran's but a tower of returns: everything it measures comes back around. Its instrument is a tall glass column of star-water whose level rises and falls a finger's breadth on the Song's long cycle, and the whole House's calendar of locks and festivals is set by watching it.",
+      "rooms": [
+        {
+          "name": "The Tideglass Hall",
+          "w": 16,
+          "d": 16,
+          "h": 10,
+          "purpose": "the great graduated water-column and its floating marker; the reading is taken at moonrise and moonset"
+        },
+        {
+          "name": "The Moon-Room",
+          "w": 12,
+          "d": 10,
+          "h": 6,
+          "purpose": "an aperture aligned to the risings of the three moons; charts of their long braided cycle line the walls"
+        },
+        {
+          "name": "Head's study",
+          "w": 8,
+          "d": 7,
+          "h": 4,
+          "purpose": "Magistra Vessa's study, its window framing the moon's path over the Mirror"
+        },
+        {
+          "name": "Gaugers' room",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "junior gaugers reduce the tide-readings and copy the lock-tables the barge-masters buy"
+        },
+        {
+          "name": "The Cistern-head & stair",
+          "w": 6,
+          "d": 6,
+          "h": 30,
+          "purpose": "the spiral stair; the tideglass is fed from the deep water far below by a single hair-fine pipe that must never be let run dry"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-001",
+        "NPC-IL-002",
+        "NPC-IL-003"
+      ],
+      "resident_count": 6,
+      "notes": "Head + First Gauger + 4 live-in junior gaugers. Its lit finial is one of the greybox's nine rim domes; alone of the nine it is trimmed to burn brighter at the full moons."
+    },
+    {
+      "id": "IL-M01",
+      "name": "The Ilmyra Seat",
+      "house": "H4",
+      "district": "D-RIM",
+      "type": "great house (manor)",
+      "position": {
+        "r": 438,
+        "a_deg": 173
+      },
+      "footprint": {
+        "w": 32,
+        "d": 20,
+        "rot_deg": 173,
+        "faces": "inward"
+      },
+      "height_m": 13,
+      "storeys": 3,
+      "y_base": 45,
+      "purpose": "A damp, beautiful, rhythmic house built around an open moon-court — a shallow reflecting pool at its centre that is filled and drained on the tide-calendar, so the Seat is mirror-bright some weeks and a dry tiled basin others. Ilmyra money is barge money and lock-toll money, made from moving water and what floats on it, and the House lives by rise and fall the way other Houses live by rank.",
+      "rooms": [
+        {
+          "name": "The Moon-Court",
+          "w": 14,
+          "d": 14,
+          "h": 12,
+          "purpose": "an open inner court with a tiled reflecting pool, filled and drained to the calendar; the House takes its readings without leaving home"
+        },
+        {
+          "name": "The Ebb Hall",
+          "w": 12,
+          "d": 9,
+          "h": 6,
+          "purpose": "reception; a frieze of the three moons in their braided cycle, and a tide-mark on the wall from the year the canals overtopped"
+        },
+        {
+          "name": "Vessa's chambers",
+          "w": 9,
+          "d": 8,
+          "h": 4,
+          "purpose": "the matriarch's rooms, over the moon-court"
+        },
+        {
+          "name": "Family wing",
+          "w": 14,
+          "d": 7,
+          "h": 4,
+          "purpose": "four chambers for the near family"
+        },
+        {
+          "name": "Kitchen, stores, staff",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "household below and attic rooms for staff"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-004",
+        "NPC-IL-005"
+      ],
+      "resident_count": 18,
+      "notes": "Vessa + near family (5) + 12 household staff (incl. a pool-keeper whose whole post is the moon-court's filling and draining)."
+    },
+    {
+      "id": "IL-U01",
+      "name": "Moonrise Villa — Sael",
+      "house": "H4",
+      "district": "D-UPPER",
+      "type": "senior scholar's villa",
+      "position": {
+        "r": 368,
+        "a_deg": 190
+      },
+      "footprint": {
+        "w": 14,
+        "d": 12,
+        "rot_deg": 190,
+        "faces": "inward"
+      },
+      "height_m": 10,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "The villa of the House's Tide-Lunist, whose sightline is surveyed not to the Mirror in general but to the exact point on the far rim where the largest moon clears the wall at midsummer. He argues the three moons and the Song's tide are one motion seen two ways, and that the lock-cycle is a liturgy nobody has noticed is a liturgy.",
+      "rooms": [
+        {
+          "name": "The Lunar Study",
+          "w": 10,
+          "d": 8,
+          "h": 5,
+          "purpose": "the moonrise sightline; a floor inlaid with the three moons' braided path"
+        },
+        {
+          "name": "Family rooms",
+          "w": 13,
+          "d": 6,
+          "h": 4,
+          "purpose": "the Lunist, a companion, two children, one student"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-010"
+      ],
+      "resident_count": 6,
+      "notes": "Tide-Lunist Orrin Sael + household. A theory-thread toward the Academy's Song-work, as the Serenthil horologist is."
+    },
+    {
+      "id": "IL-U02",
+      "name": "The Lock-Warden's Villa",
+      "house": "H4",
+      "district": "D-UPPER",
+      "type": "senior officer's villa",
+      "position": {
+        "r": 366,
+        "a_deg": 180
+      },
+      "footprint": {
+        "w": 14,
+        "d": 12,
+        "rot_deg": 180,
+        "faces": "inward"
+      },
+      "height_m": 10,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "Home of the Lock-Warden, the commoner-born officer who actually times the great Lock-Flight and every canal sluice in the wedge — the man whose hand is on the city's whole water economy, and who has never once been asked to dine at the Seat. He keeps a working tide-model in his front room and trusts it further than any Magister.",
+      "rooms": [
+        {
+          "name": "The Model Room",
+          "w": 9,
+          "d": 7,
+          "h": 5,
+          "purpose": "a plumbed brass-and-glass model of the Lock-Flight he runs it by; it leaks, and he loves it"
+        },
+        {
+          "name": "Family rooms (x3)",
+          "w": 13,
+          "d": 6,
+          "h": 4,
+          "purpose": "the Lock-Warden, spouse, 3 children"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-011"
+      ],
+      "resident_count": 6,
+      "notes": "Lock-Warden Dov Marrenh + household. The Halvenor/Ostreth pattern — the commoner who really runs the House's work."
+    },
+    {
+      "id": "IL-U03",
+      "name": "The Pool House",
+      "house": "H4",
+      "district": "D-UPPER",
+      "type": "senior dwelling (eccentric)",
+      "position": {
+        "r": 372,
+        "a_deg": 166
+      },
+      "footprint": {
+        "w": 15,
+        "d": 13,
+        "rot_deg": 166,
+        "faces": "inward"
+      },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "A villa given over almost entirely to a private tidal pool that its owner, a wealthy retired barge-mistress, fills from the canal-race so she can watch her own small tide turn each night. The upper terrace considers it vulgar to spend a sightline villa on water rather than a view; she considers the upper terrace to have never once looked at water properly.",
+      "rooms": [
+        {
+          "name": "The Private Pool",
+          "w": 10,
+          "d": 9,
+          "h": 6,
+          "purpose": "a roofed tidal pool, dark and still, that rises and falls on a bled-off share of the canal-race"
+        },
+        {
+          "name": "Living rooms",
+          "w": 12,
+          "d": 5,
+          "h": 4,
+          "purpose": "the barge-mistress + a companion + two boarders + a servant"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-012"
+      ],
+      "resident_count": 5,
+      "notes": "Retired barge-mistress Halvenna Oon + 4. New money from the barge trade, holding a sightline villa and using it wrong on purpose."
+    },
+    {
+      "id": "IL-L01",
+      "name": "The Lockwrights' Hall",
+      "house": "H4",
+      "district": "D-MID",
+      "type": "guild-hall + workshop",
+      "position": {
+        "r": 318,
+        "a_deg": 186
+      },
+      "footprint": {
+        "w": 22,
+        "d": 16,
+        "rot_deg": 186,
+        "faces": "inward"
+      },
+      "height_m": 10,
+      "storeys": 2,
+      "y_base": 23,
+      "purpose": "Wet, heavy, and essential: the guild that builds and maintains every lock-gate, sluice, valve and paddle in Starfall's water — hinges the size of a man, timber that must be kept swelled, seals of tallow and star-reed. A lock-gate that fails does not simply stop; it empties a terrace into the one below, so the Lockwrights are trusted with the city's actual weight of water and paid, grudgingly, accordingly.",
+      "rooms": [
+        {
+          "name": "The Gate Floor",
+          "w": 16,
+          "d": 10,
+          "h": 7,
+          "purpose": "great gates laid flat for fitting; a wet-pit for testing seals under head of water"
+        },
+        {
+          "name": "The Paddle Shop",
+          "w": 8,
+          "d": 6,
+          "h": 5,
+          "purpose": "sluice-paddles and their gearing, cut to the Lock-Warden's tables"
+        },
+        {
+          "name": "Master's dwelling",
+          "w": 14,
+          "d": 6,
+          "h": 4,
+          "purpose": "the master lockwright's family above the works"
+        },
+        {
+          "name": "Journeymen's loft",
+          "w": 12,
+          "d": 5,
+          "h": 3,
+          "purpose": "boarded gate-wrights"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-020"
+      ],
+      "resident_count": 15,
+      "notes": "Master lockwright Bruska Fenn + family + 9 journeymen. Works hand-in-glove with the under-city Lock-Gangs (IL-X03); half the Hall is up top, half its labour is down below."
+    },
+    {
+      "id": "IL-L02",
+      "name": "The Gaugers' House (Tide-Tables)",
+      "house": "H4",
+      "district": "D-MID",
+      "type": "computation hall + press",
+      "position": {
+        "r": 312,
+        "a_deg": 178
+      },
+      "footprint": {
+        "w": 20,
+        "d": 13,
+        "rot_deg": 178,
+        "faces": "inward"
+      },
+      "height_m": 9,
+      "storeys": 3,
+      "y_base": 23,
+      "purpose": "Where the moons' braided cycle is turned into numbers a barge-master can use: the tide-tables and lock-timings for the season ahead, computed by hand and printed on the House's own press. Every barge that ever climbed to Starfall did it by a page bought here. Quiet, inky, and quietly powerful — to mis-set a table is to strand a season's cargo.",
+      "rooms": [
+        {
+          "name": "The Reckoning Floor",
+          "w": 14,
+          "d": 8,
+          "h": 5,
+          "purpose": "ranked desks of gaugers reducing the tideglass readings into tables"
+        },
+        {
+          "name": "The Press Room",
+          "w": 8,
+          "d": 6,
+          "h": 4,
+          "purpose": "the House press; tide-tables, almanacs, lock-schedules struck in silver ink"
+        },
+        {
+          "name": "Gaugers' dormitory",
+          "w": 14,
+          "d": 5,
+          "h": 3,
+          "purpose": "boarded gaugers"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-021"
+      ],
+      "resident_count": 10,
+      "notes": "Chief gauger Present Ollav-Ree + 9. The mathematical twin of Serenthil's clock-work: one House counts the hour, this one counts the water."
+    },
+    {
+      "id": "IL-L03",
+      "name": "Lesser Watermen's Row",
+      "house": "H4",
+      "district": "D-MID",
+      "type": "terrace of 6 dwellings",
+      "position": {
+        "r": 300,
+        "a_deg": 170
+      },
+      "footprint": {
+        "w": 42,
+        "d": 8,
+        "rot_deg": 170,
+        "faces": "inward",
+        "form": "row of 6"
+      },
+      "height_m": 7,
+      "storeys": 2,
+      "y_base": 23,
+      "purpose": "Six joined houses of the wedge's lesser watermen — the sluice-tenders, gaugers' clerks, paddle-boys and canal-sweeps who keep the water moving without ever setting a table or holding a warrant. Respectable, damp, and paid in the House's steady lock-toll coin.",
+      "rooms": [
+        {
+          "name": "Per-house: work-room + 2 chambers",
+          "w": 6,
+          "d": 7,
+          "h": 4,
+          "purpose": "6 households of watermen"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-022"
+      ],
+      "resident_count": 24,
+      "notes": "6 households, ~24 souls. Named: the sluice-tender Merrow, who can tell the tide's height by the sound the paddles make."
+    },
+    {
+      "id": "IL-K01",
+      "name": "The Drowned Moon",
+      "house": "H4",
+      "district": "D-CANAL",
+      "type": "inn (Strain-relief haven)",
+      "position": {
+        "r": 268,
+        "a_deg": 192
+      },
+      "footprint": {
+        "w": 16,
+        "d": 12,
+        "rot_deg": 192,
+        "faces": "canal"
+      },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "The wedge's inn, right on the barge-basin, low enough that at the top of a spring tide the canal comes in over the sill and the regulars simply lift their feet onto the bench-rails and drink on. Bargefolk, lock-gangs off shift, and the occasional stranded traveller from the world below all wash up here. This wedge's Strain-relief haven, and the softest, wettest room in Starfall.",
+      "rooms": [
+        {
+          "name": "The Common Room",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "hearth, long tables with foot-rails against the flood; a tide-mark ladder painted up the doorframe and a drowned moon (a lantern) hung under glass"
+        },
+        {
+          "name": "Kitchen",
+          "w": 6,
+          "d": 5,
+          "h": 4,
+          "purpose": ""
+        },
+        {
+          "name": "Letting rooms (x5)",
+          "w": 14,
+          "d": 5,
+          "h": 3,
+          "purpose": "five rooms above, above the flood-line"
+        },
+        {
+          "name": "Cellar (wet)",
+          "w": 8,
+          "d": 6,
+          "h": 3,
+          "purpose": "half-flooded by design; the beer floats in cages, and a hatch opens onto the lock-flight below"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-030"
+      ],
+      "resident_count": 5,
+      "notes": "Innkeeper Coll Marsh + 2 family + 2 staff. The wet cellar hatch is Ilmyra's over/under seam (to IL-X01). Sister-haven to the Sounding-Glass (VS-K01) and the Ninth Bell (SR-K01)."
+    },
+    {
+      "id": "IL-K02",
+      "name": "The Barge-Basin & Chandlery",
+      "house": "H4",
+      "district": "D-CANAL",
+      "type": "turning basin + market (ship's-chandlers)",
+      "position": {
+        "r": 255,
+        "a_deg": 184
+      },
+      "footprint": {
+        "w": 34,
+        "d": 26,
+        "rot_deg": 184,
+        "faces": "canal",
+        "form": "open water basin ringed by quays and shops"
+      },
+      "height_m": 7,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "The head of navigation: a broad turning-basin where the barges that climb the Lock-Flight tie up, unload, and turn, ringed by a quay of ship's-chandlers — rope, pitch, star-reed caulk, victuals, timber, and the tide-tables from the Gaugers' House. The one place in the visible city where the world-below arrives in the open, on the water, in daylight; and the House takes a toll on every keel.",
+      "rooms": [
+        {
+          "name": "The Basin & Quays",
+          "w": 24,
+          "d": 18,
+          "h": 0,
+          "purpose": "open star-water basin, mooring-rings, the toll-house with its warded strongbox"
+        },
+        {
+          "name": "Chandlers' row",
+          "w": 30,
+          "d": 6,
+          "h": 4,
+          "purpose": "twelve chandler shops and stores, most with a family living above"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-031"
+      ],
+      "resident_count": 33,
+      "notes": "12 chandler households + toll-clerks, ~33 souls. Named: the caulk-and-reed dealer Pesh, and the toll-clerk Ammary who has memorised every barge-master's face."
+    },
+    {
+      "id": "IL-K03",
+      "name": "The Shrine of the Three Moons",
+      "house": "H4",
+      "district": "D-CANAL",
+      "type": "shrine (Umbrion / lunar rite)",
+      "position": {
+        "r": 250,
+        "a_deg": 176
+      },
+      "footprint": {
+        "w": 12,
+        "d": 12,
+        "rot_deg": 176,
+        "faces": "inward"
+      },
+      "height_m": 9,
+      "storeys": 1,
+      "y_base": 12,
+      "purpose": "A shrine to Umbrion under his lunar aspect — three silver bowls of star-water set to catch the three moons, tended so their levels track the sky. Bargefolk pour a thimble of water in before a climb and take one out after a safe descent, so the bowls are a running ledger of the wedge's fear and gratitude. Devotions are timed to moonrise, not to the bell, which quietly annoys House Serenthil.",
+      "rooms": [
+        {
+          "name": "The Moon-Bowls",
+          "w": 8,
+          "d": 8,
+          "h": 7,
+          "purpose": "three tiered silver basins open to the sky; the water is never allowed to still completely"
+        },
+        {
+          "name": "Keeper's cell",
+          "w": 4,
+          "d": 4,
+          "h": 3,
+          "purpose": "the shrine-keeper's room"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-032"
+      ],
+      "resident_count": 2,
+      "notes": "Moon-keeper Senna + a mute apprentice. A watery counterpart to Vael'Suran's Deepening (VS-K03) — the same god, tended through water and moon instead of pure dark."
+    },
+    {
+      "id": "IL-K04",
+      "name": "Canal Dwellings — Basinside",
+      "house": "H4",
+      "district": "D-CANAL",
+      "type": "tenement block, 9 dwellings",
+      "position": {
+        "r": 245,
+        "a_deg": 168
+      },
+      "footprint": {
+        "w": 26,
+        "d": 14,
+        "rot_deg": 168,
+        "faces": "canal",
+        "form": "block, 9 dwellings"
+      },
+      "height_m": 11,
+      "storeys": 3,
+      "y_base": 12,
+      "purpose": "The wedge's densest housing, stacked three storeys over the basin: bargefolk families who work the water above the flood-line and the boatwrights, netmakers, and lightermen who serve the traffic. The ground floor is given to boats in winter and to children in summer, and the whole block reads the day by the height of the water at its door.",
+      "rooms": [
+        {
+          "name": "Per dwelling: 2-3 rooms",
+          "w": 6,
+          "d": 6,
+          "h": 3,
+          "purpose": "9 dwellings, families of 3-6"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-033"
+      ],
+      "resident_count": 50,
+      "notes": "~50 souls. Named: the boatwright Oram, and the pilot-widow Cael, who guides new barge-masters up the flight for a coin and a story."
+    },
+    {
+      "id": "IL-K05",
+      "name": "The Tide-Hall",
+      "house": "H4",
+      "district": "D-CANAL",
+      "type": "ceremonial moon-pool (NOVEL landmark)",
+      "position": {
+        "r": 262,
+        "a_deg": 180
+      },
+      "footprint": {
+        "w": 28,
+        "d": 24,
+        "rot_deg": 180,
+        "faces": "inward",
+        "form": "colonnaded hall around a great breathing pool"
+      },
+      "height_m": 12,
+      "storeys": 1,
+      "y_base": 12,
+      "purpose": "The visible heart of the wedge and its 'novel and unique' landmark: a great colonnaded hall built around a circular pool of star-water that VISIBLY rises and falls — a full slow breath, floor to knee-height and back — over the Song's long tide-cycle, driven from the same deep water and lock-race that runs the whole city. Citizens come to sit at its rim and watch the water go out and come in, which is the nearest thing the Noctari have to prayer. At the flood it mirrors the whole hall; at the ebb it shows a mosaic floor of the three moons, dry, that no one sees but twice a month.",
+      "rooms": [
+        {
+          "name": "The Breathing Pool",
+          "w": 20,
+          "d": 20,
+          "h": 12,
+          "purpose": "the circular tidal pool and its ring of black basalt steps; a graduated pillar at the centre marks the reach of each tide"
+        },
+        {
+          "name": "The Colonnade",
+          "w": 26,
+          "d": 4,
+          "h": 12,
+          "purpose": "a sheltered walk around the pool where the House holds the moon-festivals and the barge-blessings"
+        },
+        {
+          "name": "The Sluice-Chapel",
+          "w": 6,
+          "d": 5,
+          "h": 6,
+          "purpose": "where the keeper controls the fill and drain; the machinery is treated as holy and kept behind a screen"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-034"
+      ],
+      "resident_count": 6,
+      "notes": "Tide-Hall keeper Haldis + 5 (attendants who live in the colonnade cells). The BEAUTIFUL, ceremonial upper face of the water — its laboring lower face is the Lock-Flight (IL-X01) directly below. Same water, two faces: the Ilmyra doubling, mirroring Serenthil's festival-bell / shift-bell split."
+    },
+    {
+      "id": "IL-S01",
+      "name": "The Water-Gate & Back Landing",
+      "house": "H4",
+      "district": "D-SHORE",
+      "type": "civic threshold (barge customs)",
+      "position": {
+        "r": 228,
+        "a_deg": 180
+      },
+      "footprint": {
+        "w": 16,
+        "d": 10,
+        "rot_deg": 180,
+        "faces": "processional"
+      },
+      "height_m": 6,
+      "storeys": 1,
+      "y_base": 0,
+      "purpose": "The city's back door, where the lesser rear-processional meets the shore and the canal meets the star-lake through a warded water-gate. This is the customs post for everything that arrives by barge rather than by the front stair — the working threshold to Vael'Suran's ceremonial one across the caldera. What comes up the Lock-Flight is weighed and tallied here before the water is allowed to carry it into the city.",
+      "rooms": [
+        {
+          "name": "The Water-Gate Hall",
+          "w": 11,
+          "d": 7,
+          "h": 5,
+          "purpose": "the gate machinery, the weighing-quay, a tally-desk and warded strongroom"
+        },
+        {
+          "name": "Officers' room",
+          "w": 5,
+          "d": 4,
+          "h": 4,
+          "purpose": "the water-customs officer and two clerks"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-050"
+      ],
+      "resident_count": 0,
+      "notes": "Water-customs officer Trennt + 2 clerks (day post; counted at their canal homes). The back-door twin of the Vael'Suran/Serenthil front gates — but this door faces the WATER, and the water comes from below."
+    },
+    {
+      "id": "IL-X01",
+      "name": "The Lock-Flight",
+      "house": "H4",
+      "district": "D-UNDER",
+      "type": "barge lock-staircase (major service works)",
+      "position": {
+        "r": 248,
+        "a_deg": 180,
+        "depth_note": "a radial staircase of chamber-locks climbing up under the terraces from the world below"
+      },
+      "footprint": {
+        "length": 82,
+        "width": 14,
+        "rot_deg": 180,
+        "form": "flight of six stepped chamber-locks"
+      },
+      "height_m": 16,
+      "y_base": -20,
+      "purpose": "The laboring lower face of all this beautiful water: a staircase of six great chamber-locks that lifts loaded barges from the cloud-world far below the caldera, chamber by chamber, up into the city's canals. Every stone, sack, cask and lamp that the terraces above consume climbs this flight in the dark, walked up by gangs on the paddle-capstans. The Plate draws the Tide-Hall's breathing pool and stops; it does not draw the six locks and the gangs directly beneath it that make the pretty water move at all.",
+      "rooms": [
+        {
+          "name": "The Six Chambers",
+          "w": 12,
+          "d": 66,
+          "h": 14,
+          "purpose": "the stepped lock-basins and their counter-weighted gates; a barge takes half a shift to climb the flight"
+        },
+        {
+          "name": "The Capstan Galleries",
+          "w": 6,
+          "d": 60,
+          "h": 4,
+          "purpose": "side galleries where the lock-gangs walk the paddle-capstans that fill and empty each chamber"
+        },
+        {
+          "name": "The Tally-Cut",
+          "w": 4,
+          "d": 4,
+          "h": 3,
+          "purpose": "the under-clerk's niche at the head of the flight, where the true cargo-count is kept in charcoal"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-060"
+      ],
+      "resident_count": 0,
+      "notes": "Worked, not lived-in (its gangs bunk in IL-X03). The under-clerk keeps the Other Map's tally here. Directly beneath the Tide-Hall (IL-K05): same water, two faces — glory above, labour below."
+    },
+    {
+      "id": "IL-X02",
+      "name": "The Conduit-and-Sluice Gallery",
+      "house": "H4",
+      "district": "D-UNDER",
+      "type": "conduit + sluice-control gallery",
+      "position": {
+        "r": 260,
+        "a_deg": 186,
+        "depth_note": "radial run beside the flight"
+      },
+      "footprint": {
+        "length": 66,
+        "width": 5,
+        "rot_deg": 186
+      },
+      "height_m": 4,
+      "y_base": -10,
+      "purpose": "The wedge's Song-conduits that feed its star-lamps, run in the same gallery as the sluice-controls that time the Lock-Flight and the Tide-Hall's breathing. When a lamp burns on the terraces or the great pool draws its slow breath, the cause is a crew kneeling in this tunnel setting paddles and truing crystal in the dark.",
+      "rooms": [
+        {
+          "name": "The Long Gallery",
+          "w": 5,
+          "d": 66,
+          "h": 4,
+          "purpose": "conduit and sluice-rods side by side; access ladders to each terrace and to the lock-chambers"
+        },
+        {
+          "name": "Sluice-house",
+          "w": 4,
+          "d": 4,
+          "h": 3,
+          "purpose": "the master sluice that sets the Tide-Hall's rise and fall — treated by the crew as the thing that must never be got wrong"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-061"
+      ],
+      "resident_count": 6,
+      "notes": "Conduit-and-sluice crew (6, mixed Terran & human). They, not the moon, decide when the Tide-Hall breathes — a fact the worshippers above would rather not hold in mind."
+    },
+    {
+      "id": "IL-X03",
+      "name": "The Lock-Gangs' Hall",
+      "house": "H4",
+      "district": "D-UNDER",
+      "type": "bunk-hall (Terran gate-wrights + haulers)",
+      "position": {
+        "r": 250,
+        "a_deg": 174,
+        "depth_note": "cut into the shore-mass beside the flight"
+      },
+      "footprint": {
+        "w": 30,
+        "d": 20,
+        "rot_deg": 174,
+        "form": "carved hall + riveted bunks, glow-stone lit"
+      },
+      "height_m": 6,
+      "y_base": -18,
+      "purpose": "Home of the gangs who work the Lock-Flight: Terran gate-wrights who keep the great gates swelled and true, alongside the human and orc haulers who walk the capstans that lift the barges. Damp, warm with glow-stone, and loud with running water through the wall. The proudest boast here is a flight climbed with no cargo lost, and the oldest hands can name every barge-master who ever thanked them and every one who never did.",
+      "rooms": [
+        {
+          "name": "The Carved Hall",
+          "w": 18,
+          "d": 10,
+          "h": 6,
+          "purpose": "a communal hall; a long table, a Petrocore shrine, and a wall-carving of the flight kept by the gate-wrights"
+        },
+        {
+          "name": "Sleeping galleries",
+          "w": 24,
+          "d": 6,
+          "h": 3,
+          "purpose": "bunk-niches for ~52 gate-wrights and haulers"
+        },
+        {
+          "name": "The Wet-Room",
+          "w": 6,
+          "d": 5,
+          "h": 3,
+          "purpose": "where soaked gear is dried and the drowned are laid out — the flight takes someone most seasons"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-062",
+        "NPC-IL-063"
+      ],
+      "resident_count": 52,
+      "notes": "~24 Terran gate-wrights + ~28 human/orc haulers. Works hand-in-glove with the up-top Lockwrights' Hall (IL-L01). Part of the unnamed 778."
+    },
+    {
+      "id": "IL-X04",
+      "name": "The Bargefolk Undershelter",
+      "house": "H4",
+      "district": "D-UNDER",
+      "type": "transient dwelling (bargefolk of the world below)",
+      "position": {
+        "r": 242,
+        "a_deg": 170,
+        "depth_note": "a long low shelter at the foot of the flight"
+      },
+      "footprint": {
+        "w": 32,
+        "d": 18,
+        "rot_deg": 170,
+        "form": "low vaulted dormitory + moorings"
+      },
+      "height_m": 5,
+      "y_base": -16,
+      "purpose": "The liminal, half-counted population of the wedge: bargefolk from the cloud-world below who bring cargo up the flight and shelter here between climbs — people who are not quite of Starfall and never will be, who keep their own tongue, their own gods, and their families aboard. The city needs everything they carry and grants them nothing but this vaulted room and a moon-tinted view of the water they arrived on. The most foreign faces in Starfall, living directly under its most beautiful pool.",
+      "rooms": [
+        {
+          "name": "The Long Shelter",
+          "w": 24,
+          "d": 8,
+          "h": 5,
+          "purpose": "a vaulted dormitory of bunks and hammocks; families curtain off corners; a shrine to gods the terraces have never heard named"
+        },
+        {
+          "name": "The Undermoorings",
+          "w": 10,
+          "d": 8,
+          "h": 5,
+          "purpose": "a covered basin where empty barges wait their turn down the flight"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-064"
+      ],
+      "resident_count": 64,
+      "notes": "~64 transient bargefolk (fluctuates with the season). A distinct outsider population — neither the elite above nor the settled under-city labour, but the road-people of the water. Rich quest and worldbuilding ground; part of the uncounted the whole game is about."
+    },
+    {
+      "id": "IL-X05",
+      "name": "The Slackwater Canteen",
+      "house": "H4",
+      "district": "D-UNDER",
+      "type": "canteen / commons",
+      "position": {
+        "r": 248,
+        "a_deg": 182,
+        "depth_note": "at the gallery crossing above the flight"
+      },
+      "footprint": {
+        "w": 16,
+        "d": 12,
+        "rot_deg": 182
+      },
+      "height_m": 4,
+      "y_base": -12,
+      "purpose": "The warm room where the under-city of the water eats: lock-gangs, sluice-crews, and bargefolk share one long trestle over fish from the lake-shore nets and bread come up the flight. Named for the slack of the tide, the still hour between rise and fall when the locks rest and everyone comes up to be fed. The keeper reads the tide by the draught under the door and rings no bell — she just knows when slackwater comes.",
+      "rooms": [
+        {
+          "name": "The Long Room",
+          "w": 12,
+          "d": 8,
+          "h": 4,
+          "purpose": "trestles, a great range, a wall of chalked names and a second wall of names in a script the terraces can't read"
+        },
+        {
+          "name": "Kitchen & store",
+          "w": 6,
+          "d": 5,
+          "h": 3,
+          "purpose": "run by the keeper"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-065"
+      ],
+      "resident_count": 4,
+      "notes": "Canteen-keeper Mother Ilse + 3 helpers. Sister-room to the Underspill (VS-X05) and the Undertoll (SR-X05); the three under-canteens' keepers are the real government of the dark."
+    },
+    {
+      "id": "IL-X06",
+      "name": "The Lockmaster's Post",
+      "house": "H4",
+      "district": "D-UNDER",
+      "type": "overseer post",
+      "position": {
+        "r": 242,
+        "a_deg": 188,
+        "depth_note": "at the foot of the water-gate stair"
+      },
+      "footprint": {
+        "w": 8,
+        "d": 6,
+        "rot_deg": 188
+      },
+      "height_m": 3,
+      "y_base": -12,
+      "purpose": "The seam-office of Ilmyra's under-city, at the foot of the stair up to the Water-Gate, where the flight's cargo-count and the drowned-count are reconciled and sent up to the House. The Lockmaster is the one person who both sets foot in the Tide-Hall's colonnade and knows the name of the last hauler the flight killed.",
+      "rooms": [
+        {
+          "name": "The Office",
+          "w": 5,
+          "d": 4,
+          "h": 3,
+          "purpose": "a ledger-desk, a soaked shift-book, a working model of the flight in a glass tank"
+        },
+        {
+          "name": "Bunk",
+          "w": 3,
+          "d": 3,
+          "h": 3,
+          "purpose": "the Lockmaster sleeps at the seam, listening to the water"
+        }
+      ],
+      "occupants": [
+        "NPC-IL-066"
+      ],
+      "resident_count": 1,
+      "notes": "Lockmaster Vel — the seam of the water-wedge; keeps the honest count in charcoal and the House's in ink. Twin to Foreman Adric (VS-X06) and Foreman Quill (SR-X06)."
+    }
+  ],
+  "npcs": [
+    {
+      "id": "NPC-IL-001",
+      "name": "Magistra Vessa Ilmyra",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 1060,
+      "role": "Head of House Ilmyra; Keeper of the Tides of the Song",
+      "home": "IL-M01",
+      "work": "IL-T01",
+      "note": "Slow, tidal, patient; measures her House's fortunes in cycles no other House has the temperament to wait out. Signs the city's lock-calendar and moon-festivals into law."
+    },
+    {
+      "id": "NPC-IL-002",
+      "name": "First Gauger Pallun Ree",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 500,
+      "role": "senior observer of the tideglass and the moons",
+      "home": "IL-T01",
+      "work": "IL-T01",
+      "note": "Reads the water-column at moonrise and moonset; has not slept a whole night through in two centuries and considers this normal."
+    },
+    {
+      "id": "NPC-IL-003",
+      "name": "the junior gaugers (4)",
+      "gender": "mixed",
+      "race": "Noctari",
+      "age": null,
+      "role": "live-in gauging clerks",
+      "home": "IL-T01",
+      "work": "IL-T01",
+      "count": 4,
+      "note": "Reduce the tide-readings and copy the lock-tables; dream in rising and falling numbers."
+    },
+    {
+      "id": "NPC-IL-004",
+      "name": "the Ilmyra family (5)",
+      "gender": "mixed",
+      "race": "Noctari",
+      "age": null,
+      "role": "House family",
+      "home": "IL-M01",
+      "count": 5
+    },
+    {
+      "id": "NPC-IL-005",
+      "name": "the Seat household staff (12)",
+      "gender": "mixed",
+      "race": "Noctari & 2 human",
+      "age": null,
+      "role": "cook, pool-keeper, porters, maids",
+      "home": "IL-M01",
+      "work": "IL-M01",
+      "count": 12,
+      "note": "Includes the pool-keeper whose whole post is filling and draining the moon-court to the calendar."
+    },
+    {
+      "id": "NPC-IL-010",
+      "name": "Tide-Lunist Orrin Sael",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 640,
+      "role": "moon-and-tide theorist; argues the moons and the Song's tide are one motion",
+      "home": "IL-U01",
+      "work": "IL-U01",
+      "count": 6,
+      "note": "Household of 6. A theory-thread toward the Academy's Song-work — the lock-cycle as unnoticed liturgy."
+    },
+    {
+      "id": "NPC-IL-011",
+      "name": "Lock-Warden Dov Marrenh",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 400,
+      "role": "commoner-born officer who times the Lock-Flight and every canal sluice",
+      "home": "IL-U02",
+      "work": "IL-X01",
+      "count": 6,
+      "note": "Household of 6. The hand on the city's whole water economy; never asked to dine at the Seat. Runs it by a leaking brass model he trusts over any Magister."
+    },
+    {
+      "id": "NPC-IL-012",
+      "name": "Retired barge-mistress Halvenna Oon",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 720,
+      "role": "wealthy new-money tenant of a sightline villa given over to a private tidal pool",
+      "home": "IL-U03",
+      "work": null,
+      "count": 5,
+      "note": "Household of 5. Made a fortune on the barges and spends her villa's sightline on watching her own small tide turn — a deliberate affront to the upper terrace's values."
+    },
+    {
+      "id": "NPC-IL-020",
+      "name": "Master lockwright Bruska Fenn + household (15)",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 380,
+      "role": "runs the Lockwrights' Hall; builds and maintains every lock-gate in the city",
+      "home": "IL-L01",
+      "work": "IL-L01",
+      "count": 15,
+      "note": "Trusted with the city's actual weight of water; a failed gate empties one terrace into the next."
+    },
+    {
+      "id": "NPC-IL-021",
+      "name": "Chief gauger Present Ollav-Ree + house (10)",
+      "gender": "nonbinary",
+      "race": "Noctari",
+      "age": 560,
+      "role": "computes the tide-tables and lock-timings; runs the House press",
+      "home": "IL-L02",
+      "work": "IL-L02",
+      "count": 10,
+      "note": "Every barge that ever climbed to Starfall did it by a page struck here. 'Present' is a Noctari name, a gauger's joke about always being on time."
+    },
+    {
+      "id": "NPC-IL-022",
+      "name": "Lesser Watermen's Row (24) — sluice-tender Merrow",
+      "gender": "mixed",
+      "race": "Noctari, 1 human household",
+      "age": null,
+      "role": "sluice-tenders, gaugers' clerks, paddle-boys, canal-sweeps",
+      "home": "IL-L03",
+      "count": 24,
+      "note": "Sightless service class; Merrow tells the tide's height by the sound the paddles make."
+    },
+    {
+      "id": "NPC-IL-030",
+      "name": "Innkeeper Coll Marsh + house (5)",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 290,
+      "role": "keeps The Drowned Moon",
+      "home": "IL-K01",
+      "work": "IL-K01",
+      "count": 5,
+      "note": "Serves on through the spring floods with everyone's feet on the bench-rails; knows the wet cellar hatch down to the flight."
+    },
+    {
+      "id": "NPC-IL-031",
+      "name": "The Barge-Basin & Chandlery (33) — dealer Pesh, toll-clerk Ammary",
+      "gender": "mixed",
+      "race": "Noctari, 3 human, 1 Terran",
+      "age": null,
+      "role": "ship's-chandlers, victuallers, toll-clerks",
+      "home": "IL-K02",
+      "work": "IL-K02",
+      "count": 33,
+      "note": "The one place the world-below arrives in the open on the water; Ammary has memorised every barge-master's face."
+    },
+    {
+      "id": "NPC-IL-032",
+      "name": "Moon-keeper Senna + apprentice",
+      "gender": "female",
+      "race": "Noctari",
+      "age": 270,
+      "role": "keeps the Shrine of the Three Moons",
+      "home": "IL-K03",
+      "work": "IL-K03",
+      "count": 2,
+      "note": "Tends three silver bowls of star-water to track the moons; the bowls are a running ledger of the bargefolk's fear and gratitude."
+    },
+    {
+      "id": "NPC-IL-033",
+      "name": "Basinside dwellings (50) — boatwright Oram, pilot-widow Cael",
+      "gender": "mixed",
+      "race": "Noctari, some human",
+      "age": null,
+      "role": "bargefolk families, boatwrights, netmakers, lightermen",
+      "home": "IL-K04",
+      "count": 50,
+      "note": "Read the day by the height of the water at the door. Cael guides new barge-masters up the flight for a coin and a story."
+    },
+    {
+      "id": "NPC-IL-034",
+      "name": "Tide-Hall keeper Haldis + attendants (6)",
+      "gender": "nonbinary",
+      "race": "Noctari",
+      "age": 480,
+      "role": "keeps the Tide-Hall; controls the breathing pool's fill and drain",
+      "home": "IL-K05",
+      "work": "IL-K05",
+      "count": 6,
+      "note": "Treats the sluice-machinery as holy and keeps it behind a screen — devout about a thing the crew in IL-X02 works with bare hands."
+    },
+    {
+      "id": "NPC-IL-050",
+      "name": "Water-customs officer Trennt + 2 clerks",
+      "gender": "male",
+      "race": "Noctari",
+      "age": 330,
+      "role": "weighs and tallies everything that comes up the flight by water",
+      "home": "IL-K04",
+      "work": "IL-S01",
+      "count": 3,
+      "note": "Day post; the back-door twin of the Vael'Suran and Serenthil front gates — but his door faces the water, and the water comes from below."
+    },
+    {
+      "id": "NPC-IL-060",
+      "name": "The Lock-Flight under-clerk & signal-crew (worked by IL-X03)",
+      "gender": "mixed",
+      "race": "Terran & human",
+      "age": null,
+      "role": "keep the true cargo-count and signal the chambers; bunk in the Lock-Gangs' Hall",
+      "home": "IL-X03",
+      "work": "IL-X01",
+      "count": 0,
+      "note": "Counted among the Lock-Gangs (IL-X03). The under-clerk keeps the Other Map's tally at the head of the flight."
+    },
+    {
+      "id": "NPC-IL-061",
+      "name": "The Conduit-and-Sluice Crew (6)",
+      "gender": "mixed",
+      "race": "Terran & human",
+      "age": null,
+      "role": "keep the Song-conduits and set the sluices that time the Tide-Hall and the flight",
+      "home": "IL-X03",
+      "work": "IL-X02",
+      "count": 6,
+      "note": "They, not the moon, decide when the great pool breathes."
+    },
+    {
+      "id": "NPC-IL-062",
+      "name": "The Gate-Wrights (24) — old gate-wright Dross",
+      "gender": "mixed",
+      "race": "Terran",
+      "age": null,
+      "role": "keep the Lock-Flight's great gates swelled, sealed and true",
+      "home": "IL-X03",
+      "count": 24,
+      "note": "Keep a Petrocore shrine and a carving of the whole flight; boast of climbs made with no cargo lost."
+    },
+    {
+      "id": "NPC-IL-063",
+      "name": "The Lock-Haulers (28)",
+      "gender": "mixed",
+      "race": "human & orc",
+      "age": null,
+      "role": "walk the paddle-capstans that lift the barges chamber by chamber",
+      "home": "IL-X03",
+      "count": 28,
+      "note": "The muscle of the flight; the wet-room takes one of them most seasons. Part of the unnamed 778."
+    },
+    {
+      "id": "NPC-IL-064",
+      "name": "The Bargefolk of the flight (~64)",
+      "gender": "mixed",
+      "race": "human, orc, and cloud-world folk",
+      "age": null,
+      "role": "road-people of the water; bring cargo up the flight and shelter between climbs",
+      "home": "IL-X04",
+      "count": 64,
+      "note": "A distinct outsider population with their own tongue and gods, families kept aboard; needed for everything they carry, granted nothing but the undershelter. The most foreign faces in Starfall, living under its most beautiful pool."
+    },
+    {
+      "id": "NPC-IL-065",
+      "name": "Canteen-keeper Mother Ilse + 3",
+      "gender": "female",
+      "race": "Orc",
+      "age": 300,
+      "role": "keeps the Slackwater Canteen",
+      "home": "IL-X05",
+      "work": "IL-X05",
+      "count": 4,
+      "note": "Reads the tide by the draught under the door; rings no bell. Knows Mother Vesh (VS-X05) and Old Sable (SR-X05) by their runners — the three under-canteen keepers are the real government of the dark."
+    },
+    {
+      "id": "NPC-IL-066",
+      "name": "Lockmaster Vel",
+      "gender": "nonbinary",
+      "race": "Human",
+      "age": 44,
+      "role": "the seam of Ilmyra's under-city; reconciles the flight's cargo-count and drowned-count",
+      "home": "IL-X06",
+      "work": "IL-X06",
+      "note": "The one soul who both walks the Tide-Hall's colonnade and knows the last hauler the flight killed. Keeps the honest count in charcoal and the House's in ink. Twin to Foreman Adric (VS-X06) and Foreman Quill (SR-X06)."
+    }
+  ]
+}

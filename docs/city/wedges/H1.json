@@ -1,0 +1,504 @@
+{
+  "house_id": "H1",
+  "head_npc": "NPC-NX-001",
+  "structures": [
+    {
+      "id": "NX-T01",
+      "name": "The Umbral Tower",
+      "house": "H1",
+      "district": "D-RIM",
+      "type": "observatory tower (House seat, upper)",
+      "position": { "r": 422, "a_deg": 60, "note": "the Nyx'Talar rim observatory — greybox tower i=1; the House that times what hides what" },
+      "footprint": { "shape": "cylinder", "diameter": 22, "rot_deg": 60 },
+      "height_m": 55,
+      "storeys": 6,
+      "y_base": 45,
+      "purpose": "Where the House measures the exact instant one light passes behind another — an eclipse, a transit, an occultation — and, from that, the exact instant of everything else. The instruments here can time a shadow to the breath; the House long ago learned that whoever owns the timing of a concealment owns the concealment. Its readings are never published entire.",
+      "rooms": [
+        { "name": "The Occultation Hall", "w": 20, "d": 20, "h": 8, "purpose": "the ground instrument floor; a wall of shuttered apertures opened one at a time" },
+        { "name": "The Timed Vault", "w": 10, "d": 8, "h": 4, "purpose": "a lead-lined room of dated observations; each is a record of who or what was hidden, and precisely when" },
+        { "name": "Head's shuttered study", "w": 8, "d": 7, "h": 4, "purpose": "Magister Suvane's study; the only window in the House that is never opened by day" },
+        { "name": "Reckoners' room", "w": 12, "d": 8, "h": 4, "purpose": "juniors reduce the eclipse-tables; taught to forget the names attached to the timings" },
+        { "name": "The Shadow-Chamber", "w": 12, "d": 12, "h": 10, "purpose": "top floor; a single north aperture and a graduated dark-glass; the reading is taken alone, always alone" },
+        { "name": "Servants' stair & lamp-room", "w": 4, "d": 4, "h": 30, "purpose": "the spiral stair; the dome's finial is lit but hooded, so it shows as the dimmest of the nine" }
+      ],
+      "occupants": ["NPC-NX-002", "NPC-NX-003"],
+      "resident_count": 7,
+      "notes": "First Occulter + 6 live-in reckoners. Alone of the nine rim domes, its lit finial is deliberately hooded — the House prefers to be the one watching, not the one seen."
+    },
+    {
+      "id": "NX-M01",
+      "name": "The Shuttered Seat",
+      "house": "H1",
+      "district": "D-RIM",
+      "type": "great house (manor)",
+      "position": { "r": 438, "a_deg": 54 },
+      "footprint": { "w": 32, "d": 22, "rot_deg": 54, "faces": "inward (toward the Mirror)" },
+      "height_m": 14,
+      "storeys": 3,
+      "y_base": 45,
+      "purpose": "The living seat of the House — and the only rim manor whose principal rooms face away from the Mirror. Nyx'Talar built to see the terraces below, not the lake: a house that watches the city more attentively than it watches the sky. Every window has an inner shutter, and the shutters are the point.",
+      "rooms": [
+        { "name": "The Hall of Screens", "w": 14, "d": 10, "h": 7, "purpose": "reception behind carved lattices; guests are seen long before they are received" },
+        { "name": "Suvane's chambers", "w": 10, "d": 8, "h": 4, "purpose": "the head's rooms; a listening-tube to the gate-lodge runs behind the wall" },
+        { "name": "Family wing", "w": 16, "d": 8, "h": 4, "purpose": "chambers for the near family, each with its own lock" },
+        { "name": "The Muffled Room", "w": 10, "d": 8, "h": 5, "purpose": "a felt-hung room where the House says aloud the things it will say nowhere else" },
+        { "name": "Kitchen & stores", "w": 10, "d": 7, "h": 4, "purpose": "below the hall" },
+        { "name": "Staff quarters", "w": 12, "d": 6, "h": 4, "purpose": "attic rooms; the staff are chosen for what they can be trusted not to repeat" }
+      ],
+      "occupants": ["NPC-NX-001", "NPC-NX-004", "NPC-NX-005"],
+      "resident_count": 17,
+      "notes": "Suvane + near family (5) + 11 household staff. The Seat faces the city, not the sky — the whole House's character in one architectural decision."
+    },
+    {
+      "id": "NX-U01",
+      "name": "The Villa Behind the Lattice",
+      "house": "H1",
+      "district": "D-UPPER",
+      "type": "senior warden's villa",
+      "position": { "r": 370, "a_deg": 68 },
+      "footprint": { "w": 14, "d": 12, "rot_deg": 68, "faces": "inward" },
+      "height_m": 10,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "Home of a senior Warden of the House, and shuttered so completely that neighbours cannot say whether anyone is home from one month to the next. Its protected sightline is real and legally registered, but the shutters over it are almost never drawn — a sightline held as an asset, not used as a view.",
+      "rooms": [
+        { "name": "The Registered Study", "w": 9, "d": 7, "h": 4, "purpose": "the sightline is on file; the shutter over it has a dust-seal that has not been broken in years" },
+        { "name": "Family rooms", "w": 13, "d": 6, "h": 4, "purpose": "Warden Ottress and household" }
+      ],
+      "occupants": ["NPC-NX-010"],
+      "resident_count": 5,
+      "notes": "Warden Ottress + household of 5. A villa that hoards a view it will not spend — the local definition of wealth."
+    },
+    {
+      "id": "NX-U02",
+      "name": "The Second Warden's Villa",
+      "house": "H1",
+      "district": "D-UPPER",
+      "type": "senior scholar's villa",
+      "position": { "r": 366, "a_deg": 62 },
+      "footprint": { "w": 15, "d": 12, "rot_deg": 62, "faces": "inward" },
+      "height_m": 10,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "The household of the Second Warden — the House officer who, on paper, catalogues transits, and, off paper, arranges that certain observations are never made. The most-visited villa on the terrace after dark, though its visitors come by the back stair and are never seen to arrive.",
+      "rooms": [
+        { "name": "The Cataloguing Room", "w": 10, "d": 7, "h": 4, "purpose": "the ostensible work; ledgers of who observed what and when" },
+        { "name": "The Back Parlour", "w": 8, "d": 6, "h": 4, "purpose": "the real work; a room reached only from the servants' stair" },
+        { "name": "Family rooms", "w": 13, "d": 6, "h": 4, "purpose": "Warden Coreth and household" }
+      ],
+      "occupants": ["NPC-NX-011"],
+      "resident_count": 6,
+      "notes": "Warden Coreth + household of 6. The House's discreet fixer; a rich vein of side-content — every favour has a timing, and a price paid in silence."
+    },
+    {
+      "id": "NX-U03",
+      "name": "The Kept Villa",
+      "house": "H1",
+      "district": "D-UPPER",
+      "type": "senior dwelling (maintained tenancy)",
+      "position": { "r": 372, "a_deg": 74 },
+      "footprint": { "w": 13, "d": 11, "rot_deg": 74, "faces": "inward" },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "A villa the House maintains for the widow Halissa — not of Nyx'Talar blood, but of Nyx'Talar knowledge. She saw something, once, at an occultation, and has been comfortably, silently kept ever since. She has never been asked to leave, and understands perfectly why.",
+      "rooms": [
+        { "name": "The Quiet Study", "w": 9, "d": 7, "h": 4, "purpose": "a sightline she was granted and does not use; she prefers the shutters" },
+        { "name": "Rooms", "w": 12, "d": 6, "h": 4, "purpose": "Halissa, a companion, a House-appointed servant who is also a watcher" }
+      ],
+      "occupants": ["NPC-NX-012"],
+      "resident_count": 4,
+      "notes": "Halissa + household of 4 (one of whom reports to the Seat). Kept comfortable to be kept quiet — the House's method in one household."
+    },
+    {
+      "id": "NX-U04",
+      "name": "The Furnished Absence",
+      "house": "H1",
+      "district": "D-UPPER",
+      "type": "villa (maintained empty)",
+      "position": { "r": 368, "a_deg": 47 },
+      "footprint": { "w": 13, "d": 11, "rot_deg": 47, "faces": "inward" },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 34,
+      "purpose": "A villa kept fully furnished, warmed, dusted, and empty — a House property held ready for a guest who is never named in advance and never stays twice. A single caretaker lives in the back rooms and asks nothing. On the Plate it is a dwelling like any other; in truth it is a room the House keeps so that certain meetings can happen at an address that belongs to no one.",
+      "rooms": [
+        { "name": "The Ready Rooms", "w": 12, "d": 7, "h": 4, "purpose": "kept warm and made up; a decanter always full, a fire always laid" },
+        { "name": "Caretaker's rooms", "w": 8, "d": 5, "h": 4, "purpose": "the one soul who lives here, and forgets faces professionally" }
+      ],
+      "occupants": ["NPC-NX-013"],
+      "resident_count": 1,
+      "notes": "Caretaker Pell alone. A furnished alibi — the wedge's quiet novelty at ground level, before you even reach the Hall of Occultations below."
+    },
+    {
+      "id": "NX-L01",
+      "name": "The Sealwrights' Hall",
+      "house": "H1",
+      "district": "D-MID",
+      "type": "guild-hall + lodging",
+      "position": { "r": 316, "a_deg": 66 },
+      "footprint": { "w": 22, "d": 14, "rot_deg": 66, "faces": "inward" },
+      "height_m": 11,
+      "storeys": 3,
+      "y_base": 23,
+      "purpose": "Wax, lead, wire and cipher: the makers of the city's seals and locks work here, and the House that owns them makes very sure the trade stays in the wedge. A seal is a promise that a thing was not opened; Nyx'Talar built its fortune on being the people you trust to certify that a thing stayed shut.",
+      "rooms": [
+        { "name": "The Sealing Floor", "w": 20, "d": 8, "h": 5, "purpose": "matrices, melting-pots, the die-safe; each sealwright's dies are numbered and never leave" },
+        { "name": "The Cipher Room", "w": 8, "d": 6, "h": 4, "purpose": "where letter-locks and cipher-wheels are cut for private clients" },
+        { "name": "Master's dwelling", "w": 14, "d": 6, "h": 4, "purpose": "the master sealwright's family above the floor" },
+        { "name": "Journeymen's loft", "w": 12, "d": 5, "h": 3, "purpose": "boarded sealwrights, oathbound" }
+      ],
+      "occupants": ["NPC-NX-020"],
+      "resident_count": 13,
+      "notes": "Master-sealwright Ordell Craze + 12 (family & oathbound journeymen). Every wax seal in Starfall's official post is struck from a die kept in this room."
+    },
+    {
+      "id": "NX-L02",
+      "name": "The Sealed Copyists",
+      "house": "H1",
+      "district": "D-MID",
+      "type": "scriptorium (confidential)",
+      "position": { "r": 320, "a_deg": 58 },
+      "footprint": { "w": 20, "d": 13, "rot_deg": 58, "faces": "inward" },
+      "height_m": 9,
+      "storeys": 2,
+      "y_base": 23,
+      "purpose": "Discreet copyists who reproduce documents they are trained not to read — contracts, testaments, sealed depositions, the occasional thing that must exist in exactly two copies and no third. They work at screened desks, each blind to the next, and are paid partly in coin and partly in the House's protection.",
+      "rooms": [
+        { "name": "The Screened Floor", "w": 16, "d": 8, "h": 5, "purpose": "single desks in felt booths; a copyist never sees the whole of what they copy" },
+        { "name": "The Warden's window", "w": 4, "d": 4, "h": 4, "purpose": "the overseer sees every desk and every desk knows it" },
+        { "name": "Copyists' dormitory", "w": 14, "d": 5, "h": 3, "purpose": "boarded copyists, sworn to the House" }
+      ],
+      "occupants": ["NPC-NX-021"],
+      "resident_count": 9,
+      "notes": "Overseer plus 8 copyists. The honest twin of the Sealwrights: one House makes the thing that stays shut, the other makes the thing that quietly exists twice."
+    },
+    {
+      "id": "NX-L03",
+      "name": "Lesser Wardens' Row",
+      "house": "H1",
+      "district": "D-MID",
+      "type": "terrace of 6 small dwellings",
+      "position": { "r": 300, "a_deg": 72 },
+      "footprint": { "w": 42, "d": 8, "rot_deg": 72, "faces": "inward", "form": "row of 6" },
+      "height_m": 7,
+      "storeys": 2,
+      "y_base": 23,
+      "purpose": "Six joined houses of the wedge's lesser wardens — the watchers without a sightline, who keep the House's real survey: not of the stars, but of the streets. Who came up the Processional and when; whose shutters opened; which barge ran late. Sightless, respectable, and never off duty.",
+      "rooms": [
+        { "name": "Per-house: watch-room + 2 chambers", "w": 6, "d": 7, "h": 4, "purpose": "each of the 6 houses: a front room with a good view of the stair, and two chambers behind" }
+      ],
+      "occupants": ["NPC-NX-022"],
+      "resident_count": 22,
+      "notes": "6 households, ~22 souls. Named principal: the ledger-warden Nessa Ptol, who has a memory for faces the House cannot afford to lose."
+    },
+    {
+      "id": "NX-K01",
+      "name": "The Blind Eye",
+      "house": "H1",
+      "district": "D-CANAL",
+      "type": "inn (Strain-relief haven)",
+      "position": { "r": 268, "a_deg": 64 },
+      "footprint": { "w": 16, "d": 12, "rot_deg": 64, "faces": "canal" },
+      "height_m": 8,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "The wedge's inn, and the one place in the House of watchers where, by long custom, no one is watched. The rule is enforced by the innkeeper and honoured by everyone, because a city this observed needs exactly one room in which to be unseen. This quarter's Strain-relief haven.",
+      "rooms": [
+        { "name": "The Common Room", "w": 12, "d": 8, "h": 4, "purpose": "hearth, deep booths, the painted-over eye above the bar that gives the place its name and its promise" },
+        { "name": "Kitchen", "w": 6, "d": 5, "h": 4, "purpose": "" },
+        { "name": "Letting rooms (x5)", "w": 14, "d": 5, "h": 3, "purpose": "five rooms above; the register records only false names, on purpose" },
+        { "name": "Cellar", "w": 8, "d": 6, "h": 3, "purpose": "canal-cooled store; a low door, never mentioned, that opens toward the under-galleries" }
+      ],
+      "occupants": ["NPC-NX-030"],
+      "resident_count": 5,
+      "notes": "Innkeeper Mistress Oll (one-eyed, and pointed about it) + 2 family + 2 staff. The cellar door is the wedge's over/under seam."
+    },
+    {
+      "id": "NX-K02",
+      "name": "The Unlabelled Market",
+      "house": "H1",
+      "district": "D-CANAL",
+      "type": "market row (discreet goods)",
+      "position": { "r": 258, "a_deg": 57 },
+      "footprint": { "w": 30, "d": 10, "rot_deg": 57, "faces": "canal", "form": "row of 10 stalls/shops" },
+      "height_m": 6,
+      "storeys": 2,
+      "y_base": 12,
+      "purpose": "Ten shopfronts, and not one of them a painted sign — you are meant to already know which door you want. Letter-writers, a lock-fitter, a dealer in second-hand seals, a discreet apothecary, a fence who calls himself a valuer, and a tea-house where introductions are made. Live-over-the-shop trade, conducted at a murmur.",
+      "rooms": [
+        { "name": "Per unit: shopfront + workshop + room above", "w": 3, "d": 8, "h": 4, "purpose": "10 units, most with a family living above; the signless door is the local etiquette" }
+      ],
+      "occupants": ["NPC-NX-031"],
+      "resident_count": 30,
+      "notes": "10 shops, ~30 souls. Named: the 'valuer' Sim Onrey, who can find the owner of anything for a fee, and the letter-writer old Fenn."
+    },
+    {
+      "id": "NX-K03",
+      "name": "The Shrine of the Passing Shadow",
+      "house": "H1",
+      "district": "D-CANAL",
+      "type": "shrine (Umbrion)",
+      "position": { "r": 250, "a_deg": 70 },
+      "footprint": { "w": 12, "d": 12, "rot_deg": 70, "faces": "inward" },
+      "height_m": 9,
+      "storeys": 1,
+      "y_base": 12,
+      "purpose": "An Umbrion shrine kept by Nyx'Talar custom: not merely dark, but built around a single slow aperture that lets one blade of star-lamp light cross the floor and pass, once, each night. You come to watch the light be hidden — to practise, the House would say, the one grace it truly believes in: that some things are meant to pass out of sight and be let go.",
+      "rooms": [
+        { "name": "The Transit Cell", "w": 8, "d": 8, "h": 7, "purpose": "the moving blade of light and the long dark on either side of it; you sit and watch it occulted" },
+        { "name": "Keeper's cell", "w": 4, "d": 4, "h": 3, "purpose": "the shrine-keeper's room" }
+      ],
+      "occupants": ["NPC-NX-032"],
+      "resident_count": 1,
+      "notes": "Keeper Threnn, who has watched the same blade of light vanish for a hundred and forty years and calls it the only honest clock in the city."
+    },
+    {
+      "id": "NX-K04",
+      "name": "Canal Dwellings — Shutterside",
+      "house": "H1",
+      "district": "D-CANAL",
+      "type": "block of common dwellings",
+      "position": { "r": 245, "a_deg": 50 },
+      "footprint": { "w": 24, "d": 14, "rot_deg": 50, "faces": "canal", "form": "tenement block, 8 dwellings" },
+      "height_m": 11,
+      "storeys": 3,
+      "y_base": 12,
+      "purpose": "Dense canalside housing named for its most-remarked feature: every window has a shutter, and on this stretch the shutters stay closed even in warm weather. Home to the wedge's boatwrights, runners, sealwrights' families and market-hands — folk who have learned that the House rewards those who see much and say little.",
+      "rooms": [
+        { "name": "Per dwelling: 2-3 rooms", "w": 6, "d": 6, "h": 3, "purpose": "8 dwellings, families of 3-6" }
+      ],
+      "occupants": ["NPC-NX-033"],
+      "resident_count": 38,
+      "notes": "~38 souls. Named: the boatwoman Corra Sel, who runs the night-barge and knows which cargoes are never weighed."
+    },
+    {
+      "id": "NX-K05",
+      "name": "The Watcher's Rooms",
+      "house": "H1",
+      "district": "D-CANAL",
+      "type": "rented rooms over a shop",
+      "position": { "r": 262, "a_deg": 76 },
+      "footprint": { "w": 7, "d": 6, "rot_deg": 76, "faces": "canal", "part_of": "over a lock-fitter's shop" },
+      "height_m": 3,
+      "storeys": 1,
+      "y_base": 20,
+      "purpose": "Two rented rooms taken by a professional watcher — a freelance who sells the House what its lesser wardens miss. The window commands the canal-mouth and the foot of the terrace stair; the rooms hold a chair, a good glass, and a wall of dated notes in a private shorthand no one else can read.",
+      "rooms": [
+        { "name": "The Watching Room", "w": 7, "d": 3, "h": 3, "purpose": "one chair, one glass, one window that sees the whole approach" },
+        { "name": "Sleeping room", "w": 4, "d": 3, "h": 3, "purpose": "a cot; the watcher sleeps by day and works the dark" }
+      ],
+      "occupants": ["NPC-NX-034"],
+      "resident_count": 2,
+      "notes": "The watcher Aline Voss + an apprentice she is training to disappear. A freelance eye the House uses and does not quite trust — a quest-broker with her own agenda."
+    },
+    {
+      "id": "NX-S01",
+      "name": "The Watch-Customs",
+      "house": "H1",
+      "district": "D-SHORE",
+      "type": "civic threshold (customs + watch)",
+      "position": { "r": 228, "a_deg": 56 },
+      "footprint": { "w": 14, "d": 10, "rot_deg": 56, "faces": "processional" },
+      "height_m": 7,
+      "storeys": 2,
+      "y_base": 0,
+      "purpose": "The wedge's customs post, and unlike its neighbours' it is staffed around the clock — because Nyx'Talar cares less what a cargo weighs than who is standing next to it. Everything that comes up from below is weighed here; everyone that comes up is noted. The watch lives above the scales, so the door is never unmanned.",
+      "rooms": [
+        { "name": "The Weighing Hall", "w": 10, "d": 7, "h": 4, "purpose": "scales, tally-desks, a wardsealed strongroom, and a second ledger that records faces, not freight" },
+        { "name": "The Watch-loft", "w": 8, "d": 5, "h": 4, "purpose": "the live-in watch; a window onto the shore that is never dark" }
+      ],
+      "occupants": ["NPC-NX-040"],
+      "resident_count": 3,
+      "notes": "Watch-officer Delm + 2 clerks, resident above the scales (unlike the day-only posts of other wedges). The House's official eye on the one door up from the under-city."
+    },
+
+    {
+      "id": "NX-X01",
+      "name": "The Silent Lock",
+      "house": "H1",
+      "district": "D-UNDER",
+      "type": "barge lock (service)",
+      "position": { "r": 240, "a_deg": 61, "depth_note": "beneath the canal quarter" },
+      "footprint": { "w": 24, "d": 12, "rot_deg": 61 },
+      "height_m": 14,
+      "y_base": -14,
+      "purpose": "The wedge's barge lock, greased and counter-weighted so that it runs without the crash and clang of the others — Nyx'Talar's cargoes prefer to arrive without announcing themselves. It lifts the ordinary stone and grain of the quarter, and, on certain nights, one crate more that is not on the manifest and is never weighed at the post above.",
+      "rooms": [
+        { "name": "The Muffled Chamber", "w": 20, "d": 8, "h": 14, "purpose": "the lock basin; the gates run on felted rollers so a lift can be made at midnight and heard by no one" },
+        { "name": "The Capstan Floor", "w": 12, "d": 8, "h": 4, "purpose": "walked by the lift-gang; the overseer here logs everything except what he is paid to forget" },
+        { "name": "The Off-Manifest Niche", "w": 4, "d": 4, "h": 3, "purpose": "a walled recess for the crate that has no paper" }
+      ],
+      "occupants": ["NPC-NX-050"],
+      "resident_count": 0,
+      "notes": "Worked, not lived-in. Lock-master Bront (homes in the Warren). The quietest lock in Starfall, by design — the throat of the wedge's unseen economy."
+    },
+    {
+      "id": "NX-X02",
+      "name": "The Listening Gallery",
+      "house": "H1",
+      "district": "D-UNDER",
+      "type": "Song-conduit + acoustic gallery",
+      "position": { "r": 260, "a_deg": 54, "depth_note": "runs radially under the terraces" },
+      "footprint": { "length": 68, "width": 5, "rot_deg": 54 },
+      "height_m": 4,
+      "y_base": -10,
+      "purpose": "Twin function in one tunnel: it carries the tuned Song-conduits up to the wedge's star-lamps, like every wedge's gallery — but Nyx'Talar shaped its vaults so that sound gathers and travels, and set listeners in its niches. Voices from certain rooms above, spoken near a hearth or a drain, arrive here thinned but legible. The House does not call it eavesdropping. It calls it acoustics.",
+      "rooms": [
+        { "name": "The Long Gallery", "w": 5, "d": 68, "h": 4, "purpose": "conduit run + focusing vaults; access ladders to each terrace's lamp-stems" },
+        { "name": "Listening niches (x4)", "w": 3, "d": 3, "h": 3, "purpose": "where the listeners sit their shifts; each niche hears a different quarter of the wedge above" }
+      ],
+      "occupants": ["NPC-NX-051"],
+      "resident_count": 6,
+      "notes": "A crew of 6 who both tend the Song-conduits and man the niches. They live at their posts and are relieved rarely; what they hear goes up in a sealed hand to the Hall of Occultations."
+    },
+    {
+      "id": "NX-X03",
+      "name": "The Deep-Wrights' Warren",
+      "house": "H1",
+      "district": "D-UNDER",
+      "type": "Terran bunk-hall & tunnelling enclave",
+      "position": { "r": 250, "a_deg": 66, "depth_note": "cut into the shore-mass" },
+      "footprint": { "w": 26, "d": 18, "rot_deg": 66, "form": "carved warren, glow-stone lit" },
+      "height_m": 6,
+      "y_base": -16,
+      "purpose": "Home and hall of the Terran stone-wrights who cut this wedge's under-galleries — and, more than in any other wedge, its hidden passages: the House pays well for tunnels that appear on no wright's plan but their own. The deep folk hold the beautiful city up and also, quietly, riddle it with ways to move unseen. Proud, glow-warm, and closer-mouthed even than the House above them.",
+      "rooms": [
+        { "name": "The Carved Hall", "w": 18, "d": 10, "h": 6, "purpose": "a communal hall; a long stone table; the wrights eat together and speak little of the day's digging" },
+        { "name": "Sleeping galleries", "w": 22, "d": 6, "h": 3, "purpose": "bunk-niches for ~46 wrights" },
+        { "name": "The Unmapped Room", "w": 6, "d": 5, "h": 4, "purpose": "where the warren-master keeps the only true plan of what has been dug, in Terran stone-script" },
+        { "name": "The Shrine of Petrocore", "w": 6, "d": 6, "h": 5, "purpose": "a Stone-Voice shrine — the wrong god for this city, kept anyway" }
+      ],
+      "occupants": ["NPC-NX-050", "NPC-NX-052", "NPC-NX-053"],
+      "resident_count": 48,
+      "notes": "Warren-master Bront + lock-master (same Bront works the Silent Lock) + ~46 Terran deep-wrights. They know every hidden way in the wedge, and sell that knowledge to no one — the one thing the House cannot buy outright."
+    },
+    {
+      "id": "NX-X04",
+      "name": "The Runners' Bunks",
+      "house": "H1",
+      "district": "D-UNDER",
+      "type": "bunk-hall (message-runners & porters)",
+      "position": { "r": 236, "a_deg": 71, "depth_note": "beside the lock, at the gallery mouth" },
+      "footprint": { "w": 22, "d": 15, "rot_deg": 71, "form": "riveted bunks under stone" },
+      "height_m": 4,
+      "y_base": -18,
+      "purpose": "The bunk-hall of the wedge's runners: the human and orc porters who carry sealed things through the under-galleries by hand, because a thing that never touches the official post can never be intercepted at it. They run the dark between the two cities all night, memorise routes and never write them, and are paid to have poor memories for everything else. The largest, youngest, most disposable population in the wedge.",
+      "rooms": [
+        { "name": "Bunk rows", "w": 18, "d": 10, "h": 4, "purpose": "double-bunks for ~52; the runners sleep in shifts, so a bunk is never cold" },
+        { "name": "The Route-room", "w": 6, "d": 4, "h": 3, "purpose": "where a runner is given a destination and a seal to match, and nothing in writing" }
+      ],
+      "occupants": ["NPC-NX-054"],
+      "resident_count": 52,
+      "notes": "~52 runners (human & orc). The muscle and legs of the unseen economy; part of the unnamed 778. Named: the runner-elder Vosk, who has never once been caught and teaches the young ones how not to be."
+    },
+    {
+      "id": "NX-X05",
+      "name": "The Underquiet Canteen",
+      "house": "H1",
+      "district": "D-UNDER",
+      "type": "canteen / commons",
+      "position": { "r": 248, "a_deg": 59, "depth_note": "at the gallery crossing" },
+      "footprint": { "w": 16, "d": 12, "rot_deg": 59 },
+      "height_m": 4,
+      "y_base": -12,
+      "purpose": "The wedge's under-city commons, and the one place its habitual silence lifts a little: runners, wrights, lift-gang and listeners eat the same grey good stew and, for the length of a meal, say true things. The canteen-keeper enforces the Blind Eye's rule down here too — what is said over the pot is not carried out of the room.",
+      "rooms": [
+        { "name": "The Long Room", "w": 12, "d": 8, "h": 4, "purpose": "trestles, a great range, a wall where the dead are chalked and no name is ever a false one" },
+        { "name": "Kitchen & store", "w": 6, "d": 5, "h": 3, "purpose": "run by the keeper" }
+      ],
+      "occupants": ["NPC-NX-055"],
+      "resident_count": 4,
+      "notes": "Canteen-keeper Ma Dell + 3 helpers. Sister-room to the Underspill and the Undertoll; the three under-canteens' keepers know each other, and between them know everything."
+    },
+    {
+      "id": "NX-X06",
+      "name": "The Keeper of the Seam",
+      "house": "H1",
+      "district": "D-UNDER",
+      "type": "overseer post",
+      "position": { "r": 242, "a_deg": 51, "depth_note": "at the foot of the watch-customs stair" },
+      "footprint": { "w": 8, "d": 6, "rot_deg": 51 },
+      "height_m": 3,
+      "y_base": -12,
+      "purpose": "The seam-office where the under-city answers to the watch above — and where, uniquely in this wedge, the foreman's real job is to decide what the watch is told. He keeps two shift-books: the one that goes up, and the one that is true. He is trusted by neither map, and knows more than both.",
+      "rooms": [
+        { "name": "The Office", "w": 5, "d": 4, "h": 3, "purpose": "a ledger-desk, a lamp, two locked shift-books that do not agree" },
+        { "name": "Bunk", "w": 3, "d": 3, "h": 3, "purpose": "the foreman sleeps at the seam, as they all do" }
+      ],
+      "occupants": ["NPC-NX-056"],
+      "resident_count": 1,
+      "notes": "Foreman Karse. In a House of secrets the seam-keeper is the most dangerous man in the wedge, because he is the one who edits the record before it rises. A natural quest-broker — and a natural blackmail target."
+    },
+    {
+      "id": "NX-X07",
+      "name": "The Hall of Occultations",
+      "house": "H1",
+      "district": "D-UNDER",
+      "type": "sealed-record vault & confidential drop (novel landmark)",
+      "position": { "r": 255, "a_deg": 63, "depth_note": "a deep sealed vault beneath the wedge, reached only through the Umbral Tower's private stair" },
+      "footprint": { "w": 22, "d": 18, "rot_deg": 63, "form": "vaulted stone chamber, wards on every door" },
+      "height_m": 8,
+      "y_base": -22,
+      "purpose": "The wedge's — and secretly the city's — true archive: the place where secrets are timed, sealed, and kept. Sealed depositions, testaments held against a death, confessions bought and never used, and the dated occultation-records that prove who was hidden from what and when. A message left here at a named hour is delivered at another named hour to a named hand and no other; a thing sealed here is opened only when its condition falls due. The House sells not information but its safekeeping — and the whole city, from Conclave down, quietly depends on it. It is on no plate, because a vault of everyone's secrets cannot be allowed to have an address.",
+      "rooms": [
+        { "name": "The Timed Vault", "w": 12, "d": 10, "h": 6, "purpose": "ranked warded drawers, each dated to open; the Sealed Warden alone knows which fall due tonight" },
+        { "name": "The Drop", "w": 6, "d": 6, "h": 5, "purpose": "a screened chamber where a client leaves or collects without ever seeing another face" },
+        { "name": "The Keepers' cells", "w": 10, "d": 6, "h": 4, "purpose": "the record-keepers live sealed inside; they take an oath of the vault and are not seen above for years at a time" }
+      ],
+      "occupants": ["NPC-NX-057", "NPC-NX-058"],
+      "resident_count": 12,
+      "notes": "The Sealed Warden Ilex + 11 record-keepers who live within the vault. THE novel landmark of the wedge and a franchise-grade set-piece: whoever holds this hall holds a lever on every House in Starfall — including, one imagines, a record or two the Academy would rather did not exist."
+    },
+    {
+      "id": "NX-X08",
+      "name": "The Ferry-Warren",
+      "house": "H1",
+      "district": "D-UNDER",
+      "type": "bunk-hall (night-barge crews)",
+      "position": { "r": 238, "a_deg": 46, "depth_note": "at the under-mouth of the Silent Lock" },
+      "footprint": { "w": 22, "d": 14, "rot_deg": 46, "form": "carved bunks along the water" },
+      "height_m": 5,
+      "y_base": -20,
+      "purpose": "Where the crews of the night-barges live — the polemen and gate-hands who work the world-below cargo up through the Silent Lock in the dark. They keep the same hours as the runners and the same silence, and their children grow up knowing the black under-water better than the terraces of light above their heads, which most of them have never seen by day.",
+      "rooms": [
+        { "name": "Bunk galleries", "w": 18, "d": 8, "h": 4, "purpose": "family bunk-niches along the loading water; whole lives lived below the waterline of the city" },
+        { "name": "The Wet Floor", "w": 10, "d": 6, "h": 4, "purpose": "where barges are made fast and unladen out of the light" }
+      ],
+      "occupants": ["NPC-NX-059"],
+      "resident_count": 47,
+      "notes": "~47 barge-folk (human, orc, a few Terran). A community entirely of the under-city, born to it — the sharpest edge of the two-maps theme in this wedge: people the Plate cannot omit, because it never knew to include them."
+    }
+  ],
+  "npcs": [
+    { "id": "NPC-NX-001", "name": "Magister Suvane Nyx'Talar", "gender": "female", "race": "Noctari", "age": 1040, "role": "Head of House Nyx'Talar; Warden-in-Chief of the Occultation", "home": "NX-M01", "work": "NX-T01", "note": "Soft-voiced, never hurried, and the best-informed person in Starfall who is not on the Conclave. Governs by knowing; her manor faces the city, not the sky." },
+    { "id": "NPC-NX-002", "name": "First Occulter Dess", "gender": "nonbinary", "race": "Noctari", "age": 580, "role": "senior observer; times the eclipses and transits", "home": "NX-T01", "work": "NX-T01", "note": "Takes every reading alone. Knows the exact second of every concealment in the sky and has been taught never to wonder about the ones on the ground." },
+    { "id": "NPC-NX-003", "name": "the live-in reckoners (6)", "gender": "mixed", "race": "Noctari", "age": null, "role": "reduce the eclipse-tables", "home": "NX-T01", "work": "NX-T01", "count": 6, "note": "Taught to forget the names attached to the timings; they mostly manage it." },
+    { "id": "NPC-NX-004", "name": "the Nyx'Talar near family (5)", "gender": "mixed", "race": "Noctari", "age": null, "role": "House family", "home": "NX-M01", "count": 5, "note": "Each chamber with its own lock; a family that keeps secrets even from itself." },
+    { "id": "NPC-NX-005", "name": "the Shuttered Seat staff (11)", "gender": "mixed", "race": "Noctari & 2 human", "age": null, "role": "cook, gate-lodge keeper, chart-porters, maids", "home": "NX-M01", "work": "NX-M01", "count": 11, "note": "Chosen for what they can be trusted not to repeat; paid a little extra for it." },
+    { "id": "NPC-NX-010", "name": "Warden Ottress + household (5)", "gender": "male", "race": "Noctari", "age": 610, "role": "senior Warden; holds a registered sightline he never opens", "home": "NX-U01", "work": "NX-T01", "count": 5, "note": "Wealth here is a view you own and refuse to spend." },
+    { "id": "NPC-NX-011", "name": "Warden Coreth + household (6)", "gender": "female", "race": "Noctari", "age": 500, "role": "Second Warden; catalogues transits by day, arranges silences by night", "home": "NX-U02", "work": "NX-U02", "count": 6, "note": "The House's discreet fixer. Her back parlour is the busiest unlit room on the terrace; every favour has a timing and a price paid in quiet." },
+    { "id": "NPC-NX-012", "name": "the widow Halissa + household (4)", "gender": "female", "race": "Noctari", "age": 720, "role": "kept tenant; saw something once at an occultation", "home": "NX-U03", "work": null, "count": 4, "note": "Comfortably kept to be kept silent; one of her four servants reports to the Seat, and she knows which." },
+    { "id": "NPC-NX-013", "name": "Caretaker Pell", "gender": "nonbinary", "race": "Noctari", "age": 240, "role": "keeps the Furnished Absence warm and empty", "home": "NX-U04", "work": "NX-U04", "note": "Lives alone in the back rooms of a villa built to belong to no one; forgets faces as a profession." },
+    { "id": "NPC-NX-020", "name": "Master-sealwright Ordell Craze + hall (13)", "gender": "male", "race": "Noctari", "age": 430, "role": "makes the city's official seals, locks and ciphers", "home": "NX-L01", "work": "NX-L01", "count": 13, "note": "His dies certify that a thing stayed shut; the House's fortune is built on being believed." },
+    { "id": "NPC-NX-021", "name": "the Sealed Copyists (9)", "gender": "mixed", "race": "Noctari", "age": null, "role": "reproduce documents they are trained not to read", "home": "NX-L02", "work": "NX-L02", "count": 9, "note": "Work blind in felt booths. Named overseer: the warden Prisca, who reads everything and remembers on command." },
+    { "id": "NPC-NX-022", "name": "Lesser Wardens' Row (22) — Nessa Ptol", "gender": "mixed", "race": "Noctari, 1 human household", "age": null, "role": "sightless street-watchers; keep the House's survey of the city", "home": "NX-L03", "count": 22, "note": "Nessa Ptol has a memory for faces the House cannot afford to lose. Sightless, respectable, never off duty." },
+    { "id": "NPC-NX-030", "name": "Mistress Oll + house (5)", "gender": "female", "race": "Noctari", "age": 350, "role": "innkeeper of the Blind Eye", "home": "NX-K01", "work": "NX-K01", "count": 5, "note": "One-eyed and pointed about it; enforces the one rule that makes her inn matter — here, no one is watched." },
+    { "id": "NPC-NX-031", "name": "the Unlabelled Market (30) — the 'valuer' Sim Onrey", "gender": "mixed", "race": "Noctari, 2 human", "age": null, "role": "letter-writers, a lock-fitter, a seal-dealer, a fence, a tea-house", "home": "NX-K02", "work": "NX-K02", "count": 30, "note": "No painted signs; you are meant to know which door. Sim Onrey can find the owner of anything, for a fee." },
+    { "id": "NPC-NX-032", "name": "Keeper Threnn", "gender": "male", "race": "Noctari", "age": 300, "role": "keeper of the Shrine of the Passing Shadow", "home": "NX-K03", "work": "NX-K03", "note": "Has watched the same blade of light be occulted for 140 years; calls it the only honest clock in the city." },
+    { "id": "NPC-NX-033", "name": "Shutterside dwellings (38) — Corra Sel", "gender": "mixed", "race": "Noctari, some human", "age": null, "role": "boatwrights, runners' families, sealwrights' kin, market-hands", "home": "NX-K04", "count": 38, "note": "Corra Sel runs the night-barge and knows which cargoes are never weighed." },
+    { "id": "NPC-NX-034", "name": "the watcher Aline Voss + apprentice", "gender": "female", "race": "Human", "age": 46, "role": "freelance watcher; sells the House what its wardens miss", "home": "NX-K05", "work": null, "count": 2, "note": "Keeps her notes in a shorthand no one else can read; a quest-broker with an agenda of her own, and training an apprentice to disappear." },
+    { "id": "NPC-NX-040", "name": "Watch-officer Delm + 2 clerks", "gender": "male", "race": "Noctari", "age": 380, "role": "runs the round-the-clock Watch-Customs", "home": "NX-S01", "work": "NX-S01", "count": 3, "note": "Cares less what a cargo weighs than who stands beside it; keeps a second ledger of faces." },
+    { "id": "NPC-NX-050", "name": "Lock-master Bront", "gender": "male", "race": "Terran", "age": 200, "role": "runs the Silent Lock; warren-master of the deep-wrights", "home": "NX-X03", "work": "NX-X01", "note": "Keeps the only true plan of what has been dug, in stone-script, and sells that knowledge to no one — the one thing the House cannot buy." },
+    { "id": "NPC-NX-051", "name": "the Listeners (6)", "gender": "mixed", "race": "Noctari & human", "age": null, "role": "tend the Song-conduits and man the listening niches", "home": "NX-X02", "work": "NX-X02", "count": 6, "note": "Live at their posts; what they hear rises in a sealed hand to the Hall of Occultations. The House calls it acoustics." },
+    { "id": "NPC-NX-052", "name": "the warren-elders (with Bront)", "gender": "mixed", "race": "Terran", "age": null, "role": "keepers of the Unmapped Room", "home": "NX-X03", "work": "NX-X03", "count": 1, "note": "The elder council of the warren; counted here as one record beside Bront." },
+    { "id": "NPC-NX-053", "name": "the Deep-Wrights (46)", "gender": "mixed", "race": "Terran", "age": null, "role": "cut the under-galleries and the hidden ways", "home": "NX-X03", "count": 46, "note": "Riddle the wedge with passages that appear on no plan but their own. Closer-mouthed than the House above them." },
+    { "id": "NPC-NX-054", "name": "the Runners (52) — the runner-elder Vosk", "gender": "mixed", "race": "human & orc", "age": null, "role": "carry sealed things by hand through the dark", "home": "NX-X04", "count": 52, "note": "Memorise routes, write nothing, keep poor memories for pay. Vosk has never been caught and teaches the young how not to be. Part of the unnamed 778." },
+    { "id": "NPC-NX-055", "name": "Ma Dell + 3", "gender": "female", "race": "Orc", "age": 280, "role": "canteen-keeper of the Underquiet", "home": "NX-X05", "work": "NX-X05", "count": 4, "note": "Enforces the Blind Eye's rule below ground; between her, Mother Vesh and Old Sable the three under-canteens miss nothing." },
+    { "id": "NPC-NX-056", "name": "Foreman Karse", "gender": "male", "race": "Human", "age": 44, "role": "keeper of the seam; edits the record before it rises to the watch", "home": "NX-X06", "work": "NX-X06", "note": "Two shift-books that do not agree. The most dangerous man in the wedge, and the most blackmailable." },
+    { "id": "NPC-NX-057", "name": "the Sealed Warden Ilex", "gender": "nonbinary", "race": "Noctari", "age": 900, "role": "keeper of the Hall of Occultations; times, seals and releases the city's secrets", "home": "NX-X07", "work": "NX-X07", "note": "Has not been seen above ground in thirty years. Knows which drawers fall due tonight; holds a quiet lever on every House in Starfall — very possibly on the Academy too." },
+    { "id": "NPC-NX-058", "name": "the record-keepers (11)", "gender": "mixed", "race": "Noctari", "age": null, "role": "live sealed within the vault, keeping the timed drawers", "home": "NX-X07", "count": 11, "note": "Take the oath of the vault and are not seen above for years at a time; a whole life spent keeping other people's." },
+    { "id": "NPC-NX-059", "name": "the Ferry-Warren (47)", "gender": "mixed", "race": "human, orc, some Terran", "age": null, "role": "night-barge crews of the Silent Lock", "home": "NX-X08", "count": 47, "note": "Born to the under-water; their children know the black loading-channels better than any terrace of light. The Plate never knew to omit them." }
+  ]
+}

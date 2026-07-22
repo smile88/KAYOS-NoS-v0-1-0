@@ -1,0 +1,124 @@
+{
+  "house_id": "ACADEMY",
+  "institution": true,
+  "head_npc": "NPC-AC-001",
+  "note": "The Academy of Astral Harmony — the institution at dead centre, on the island in the Mirror (district D-ACADEMY, r 0-75, reached by the one railless causeway). Not a House wedge: the nine Houses send their best here and it answers to none of them. This is where Elorin Voidweaver works and lodges through her Academy years, where the Nullstone team assembles, and where the safeguard is designed. Structures follow docs/Zone_Atlas.md Z-03/04/05 and the greybox island in godot/threed/StarfallCity3D.gd (_build_island). Sera, Vara and Durak WORK here but are housed in the city (SR-K03, VS-K04, VS-X03) — listed there, not here.",
+  "structures": [
+    {
+      "id": "AC-OBS", "name": "The Great Observatory", "house": "ACADEMY", "district": "D-ACADEMY", "type": "hero observatory (the Academy's heart)",
+      "position": {"r": 4, "a_deg": 0, "note": "dead centre of the island — the greybox's ~110 m hero dome (green verdigris, lit spire)"},
+      "footprint": {"shape": "cylinder", "diameter": 44, "rot_deg": 0}, "height_m": 110, "storeys": 9, "y_base": 2,
+      "purpose": "The single silhouette that rules the whole caldera: a verdigris-domed drum rising 110 m from the island, its lit spire visible from every terrace and every wedge. Under the dome the Academy reads a sky no single House owns — the shared instrument the nine Houses grudgingly answer to. It is the reason Starfall exists where it does, over the hole in the world that shows the stars.",
+      "rooms": [
+        {"name": "The Great Hall", "w": 40, "d": 40, "h": 24, "purpose": "the floor beneath the dome; the aperture opens the ceiling to the true sky; the balcony ring girdles the drum outside (the Cold Open balcony is one such ledge, at scale)"},
+        {"name": "The Meridian Circle", "w": 14, "d": 10, "h": 8, "purpose": "the Academy's master transit instrument — the line the Houses' clocks and charts are all quietly corrected against"},
+        {"name": "The Orrery Room", "w": 16, "d": 16, "h": 10, "purpose": "a great brass model of the wandering lights, kept running; Oravelle envies it"},
+        {"name": "The Archmagister's Study", "w": 10, "d": 8, "h": 5, "purpose": "the head of the Academy's rooms, highest habitable floor, the finest sightline in Starfall"},
+        {"name": "Observers' cells", "w": 20, "d": 8, "h": 4, "purpose": "spare rooms for the astronomers who keep the night watches"}
+      ],
+      "occupants": ["NPC-AC-001", "NPC-AC-002"],
+      "resident_count": 14, "notes": "Archmagister + First Astronomer + 12 live-in observers/watch-keepers. The lit apex is the greybox spire finial."
+    },
+    {
+      "id": "AC-THEORY", "name": "The Theory Wings & Moon-Bridge", "house": "ACADEMY", "district": "D-ACADEMY", "type": "library-halls (two wings + bridge)",
+      "position": {"r": 40, "a_deg": 90, "note": "the ±X wings of the greybox island, joined by the arched moon-bridge"},
+      "footprint": {"w": 44, "d": 14, "rot_deg": 90, "faces": "inward", "form": "two 3-storey wings joined by a bridge"}, "height_m": 44, "storeys": 3, "y_base": 2,
+      "purpose": "Two galleried library-halls of receding star-crystal stacks, joined at second-storey height by the arched moon-bridge that gives the island its silhouette. Where the Academy THINKS: lectures, glyph-boards, the reading of everything the nine Houses have ever measured. The Nullstone team first assembles here — the arguments that end in a void artifact begin as chalk on these boards.",
+      "rooms": [
+        {"name": "The West Gallery", "w": 28, "d": 12, "h": 8, "purpose": "two storeys of stacks; a mezzanine walk at 3.6 m; ~6 lecterns/glyph-boards on the floor"},
+        {"name": "The East Gallery", "w": 28, "d": 12, "h": 8, "purpose": "the reading hall; long tables under high comb-crystal windows"},
+        {"name": "Study alcoves (x3)", "w": 6, "d": 6, "h": 4, "purpose": "where Coil argues thresholds and Vara out-thinks the room she is not credited in"},
+        {"name": "The Moon-Bridge", "w": 44, "d": 6, "h": 4, "purpose": "the arched span between the wing-tops; the Academy's favourite place to be seen thinking"}
+      ],
+      "occupants": ["NPC-AC-010", "NPC-AC-011"],
+      "resident_count": 6, "notes": "Senior lector Vessine + 5 resident theorists. Coil (CH-009), Vara (CH-010), Sera (CH-008) and Durak (CH-011) WORK here daily but lodge elsewhere (city). SQ-P1-03 seed."
+    },
+    {
+      "id": "AC-CONTAIN", "name": "The Containment Halls", "house": "ACADEMY", "district": "D-ACADEMY", "type": "arcano-industrial hall (the warded structure)",
+      "position": {"r": 40, "a_deg": 180, "note": "the back (-Z) warded structure of the greybox island; gold ward-glyph floor"},
+      "footprint": {"w": 24, "d": 18, "rot_deg": 180, "faces": "inward"}, "height_m": 16, "storeys": 2, "y_base": 2,
+      "purpose": "The heaviest, coldest building on the island: an industrial-arcane hall around a recessed containment rig-pit, glyph-warded floor to ceiling. THE SINGLE MOST IMPORTANT ROOM IN PART ONE is the drafting dais at its end — the SAFEGUARD DESIGN happens at that table, and the buried flaw is authored there, at this drafting table, by Elorin's own hand. What is meant here as 'containment' drifts, across the act, into 'control.'",
+      "rooms": [
+        {"name": "The Rig-Pit Hall", "w": 20, "d": 12, "h": 9, "purpose": "central containment rig-pit (8 m ⌀, recessed 1.5 m) where prototype tests run; cold arcane-blue glow"},
+        {"name": "The Schematic Dais", "w": 6, "d": 6, "h": 4, "purpose": "raised drafting dais; the 3×1.5 m table where the safeguard — and its buried flaw — is drawn (PR-010)"},
+        {"name": "The Ward-Store", "w": 8, "d": 6, "h": 4, "purpose": "warded materials, glyph-stock, the prototype's cradle"},
+        {"name": "Corel's office", "w": 6, "d": 5, "h": 4, "purpose": "the exhausted archmagister's room — decency worn thin by duty"}
+      ],
+      "occupants": ["NPC-AC-020"],
+      "resident_count": 4, "notes": "Corel (CH-013) keeps an office and often sleeps here (4 counted incl. 3 night-wards). Act II core; SQ-P1-06 (The Buried Flaw). The prototype (PR-001) sits above the rig-pit in Act II."
+    },
+    {
+      "id": "AC-QUARTERS", "name": "The Scholars' Residence", "house": "ACADEMY", "district": "D-ACADEMY", "type": "resident-fellows' lodging",
+      "position": {"r": 58, "a_deg": 300}, "footprint": {"w": 26, "d": 12, "rot_deg": 300, "faces": "inward"}, "height_m": 11, "storeys": 3, "y_base": 2,
+      "purpose": "The quiet ring of cells and studies where the Academy's resident fellows live — including Elorin Voidweaver, through the years she builds the thing that ends the world. Her rooms are spare, Noctari-dark, over-open in the Umbraveil way (a door she will not shut), and stacked with the void-theory House Corvane first taught her. The most consequential bedroom in the history of the Song, and nobody on the island knows it yet.",
+      "rooms": [
+        {"name": "Elorin's rooms", "w": 8, "d": 7, "h": 4, "purpose": "study + cell; the void kept as 'presence, not absence'; a low window on the Mirror"},
+        {"name": "Fellows' cells (x8)", "w": 20, "d": 6, "h": 4, "purpose": "resident theorists and senior scholars"},
+        {"name": "The Common Study", "w": 12, "d": 8, "h": 5, "purpose": "shared fire, shared silence"}
+      ],
+      "occupants": ["NPC-AC-030", "NPC-AC-031"],
+      "resident_count": 12, "notes": "Elorin (CH-001/002) + 11 resident fellows. Her home for the Academy years (Narrative Outline Ch2-5). Coil may lodge here too when not at the Wings."
+    },
+    {
+      "id": "AC-REFECTORY", "name": "The Refectory & Commons", "house": "ACADEMY", "district": "D-ACADEMY", "type": "dining hall & commons",
+      "position": {"r": 60, "a_deg": 40}, "footprint": {"w": 22, "d": 14, "rot_deg": 40, "faces": "inward"}, "height_m": 8, "storeys": 1, "y_base": 2,
+      "purpose": "The one warm, loud room on a cold island — where archmagisters, students, and the Solari and human and Terran scholars the Houses keep at arm's length all eat at the same long tables. The Academy's small daily proof that the city's careful separations are a choice, not a law.",
+      "rooms": [
+        {"name": "The Long Hall", "w": 18, "d": 10, "h": 6, "purpose": "trestle tables, a great hearth, a board of the night's observing assignments"},
+        {"name": "Kitchens & stores", "w": 10, "d": 6, "h": 4, "purpose": "run by the refectory staff"}
+      ],
+      "occupants": ["NPC-AC-040"],
+      "resident_count": 9, "notes": "Refectory-master Ondle + 8 kitchen/commons staff (boarded)."
+    },
+    {
+      "id": "AC-DORMS", "name": "The Students' Dormitory", "house": "ACADEMY", "district": "D-ACADEMY", "type": "student housing",
+      "position": {"r": 62, "a_deg": 150}, "footprint": {"w": 30, "d": 14, "rot_deg": 150, "faces": "inward", "form": "3-storey range"}, "height_m": 11, "storeys": 3, "y_base": 2,
+      "purpose": "Where the Academy's students board — the sharpest young minds the nine Houses (and, rarely, the city below, and, once in a generation, somewhere outside it entirely) can send. Crowded, cold, ferociously competitive, and the only place a House heir and a canal-quarter prodigy share a wall. The NA-02 crowd of the exterior scenes lives here.",
+      "rooms": [
+        {"name": "Sleeping ranges (x3 floors)", "w": 26, "d": 8, "h": 3, "purpose": "shared student cells, 2-4 to a room"},
+        {"name": "The Study Hall", "w": 20, "d": 8, "h": 5, "purpose": "a night-lit common study; the competition never sleeps"},
+        {"name": "Proctors' rooms", "w": 8, "d": 5, "h": 4, "purpose": "the resident proctors who keep order"}
+      ],
+      "occupants": ["NPC-AC-050", "NPC-AC-051"],
+      "resident_count": 88, "notes": "~84 students + 4 proctors. The island's largest population; the Academy's future, most of whom will never own a sightline."
+    },
+    {
+      "id": "AC-GATE", "name": "The Gate Plaza & Fountain", "house": "ACADEMY", "district": "D-ACADEMY", "type": "threshold plaza (causeway head)",
+      "position": {"r": 40, "a_deg": 0, "note": "the +Z gate plaza where the causeway meets the island; the greybox Gate Fountain"},
+      "footprint": {"w": 20, "d": 12, "rot_deg": 0, "faces": "causeway"}, "height_m": 4, "storeys": 1, "y_base": 2,
+      "purpose": "Where the one causeway lands: a 12×12 m marble gate-plaza with the star-water Gate Fountain students trail a hand in for luck on the way to their examinations. The island's only door to the rest of the city, and — like the customs posts on the shore — it faces the water, not the dark below.",
+      "rooms": [
+        {"name": "The Gatehouse", "w": 8, "d": 6, "h": 4, "purpose": "the porter's lodge and the notice board (PR-016); the island's register of who is on it"},
+        {"name": "The Plaza & Fountain", "w": 12, "d": 12, "h": 0, "purpose": "open marble; the Gate Fountain that gives nothing back but a doubled sky"}
+      ],
+      "occupants": ["NPC-AC-060"],
+      "resident_count": 3, "notes": "Gate-porter Sull + 2 (night-porters). The moon-bridge, notice board, fountain and students are the §10 island interactables."
+    },
+    {
+      "id": "AC-WARDS", "name": "The Warders' Post", "house": "ACADEMY", "district": "D-ACADEMY", "type": "security post (containment guard)",
+      "position": {"r": 52, "a_deg": 200}, "footprint": {"w": 10, "d": 8, "rot_deg": 200, "faces": "inward"}, "height_m": 5, "storeys": 1, "y_base": 2,
+      "purpose": "A small hard post beside the Containment Halls: the ward-keepers who guard the prototype and the drafting dais, the nearest thing the scholarly island has to soldiers. In Part One they are almost bored. Three hundred years later, guarding the finished Stone in a different vault, their successors (the Void Wardens, CH-017) will not be.",
+      "rooms": [
+        {"name": "The Guard-Room", "w": 6, "d": 5, "h": 4, "purpose": "the ward-keepers' watch; a rack of ward-staves"},
+        {"name": "Bunk", "w": 4, "d": 4, "h": 3, "purpose": "the on-island wards sleep at their post"}
+      ],
+      "occupants": ["NPC-AC-070"],
+      "resident_count": 6, "notes": "6 ward-keepers. A quiet foreshadow of the Void Wardens who guard the Nullstone Vault in both parts."
+    }
+  ],
+  "npcs": [
+    {"id": "NPC-AC-001", "name": "Archmagister Sennel Vaross", "gender": "female", "race": "Noctari", "age": 1340, "role": "head of the Academy of Astral Harmony", "home": "AC-OBS", "work": "AC-OBS", "note": "Rules an instrument the nine Houses answer to and none of them own; keeps the peace between them by keeping the sky common. Older than any House head."},
+    {"id": "NPC-AC-002", "name": "First Astronomer Deire + observers (12)", "gender": "mixed", "race": "Noctari", "age": null, "role": "keep the night watches under the great dome", "home": "AC-OBS", "work": "AC-OBS", "count": 13},
+    {"id": "NPC-AC-010", "name": "Senior Lector Vessine", "gender": "nonbinary", "race": "Noctari", "age": 780, "role": "runs the Theory Wings; the Academy's memory", "home": "AC-THEORY", "work": "AC-THEORY", "note": "Has read everything and forgotten nothing; disapproves of void-work and cannot stop reading it."},
+    {"id": "NPC-AC-011", "name": "Resident theorists (5)", "gender": "mixed", "race": "Noctari & 1 human", "age": null, "role": "fellows of the Wings", "home": "AC-THEORY", "work": "AC-THEORY", "count": 5, "note": "Coil (CH-009), Vara (CH-010), Sera (CH-008), Durak (CH-011) work here daily but are housed in the city — not counted on the island."},
+    {"id": "NPC-AC-020", "name": "Corel", "gender": "male", "race": "Noctari", "age": 900, "role": "containment archmagister; Elorin's exhausted superior", "home": "AC-CONTAIN", "work": "AC-CONTAIN", "canon": "CH-013, PO-011", "note": "Decency worn thin by duty. Keeps an office and often sleeps at the rig rather than cross the causeway. Signs off on the safeguard he is too tired to fully check."},
+    {"id": "NPC-AC-021", "name": "Night-wards of Containment (3)", "gender": "mixed", "race": "Noctari", "age": null, "role": "keep the rig-pit through the night watches", "home": "AC-CONTAIN", "count": 3},
+    {"id": "NPC-AC-030", "name": "Elorin Voidweaver", "gender": "female", "race": "Noctari", "age": 903, "role": "the Architect; resident fellow; designer of the Nullstone", "home": "AC-QUARTERS", "work": "AC-CONTAIN", "canon": "CH-001/002, PO-001", "note": "PROTAGONIST of Part One. Lodges here through her Academy years; Umbrion-aligned, House Corvane-trained, the one person who can build a piece of the void into the heart of the Song. Her spare over-open rooms are the most consequential on the island."},
+    {"id": "NPC-AC-031", "name": "Resident fellows (11)", "gender": "mixed", "race": "Noctari, 2 human, 1 Solari", "age": null, "role": "senior scholars boarded on the island", "home": "AC-QUARTERS", "count": 11, "note": "Coil (CH-009) lodges among them when not at the Wings."},
+    {"id": "NPC-AC-040", "name": "Refectory-master Ondle + staff (9)", "gender": "male", "race": "Noctari & mixed", "age": 420, "role": "feeds the whole island at one set of tables", "home": "AC-REFECTORY", "work": "AC-REFECTORY", "count": 9, "note": "Runs the one room on the island where the city's separations quietly don't apply."},
+    {"id": "NPC-AC-050", "name": "The students (84)", "gender": "mixed", "race": "Noctari, human, Solari, 2 Terran", "age": null, "role": "the Academy's students — the Houses' sharpest, a few from below and beyond", "home": "AC-DORMS", "count": 84, "note": "The NA-02 crowd. Most will never own a sightline; all of them think they will. Named among them: the canal-quarter prodigy Ithe, and the House heir Varrun who resents her."},
+    {"id": "NPC-AC-051", "name": "Proctors (4)", "gender": "mixed", "race": "Noctari", "age": null, "role": "keep order in the dorms", "home": "AC-DORMS", "work": "AC-DORMS", "count": 4},
+    {"id": "NPC-AC-060", "name": "Gate-porter Sull + night-porters (2)", "gender": "male", "race": "Noctari", "age": 260, "role": "keeps the causeway gate and the island register", "home": "AC-GATE", "work": "AC-GATE", "count": 3, "note": "Knows exactly who is on the island at any hour — a fact that will matter."},
+    {"id": "NPC-AC-070", "name": "The Ward-Keepers (6) — ward-master Gollen", "gender": "mixed", "race": "Noctari & 1 orc", "age": null, "role": "guard the prototype and the drafting dais", "home": "AC-WARDS", "work": "AC-CONTAIN", "count": 6, "note": "Almost bored in Part One; their successors the Void Wardens (CH-017) will guard the finished Stone, unbored, for three hundred years."}
+  ]
+}
