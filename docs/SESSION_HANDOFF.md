@@ -1,7 +1,32 @@
 # Session handoff — resume here
 
-_Last updated: 2026-07-22. This note lives in the repo (unlike Claude's local memory, which does NOT
+_Last updated: 2026-07-23. This note lives in the repo (unlike Claude's local memory, which does NOT
 travel between machines) so a fresh session on another computer can pick up exactly where we left off._
+
+## Latest session (2026-07-23) — Starfall polish pass (open items 1–4)
+
+Worked the open-items list below, top-down. All headless-verified (`godot/tests/StarfallTest.tscn`,
+new this session, 12/12; `ColdOpen3DTest` still 23/23):
+
+1. **Feel** — `Player3D` gravity movement now eases in/out (accel 60 / friction 70), keeps air momentum
+   (air_accel 16), and has **coyote-time (0.10 s) + jump-buffering (0.10 s)** so jumps fire at the edges.
+   Instant velocity-snapping is gone. Starfall walk speed retuned **9 → 6.5**, run ×2.0 (13 m/s). Numbers
+   are exported — final "does it feel right" is a **your-eyes** call (open the scene, press F6).
+2. **Star-lake** — decided: **the Mirror is a real void, not a walkable floor.** Removed the hidden
+   `MirrorFloor` collider; step off the shore and you fall through the star-field, and `Player3D`
+   (`fall_limit = -25` on the Starfall scene) fishes you back onto the **last solid ground you stood on**
+   and emits `fell`. The railless causeway is the one crossing — the danger is the point.
+3. **Performance** — routed all the repeated **non-collidable** dressing (building windows/doors/roofs,
+   crystal combs, canal water) through **MultiMesh pools** (`_deco()`/`_flush_pools()` in StarfallCity3D).
+   MeshInstance3D nodes **4300 → 1047** (total nodes 5847 → 2600), 6 MultiMesh draw batches. Every
+   collidable surface (terraces, stairs, building bodies, towers, island) is unchanged — still real nodes.
+4. **Wired into `SceneManager`** — the Cold Open now hands off to **`threed/StarfallCity3D.tscn`** (was the
+   old 2D `StarfallAcademy.tscn`). `SceneManager._place_player` now handles **Marker3D** spawns; `Player3D`
+   joins group `"player"`; the Starfall scene has a `SpawnFromColdOpen` Marker3D on the rim. Full flow
+   (Cold Open → Silence → title card → walkable 3D Starfall) is green.
+
+**Still open:** (5) bake to an editable `.tscn` — still **deferred, awaiting your call**; (6) interiors /
+canal shaping / real modelled art to replace primitives. See the list at the bottom.
 
 ## Where we are
 
@@ -40,11 +65,13 @@ Regenerate art/map anytime: `python3 tools/gen_3d_textures.py` and `python3 tool
 
 ## Open items / next steps (pick up here)
 
-1. **Feel tuning** — walk speed (currently 9), run multiplier (1.9), jump (8), camera distance.
-2. **Star-lake** is a walkable placeholder floor, not true water/void — decide the real behaviour.
-3. **Performance** — the scene spawns a few thousand nodes; first load takes a few seconds. Optimise if
-   it feels heavy (fewer/merged buildings, MultiMesh for non-interactive massing, etc.).
-4. **Wire into `SceneManager`** so the zone is reachable in-flow (not yet; not the project main scene).
+1. ✅ **Feel tuning** (2026-07-23) — accel/friction + coyote + jump-buffer; walk 6.5 / run ×2.0. Final
+   feel judgement still wants your eyes on it in-editor.
+2. ✅ **Star-lake** (2026-07-23) — now a real void with last-safe respawn; causeway is the crossing.
+3. ✅ **Performance** (2026-07-23) — MultiMesh pools for non-collidable dressing; meshes 4300 → 1047.
+   Could go further later (MultiMesh the ~435 building *bodies* too, decoupling their collision) if load
+   still feels heavy, but it's now well within budget.
+4. ✅ **Wired into `SceneManager`** (2026-07-23) — Cold Open hands off to the 3D city; Marker3D spawns.
 5. **WYSIWYG-editable scene (DEFERRED by user choice).** User wants to eventually open the zone in the
    editor and click/drag objects. Plan: BAKE the procedurally-generated city into a real `.tscn` — build
    it once, set every generated node's `owner` = scene root, `PackedScene.pack(root)` + `ResourceSaver.save`.

@@ -29,8 +29,13 @@ script = ExtResource("1_city")
 
 [node name="Player3D" parent="." unique_id=1222894539 instance=ExtResource("3_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45.6, 415)
-speed = 9.0
+speed = 6.5
 gravity_enabled = true
+run_multiplier = 2.0
+fall_limit = -25.0
+
+[node name="SpawnFromColdOpen" type="Marker3D" parent="." unique_id=1222894540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45.6, 415)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1027554488]
 transform = Transform3D(1, 0, 0, 0, 0.9, 0.44, 0, -0.44, 0.9, 0, 68, 445)

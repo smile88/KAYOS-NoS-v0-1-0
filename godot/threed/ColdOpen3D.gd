@@ -17,7 +17,7 @@ class_name ColdOpen3D
 
 const FG_MAIN_DIALOGUE := "res://data/dialogue/coldopen_festivalgoer.json"
 const SILENCE_DIALOGUE := "res://data/dialogue/coldopen_silence.json"
-const STARFALL_ZONE := "res://scenes/zones/StarfallAcademy.tscn"
+const STARFALL_ZONE := "res://threed/StarfallCity3D.tscn"
 
 ## The festival's clock, in seconds from taking control. Holds during dialogue and room changes, so
 ## it counts only time spent *not* reading. Same numbers as 2D (SILENCE_AT is the softest guess).

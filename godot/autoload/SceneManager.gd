@@ -4,8 +4,8 @@ extends Node
 ##
 ## change_zone(path)                                  — plain fade-through-black.
 ## change_zone(path, "SpawnFromColdOpen")             — also places the player (group "player")
-##                                                      at the Marker2D with that name in the
-##                                                      target zone.
+##                                                      at the Marker2D/Marker3D with that name in
+##                                                      the target zone (2D or 3D, matched to player).
 ## change_zone(path, spawn, "PART ONE — THE ARCHITECT", "Starfall · c. 1450 AO")
 ##                                                    — holds a title card over black between
 ##                                                      the zones (UI-013 placeholder panel).
@@ -70,10 +70,12 @@ func _place_player(spawn_point: String) -> void:
 	if scene == null or player == null:
 		return
 	var marker := scene.find_child(spawn_point, true, false)
-	if marker is Node2D:
+	if marker is Node3D and player is Node3D:
+		(player as Node3D).global_position = (marker as Node3D).global_position
+	elif marker is Node2D and player is Node2D:
 		(player as Node2D).global_position = (marker as Node2D).global_position
 	else:
-		push_warning("SceneManager: spawn point '%s' not found in %s" % [spawn_point, scene.name])
+		push_warning("SceneManager: spawn point '%s' not found (or type mismatch) in %s" % [spawn_point, scene.name])
 
 
 func _fade_to(alpha: float, duration: float) -> void:

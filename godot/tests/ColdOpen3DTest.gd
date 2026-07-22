@@ -118,7 +118,7 @@ func _ready() -> void:
 	var deadline := Time.get_ticks_msec() + TIMEOUT_MS
 	while _changed_to == "" and Time.get_ticks_msec() < deadline:
 		await get_tree().process_frame
-	_check(_changed_to.ends_with("StarfallAcademy.tscn"), "the Cold Open hands off to Starfall Academy")
+	_check(_changed_to.ends_with("StarfallCity3D.tscn"), "the Cold Open hands off to the 3D Starfall city")
 	_check(GameState.get_flag("COLDOPEN_DONE") == true, "COLDOPEN_DONE written")
 	_check(GameState.current_protagonist == "elorin", "protagonist handoff to Elorin")
 	_check(FileAccess.file_exists(GameState.SAVE_PATH), "autosave written at the handoff")
