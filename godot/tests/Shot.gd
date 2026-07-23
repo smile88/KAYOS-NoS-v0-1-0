@@ -5,7 +5,10 @@ extends Node
 ## Writes to art/greybox_renders/city_*.png, then quits.
 
 const SCENE := "res://threed/StarfallCity3D.tscn"
-const OUT := "C:/Users/Smile/KAYOS-NoS-v0-1-0/art/greybox_renders/"
+## Machine-independent: resolve out of the Godot project to the repo's art/ dir (was a hardcoded
+## Windows path, which silently failed on any other machine).
+static func _out_dir() -> String:
+	return ProjectSettings.globalize_path("res://../art/greybox_renders/")
 
 var _shots := [
 	# name, camera position, look-at target
@@ -35,6 +38,6 @@ func _ready() -> void:
 		for k in range(10):
 			await get_tree().process_frame
 		var img := get_viewport().get_texture().get_image()
-		img.save_png(OUT + "city_%s.png" % shot[0])
+		img.save_png(_out_dir() + "city_%s.png" % shot[0])
 		print("saved city_%s.png" % shot[0])
 	get_tree().quit(0)
