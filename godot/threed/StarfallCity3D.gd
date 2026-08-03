@@ -506,7 +506,7 @@ func _build_sky() -> void:
 	mi.name = "SkyDome"
 	mi.mesh = sphere
 	var m := StandardMaterial3D.new()
-	m.albedo_texture = _tex(ART + "star_dome.png")
+	m.albedo_texture = _tex(ART + "solari_festival_sky.png")
 	m.cull_mode = BaseMaterial3D.CULL_FRONT
 	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	mi.material_override = m
@@ -550,19 +550,19 @@ func _build_lake() -> void:
 
 func _build_terraces() -> void:
 	var basalt := _mat(_tex(ART + "basalt.png"), 8.0)
-	var terr := _mat(_tex(ART + "terrace_stone.png"), 8.0)
-	var terr2 := _mat(_tex(ART + "terrace_stone.png"), 8.0)
-	terr2.albedo_color = Color(0.86, 0.86, 0.96)
-	_ring(R_L2, R_L1, Y_RIM, -1.0, basalt, 42.0, "RimRing")
-	_ring(R_L3, R_L2, Y_L2, -1.0, terr2, 40.0, "Terrace2")
-	_ring(R_L4, R_L3, Y_L3, -1.0, terr2, 38.0, "Terrace3")
-	_ring(R_SHORE, R_L4, Y_L4, -1.0, terr, 36.0, "CanalRing")
+	var slate := _mat(_tex(ART + "noctari_slate.png"), 8.0)
+	var twi := _mat(_tex(ART + "twilight_stone.png"), 8.0)
+	var cobble := _mat(_tex(ART + "cobblestone.png"), 8.0)
+	_ring(R_L2, R_L1, Y_RIM, -1.0, slate, 42.0, "RimRing")
+	_ring(R_L3, R_L2, Y_L2, -1.0, twi, 40.0, "Terrace2")
+	_ring(R_L4, R_L3, Y_L3, -1.0, twi, 38.0, "Terrace3")
+	_ring(R_SHORE, R_L4, Y_L4, -1.0, cobble, 36.0, "CanalRing")
 	_ring(R_LAKE, R_SHORE, Y_SHORE, -1.0, basalt, 30.0, "ShoreRing")
 
 
 func _build_stairs() -> void:
-	var stone := _mat(_tex(ART + "stone.png"), 6.0)
-	var marble := _mat(_tex(ART + "marble_floor.png"), 6.0)
+	var stone := _mat(_tex(ART + "twilight_stone.png"), 6.0)
+	var marble := _mat(_tex(ART + "solari_marble.png"), 6.0)
 	# (low radius, low y, high radius, high y) — stair climbs OUTWARD (up a terrace)
 	var links := [
 		[220.0, Y_SHORE, 245.0, Y_L4],
@@ -582,7 +582,7 @@ func _build_stairs() -> void:
 
 
 func _build_parapet() -> void:
-	var stone := _mat(_tex(ART + "basalt.png"), 3.0)
+	var stone := _mat(_tex(ART + "noctari_slate.png"), 3.0)
 	_ring(R_L1 - 2.0, R_L1, Y_RIM + 3.0, Y_RIM, stone, 24.0, "Parapet")
 
 
@@ -790,7 +790,7 @@ func _build_shore_plaza() -> void:
 
 func _build_causeway() -> void:
 	# A single railless stone road from the shore straight across the Mirror to the island gate (+Z).
-	var marble := _mat(_tex(ART + "marble_floor.png"), 20.0)
+	var marble := _mat(_tex(ART + "solari_marble.png"), 20.0)
 	var length := R_SHORE - R_ISLAND
 	var mid := (R_SHORE + R_ISLAND) * 0.5
 	_floor_box(Vector3(8.0, 0.6, length), Vector3(0, Y_SHORE - 0.3, mid), marble, "Causeway")
@@ -804,8 +804,8 @@ func _build_island() -> void:
 	# and a gate-plaza fountain facing the causeway. A balcony ring girdles the observatory drum (the Cold
 	# Open balcony is one such ledge — this is what it would look like from outside, and at what scale).
 	var basalt := _mat(_tex(ART + "basalt.png"), 10.0)
-	var marble := _mat(_tex(ART + "marble_floor.png"), 20.0)
-	var stone := _mat(_tex(ART + "stone.png"), 10.0)
+	var marble := _mat(_tex(ART + "solari_marble.png"), 20.0)
+	var stone := _mat(_tex(ART + "noctari_slate.png"), 10.0)
 	_col_cyl(R_ISLAND, 4.0, Vector3(0, Y_ISLAND - 2.0, 0), basalt, "IslandBase")
 	var plaza := CylinderMesh.new()
 	plaza.top_radius = R_ISLAND

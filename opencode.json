@@ -34,6 +34,14 @@
       "type": "local",
       "command": ["uvx", "mcp-server-fetch"],
       "enabled": true
+    },
+    "meshy": {
+      "type": "local",
+      "command": ["npx", "-y", "@meshy-ai/meshy-mcp-server@latest"],
+      "environment": {
+        "MESHY_API_KEY": "{env:MESHY_API_KEY}"
+      },
+      "enabled": true
     }
   }
 }

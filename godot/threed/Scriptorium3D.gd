@@ -45,12 +45,12 @@ func _sz(y2d: float) -> float:
 # --- pieces ------------------------------------------------------------------
 
 func _build_floor() -> void:
-	var mat := _mat(_tex(PLACE + "EN-019_scriptorium_floor.png"), 5.0)
+	var mat := _mat(_tex(ART + "scriptorium_floor.png"), 5.0)
 	_box(Vector3(HALF_X * 2.0, 0.4, HALF_Z * 2.0), Vector3(0, -0.2, 0), mat, "Floor")
 
 
 func _build_walls() -> void:
-	var mat := _mat(_tex(PLACE + "EN-019_scriptorium_wall.png"), 3.0)
+	var mat := _mat(_tex(ART + "scriptorium_wall.png"), 3.0)
 	# Back wall at -Z, and side walls at ±X. Front (+Z) is left open so the 360° orbit stays usable
 	# and the room reads as a lit tableau you look into (no ceiling for the same reason).
 	_box(Vector3(HALF_X * 2.0, WALL_H, 0.4), Vector3(0, WALL_H * 0.5, -HALF_Z), mat, "WallBack")

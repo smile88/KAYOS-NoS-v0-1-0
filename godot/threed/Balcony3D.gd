@@ -47,7 +47,7 @@ func _build_sky() -> void:
 	mi.name = "SkyDome"
 	mi.mesh = sphere
 	var m := StandardMaterial3D.new()
-	m.albedo_texture = _tex(ART + "star_dome.png")
+	m.albedo_texture = _tex(ART + "solari_festival_sky.png")
 	m.cull_mode = BaseMaterial3D.CULL_FRONT          # show the inside
 	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
 	mi.material_override = m
@@ -67,7 +67,7 @@ func _build_substructure() -> void:
 
 
 func _build_platform() -> void:
-	var mat := _mat(_tex(ART + "marble_floor.png"), 6.0)
+	var mat := _mat(_tex(ART + "solari_marble.png"), 6.0)
 	# thin slab, top surface at y = 0
 	_box(Vector3(PLATFORM_HALF_X * 2.0, 0.4, PLATFORM_HALF_Z * 2.0), Vector3(0, -0.2, 0), mat, "Platform")
 
@@ -80,7 +80,7 @@ func _build_sun_mosaic() -> void:
 	mi.name = "SunMosaic"
 	mi.mesh = quad
 	mi.position = Vector3(0, 0.02, 0.5)
-	var tex := _tex(PLACE + "EN-006_sun_mosaic.png")
+	var tex := _tex(ART + "sun_mosaic.png")
 	var m := _mat(tex, 1.0, 0.25)
 	m.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
 	mi.material_override = m

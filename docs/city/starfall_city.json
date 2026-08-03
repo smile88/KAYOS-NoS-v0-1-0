@@ -12,7 +12,7 @@
       "tools/gen_starfall_cityplan.py -> art/blueprints/Starfall_CityPlan.svg",
       "tools/gen_starfall_codex.py -> docs/Starfall_City_Codex.md"
     ],
-    "status": "FOUNDATION + two wedges fully specified (House Vael'Suran H0, House Serenthil H8 — the pair flanking the Grand Processional). Seven Houses + the Academy island still stubbed. Geometry LOCKED to godot/threed/StarfallCity3D.gd & docs/Scale_Reference.md.",
+    "status": "FOUNDATION + all ten wedges fully specified (Houses H0–H8 + the Academy island). 203 structures, 238 NPC records, ~2,820 souls. Geometry LOCKED to godot/threed/StarfallCity3D.gd & docs/Scale_Reference.md.",
     "theme": "Two maps of one city. The Plate (this visible survey) and the Ledger-map beneath it (the Under-Terraces) do not contain each other. That omission is the story of Part One."
   },
   "grid": {

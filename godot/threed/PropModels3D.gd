@@ -36,10 +36,48 @@ static func build(kind: String) -> Node3D:
 
 static func _wood() -> StandardMaterial3D:
 	var m := StandardMaterial3D.new()
-	m.albedo_texture = load(ART + "shelf_wood.png")
+	m.albedo_texture = load(ART + "honey_lacquer_wood.png")
 	m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
 	m.uv1_scale = Vector3(2, 2, 1)
-	m.roughness = 0.9
+	m.roughness = 0.8
+	return m
+
+
+static func _worn_timber() -> StandardMaterial3D:
+	var m := StandardMaterial3D.new()
+	m.albedo_texture = load(ART + "worn_timber.png")
+	m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+	m.uv1_scale = Vector3(2, 2, 1)
+	m.roughness = 0.95
+	return m
+
+
+static func _cloth() -> StandardMaterial3D:
+	var m := StandardMaterial3D.new()
+	m.albedo_texture = load(ART + "cloth.png")
+	m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+	m.uv1_scale = Vector3(2, 2, 1)
+	m.roughness = 0.95
+	return m
+
+
+static func _gold() -> StandardMaterial3D:
+	var m := StandardMaterial3D.new()
+	m.albedo_texture = load(ART + "gold_trim.png")
+	m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+	m.uv1_scale = Vector3(1, 1, 1)
+	m.roughness = 0.4
+	m.metallic = 0.6
+	return m
+
+
+static func _iron() -> StandardMaterial3D:
+	var m := StandardMaterial3D.new()
+	m.albedo_texture = load(ART + "industrial_iron.png")
+	m.texture_filter = BaseMaterial3D.TEXTURE_FILTER_NEAREST
+	m.uv1_scale = Vector3(2, 2, 1)
+	m.roughness = 0.7
+	m.metallic = 0.5
 	return m
 
 
@@ -90,19 +128,19 @@ static func _desk(p: Node3D) -> void:
 
 static func _cabinet(p: Node3D) -> void:
 	_box(p, Vector3(1.0, 1.7, 0.55), Vector3(0, 0.85, 0), _flat(Color(0.20, 0.16, 0.34)))         # indigo body
-	var door := _flat(Color(0.26, 0.21, 0.42))
+	var door := _wood()
 	_box(p, Vector3(0.44, 1.5, 0.04), Vector3(-0.24, 0.9, 0.29), door)
 	_box(p, Vector3(0.44, 1.5, 0.04), Vector3(0.24, 0.9, 0.29), door)
-	var brass := _flat(Color(0.7, 0.6, 0.3), 0.5)
+	var brass := _gold()
 	_box(p, Vector3(0.05, 0.12, 0.05), Vector3(-0.03, 0.9, 0.32), brass)
 	_box(p, Vector3(0.05, 0.12, 0.05), Vector3(0.03, 0.9, 0.32), brass)
 
 
 static func _chest(p: Node3D) -> void:
-	var w := _wood()
+	var w := _worn_timber()
 	_box(p, Vector3(1.0, 0.5, 0.6), Vector3(0, 0.25, 0), w)
 	_box(p, Vector3(1.02, 0.18, 0.62), Vector3(0, 0.58, 0), w)                                    # lid
-	var iron := _flat(Color(0.18, 0.18, 0.2), 0.6)
+	var iron := _iron()
 	for dx in [-0.35, 0.0, 0.35]:
 		_box(p, Vector3(0.06, 0.72, 0.63), Vector3(dx, 0.36, 0), iron)
 
@@ -164,7 +202,7 @@ static func _cups(p: Node3D) -> void:
 
 
 static func _mask(p: Node3D) -> void:
-	var gold := _flat(Color(0.82, 0.66, 0.28), 0.5)
+	var gold := _gold()
 	_cyl(p, 0.14, 0.02, Vector3(0, 0.02, 0), gold, Vector3(deg_to_rad(90), 0, 0))                  # disc lying
 	for i in range(8):
 		var a := i * PI / 4.0
@@ -173,11 +211,11 @@ static func _mask(p: Node3D) -> void:
 
 
 static func _banner(p: Node3D) -> void:
-	var pole := _flat(Color(0.4, 0.3, 0.2))
+	var pole := _wood()
 	_cyl(p, 0.03, 1.7, Vector3(0, 0.85, 0), pole)
 	_cyl(p, 0.5, 0.05, Vector3(0, 1.66, 0), pole, Vector3(0, 0, deg_to_rad(90)))                   # crossbar
-	_box(p, Vector3(0.8, 1.1, 0.02), Vector3(0, 1.05, 0.02), _flat(Color(0.9, 0.87, 0.8)))         # cloth
-	_box(p, Vector3(0.8, 0.14, 0.03), Vector3(0, 1.2, 0.03), _flat(Color(0.82, 0.66, 0.28), 0.5))  # gold band
+	_box(p, Vector3(0.8, 1.1, 0.02), Vector3(0, 1.05, 0.02), _cloth())                             # cloth texture
+	_box(p, Vector3(0.8, 0.14, 0.03), Vector3(0, 1.2, 0.03), _gold())                              # gold trim band
 
 
 static func _telescope(p: Node3D) -> void:
