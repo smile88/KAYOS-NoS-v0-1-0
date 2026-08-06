@@ -10,6 +10,7 @@ This folder implements the Asset Bible's prescribed generation → cleanup → e
 | `character_turnarounds/` | Multi-angle (front/back/side) character ref sets, one folder per CH-###/NA-0# ID, for Meshy Multi-Image-to-3D. See its own README. | Generated (3D input) |
 | `character_models/` | Completed rigged Meshy 3D character exports (FBX + textures), one folder per character. See its own README. | Generated (3D output) |
 | `environment_turnarounds/` | Rim tower / building / establishing-shot generations — often multiple independent attempts per subject, not angles. See its own README. | Generated (pick-the-best) |
+| `environment_models/` | Completed Meshy 3D building/environment exports (raw geometry, pre-texture), one folder per subject. See its own README. | Generated (3D output) |
 | `lore_iconography/` | Deity, artifact, and faction icon renders (Master_KeyArt_Prompts.md PART 3). See its own README. | Generated |
 | `key_art/` | Illustrated location and historical-event splash art (Master_KeyArt_Prompts.md PART 2, Canon_Notes.md timeline). See its own README. | Generated |
 | `reference_material/` | Third-party texture/asset-pack preview sheets kept as visual grounding — not authored, not imported. See its own README. | Reference only |

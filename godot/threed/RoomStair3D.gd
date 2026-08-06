@@ -1,3 +1,4 @@
+@tool
 extends Interactable3D
 class_name RoomStair3D
 ## A stair between two rooms of the single-scene 3D Cold Open — the HD-2D twin of actors/RoomStair.gd.

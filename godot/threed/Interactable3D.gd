@@ -1,3 +1,4 @@
+@tool
 extends Area3D
 class_name Interactable3D
 ## A world object the player can examine in the 3D Cold Open — the HD-2D twin of actors/Interactable.gd.

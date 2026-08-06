@@ -1,17 +1,22 @@
 extends Node
 ## Headless proof of the walkable Starfall city greybox (godot/threed/StarfallCity3D). Asserts the
-## load-bearing claims from docs/SESSION_HANDOFF.md: the player spawns grounded on the rim, descends the
-## terraces under gravity without falling through, the star-lake "Mirror" is a real void that fishes you
-## back onto solid ground, and the zone is wired for the Cold Open handoff (a "player"-group body + a
-## SpawnFromColdOpen marker). Also censuses the scene so the performance budget is a tracked number, not
-## a vibe.
+## load-bearing claims from docs/SESSION_HANDOFF.md: the player spawns grounded at the city entrance,
+## the entrance walkway connects seamlessly onto the canal-quarter terrace without a stair, the star-lake
+## "Mirror" is a real void that fishes you back onto solid ground, and the zone is wired for the Cold
+## Open handoff (a "player"-group body + a SpawnFromColdOpen marker). Also censuses the scene so the
+## performance budget is a tracked number, not a vibe.
+##
+## Markers-only pass: individual buildings/towers/props are placeholder discs now, not real geometry —
+## this suite only asserts the generated SHELL (terraces, entrance cut, Under-Terraces cavity, lake,
+## causeway, island base) plus the JSON-driven examinables, which are unaffected by that.
 ##
 ## Physics needs real ticks, so this drives Input.action_press and waits on get_tree().physics_frame
 ## (a modest Engine.time_scale stretches world time per tick without tunnelling the 1 m ramp colliders).
 
 const SCENE := "res://threed/StarfallCity3D.tscn"
 const TIME_SCALE := 4.0
-const Y_RIM := 45.6
+const Y_SPAWN := 12.6      # Y_L4 + 0.6 — the entrance walkway's height, where the player now drops in
+const Y_L4 := 12.0
 
 var _passed := 0
 var _failed := 0
@@ -30,8 +35,8 @@ func _ready() -> void:
 	var marker: Node3D = scene.find_child("SpawnFromColdOpen", true, false) as Node3D
 	_check(marker != null, "a SpawnFromColdOpen Marker3D exists for the Cold Open handoff")
 	if marker:
-		_check(absf(marker.global_position.y - Y_RIM) < 2.0 and marker.global_position.z > 380.0,
-			"the spawn marker sits on the rim, front (+Z), where the player drops in")
+		_check(absf(marker.global_position.y - Y_SPAWN) < 2.0 and marker.global_position.z > 380.0,
+			"the spawn marker sits at the entrance, front (+Z), where the player drops in")
 
 	# --- census: the perf budget as a tracked number ---------------------------
 	var census := {}
@@ -51,25 +56,31 @@ func _ready() -> void:
 	var ix := get_tree().get_nodes_in_group("interactable3d").size()
 	_check(ix >= 100, "the city plan populated the world with examinable buildings (%d interactables)" % ix)
 
-	# --- grounded on the rim, no fall-through ----------------------------------
+	# --- grounded at the entrance, no fall-through -----------------------------
 	await _physics(30)
-	_check(player.is_on_floor(), "the player settles grounded on the rim (doesn't fall through the terrace)")
-	_check(absf(player.global_position.y - Y_RIM) < 2.5,
-		"the player rests at rim height (~%.1f m), not sunk into or floating above it" % Y_RIM)
+	_check(player.is_on_floor(), "the player settles grounded at the entrance (doesn't fall through the walkway)")
+	_check(absf(player.global_position.y - Y_SPAWN) < 2.5,
+		"the player rests at the entrance walkway's height (~%.1f m), not sunk into or floating above it" % Y_SPAWN)
 
-	# --- walk inward and DOWN the terraces (the marquee walkability claim) ------
-	var start_y := player.global_position.y
-	Input.action_press("move_up")               # -Z = inward, toward the caldera / down the stairs
+	# --- walk inward along the entrance cut onto the canal-quarter terrace -----
+	# The walkway (Y_L4) and the CanalRing terrace it leads into are flush — this is the one connector
+	# that's still generated (see _build_entrance), so it should be walkable with NO stair at all, unlike
+	# every other terrace boundary now (stairs/ramps are hand-placed — see the class doc).
+	var start_pos := player.global_position
+	Input.action_press("move_up")               # -Z = inward, along the entrance toward the caldera
 	var min_y := player.global_position.y
 	for i in range(200):
 		await get_tree().physics_frame
 		min_y = minf(min_y, player.global_position.y)
 	Input.action_release("move_up")
-	_check(player.global_position.y < start_y - 8.0,
-		"walking inward descends the terraces (dropped %.1f m from the rim)" % (start_y - player.global_position.y))
-	_check(min_y > -30.0, "the descent never fell through the world into the void (min y = %.1f)" % min_y)
+	var traveled := Vector2(player.global_position.x, player.global_position.z).distance_to(
+		Vector2(start_pos.x, start_pos.z))
+	_check(traveled > 60.0, "walking inward covers real ground along the entrance (%.1f m travelled)" % traveled)
+	_check(absf(player.global_position.y - Y_L4) < 3.0,
+		"the entrance walkway and the canal-quarter terrace are flush — no stair needed to cross onto it (y=%.1f)" % player.global_position.y)
+	_check(min_y > -30.0, "the walk never fell through the world into the void (min y = %.1f)" % min_y)
 	await _physics(20)
-	_check(player.is_on_floor(), "the player is still grounded after the descent")
+	_check(player.is_on_floor(), "the player is still grounded after walking in")
 
 	# --- the Mirror is a void that returns you to solid ground -----------------
 	var safe_before := player.global_position
@@ -88,27 +99,20 @@ func _ready() -> void:
 	_check(player.global_position.distance_to(safe_before) < 3.0,
 		"respawn returns to the last solid ground the player stood on, not a fixed corner")
 
-	# --- the Open House: a real enterable interior (item 6, first slice) --------
+	# --- the Open House: no marker, no walls anymore (hand-placed now, see the class doc) --------
+	# Its lectern is writing, not structure, so it stayed as a plain examinable at the same spot.
 	var lectern := _find_examinable(scene, "The Astronomer's Lectern")
-	_check(lectern != null, "the Open House has an examinable lectern inside it")
+	_check(lectern != null, "the Open House's lectern examinable still exists at its old position")
 
-	# The interior floor holds: drop the player in from below the ceiling and it lands on the room floor.
-	# Room centre is world (30, 34, 372); interior spans y≈34.3 (floor) to ≈39.75 (ceiling).
-	player.global_position = Vector3(30.0, 38.0, 372.0)
-	player.velocity = Vector3.ZERO
-	await _physics(40)
-	_check(player.is_on_floor() and player.global_position.y > 33.5 and player.global_position.y < 35.0,
-		"the Open House interior floor is solid — the player stands inside it (y=%.1f)" % player.global_position.y)
-
-	# The doorway is a real opening, not a painted-on door: a ray across the door gap passes through,
-	# while the SAME ray offset onto the adjacent front-wall segment is blocked.
-	var space := get_tree().root.world_3d.direct_space_state
-	var gap := space.intersect_ray(PhysicsRayQueryParameters3D.create(
-		Vector3(21.0, 35.0, 372.0), Vector3(27.0, 35.0, 372.0)))   # z=372 = door centre
-	var solid := space.intersect_ray(PhysicsRayQueryParameters3D.create(
-		Vector3(21.0, 35.0, 376.15), Vector3(27.0, 35.0, 376.15))) # z=376.15 = front-wall segment
-	_check(gap.is_empty(), "the doorway is an actual gap you can walk through (ray passes clean)")
-	_check(not solid.is_empty(), "the wall beside the doorway is solid (control ray is blocked)")
+	# --- the marker set is trimmed to exactly towers + observatory + monument --------------------
+	var tower_marker := scene.find_child("Marker_H0_VaelSuran", true, false)
+	_check(tower_marker != null, "a House tower still has its marker (H0 Vael'Suran)")
+	var obs_marker := scene.find_child("Marker_The_Great_Observatory_(City_Centre)", true, false)
+	_check(obs_marker != null, "the observatory/city-centre marker exists on the island")
+	var mono_marker := scene.find_child("Marker_The_Armillary_of_the_First_Measure", true, false)
+	_check(mono_marker != null, "the armillary monument still has its (now much smaller) marker")
+	var building_marker := scene.find_child("Marker_The_Sounding-Glass", true, false)
+	_check(building_marker == null, "individual plan buildings (e.g. the Sounding-Glass) no longer get a visual marker")
 
 	print("\n==== Starfall test: %d passed, %d failed ====" % [_passed, _failed])
 	get_tree().quit(0 if _failed == 0 else 1)

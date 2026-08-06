@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 class_name CharacterModel3D
 ## A low-poly 3D character — a hooded robed figure — built from primitives, in the Daggerfall↔Morrowind
@@ -112,6 +113,8 @@ func pose(phase: float) -> void:
 
 
 func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return   # stand in a fixed pose while just previewing the scene
 	if _moving:
 		_phase += delta * 7.0
 		_apply_pose()

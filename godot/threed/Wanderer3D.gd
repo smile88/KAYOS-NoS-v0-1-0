@@ -1,3 +1,4 @@
+@tool
 extends NPC3D
 class_name Wanderer3D
 ## An NPC with somewhere to be — HD-2D twin of actors/Wanderer.gd. Drifts around `roam_rect` on the
@@ -24,6 +25,8 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	if Engine.is_editor_hint():
+		return   # never roam or touch DialogueManager while just previewing the scene
 	if _frozen or roam_rect.size == Vector2.ZERO:
 		return
 	if DialogueManager.is_active():

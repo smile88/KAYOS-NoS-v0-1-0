@@ -1,3 +1,4 @@
+@tool
 extends Zone3D
 class_name Scriptorium3D
 ## Procedurally builds Talindir's scriptorium — the Astral Archive room below the balcony — as primitive
@@ -21,6 +22,8 @@ const WALL_H := 4.0
 
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		_clear_generated_children()
 	_build_floor()
 	_build_walls()
 	_build_window()

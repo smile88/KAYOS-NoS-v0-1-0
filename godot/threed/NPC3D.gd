@@ -1,3 +1,4 @@
+@tool
 extends Interactable3D
 class_name NPC3D
 ## A 3D-model NPC for the Cold Open — a hooded figure (CharacterModel3D) that the player can examine
@@ -13,7 +14,13 @@ var model: CharacterModel3D
 
 func _ready() -> void:
 	super._ready()   # Interactable3D: joins group "interactable3d"
+	# A script hot-reload while the scene is open can re-fire _ready() on the same node without a
+	# fresh scene load — drop any previous preview model first so it doesn't double up.
+	var old := get_node_or_null("CharacterModel")
+	if old:
+		old.queue_free()
 	model = CharacterModel3D.new()
+	model.name = "CharacterModel"
 	model.robe_color = robe_color
 	add_child(model)
 

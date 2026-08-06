@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://cf3ox4t711t1k" path="res://threed/CameraRig3D.gd" id="2_cam"]
 [ext_resource type="PackedScene" path="res://threed/Player3D.tscn" id="3_player"]
 [ext_resource type="PackedScene" path="res://ui/DialogueUI.tscn" id="4_ui"]
+[ext_resource type="PackedScene" uid="uid://bgbgxtha2ygmg" path="res://city_gateway_gen_1.tscn" id="5_kxa4r"]
 
 [sub_resource type="Environment" id="env"]
 ambient_light_source = 2
@@ -28,14 +29,14 @@ shadow_enabled = true
 script = ExtResource("1_city")
 
 [node name="Player3D" parent="." unique_id=1222894539 instance=ExtResource("3_player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45.6, 415)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.6, 440)
 speed = 6.5
 gravity_enabled = true
 run_multiplier = 2.0
 fall_limit = -25.0
 
 [node name="SpawnFromColdOpen" type="Marker3D" parent="." unique_id=1222894540]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45.6, 415)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12.6, 440)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1027554488]
 transform = Transform3D(1, 0, 0, 0, 0.9, 0.44, 0, -0.44, 0.9, 0, 68, 445)
@@ -46,3 +47,6 @@ min_distance = 6.0
 max_distance = 70.0
 
 [node name="DialogueUI" parent="." unique_id=137242069 instance=ExtResource("4_ui")]
+
+[node name="city_gateway_gen1" parent="." unique_id=543589769 instance=ExtResource("5_kxa4r")]
+transform = Transform3D(21.922459, 0, 0, 0, 36.048763, 0, 0, 0, 27.499819, -0.14512485, 40.32556, 450.60443)

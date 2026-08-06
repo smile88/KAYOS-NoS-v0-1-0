@@ -1,3 +1,4 @@
+@tool
 extends CharacterBody3D
 class_name Player3D
 ## 3D-model player for the Cold Open: a CharacterBody3D whose body is a CharacterModel3D (a low-poly
@@ -46,11 +47,18 @@ var _last_safe := Vector3.ZERO
 
 
 func _ready() -> void:
-	add_to_group("player")               # so SceneManager can place us on a zone handoff
+	# A script hot-reload while the scene is open in the editor re-fires _ready() on the same node
+	# without a fresh scene load — drop any previous preview model first so it doesn't double up.
+	var old := get_node_or_null("Model")
+	if old:
+		old.queue_free()
 	model = CharacterModel3D.new()
 	model.name = "Model"
 	model.robe_color = robe_color
 	add_child(model)
+	if Engine.is_editor_hint():
+		return   # just show the figure standing at its spawn point; no movement/physics/groups
+	add_to_group("player")               # so SceneManager can place us on a zone handoff
 	_last_safe = global_position
 	if gravity_enabled:
 		floor_snap_length = 0.6          # stay glued descending ramps/steps
@@ -58,6 +66,8 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if Engine.is_editor_hint():
+		return
 	if event.is_action_pressed("interact") and not DialogueManager.is_active():
 		_try_interact()
 
@@ -81,6 +91,8 @@ func _try_interact() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if Engine.is_editor_hint():
+		return
 	if _rig == null:
 		_rig = get_tree().get_first_node_in_group("camera_rig") as CameraRig3D
 

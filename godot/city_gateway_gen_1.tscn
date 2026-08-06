@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bgbgxtha2ygmg"]
+
+[ext_resource type="PackedScene" uid="uid://bmqt1rsmm88bt" path="res://assets/environment_models/misc_background/city_gateway/city_gateway_gen1.glb" id="1_uwk37"]
+
+[node name="city_gateway_gen1" unique_id=543589769 instance=ExtResource("1_uwk37")]

@@ -1,3 +1,4 @@
+@tool
 extends Zone3D
 class_name Balcony3D
 ## Procedurally builds the Astra Thalas balcony as primitive meshes for the HD-2D 3D Cold Open
@@ -21,6 +22,8 @@ const SPAWN := Vector3(-6.0, 0.0, 2.6)
 
 
 func _ready() -> void:
+	if Engine.is_editor_hint():
+		_clear_generated_children()
 	_build_sky()
 	_build_substructure()
 	_build_platform()
@@ -123,17 +126,35 @@ func _build_city() -> void:
 			x += w + rng.randf_range(0.3, 1.2)
 
 
+## Meshy export's raw bounding-box height (metres, at import scale 1.0) — measured from the glb's
+## own accessor min/max, not a guess. Used to scale the model to the tower's real ~30 m height
+## (docs/Scale_Reference.md: "Cold Open ... Tower ~30 m tall") without distorting proportions.
+const TOWER_MODEL := "res://assets/environment_models/cold_open/tower_of_celestial_harmony/tower_of_celestial_harmony_tall_gen1.glb"
+const TOWER_MODEL_RAW_HEIGHT := 1.899447
+const TOWER_HEIGHT := 30.0
+
+
 func _build_tower() -> void:
-	# The Tower of Astra Thalas: a tall tapered spire behind the city with a lit apex.
-	var cyl := CylinderMesh.new()
-	cyl.top_radius = 0.6
-	cyl.bottom_radius = 2.4
-	cyl.height = 30.0
+	# The Tower of Celestial Harmony: real Meshy geometry (art/environment_models/cold_open/
+	# tower_of_celestial_harmony/), replacing the tapered-cylinder placeholder. The model is
+	# vertically centred on its own origin (like the placeholder cylinder was), so it drops in at
+	# the same position/pivot the primitive used — only the scale is new.
+	var mesh := _glb_mesh(TOWER_MODEL)
 	var mi := MeshInstance3D.new()
 	mi.name = "Tower"
-	mi.mesh = cyl
-	mi.position = Vector3(7.0, 30.0 * 0.5 - 4.0, -19.0)
-	mi.material_override = _mat(_tex(ART + "stone.png"), 3.0)
+	if mesh:
+		mi.mesh = mesh
+		var s := TOWER_HEIGHT / TOWER_MODEL_RAW_HEIGHT
+		mi.scale = Vector3(s, s, s)
+	else:
+		# Fallback so a missing/unimported asset degrades to the old placeholder, not a hole.
+		var cyl := CylinderMesh.new()
+		cyl.top_radius = 0.6
+		cyl.bottom_radius = 2.4
+		cyl.height = TOWER_HEIGHT
+		mi.mesh = cyl
+		mi.material_override = _mat(_tex(ART + "stone.png"), 3.0)
+	mi.position = Vector3(7.0, TOWER_HEIGHT * 0.5 - 4.0, -19.0)
 	add_child(mi)
 
 	# glowing apex
