@@ -1,0 +1,205 @@
+{
+  "id": "mq02_coil_recruitment",
+  "start": "coil_intro",
+  "nodes": {
+    "coil_intro": {
+      "speaker": "coil",
+      "portrait": "PO-007",
+      "text": "Elorin! Look at the board—don't look at me, look at the fourth inversion! If we don't treat the void as an absence, but as a reciprocal frequency with negative mass, the energy curve doesn't plateau—it loops! We don't just dampen the surge; we consume it!",
+      "choices": [
+        {
+          "text": "[Arcana Check] Coil, look at line seventeen. Your reciprocal frequency produces an asymptotic feedback spike at zero-point.",
+          "check": { "attr": "Arcana", "dc": 8, "uncertain": false },
+          "goto": "coil_arcana_pass",
+          "goto_fail": "coil_arcana_fail"
+        },
+        {
+          "text": "[Celerity Check] (Lunge forward and catch the destabilizing astral chalk core before it implodes above his desk.)",
+          "check": { "attr": "Celerity", "dc": 6, "uncertain": false },
+          "goto": "coil_celerity_pass",
+          "goto_fail": "coil_celerity_fail"
+        },
+        {
+          "text": "Breathe, Coil. Put the chalk down. How long have you been in this scriptorium?",
+          "goto": "coil_grounding"
+        }
+      ]
+    },
+    "coil_arcana_pass": {
+      "speaker": "coil",
+      "portrait": "PO-007",
+      "text": "...An asymptote. The energy doesn't dissipate; it folds into itself until the boundary tears. By the Song... it would create a localized singularity. You saw that in three seconds. That's why you were the master and I was the student.",
+      "set_flags": { "P1_COIL_LOYALTY": 1 },
+      "choices": [
+        {
+          "text": "You saw the potential; I saw the blast radius. That is why we work together.",
+          "goto": "coil_project_pitch"
+        }
+      ]
+    },
+    "coil_arcana_fail": {
+      "speaker": "coil",
+      "portrait": "PO-007",
+      "text": "No, no, the spike is buffered by the tertiary ring! Or... wait. Does the tertiary ring hold under negative mass? Let me re-calculate from the seventh root...",
+      "strain": 3,
+      "choices": [
+        {
+          "text": "Stop calculating and listen. We have a real containment project.",
+          "goto": "coil_project_pitch"
+        }
+      ]
+    },
+    "coil_celerity_pass": {
+      "speaker": "coil",
+      "portrait": "PO-007",
+      "text": "*Whoosh.* Whoa. That... would have singed my eyebrows off. And probably disintegrated three centuries of astronomical records. Nice reflexes, Elorin. Still quicker than anyone on the faculty.",
+      "set_flags": { "P1_COIL_LOYALTY": 1 },
+      "choices": [
+        {
+          "text": "Your brilliance is only useful to me if you remain in one piece.",
+          "goto": "coil_project_pitch"
+        }
+      ]
+    },
+    "coil_celerity_fail": {
+      "speaker": "coil",
+      "portrait": "PO-007",
+      "text": "*POP-CRACKLE!* Ow! My inkpot! And my sleeve! Bah, minor burns. The equations are untouched! Look at the curve, Elorin!",
+      "strain": 4,
+      "choices": [
+        {
+          "text": "Put some salve on that burn before you poison yourself with lunar copper.",
+          "goto": "coil_grounding"
+        }
+      ]
+    },
+    "coil_grounding": {
+      "speaker": "coil",
+      "portrait": "PO-007",
+      "text": "Four days? Five? Scribe Talindir brought me tea on Tuesday, or maybe that was last month. It doesn't matter. What matters is Northreach! They're saying the planar rift swallowed the mountain!",
+      "choices": [
+        {
+          "text": "It did. And Corel just authorized the Nullstone containment prototype.",
+          "goto": "coil_project_pitch"
+        }
+      ]
+    },
+    "coil_project_pitch": {
+      "speaker": "coil",
+      "portrait": "PO-007",
+      "text": "The Nullstone! You actually got the Conclave to sign off on the 37-page proposal? We get to build the absolute dampener? Tell me you're not joking, Elorin. If you're joking, I will drink this entire vial of chromatic reagent.",
+      "choices": [
+        {
+          "text": "It's real. But I need your spatial intuition to map the seven-fold planar manifold.",
+          "goto": "coil_reckless_debate"
+        },
+        {
+          "text": "[Acumen Check] We need to constrain the field, Coil. If your theoretical reach exceeds our physical containment, we will replicate Northreach inside Starfall.",
+          "check": { "attr": "Acumen", "dc": 7, "uncertain": false },
+          "goto": "coil_acumen_pass",
+          "goto_fail": "coil_acumen_fail"
+        },
+        {
+          "text": "[Voidweaver] I need you to push the math as far into the dark as it will go. We aren't building a gentle brake; we're building an absolute silence.",
+          "require_flag": { "P1_CLASS": "voidweaver" },
+          "goto": "coil_voidweaver_thrill"
+        }
+      ]
+    },
+    "coil_acumen_pass": {
+      "speaker": "coil",
+      "portrait": "PO-007",
+      "text": "You're right. I get intoxicated by the elegance of the proof and forget that someone has to stand in the room with the physical stone. I'll build safety baffles into every step of the manifold.",
+      "set_flags": { "P1_COIL_LOYALTY": 2 },
+      "choices": [
+        {
+          "text": "Good. Safety is the entire purpose of the work.",
+          "goto": "coil_finalize"
+        }
+      ]
+    },
+    "coil_acumen_fail": {
+      "speaker": "coil",
+      "portrait": "PO-007",
+      "text": "You're too cautious, Elorin! If we throttle the input to make it 'safe,' the matrix won't have the capacity to swallow a catastrophic surge when a true breach occurs!",
+      "choices": [
+        {
+          "text": "Better a controlled threshold than an unchained singularity.",
+          "goto": "coil_reckless_debate"
+        }
+      ]
+    },
+    "coil_voidweaver_thrill": {
+      "speaker": "coil",
+      "portrait": "PO-007",
+      "text": "An absolute silence... Yes! That's what the old masters never had the courage to say. Why negotiate with the planar storm when you can extinguish its breath? I knew you still had the Umbraveil fire in you!",
+      "set_flags": { "P1_COIL_LOYALTY": 3 },
+      "choices": [
+        {
+          "text": "Let us prepare the manifold diagrams. Meet me at the Vault.",
+          "goto": "coil_finalize"
+        }
+      ]
+    },
+    "coil_reckless_debate": {
+      "speaker": "coil",
+      "portrait": "PO-007",
+      "text": "Listen to me, Elorin. If we link the sphere to the city's ambient harmonic conduit, we don't even need manual triggers. The moment the Song wavers, the Nullstone can automatically drink the dissonance!",
+      "choices": [
+        {
+          "text": "Never. An automatic trigger removes ethical human oversight. It must always require dual-key authorization.",
+          "goto": "coil_restrained",
+          "set_flags": { "P1_COIL_LOYALTY": 2 }
+        },
+        {
+          "text": "An intriguing concept... but we test the manual containment first.",
+          "goto": "coil_tempted",
+          "set_flags": { "P1_COIL_LOYALTY": 1 }
+        }
+      ]
+    },
+    "coil_restrained": {
+      "speaker": "coil",
+      "portrait": "PO-007",
+      "text": "Dual keys... You always were the anchor that kept my kites from flying into the sun. Very well. I'll design the interface with physical key locks and manual fail-breakers.",
+      "choices": [
+        {
+          "text": "That is why I chose you. Pack your theorems.",
+          "goto": "coil_finalize"
+        }
+      ]
+    },
+    "coil_tempted": {
+      "speaker": "coil",
+      "portrait": "PO-007",
+      "text": "You won't regret keeping an open mind on this. I'll draft both schematic branches. When you see the response times on the automatic feed, you'll see why it's the future.",
+      "choices": [
+        {
+          "text": "We will see. Come to the Vault.",
+          "goto": "coil_finalize"
+        }
+      ]
+    },
+    "coil_finalize": {
+      "speaker": "coil",
+      "portrait": "PO-007",
+      "text": "I'm rolling up the parchment right now. Who else is on the team? Please tell me you didn't bring that haughty Solari envoy from the Dawnspire...",
+      "choices": [
+        {
+          "text": "Sera is handling the structural enchantments. Play nice with her.",
+          "goto": "coil_end"
+        }
+      ]
+    },
+    "coil_end": {
+      "speaker": "coil",
+      "portrait": "PO-007",
+      "text": "A Solari and a Terran in the same room with void theory. This is either going to save the world or produce the most beautiful explosion in five hundred years. I'll see you at the Vault!",
+      "advance_quest": {
+        "id": "mq02_assembly",
+        "stage": 4,
+        "desc": "Coil recruited. Proceed to the Dawnspire Embassy to confer with Sera."
+      }
+    }
+  }
+}

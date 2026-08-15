@@ -1,0 +1,100 @@
+{
+  "id": "sq05_bedrock_echoes",
+  "start": "borak_intro",
+  "nodes": {
+    "borak_intro": {
+      "speaker": "borak",
+      "portrait": "PO-014",
+      "text": "Put your hand against that basalt rib, scholar. Feel that? That's not the mining picks. That's a pulse coming from two hundred paces below the lake bed. Deep rock shouldn't hum.",
+      "start_quest": {
+        "id": "sq05_bedrock_echoes",
+        "title": "Bedrock Echoes",
+        "desc": "Investigate seismic acoustic anomalies in the deepest quarry shafts beneath Starfall.",
+        "category": "side",
+        "stages": [
+          "Speak with Miner Borak in the Under-Terraces basalt shafts",
+          "Locate the acoustic anomaly vibrating through the bedrock",
+          "Stabilize the seismic shear plane"
+        ]
+      },
+      "choices": [
+        {
+          "text": "[Acumen Check] That rhythm matches the containment pulse from the central island, refracted through fault line four.",
+          "check": {
+            "attr": "Acumen",
+            "dc": 7,
+            "uncertain": false
+          },
+          "goto": "borak_acumen_pass",
+          "goto_fail": "borak_acumen_fail"
+        },
+        {
+          "text": "[Resilience Check] Let me descend into the lower pit and inspect the fissure myself.",
+          "check": {
+            "attr": "Resilience",
+            "dc": 7,
+            "uncertain": false
+          },
+          "goto": "borak_resilience_pass",
+          "goto_fail": "borak_explain"
+        },
+        {
+          "text": "How long has the rock been singing like this?",
+          "goto": "borak_explain"
+        }
+      ]
+    },
+    "borak_explain": {
+      "speaker": "borak",
+      "portrait": "PO-014",
+      "text": "Three days now. Ever since the Archmages started spinning up the test apparatus. The elven towers up top don't feel it, but down here, we're the ones under the anvil.",
+      "choices": [
+        {
+          "text": "We need to install geomantic shunts to disperse the load.",
+          "goto": "borak_resolve"
+        }
+      ]
+    },
+    "borak_acumen_pass": {
+      "speaker": "borak",
+      "portrait": "PO-014",
+      "text": "Refracted resonance? Ha! So your big machine is shaking our bedrock like a dried gourd. At least now we know which struts need shoring up.",
+      "choices": [
+        {
+          "text": "Mark the fault nodes and drive reinforcing wedges.",
+          "goto": "borak_resolve"
+        }
+      ]
+    },
+    "borak_acumen_fail": {
+      "speaker": "borak",
+      "portrait": "PO-014",
+      "text": "Whatever fancy words you call it, if that seam splits, half of Terrace Four drops into the lower mines.",
+      "choices": [
+        {
+          "text": "Let's brace the primary archway immediately.",
+          "goto": "borak_resolve"
+        }
+      ]
+    },
+    "borak_resilience_pass": {
+      "speaker": "borak",
+      "portrait": "PO-014",
+      "text": "You've got steady footing for a robed scholar. Most of your high-terrace peers get dizzy past the first ladder. Look down there\u2014the crack is weeping star-slike.",
+      "choices": [
+        {
+          "text": "Seal the weeping crack with geomantic cement.",
+          "goto": "borak_resolve"
+        }
+      ]
+    },
+    "borak_resolve": {
+      "speaker": "borak",
+      "portrait": "PO-014",
+      "text": "The hum is dampening out. Good work, Elorin. The deep-wrights won't forget that you came down into the dirt to fix what your towers caused.",
+      "set_flags": {
+        "SQ05_BEDROCK_RESOLVED": true
+      }
+    }
+  }
+}

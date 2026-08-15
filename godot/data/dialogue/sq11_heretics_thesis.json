@@ -1,0 +1,94 @@
+{
+  "id": "sq11_heretics_thesis",
+  "start": "morwen_intro",
+  "nodes": {
+    "morwen_intro": {
+      "speaker": "morwen",
+      "portrait": "PO-014",
+      "text": "Close the stack door, Elorin. If the Ilmyra inquisitors see this folio, they won't just burn the parchment\u2014they will unbind my academic credentials. I have found the lost mathematical proofs of Archmage Varis.",
+      "start_quest": {
+        "id": "sq11_heretics_thesis",
+        "title": "The Heretic's Thesis",
+        "desc": "Recover and evaluate a banned theoretical treatise on void resonance hidden in House Ilmyra.",
+        "category": "side",
+        "stages": [
+          "Confront Scholar Morwen in the Ilmyra restricted stacks",
+          "Decipher the coded void-acoustic theorem",
+          "Choose whether to preserve or suppress the manuscript"
+        ]
+      },
+      "choices": [
+        {
+          "text": "[Acumen Check] Varis proved that the void is not empty space\u2014it is an unvibrated medium with its own harmonic tension.",
+          "check": {
+            "attr": "Acumen",
+            "dc": 8,
+            "uncertain": false
+          },
+          "goto": "morwen_acumen_pass",
+          "goto_fail": "morwen_acumen_fail"
+        },
+        {
+          "text": "Why was Varis cast out by the Conclave eight centuries ago?",
+          "goto": "morwen_explain"
+        },
+        {
+          "text": "This research is dangerously close to what we are attempting with the Nullstone.",
+          "goto": "morwen_debate"
+        }
+      ]
+    },
+    "morwen_explain": {
+      "speaker": "morwen",
+      "portrait": "PO-014",
+      "text": "Because he argued that the Elder Song could be silenced! The Solari called it blasphemy. But looking at the Northreach reports, he wasn't predicting catastrophe\u2014he was warning us!",
+      "choices": [
+        {
+          "text": "Let me examine the equations for void containment.",
+          "goto": "morwen_acumen_pass"
+        }
+      ]
+    },
+    "morwen_debate": {
+      "speaker": "morwen",
+      "portrait": "PO-014",
+      "text": "Exactly! If your containment team works from flawed assumptions about void behavior, your prototype will fail under load.",
+      "choices": [
+        {
+          "text": "Then we must preserve these folios in secret.",
+          "goto": "morwen_resolve"
+        }
+      ]
+    },
+    "morwen_acumen_pass": {
+      "speaker": "morwen",
+      "portrait": "PO-014",
+      "text": "You understand! Look at theorem seven\u2014the decay rate resolves as a logarithmic spiral rather than a linear drop. This changes everything.",
+      "choices": [
+        {
+          "text": "Integrate Varis's spiral decay theorem into the Nullstone calculations.",
+          "goto": "morwen_resolve"
+        }
+      ]
+    },
+    "morwen_acumen_fail": {
+      "speaker": "morwen",
+      "portrait": "PO-014",
+      "text": "The cipher is dense, but the core geometry is clear. We cannot allow House Ilmyra to erase this knowledge.",
+      "choices": [
+        {
+          "text": "Smuggle the copy to the Academy Theory Wings.",
+          "goto": "morwen_resolve"
+        }
+      ]
+    },
+    "morwen_resolve": {
+      "speaker": "morwen",
+      "portrait": "PO-014",
+      "text": "The manuscript is transcribed and safe. Whatever happens to me, the truth of the void's geometry survives in your hands, Elorin.",
+      "set_flags": {
+        "SQ11_THESIS_RESOLVED": true
+      }
+    }
+  }
+}

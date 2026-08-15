@@ -1,0 +1,219 @@
+{
+  "id": "mq02_durak_recruitment",
+  "start": "durak_intro",
+  "nodes": {
+    "durak_intro": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "Mind your boots, Elf. The slurry in this trench conducts thirty thousand oscillations a second. If you step in it with silk slippers, it'll shake the marrow right out of your shins.",
+      "choices": [
+        {
+          "text": "I wear boiled leather when I walk the foundations, Master Ironthought. The Song echoes deep down here.",
+          "goto": "durak_reception"
+        },
+        {
+          "text": "[Resilience Check] (Stand motionless in the resonant vibrations without bracing against the wall.)",
+          "check": { "attr": "Resilience", "dc": 7, "uncertain": false },
+          "goto": "durak_resilience_pass",
+          "goto_fail": "durak_resilience_fail"
+        },
+        {
+          "text": "I am Elorin Voidweaver. I need the finest geomancer in Starfall.",
+          "goto": "durak_blunt"
+        }
+      ]
+    },
+    "durak_resilience_pass": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "Hah. Good stance. Most surface mages wobble like reeds in a freshet the second they feel the deep pulse. You've spent time around heavy stone, Voidweaver.",
+      "set_flags": { "P1_DURAK_TRUST": 1 },
+      "choices": [
+        {
+          "text": "Umbraveil is built into mountain roots. I know the weight of granite.",
+          "goto": "durak_basin_talk"
+        }
+      ]
+    },
+    "durak_resilience_fail": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "Careful, grab the iron rail! Told you. The surface is all filigree and starlight; down here, the earth remembers every pound of pressure your pretty city puts on it.",
+      "strain": 3,
+      "choices": [
+        {
+          "text": "I can handle the pressure. Let's talk about the containment matrix.",
+          "goto": "durak_basin_talk"
+        }
+      ]
+    },
+    "durak_reception": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "At least you have sense enough not to dress for a ballroom. What brings an Archmage of the Academy down to the omitted city? Did a drain clog under your observatory?",
+      "choices": [
+        {
+          "text": "I came to hear your critique of our containment proposal. Corel said you called our ward design 'childish.'",
+          "goto": "durak_basin_talk"
+        }
+      ]
+    },
+    "durak_blunt": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "'Finest geomancer.' Words are cheap above ground, Voidweaver. Down here, stone doesn't listen to compliments, and it doesn't give a damn about Conclave degrees.",
+      "choices": [
+        {
+          "text": "Then listen to the problem: Northreach broke our seals.",
+          "goto": "durak_basin_talk"
+        }
+      ]
+    },
+    "durak_basin_talk": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "I called it childish because it is. You elves see a raging torrent of planar energy and what do you do? You weave silk nets and try to redirect the river. You build complex deflectors, mirror prisms, harmonic dampers. When a river surges, you don't redirect it. You build a basin.",
+      "choices": [
+        {
+          "text": "[Acumen Check] A basin doesn't fight the mass; it provides a negative volume that holds the excess until the energy equalizes.",
+          "check": { "attr": "Acumen", "dc": 8, "uncertain": false },
+          "goto": "durak_acumen_pass",
+          "goto_fail": "durak_acumen_fail"
+        },
+        {
+          "text": "Explain how Terran geomancy would contain a void anomaly.",
+          "goto": "durak_explanation"
+        },
+        {
+          "text": "[Vigor Check] (Take his iron tuning maul and strike the bedrock anchor at the precise 45-degree harmonic node.)",
+          "check": { "attr": "Vigor", "dc": 6, "uncertain": false },
+          "goto": "durak_vigor_pass",
+          "goto_fail": "durak_vigor_fail"
+        }
+      ]
+    },
+    "durak_acumen_pass": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "Aye! Exactly! You give the pressure a bottomless well to fall into. The bedrock of Starfall has deep subterranean basalt pockets that haven't shifted in ten thousand years. If we anchor the Nullstone casing into that bedrock, the earth itself drinks the backlash.",
+      "set_flags": { "P1_DURAK_TRUST": 2 },
+      "choices": [
+        {
+          "text": "Will you forge that casing and anchor the pylons for us?",
+          "goto": "durak_terms"
+        }
+      ]
+    },
+    "durak_acumen_fail": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "You're still thinking like a weaver, Elorin. It's not about complex equalization; it's about brute cubic containment and density. Stone absorbs what light cannot bend.",
+      "choices": [
+        {
+          "text": "Then teach us how to build the basin.",
+          "goto": "durak_terms"
+        }
+      ]
+    },
+    "durak_explanation": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "We don't try to out-sing the planar storm. We wrap the core in dense, cold basalt and obsidian, laced with void-cast iron bands. We anchor four massive grounding pylons straight into the caldera's root. When the surge hits, it doesn't shatter the room—it thumps into the planet and dies.",
+      "choices": [
+        {
+          "text": "It sounds indestructible. But can it handle the celestial frequency shift?",
+          "goto": "durak_terms"
+        }
+      ]
+    },
+    "durak_vigor_pass": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "*CLANG—THUUUM.* Look at that clean bell-tone! Not a single hairline rattle in the seam. You've got iron in your wrist, girl. Fine. You've earned a straight answer.",
+      "set_flags": { "P1_DURAK_TRUST": 2 },
+      "choices": [
+        {
+          "text": "Join the project, Durak. We need your hands on the anchor forge.",
+          "goto": "durak_terms"
+        }
+      ]
+    },
+    "durak_vigor_fail": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "*CLANK-screeech.* Off-center! You nearly chipped the calibration groove. Leave the striking to those born with stone in their blood.",
+      "choices": [
+        {
+          "text": "Fair enough. That's why I need you on the team.",
+          "goto": "durak_terms"
+        }
+      ]
+    },
+    "durak_terms": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "I'll join under three conditions: First, no Solari gilded nonsense on the load-bearing struts. Second, my deep-wright crew gets double rations and exemption from the night toll. Third, if your sphere starts whining like a dying star, I have the authority to drop the dead-weight shutters and bury it in twenty tons of slag.",
+      "choices": [
+        {
+          "text": "Agreed on all counts. Safety over aesthetics, always.",
+          "goto": "durak_accepted",
+          "set_flags": { "P1_DURAK_TRUST": 3 }
+        },
+        {
+          "text": "The rations and authority are yours. But Sera needs structural interfaces for harmonic tuning.",
+          "goto": "durak_compromise",
+          "set_flags": { "P1_DURAK_TRUST": 2 }
+        },
+        {
+          "text": "[Voidweaver] If it whines, Durak, it means it's working. But I will give you the manual cutoff keys.",
+          "require_flag": { "P1_CLASS": "voidweaver" },
+          "goto": "durak_voidweaver_deal"
+        }
+      ]
+    },
+    "durak_compromise": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "As long as the sun-elf doesn't etch filigree across my shear lines, we won't come to blows. I'll haul the basalt slabs to the Academy Vault by tomorrow sunrise.",
+      "choices": [
+        {
+          "text": "Thank you, Durak. See you at the vault.",
+          "goto": "durak_end"
+        }
+      ]
+    },
+    "durak_voidweaver_deal": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "You void-weavers have cold iron in your souls. Manual cutoff in my hand, and I'll forge you a cradle that could hold a falling moon.",
+      "set_flags": { "P1_DURAK_TRUST": 3 },
+      "choices": [
+        {
+          "text": "A cradle for a star. Let us begin.",
+          "goto": "durak_end"
+        }
+      ]
+    },
+    "durak_accepted": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "A leader who values ballast over brass. That's rare in Starfall. I'll get the heavy forge fired up. We start casting the primary ring immediately.",
+      "choices": [
+        {
+          "text": "I will see you in the Vault.",
+          "goto": "durak_end"
+        }
+      ]
+    },
+    "durak_end": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "Take the hydraulic lift back up, Elorin. And tell that theorist Coil if he drops any floating mathematical chalk in my conduit trenches, I'll grind it into mortar.",
+      "advance_quest": {
+        "id": "mq02_assembly",
+        "stage": 3,
+        "desc": "Durak recruited. Proceed to the Scriptorium to recruit Coil."
+      }
+    }
+  }
+}

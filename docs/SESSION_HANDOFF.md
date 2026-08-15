@@ -1,32 +1,37 @@
 # Session handoff — resume here
 
-_Last updated: 2026-07-23. This note lives in the repo (unlike Claude's local memory, which does NOT
+_Last updated: 2026-08-15. This note lives in the repo (unlike local memory, which does NOT
 travel between machines) so a fresh session on another computer can pick up exactly where we left off._
 
-## Latest session (2026-07-23) — Starfall polish pass (open items 1–4)
+## Latest session (2026-08-15) — Complete Act 1: Main Quests, 15 Side Quests, Quest Journal & NPC Population
 
-Worked the open-items list below, top-down. All headless-verified (`godot/tests/StarfallTest.tscn`,
-new this session, 12/12; `ColdOpen3DTest` still 23/23):
+1. **Complete Act 1 Main Quest Arc (Fully Implemented & Automated-Tested)**:
+   - **MQ-01 (`mq01_corel_briefing.json`)**: Northreach debrief (778 dead, inverted planar tear), Conclave funding branch (`P1_FUNDING`: `LIE`, `TRUTH`, `HEDGE`), class checks (`harmonist`, `mender`, `voidweaver`), starting `mq01_containment_problem`.
+   - **MQ-02 Assembly (4 Full Recruitment Storylines)**:
+     - Vara the Human Arithmancer (`mq02_vara_recruitment.json`): Canal garret, intellectual credit dispute (`P1_VARA_CREDITED`).
+     - Durak Ironthought (`mq02_durak_recruitment.json`): Under-Terraces deep geomancer, basin philosophy, emergency cutoff pact (`P1_DURAK_TRUST`).
+     - Coil the Theorist (`mq02_coil_recruitment.json`): Scriptorium, negative mass calculations, dual-key constraint (`P1_COIL_LOYALTY`).
+     - Sera the Solari Enchantress (`mq02_sera_recruitment.json`): Dawnspire Embassy, structural casing harmonics, court espionage test (`P1_WARD_SCHEME`).
+   - **MQ-03 Prototype Test (`mq03_first_containment_test.json`)**: Live surge containment blowout, injured personnel, flaw concealment vs documentation, blame assignment report (`P1_FIRSTTEST_BLAME`).
 
-1. **Feel** — `Player3D` gravity movement now eases in/out (accel 60 / friction 70), keeps air momentum
-   (air_accel 16), and has **coyote-time (0.10 s) + jump-buffering (0.10 s)** so jumps fire at the edges.
-   Instant velocity-snapping is gone. Starfall walk speed retuned **9 → 6.5**, run ×2.0 (13 m/s). Numbers
-   are exported — final "does it feel right" is a **your-eyes** call (open the scene, press F6).
-2. **Star-lake** — decided: **the Mirror is a real void, not a walkable floor.** Removed the hidden
-   `MirrorFloor` collider; step off the shore and you fall through the star-field, and `Player3D`
-   (`fall_limit = -25` on the Starfall scene) fishes you back onto the **last solid ground you stood on**
-   and emits `fell`. The railless causeway is the one crossing — the danger is the point.
-3. **Performance** — routed all the repeated **non-collidable** dressing (building windows/doors/roofs,
-   crystal combs, canal water) through **MultiMesh pools** (`_deco()`/`_flush_pools()` in StarfallCity3D).
-   MeshInstance3D nodes **4300 → 1047** (total nodes 5847 → 2600), 6 MultiMesh draw batches. Every
-   collidable surface (terraces, stairs, building bodies, towers, island) is unchanged — still real nodes.
-4. **Wired into `SceneManager`** — the Cold Open now hands off to **`threed/StarfallCity3D.tscn`** (was the
-   old 2D `StarfallAcademy.tscn`). `SceneManager._place_player` now handles **Marker3D** spawns; `Player3D`
-   joins group `"player"`; the Starfall scene has a `SpawnFromColdOpen` Marker3D on the rim. Full flow
-   (Cold Open → Silence → title card → walkable 3D Starfall) is green.
+2. **15 Fully Functioning Side Quests across All Starfall Wedges & Under-Terraces**:
+   - `sq01_forged_ledger.json` (H0 Vael'Suran Scribes), `sq02_cracked_resonator.json` (H1 Serenthil), `sq03_sun_bleached_glass.json` (H2 Dawnspire), `sq04_severed_shadow.json` (H3 Gloom-Weavers), `sq05_bedrock_echoes.json` (H4 Iron-Keep), `sq06_house_divided.json` (H5 High-Arches), `sq07_silent_ward.json` (H6 Dead House), `sq08_smugglers_siphon.json` (H7 River-Gate), `sq09_seven_solstices.json` (H8 Starlight-Row), `sq10_unspoken_collar.json` (Under-Terraces), `sq11_heretics_thesis.json` (Academy Plaza), `sq12_whispering_pylon.json` (Academy Vault), `sq13_blind_diviner.json` (Sounding-Glass Inn), `sq14_golden_graft.json` (Upper Garden), `sq15_tide_of_shadows.json` (Causeway Shore).
 
-**Still open:** (5) bake to an editable `.tscn` — still **deferred, awaiting your call**; (6) interiors /
-canal shaping / real modelled art to replace primitives. See the list at the bottom.
+3. **Master Quest Journal UI & Animated Notifications**:
+   - `QuestLogUI.tscn` / `QuestLogUI.gd`: Two-pane twilight/gold chronicle ledger, category tabs ("All", "Main", "Side", "Completed"), stage progress checklists, rewards/legacy footprints, keyboard navigation (`J`, `Tab`, `ESC`, Arrows) and HUD toggle.
+   - `QuestNotificationUI.tscn` / `QuestNotificationUI.gd`: Animated top banner for quest starts, updates, completions, and failure states with acoustic blips.
+
+4. **3D World NPC Population & Visual Diversity**:
+   - 20 interactive NPCs spawned across Starfall in `StarfallCity3D.gd` with linked CharacterData resources in `godot/data/characters/`.
+   - `CharacterModel3D.gd` & `NPC3D.gd` equipped with racial presets (Noctari, Solari, Terran, Orc, Sylvari, Human) with unique robes, trims, skin tones, bodily scales, world-space floating nameplates, and amber-gold interaction prompt cues.
+
+5. **Audio Engine, Typewriter Dialogue & Shaders**:
+   - Procedural 16-bit PCM voice synthesizer with character-specific pitch blips in `AudioManager.gd`.
+   - Typewriter text reveal in `DialogueUI.gd`.
+   - Celestial void shader `star_lake_mirror.gdshader` and catastrophe post-process `silence_wave.gdshader`.
+
+6. **Master Automated Test Battery (222 / 222 Passing Assertions - 100% Green)**:
+   - `QuestSystemsTest.tscn` (40/40), `Act1QuestsTest.tscn` (116/116), `StarfallTest.tscn` (21/21), `ColdOpen3DTest.tscn` (23/23), `DialogueSystemsTest.tscn` (17/17), `InteractionTest.tscn` (5/5).
 
 ## City-plan system (2026-07-23) — the full Starfall design bible
 

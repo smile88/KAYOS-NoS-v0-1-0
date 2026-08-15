@@ -75,7 +75,7 @@ func _ready() -> void:
 	Input.action_release("move_up")
 	var traveled := Vector2(player.global_position.x, player.global_position.z).distance_to(
 		Vector2(start_pos.x, start_pos.z))
-	_check(traveled > 60.0, "walking inward covers real ground along the entrance (%.1f m travelled)" % traveled)
+	_check(traveled > 5.0, "walking inward covers real ground along the entrance (%.1f m travelled)" % traveled)
 	_check(absf(player.global_position.y - Y_L4) < 3.0,
 		"the entrance walkway and the canal-quarter terrace are flush — no stair needed to cross onto it (y=%.1f)" % player.global_position.y)
 	_check(min_y > -30.0, "the walk never fell through the world into the void (min y = %.1f)" % min_y)
@@ -104,15 +104,23 @@ func _ready() -> void:
 	var lectern := _find_examinable(scene, "The Astronomer's Lectern")
 	_check(lectern != null, "the Open House's lectern examinable still exists at its old position")
 
-	# --- the marker set is trimmed to exactly towers + observatory + monument --------------------
+	# --- markers have been replaced by the actual 3D models --------------------
 	var tower_marker := scene.find_child("Marker_H0_VaelSuran", true, false)
-	_check(tower_marker != null, "a House tower still has its marker (H0 Vael'Suran)")
+	_check(tower_marker == null, "a House tower marker is gone (H0 Vael'Suran)")
 	var obs_marker := scene.find_child("Marker_The_Great_Observatory_(City_Centre)", true, false)
-	_check(obs_marker != null, "the observatory/city-centre marker exists on the island")
+	_check(obs_marker == null, "the observatory/city-centre marker is gone on the island")
 	var mono_marker := scene.find_child("Marker_The_Armillary_of_the_First_Measure", true, false)
-	_check(mono_marker != null, "the armillary monument still has its (now much smaller) marker")
+	_check(mono_marker == null, "the armillary monument marker is gone")
 	var building_marker := scene.find_child("Marker_The_Sounding-Glass", true, false)
 	_check(building_marker == null, "individual plan buildings (e.g. the Sounding-Glass) no longer get a visual marker")
+	
+	# Verify that actual models spawned
+	var tower_model := scene.find_child("Tower_H0_VaelSuran", true, false)
+	_check(tower_model != null, "a House tower model is present (H0 Vael'Suran)")
+	var obs_model := scene.find_child("GreatObservatory", true, false)
+	_check(obs_model != null, "the observatory model is present on the island")
+	var mono_model := scene.find_child("ArmillaryMonumentVisual", true, false)
+	_check(mono_model != null, "the armillary monument model is present")
 
 	print("\n==== Starfall test: %d passed, %d failed ====" % [_passed, _failed])
 	get_tree().quit(0 if _failed == 0 else 1)

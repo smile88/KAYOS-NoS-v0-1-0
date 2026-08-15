@@ -17,6 +17,7 @@ const FACTION_PLACEHOLDERS := {
 	CharacterData.Faction.ORC:     "res://art/placeholders/NPC_generic_orc.png",
 	CharacterData.Faction.TERRAN:  "res://art/placeholders/NPC_generic_terran.png",
 	CharacterData.Faction.HUMAN:   "res://art/placeholders/NPC_generic_human.png",
+	CharacterData.Faction.SYLVARI: "res://art/placeholders/NPC_generic_other.png",
 	CharacterData.Faction.OTHER:   "res://art/placeholders/NPC_generic_other.png",
 }
 

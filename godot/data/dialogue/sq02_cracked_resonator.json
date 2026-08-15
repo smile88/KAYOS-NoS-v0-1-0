@@ -1,0 +1,186 @@
+{
+  "id": "sq02_cracked_resonator",
+  "start": "orvath_intro",
+  "nodes": {
+    "orvath_intro": {
+      "speaker": "orvath",
+      "portrait": "PO-014",
+      "text": "Quiet! Step lightly on the catwalk! One false step and the vibration will shatter the ninth-hour chime. I am Master Bell-Smith Orvath, and right now I am staring at the end of my career.",
+      "start_quest": {
+        "id": "sq02_cracked_resonator",
+        "title": "The Cracked Resonator",
+        "desc": "Assist Master Bell-Smith Orvath in tuning the fractured Meridian Bell of House Serenthil to prevent a catastrophic sonic overload.",
+        "category": "side",
+        "stages": [
+          "Inspect the hairline resonant fracture on the Great Meridian Bell",
+          "Dampen the anomalous planar feedback and tune the alloy",
+          "Complete the harmonic stabilization"
+        ]
+      },
+      "choices": [
+        {
+          "text": "What happened to the chime, Master Orvath?",
+          "goto": "orvath_explain"
+        },
+        {
+          "text": "[Arcana Check] That's not metal fatigue. That micro-fracture is glowing with inverted planar feedback from the Northreach tear.",
+          "check": { "attr": "Arcana", "dc": 7, "uncertain": false },
+          "goto": "orvath_arcana_pass",
+          "goto_fail": "orvath_arcana_fail"
+        }
+      ]
+    },
+    "orvath_explain": {
+      "speaker": "orvath",
+      "portrait": "PO-014",
+      "text": "The Meridian Bell regulates every time-sigil in Starfall. Ever since the distant tremor last week, every time the clapper strikes the silver-bronze skirt, the note doesn't decay—it rings louder and louder, building a harmonic feedback loop. Look at that hairline crack along the lip!",
+      "choices": [
+        {
+          "text": "If it strikes the ninth bell during the festival, the entire bell tower will collapse.",
+          "goto": "orvath_tuning_plan"
+        }
+      ]
+    },
+    "orvath_arcana_pass": {
+      "speaker": "orvath",
+      "portrait": "PO-014",
+      "text": "By the Song... you're Elorin Voidweaver! Yes! The bell is drinking ambient planar dissonance through the conduit network. It's vibrating at thirty-four thousand cycles, and my smiths can't get close enough with a chisel without getting their teeth rattled out!",
+      "choices": [
+        {
+          "text": "I can dampen the void feedback if you can weld the silver seam.",
+          "goto": "orvath_tuning_plan"
+        }
+      ]
+    },
+    "orvath_arcana_fail": {
+      "speaker": "orvath",
+      "portrait": "PO-014",
+      "text": "Whatever is causing it, the metal is ringing itself to death! If the Conclave hears that House Serenthil can't keep the hour, they'll seize our foundries.",
+      "choices": [
+        {
+          "text": "Let us examine the tuning procedure.",
+          "goto": "orvath_tuning_plan"
+        }
+      ]
+    },
+    "orvath_tuning_plan": {
+      "speaker": "orvath",
+      "portrait": "PO-014",
+      "text": "We need to execute a three-part harmonic stabilization. Someone must manually dampen the standing acoustic wave, apply a cold void-focus to draw out the excess planar charge, and strike the tuning node with exact counter-resonance. How do you propose we proceed?",
+      "advance_quest": {
+        "id": "sq02_cracked_resonator",
+        "stage": 2,
+        "desc": "Execute harmonic tuning on the Great Meridian Bell."
+      },
+      "choices": [
+        {
+          "text": "[Voidweaver] Let me weave a null-envelope directly around the fracture to swallow the acoustic feedback.",
+          "require_flag": { "P1_CLASS": "voidweaver" },
+          "goto": "orvath_voidweaver_pass"
+        },
+        {
+          "text": "[Harmonist] I will sing the counter-harmonic fourth octave to neutralize the resonance wave before it peaks.",
+          "require_flag": { "P1_CLASS": "harmonist" },
+          "goto": "orvath_harmonist_pass"
+        },
+        {
+          "text": "[Vigor Check] (Grip the acoustic tuning bar with raw physical strength and force the damping plate against the vibrating lip.)",
+          "check": { "attr": "Vigor", "dc": 6, "uncertain": false },
+          "goto": "orvath_vigor_pass",
+          "goto_fail": "orvath_vigor_fail"
+        },
+        {
+          "text": "[Acumen Check] Recalculate the thermal expansion ratio of the silver alloy and quench the crack with liquid quartz.",
+          "check": { "attr": "Acumen", "dc": 8, "uncertain": false },
+          "goto": "orvath_acumen_pass",
+          "goto_fail": "orvath_acumen_fail"
+        }
+      ]
+    },
+    "orvath_voidweaver_pass": {
+      "speaker": "orvath",
+      "portrait": "PO-014",
+      "text": "Look at the dark mist wrapping the crack! The ringing stopped instantly! The metal is cool to the touch! Hand me the silver flux—I'm sealing the seam right now!",
+      "choices": [
+        {
+          "text": "Strike the final alignment chime.",
+          "goto": "orvath_success"
+        }
+      ]
+    },
+    "orvath_harmonist_pass": {
+      "speaker": "orvath",
+      "portrait": "PO-014",
+      "text": "The pitch... it smoothed out like calm water! The dissonance resolved into a perfect pure meridian fifth! The weld is taking hold beautifully!",
+      "choices": [
+        {
+          "text": "Strike the final alignment chime.",
+          "goto": "orvath_success"
+        }
+      ]
+    },
+    "orvath_vigor_pass": {
+      "speaker": "orvath",
+      "portrait": "PO-014",
+      "text": "Hold it! Hold it steady against the roar! *CLANG-SSSSHHH.* The damping held! The silver flux has bonded into the fracture! Release the bar!",
+      "choices": [
+        {
+          "text": "Let us hear the true tone.",
+          "goto": "orvath_success"
+        }
+      ]
+    },
+    "orvath_vigor_fail": {
+      "speaker": "orvath",
+      "portrait": "PO-014",
+      "text": "The vibration tore the bar out of your hands! *DONGGG-SCREEECH!* The shockwave threw us both into the safety netting! But... the flux partially caught! We barely saved the bell!",
+      "strain": 8,
+      "choices": [
+        {
+          "text": "Is the structural integrity sufficient?",
+          "goto": "orvath_success_strained"
+        }
+      ]
+    },
+    "orvath_acumen_pass": {
+      "speaker": "orvath",
+      "portrait": "PO-014",
+      "text": "The liquid quartz crystalized into the alloy matrix at the exact eutectic temperature! The crack is sealed from within, stronger than the original cast!",
+      "choices": [
+        {
+          "text": "Strike the meridian chime.",
+          "goto": "orvath_success"
+        }
+      ]
+    },
+    "orvath_acumen_fail": {
+      "speaker": "orvath",
+      "portrait": "PO-014",
+      "text": "The quartz cooled too quickly! A lump of slag formed on the edge! Let me take a file to it... *scrape scrape*... It will hold, but the chime has a rough undertone now.",
+      "choices": [
+        {
+          "text": "At least the tower will not collapse.",
+          "goto": "orvath_success_strained"
+        }
+      ]
+    },
+    "orvath_success": {
+      "speaker": "orvath",
+      "portrait": "PO-014",
+      "text": "*BLLLLOOOOMMM.* Listen to that deep, pure, golden sustain. Not a single rattle. The hour of Starfall is secure. Here, take this Tuned Meridian Ingot and my personal seal of gratitude, Voidweaver. House Serenthil will not forget this.",
+      "complete_quest": {
+        "id": "sq02_cracked_resonator",
+        "rewards": { "xp": 60, "item": "item_tuned_meridian_ingot" }
+      }
+    },
+    "orvath_success_strained": {
+      "speaker": "orvath",
+      "portrait": "PO-014",
+      "text": "It tolls, though with a somber hollow rasp. The Conclave won't notice the difference, but my pride is bruised. Still, you saved my neck from the inquisitors. Take this stipend and my thanks.",
+      "complete_quest": {
+        "id": "sq02_cracked_resonator",
+        "rewards": { "xp": 40, "money": 50 }
+      }
+    }
+  }
+}

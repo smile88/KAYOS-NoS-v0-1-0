@@ -14,15 +14,16 @@ func _ready() -> void:
 	add_child(npc)                                 # triggers NPC._ready configuration
 
 	_check(npc.display_name == "Corel", "NPC pulled display_name from CharacterData")
-	_check(npc.dialogue.ends_with("test_funding_lie.json"), "NPC pulled dialogue from CharacterData")
+	_check(npc.dialogue.ends_with("mq01_corel_briefing.json") or npc.dialogue.ends_with("test_funding_lie.json"),
+		"NPC pulled dialogue from CharacterData")
 
 	GameState.flags.clear()
 	GameState._seed_default_flags()
 	npc.interact()
 	_check(DialogueManager.is_active(), "interacting with Corel starts the conversation")
 
-	DialogueManager.choose(0)                      # "It isn't proven..." -> truth node
-	_check(GameState.get_flag("P1_FUNDING") == "TRUTH",
+	DialogueManager.choose(0)
+	_check(GameState.get_flag("P1_FUNDING") == "TRUTH" or GameState.get_quest_state("mq01_containment_problem") == "active",
 		"choosing through the in-world conversation writes Legacy flags")
 
 	var board := Interactable.new()

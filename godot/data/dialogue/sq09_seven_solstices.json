@@ -1,0 +1,100 @@
+{
+  "id": "sq09_seven_solstices",
+  "start": "elias_intro",
+  "nodes": {
+    "elias_intro": {
+      "speaker": "elias",
+      "portrait": "PO-014",
+      "text": "Seven generations of my family have worked on this grand astrolabe for House Sabreth. Four hundred moving gears of silver-bronze, all tracking the celestial dance. But the seventh solstice dial is off by three arc-seconds, and the Conclave inspection is tomorrow!",
+      "start_quest": {
+        "id": "sq09_seven_solstices",
+        "title": "Seven Solstices",
+        "desc": "Assist Crafter Elias in calibrating a delicate multi-generational astrolabe for House Sabreth.",
+        "category": "side",
+        "stages": [
+          "Inspect the master astrolabe in the Sabreth brass workshop",
+          "Align the seven solstice gear trains",
+          "Correct the orbital deviation"
+        ]
+      },
+      "choices": [
+        {
+          "text": "[Acumen Check] The error isn't in your gears, Elias. It's the gravitational precession caused by the caldera's volcanic magma chambers.",
+          "check": {
+            "attr": "Acumen",
+            "dc": 7,
+            "uncertain": false
+          },
+          "goto": "elias_acumen_pass",
+          "goto_fail": "elias_acumen_fail"
+        },
+        {
+          "text": "[Celerity Check] Let me adjust the micro-escapement teeth with precision jeweller's tweezers.",
+          "check": {
+            "attr": "Celerity",
+            "dc": 7,
+            "uncertain": false
+          },
+          "goto": "elias_celerity_pass",
+          "goto_fail": "elias_explain"
+        },
+        {
+          "text": "Show me the differential gear train connecting the lunar and solar arms.",
+          "goto": "elias_explain"
+        }
+      ]
+    },
+    "elias_explain": {
+      "speaker": "elias",
+      "portrait": "PO-014",
+      "text": "Look at the main escapement arbor. Every time the winter solstice arm sweeps across the Great Bear constellation, the tension slips.",
+      "choices": [
+        {
+          "text": "We need to re-cut the counter-weight tension curve.",
+          "goto": "elias_resolve"
+        }
+      ]
+    },
+    "elias_acumen_pass": {
+      "speaker": "elias",
+      "portrait": "PO-014",
+      "text": "Volcanic precession! By the stars, of course! My grandfather calculated this for sea-level gravity, not the caldera rim!",
+      "choices": [
+        {
+          "text": "Apply the elevation correction constant to the gear ratios.",
+          "goto": "elias_resolve"
+        }
+      ]
+    },
+    "elias_acumen_fail": {
+      "speaker": "elias",
+      "portrait": "PO-014",
+      "text": "I've checked every tooth twice. If I can't find the deviation, Sabreth will strip our workshop charter.",
+      "choices": [
+        {
+          "text": "Let's calibrate the gears against tonight's actual star positions.",
+          "goto": "elias_resolve"
+        }
+      ]
+    },
+    "elias_celerity_pass": {
+      "speaker": "elias",
+      "portrait": "PO-014",
+      "text": "Incredible hand precision! You slipped the balance spring without scratching the enamel dial even once.",
+      "choices": [
+        {
+          "text": "Lock the set screw and test the sweep.",
+          "goto": "elias_resolve"
+        }
+      ]
+    },
+    "elias_resolve": {
+      "speaker": "elias",
+      "portrait": "PO-014",
+      "text": "Hear that clean, rhythmic ticking? Exactly on the second! House Sabreth will have the most accurate star-measure in the caldera. I am forever in your debt.",
+      "set_flags": {
+        "SQ09_ASTROLABE_RESOLVED": true
+      }
+    }
+  }
+}

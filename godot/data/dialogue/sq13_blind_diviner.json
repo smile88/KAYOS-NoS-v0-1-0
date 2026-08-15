@@ -1,0 +1,100 @@
+{
+  "id": "sq13_blind_diviner",
+  "start": "althor_intro",
+  "nodes": {
+    "althor_intro": {
+      "speaker": "althor",
+      "portrait": "PO-014",
+      "text": "I do not need eyes to know who stands before me, Elorin. The rings of the Armillary behind me sing of your footsteps\u2014and the great quiet you carry in your wake. The stars have begun their descent.",
+      "start_quest": {
+        "id": "sq13_blind_diviner",
+        "title": "The Blind Diviner",
+        "desc": "Interpret an apocalyptic celestial alignment foreseen by Diviner Althor at the Armillary monument.",
+        "category": "side",
+        "stages": [
+          "Listen to Diviner Althor's reading at the Armillary",
+          "Cross-reference the stellar alignment with historical star-charts",
+          "Formulate a response to the omens of the Silence"
+        ]
+      },
+      "choices": [
+        {
+          "text": "[Acumen Check] You speak of the Grand Conjunction of the Twin Suns. The orbital precession matches once every two thousand years.",
+          "check": {
+            "attr": "Acumen",
+            "dc": 7,
+            "uncertain": false
+          },
+          "goto": "althor_acumen_pass",
+          "goto_fail": "althor_acumen_fail"
+        },
+        {
+          "text": "[Magnetism Check] Diviner Althor, if you speak of catastrophe so openly in the public plaza, you will incite mass panic.",
+          "check": {
+            "attr": "Magnetism",
+            "dc": 7,
+            "uncertain": false
+          },
+          "goto": "althor_magnetism_pass",
+          "goto_fail": "althor_explain"
+        },
+        {
+          "text": "What do the rings tell you about our safeguard, Althor?",
+          "goto": "althor_explain"
+        }
+      ]
+    },
+    "althor_explain": {
+      "speaker": "althor",
+      "portrait": "PO-014",
+      "text": "They tell me that you build a cage for something that has no edges. You seek to save the light by giving the darkness a home. It is noble, and it will cost everything you cherish.",
+      "choices": [
+        {
+          "text": "A cost I am prepared to bear if the city endures.",
+          "goto": "althor_resolve"
+        }
+      ]
+    },
+    "althor_acumen_pass": {
+      "speaker": "althor",
+      "portrait": "PO-014",
+      "text": "You calculate what I perceive through touch and resonance. When the second sun passes behind the shadow-moon at the solstice, the music of Astra'Thalas will pause. That pause is what you must bridge.",
+      "choices": [
+        {
+          "text": "The Nullstone will hold the chord through the pause.",
+          "goto": "althor_resolve"
+        }
+      ]
+    },
+    "althor_acumen_fail": {
+      "speaker": "althor",
+      "portrait": "PO-014",
+      "text": "Do not dismiss the vision as astronomical arithmetic. The sky is alive, Elorin, and tonight it is holding its breath.",
+      "choices": [
+        {
+          "text": "I will heed your warning, Diviner.",
+          "goto": "althor_resolve"
+        }
+      ]
+    },
+    "althor_magnetism_pass": {
+      "speaker": "althor",
+      "portrait": "PO-014",
+      "text": "The people only hear the brass rings turning. They believe the sound is eternal. Perhaps it is kindness to let them celebrate one last solstice in peace.",
+      "choices": [
+        {
+          "text": "Let us keep the vigil between ourselves.",
+          "goto": "althor_resolve"
+        }
+      ]
+    },
+    "althor_resolve": {
+      "speaker": "althor",
+      "portrait": "PO-014",
+      "text": "Go then, Architect of the Void. Build your stone. The heavens turn, and when the silence falls, may your foundation hold.",
+      "set_flags": {
+        "SQ13_DIVINER_RESOLVED": true
+      }
+    }
+  }
+}

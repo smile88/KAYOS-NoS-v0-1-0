@@ -12,4 +12,4 @@ faction = 0
 portrait = ExtResource("3_portrait")
 sprite = ExtResource("2_sprite")
 default_dialogue = "res://data/dialogue/test_funding_lie.json"
-editor_notes = "Archmagister of containment, Starfall. Swap: drag cleaned CH-013 PNG into `sprite` and PO-011 into `portrait` — every placed Corel updates."
+editor_notes = "Archmagister of containment, Starfall. Decency worn thin by duty. Signs off on the safeguard he is too tired to fully check."

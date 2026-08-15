@@ -84,7 +84,11 @@ var _trim_mat: StandardMaterial3D    # dressed silver stone: plinths, cornices, 
 var _glow_mat: StandardMaterial3D    # emissive rooftop finials
 
 
+@export var is_baked := false
+
 func _ready() -> void:
+	if is_baked:
+		return
 	if Engine.is_editor_hint():
 		_clear_generated_children()
 		# _pools/_mpools accumulate transforms across a build pass; without resetting them a
@@ -109,6 +113,7 @@ func _ready() -> void:
 	_build_island()          # island base/plaza stays generated; only the observatory keeps a marker
 	_build_open_house()      # examinable text only now, no visual marker
 	_build_interactables()
+	_spawn_act1_npcs()       # interactive Main Quest & Side Quest NPCs
 	_flush_mpools()          # bake every kit module (now just road tiles) into per-type MultiMeshes
 	_flush_pools()           # bake pooled decoration (now just canal water) into per-type MultiMeshes
 
@@ -268,6 +273,46 @@ func _place_plan_structure(s: Dictionary) -> bool:
 	var r := float(posd.get("r", 300.0))
 	var pos := Vector3(sin(a) * r, float(s.get("y_base", 0.0)), cos(a) * r)
 	var label := str(s.get("name", s.get("id", "?")))
+	
+	var type_str := str(s.get("type", "")).to_lower()
+	var model_path := ""
+	if "great house" in type_str:
+		model_path = "res://assets/environment_models/misc_background/official_establishment/official_establishment_gen1.glb"
+	elif "villa" in type_str or "bunk-hall" in type_str or "tenement" in type_str or "dwelling" in type_str or "terrace" in type_str or "lodging" in type_str or "post" in type_str:
+		model_path = "res://assets/environment_models/misc_background/cliffside_multistorey_building/cliffside_multistorey_building_gen1.glb"
+	elif "inn" in type_str or "taphouse" in type_str or "canteen" in type_str or "caravanserai" in type_str:
+		model_path = "res://assets/environment_models/common_buildings/tea_house/tea_house_gen1.glb"
+	elif "market" in type_str or "shop" in type_str:
+		model_path = "res://assets/environment_models/common_buildings/magic_emporium/magic_emporium_gen1.glb"
+	elif "workshop" in type_str or "manufactory" in type_str or "foundry" in type_str or "forge" in type_str or "press" in type_str:
+		model_path = "res://assets/environment_models/misc_background/crystal_forge/crystal_forge_gen1.glb"
+	elif "shrine" in type_str or "moon-pool" in type_str or "rotunda" in type_str:
+		model_path = "res://assets/environment_models/misc_background/rotunda/rotunda_gen1.glb"
+	elif "theatre" in type_str or "hall" in type_str:
+		model_path = "res://assets/environment_models/misc_background/outdoor_theatre/outdoor_theatre_gen1.glb"
+	elif "bath" in type_str or "wash-house" in type_str or "reservoir" in type_str:
+		model_path = "res://assets/environment_models/misc_background/pool_house/pool_house_gen1.glb"
+	elif "conduit" in type_str or "waterworks" in type_str or "power source" in type_str:
+		model_path = "res://assets/environment_models/misc_background/crystal_power_source/crystal_power_source_gen1.glb"
+	elif "gate" in type_str or "threshold" in type_str or "customs" in type_str:
+		model_path = "res://assets/environment_models/misc_background/city_gateway/city_gateway_gen1.glb"
+	elif "belfry" in type_str or "bell tower" in type_str:
+		model_path = "res://assets/environment_models/misc_background/bell_tower/bell_tower_gen1.glb"
+	elif "observatory" in type_str:
+		model_path = "res://assets/environment_models/misc_background/generic_tower/generic_tower_gen1.glb"
+	
+	if model_path != "":
+		var scene: PackedScene = load(model_path) as PackedScene
+		if scene:
+			var bldg: Node3D = scene.instantiate()
+			bldg.name = "Bldg_" + label.replace(" ", "_").replace("'", "")
+			bldg.position = pos
+			bldg.rotation.y = a + PI # Face inward to the lake
+			var sc := 0.9 + (randi() % 20) * 0.01 # deterministic-ish scale variation
+			bldg.scale = Vector3(sc, sc, sc) * BASE_GLB_SCALE
+			add_child(bldg)
+			_snap_to_ground(bldg)
+
 	var it := Interactable3D.new()
 	it.name = "IX_" + str(s.get("id", ""))
 	it.display_name = label
@@ -417,11 +462,17 @@ func _build_lake() -> void:
 	mi.name = "Mirror"
 	mi.mesh = disc
 	mi.position = Vector3(0, Y_LAKE, 0)
-	var m := StandardMaterial3D.new()
-	m.albedo_texture = _tex(ART + "star_dome.png")
-	m.uv1_scale = Vector3(6, 6, 1)
-	m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
-	mi.material_override = m
+	var sm := ShaderMaterial.new()
+	var sh: Shader = load("res://art/3d/shaders/star_lake_mirror.gdshader") as Shader
+	if sh:
+		sm.shader = sh
+		mi.material_override = sm
+	else:
+		var m := StandardMaterial3D.new()
+		m.albedo_texture = _tex(ART + "star_dome.png")
+		m.uv1_scale = Vector3(6, 6, 1)
+		m.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+		mi.material_override = m
 	add_child(mi)
 
 
@@ -494,6 +545,20 @@ const TOWER_HOUSES := [
 	"H5 Corvane", "H6 Dead House", "H7 Duskmere", "H8 Serenthil",
 ]
 
+const TOWER_MODELS := [
+	"res://assets/environment_models/rim_towers/H0_vael_suran/H0_vael_suran_gen1.glb",
+	"res://assets/environment_models/cold_open/tower_of_celestial_harmony/tower_of_celestial_harmony_tall_gen1.glb",
+	"res://assets/environment_models/rim_towers/H2_oravelle/H2_oravelle_gen1.glb",
+	"res://assets/environment_models/rim_towers/H3_sabreth/H3_sabreth_gen1.glb",
+	"res://assets/environment_models/rim_towers/H4_ilmyra/H4_ilmyra_gen1.glb",
+	"res://assets/environment_models/rim_towers/H5_corvane/H5_corvane_gen1.glb",
+	"res://assets/environment_models/rim_towers/H6_dead_house/H6_dead_house_gen1.glb",
+	"res://assets/environment_models/rim_towers/H7_duskmere/H7_duskmere_gen1.glb",
+	"res://assets/environment_models/rim_towers/H8_serenthil/H8_serenthil_gen1.glb",
+]
+
+
+const BASE_GLB_SCALE := 30.0
 
 func _build_towers() -> void:
 	for i in range(9):
@@ -503,7 +568,35 @@ func _build_towers() -> void:
 		# Invisible collision cylinder at the tower's real footprint (same as before this pass), so
 		# walking the rim already feels right before a real model is dropped in over the marker.
 		_invisible_collider_cyl(11.0, 40.0, base + Vector3(0, 20.0, 0), "TowerCollider%d" % i)
-		_marker(base, 11.0, TOWER_HOUSES[i], "tower")
+		
+		var tower_scene: PackedScene = load(TOWER_MODELS[i]) as PackedScene
+		if tower_scene:
+			var tower: Node3D = tower_scene.instantiate()
+			tower.name = "Tower_" + TOWER_HOUSES[i].replace(" ", "_").replace("'", "")
+			tower.position = base
+			tower.rotation.y = a + PI # point inward
+			tower.scale = Vector3.ONE * BASE_GLB_SCALE
+			
+			# Wedge Signatures
+			if i == 0: # Vael'Suran (Scholar/Water): Cyan
+				var light := OmniLight3D.new()
+				light.light_color = Color(0.2, 0.8, 1.0)
+				light.light_energy = 5.0
+				light.omni_range = 40.0
+				light.position = Vector3(0, 15.0, 0)
+				tower.add_child(light)
+			elif i == 8: # Serenthil (Industrial/Fire): Amber
+				var light := OmniLight3D.new()
+				light.light_color = Color(1.0, 0.6, 0.1)
+				light.light_energy = 5.0
+				light.omni_range = 40.0
+				light.position = Vector3(0, 15.0, 0)
+				tower.add_child(light)
+				
+			add_child(tower)
+			_snap_to_ground(tower)
+		else:
+			_marker(base, 11.0, TOWER_HOUSES[i], "tower")
 
 
 # --- habitation --------------------------------------------------------------
@@ -545,7 +638,17 @@ func _build_shore_plaza() -> void:
 	# ring), so it's "in line with, but not obstructing" the entrance: the first thing visible in the
 	# distance once the player reaches L4, near that level's far edge, per direction.
 	var mono_pos := Vector3(0, Y_L4, R_L4 - 20.0)
-	_marker(mono_pos, 3.0, "The Armillary of the First Measure", "monument")   # a centre-point, not a footprint
+	var mono_scene := load("res://assets/environment_models/misc_background/celestial_monument/celestial_monument_gen1.glb") as PackedScene
+	if mono_scene:
+		var monument: Node3D = mono_scene.instantiate()
+		monument.name = "ArmillaryMonumentVisual"
+		monument.position = mono_pos
+		monument.scale = Vector3.ONE * BASE_GLB_SCALE
+		add_child(monument)
+		_snap_to_ground(monument)
+	else:
+		_marker(mono_pos, 3.0, "The Armillary of the First Measure", "monument")   # a centre-point, not a footprint
+
 	var mono := Interactable3D.new()
 	mono.name = "ArmillaryMonument"
 	mono.display_name = "The Armillary of the First Measure"
@@ -585,19 +688,47 @@ func _build_island() -> void:
 	pmi.material_override = marble
 	add_child(pmi)
 
-	# --- the hero observatory (~110 m per CLAUDE.md) — centre-point marker only, same style as the
-	# monument's, since this point is both "the observatory" and the literal centre of the city ---
+	# --- the hero observatory (~110 m per CLAUDE.md) ---
 	_invisible_collider_cyl(22.0, 60.0, Vector3(0, Y_ISLAND + 30.0, 0), "ObservatoryCollider")
 	_invisible_collider_cyl(2.4, 34.0, Vector3(0, Y_ISLAND + 92.0, 0), "SpireCollider")
-	_marker(Vector3(0, Y_ISLAND, 0), 3.0, "The Great Observatory (City Centre)", "monument")
+	
+	var obs_scene := load("res://assets/environment_models/academy/great_observatory/great_observatory_gen1.glb") as PackedScene
+	if obs_scene:
+		var obs: Node3D = obs_scene.instantiate()
+		obs.name = "GreatObservatory"
+		obs.position = Vector3(0, Y_ISLAND, 0)
+		obs.scale = Vector3.ONE * BASE_GLB_SCALE
+		add_child(obs)
+		_snap_to_ground(obs)
+	else:
+		_marker(Vector3(0, Y_ISLAND, 0), 3.0, "The Great Observatory (City Centre)", "monument")
 
-	# --- two wings + moon-bridge (flanking the dome on ±X) — collision kept, marker dropped ---
+	# --- two wings + moon-bridge (flanking the dome on ±X) ---
 	for sx in [-1.0, 1.0]:
 		var wpos := Vector3(sx * 40.0, Y_ISLAND, 0)
 		_invisible_collider_cyl(9.0, 44.0, wpos + Vector3(0, 22.0, 0), "WingCollider")
+	
+	var wings_scene := load("res://assets/environment_models/academy/theory_wings_moonbridge/theory_wings_moonbridge_gen1.glb") as PackedScene
+	if wings_scene:
+		var wings: Node3D = wings_scene.instantiate()
+		wings.name = "TheoryWingsAndMoonBridge"
+		wings.position = Vector3(0, Y_ISLAND, 0)
+		wings.scale = Vector3.ONE * BASE_GLB_SCALE
+		add_child(wings)
+		_snap_to_ground(wings)
 
-	# --- the warded vault (back of the island, -Z) — collision kept, marker dropped ---
-	_invisible_collider_cyl(13.0, 18.0, Vector3(0, Y_ISLAND + 9.0, -40.0), "VaultCollider")
+	# --- the warded vault (back of the island, -Z) ---
+	var vault_pos := Vector3(0, Y_ISLAND, -40.0)
+	_invisible_collider_cyl(13.0, 18.0, vault_pos + Vector3(0, 9.0, 0), "VaultCollider")
+	
+	var vault_scene := load("res://assets/environment_models/misc_background/noctari_bank_vault/noctari_bank_vault_gen1.glb") as PackedScene
+	if vault_scene:
+		var vault: Node3D = vault_scene.instantiate()
+		vault.name = "WardedVault"
+		vault.position = vault_pos
+		vault.scale = Vector3.ONE * BASE_GLB_SCALE
+		add_child(vault)
+		_snap_to_ground(vault)
 
 	# --- gate-plaza fountain facing the causeway (+Z) — examinable only, no marker ---
 	var fnt := Interactable3D.new()
@@ -621,6 +752,36 @@ func _invisible_collider_cyl(radius: float, height: float, pos: Vector3, name: S
 	cs.shape = shape
 	body.add_child(cs)
 	add_child(body)
+
+
+func _snap_to_ground(node: Node3D) -> void:
+	var min_y := 99999.0
+	var meshes := _find_all_mesh_instances(node)
+	if meshes.is_empty():
+		return
+	
+	for mi in meshes:
+		var aabb := mi.get_aabb()
+		# Transform the AABB by the MeshInstance3D's local transform relative to the root node
+		# Since they might be nested, we should calculate the lowest point in the local space of 'node'
+		for i in range(8):
+			var pt := aabb.get_endpoint(i)
+			# Convert point from 'mi' local space to 'node' local space
+			var local_pt := node.global_transform.affine_inverse() * mi.global_transform * pt
+			if local_pt.y < min_y:
+				min_y = local_pt.y
+				
+	if min_y < 0.0 and min_y != 99999.0:
+		node.position.y -= min_y * node.scale.y
+
+
+func _find_all_mesh_instances(node: Node) -> Array[MeshInstance3D]:
+	var result: Array[MeshInstance3D] = []
+	if node is MeshInstance3D:
+		result.append(node)
+	for child in node.get_children():
+		result.append_array(_find_all_mesh_instances(child))
+	return result
 
 
 func _build_interactables() -> void:
@@ -651,3 +812,144 @@ func _build_interactables() -> void:
 		it.examine_text = it_d["text"]
 		it.position = it_d["pos"]
 		add_child(it)
+
+
+func _spawn_act1_npcs() -> void:
+	var npcs_data := [
+		# --- Act 1 Main Quest Cast ---
+		{
+			"tres": "res://data/characters/corel.tres",
+			"node_name": "NPC_Corel",
+			"pos": Vector3(-15.0, Y_ISLAND, -35.0),
+			"face": Vector3(0.0, 0.0, 1.0)
+		},
+		{
+			"tres": "res://data/characters/vara.tres",
+			"node_name": "NPC_Vara",
+			"pos": Vector3(87.4, Y_L4, 239.5),
+			"face": Vector3(-0.35, 0.0, -0.93)
+		},
+		{
+			"tres": "res://data/characters/durak.tres",
+			"node_name": "NPC_Durak",
+			"pos": Vector3(97.3, Y_UNDER, 230.3),
+			"face": Vector3(-0.4, 0.0, -0.9)
+		},
+		{
+			"tres": "res://data/characters/coil.tres",
+			"node_name": "NPC_Coil",
+			"pos": Vector3(35.0, Y_ISLAND, 5.0),
+			"face": Vector3(-1.0, 0.0, 0.0)
+		},
+		{
+			"tres": "res://data/characters/sera.tres",
+			"node_name": "NPC_Sera",
+			"pos": Vector3(-89.1, Y_L4, 244.2),
+			"face": Vector3(0.35, 0.0, -0.93)
+		},
+
+		# --- Act 1 Side Quest Cast (SQ-01 through SQ-15) ---
+		{
+			"tres": "res://data/characters/talindir_scribe.tres",
+			"node_name": "NPC_Talindir_Scribe",
+			"pos": Vector3(125.1, Y_L2, 342.8),
+			"face": Vector3(-0.35, 0.0, -0.93)
+		},
+		{
+			"tres": "res://data/characters/orvath_smith.tres",
+			"node_name": "NPC_Orvath_Smith",
+			"pos": Vector3(-142.2, Y_RIM, 389.8),
+			"face": Vector3(0.34, 0.0, -0.94)
+		},
+		{
+			"tres": "res://data/characters/lyris_envoy.tres",
+			"node_name": "NPC_Lyris_Envoy",
+			"pos": Vector3(364.3, Y_L2, -64.2),
+			"face": Vector3(-0.98, 0.0, 0.17)
+		},
+		{
+			"tres": "res://data/characters/sylas_apprentice.tres",
+			"node_name": "NPC_Sylas_Apprentice",
+			"pos": Vector3(268.5, Y_L3, 155.0),
+			"face": Vector3(-0.86, 0.0, -0.50)
+		},
+		{
+			"tres": "res://data/characters/borak_miner.tres",
+			"node_name": "NPC_Borak_Miner",
+			"pos": Vector3(0.0, Y_UNDER, -240.0),
+			"face": Vector3(0.0, 0.0, 1.0)
+		},
+		{
+			"tres": "res://data/characters/miriel_lady.tres",
+			"node_name": "NPC_Miriel_Lady",
+			"pos": Vector3(-266.8, Y_RIM, -317.9),
+			"face": Vector3(0.64, 0.0, 0.76)
+		},
+		{
+			"tres": "res://data/characters/reliquary_keeper.tres",
+			"node_name": "NPC_Reliquary_Keeper",
+			"pos": Vector3(-403.8, Y_RIM, -71.2),
+			"face": Vector3(0.98, 0.0, 0.17)
+		},
+		{
+			"tres": "res://data/characters/kael_dockhand.tres",
+			"node_name": "NPC_Kael_Dockhand",
+			"pos": Vector3(161.1, Y_L4, 191.2),
+			"face": Vector3(-0.64, 0.0, -0.76)
+		},
+		{
+			"tres": "res://data/characters/crafter_elias.tres",
+			"node_name": "NPC_Crafter_Elias",
+			"pos": Vector3(202.5, Y_L3, -241.3),
+			"face": Vector3(-0.64, 0.0, 0.76)
+		},
+		{
+			"tres": "res://data/characters/thrak_foreman.tres",
+			"node_name": "NPC_Thrak_Foreman",
+			"pos": Vector3(87.2, Y_UNDER, -244.9),
+			"face": Vector3(-0.33, 0.0, 0.94)
+		},
+		{
+			"tres": "res://data/characters/morwen_scholar.tres",
+			"node_name": "NPC_Morwen_Scholar",
+			"pos": Vector3(-126.5, Y_L2, -347.7),
+			"face": Vector3(0.34, 0.0, 0.94)
+		},
+		{
+			"tres": "res://data/characters/kendra_warden.tres",
+			"node_name": "NPC_Kendra_Warden",
+			"pos": Vector3(-272.8, Y_L3, 157.5),
+			"face": Vector3(0.86, 0.0, -0.50)
+		},
+		{
+			"tres": "res://data/characters/althor_diviner.tres",
+			"node_name": "NPC_Althor_Diviner",
+			"pos": Vector3(5.0, Y_L4, R_L4 - 22.0),
+			"face": Vector3(0.0, 0.0, 1.0)
+		},
+		{
+			"tres": "res://data/characters/vael_botanist.tres",
+			"node_name": "NPC_Vael_Botanist",
+			"pos": Vector3(202.9, Y_L3, 240.9),
+			"face": Vector3(-0.64, 0.0, -0.76)
+		},
+		{
+			"tres": "res://data/characters/gavin_bridgewarden.tres",
+			"node_name": "NPC_Gavin_Bridgewarden",
+			"pos": Vector3(4.0, Y_SHORE, R_SHORE - 4.0),
+			"face": Vector3(0.0, 0.0, 1.0)
+		}
+	]
+
+	for data in npcs_data:
+		var npc := NPC3D.new()
+		npc.name = str(data["node_name"])
+		var cd := load(str(data["tres"])) as CharacterData
+		if cd:
+			npc.character_data = cd
+		npc.position = data["pos"]
+		add_child(npc)
+		if data.has("face"):
+			npc.face(data["face"])
+
+

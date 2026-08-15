@@ -1,0 +1,223 @@
+{
+  "id": "sq01_forged_ledger",
+  "start": "ledger_intro",
+  "nodes": {
+    "ledger_intro": {
+      "speaker": "talindir",
+      "portrait": "PO-004",
+      "text": "Archmage Elorin, please... keep your voice low. Scribe Vane stepped out to fetch fresh wax, but he'll be back any minute. Look at these two ledger folios from the Deep Granite Quarry. The handwriting is identical, but the numbers don't match.",
+      "start_quest": {
+        "id": "sq01_forged_ledger",
+        "title": "The Forged Ledger",
+        "desc": "Investigate discrepancies in the House Vael'Suran quarry labor ledgers regarding orc casualties and extracted basalt tonnage.",
+        "category": "side",
+        "stages": [
+          "Examine the altered ledgers in the Vael'Suran Scriptorium",
+          "Confront Junior Scribe Vane regarding the shaved records",
+          "Determine the fate of the true casualty accounts"
+        ]
+      },
+      "choices": [
+        {
+          "text": "[Acumen Check] Let me compare the ink density. The casualty tallies in column four were scraped with a pumice stone and re-inked with lower numbers.",
+          "check": { "attr": "Acumen", "dc": 7, "uncertain": false },
+          "goto": "ledger_acumen_pass",
+          "goto_fail": "ledger_acumen_fail"
+        },
+        {
+          "text": "Whose names were removed, Talindir?",
+          "goto": "ledger_names"
+        },
+        {
+          "text": "Why are you looking through House Vael'Suran's private records in the first place?",
+          "goto": "ledger_motive"
+        }
+      ]
+    },
+    "ledger_motive": {
+      "speaker": "talindir",
+      "portrait": "PO-004",
+      "text": "I was cross-referencing material shipments for our own containment cradle! But when I checked the tonnage of basalt delivered against the quarry extraction logs, forty tons of stone were unaccounted for—and fourteen orc quarrymen were listed as 'transferred' on the exact day of the lower cave-in.",
+      "choices": [
+        {
+          "text": "They weren't transferred. They were buried under the rockfall.",
+          "goto": "vane_enters"
+        }
+      ]
+    },
+    "ledger_names": {
+      "speaker": "talindir",
+      "portrait": "PO-004",
+      "text": "Fourteen orc laborers from Gang Seven. On the official report sent to the High Arches, their names were replaced with 'mechanical transit loss'. House Vael'Suran wanted to maintain their spotless safety record for the Solstice inspection.",
+      "choices": [
+        {
+          "text": "Here comes Scribe Vane. Let me handle this.",
+          "goto": "vane_enters"
+        }
+      ]
+    },
+    "ledger_acumen_pass": {
+      "speaker": "talindir",
+      "portrait": "PO-004",
+      "text": "You can see the phantom strokes under the lamp! Fourteen deaths erased so the House doesn't have to pay indemnity to the Under-Terrace families or lose their imperial quarry charter.",
+      "choices": [
+        {
+          "text": "Quiet. The door is opening.",
+          "goto": "vane_enters"
+        }
+      ]
+    },
+    "ledger_acumen_fail": {
+      "speaker": "talindir",
+      "portrait": "PO-004",
+      "text": "Look closely under the second line—the scrape marks are obvious once you tilt the vellum against the starlight. Someone altered this within the past three days.",
+      "choices": [
+        {
+          "text": "Someone is coming.",
+          "goto": "vane_enters"
+        }
+      ]
+    },
+    "vane_enters": {
+      "speaker": "vane",
+      "portrait": "PO-014",
+      "text": "What is the meaning of this? Archmage Elorin, Scribe Talindir... you are trespassing in the private archives of House Vael'Suran. Step away from that desk immediately.",
+      "advance_quest": {
+        "id": "sq01_forged_ledger",
+        "stage": 2,
+        "desc": "Confront Junior Scribe Vane regarding the shaved casualty records."
+      },
+      "choices": [
+        {
+          "text": "[Magnetism Check] Scribe Vane, we know about the fourteen dead in Quarry Seven. Cooperate with us, and we can resolve this before the Archon Inquisitors audit your ledger.",
+          "check": { "attr": "Magnetism", "dc": 8, "uncertain": false },
+          "goto": "vane_magnetism_pass",
+          "goto_fail": "vane_magnetism_fail"
+        },
+        {
+          "text": "You altered public safety records to protect House profits. That is high academic treason.",
+          "goto": "vane_defiant"
+        },
+        {
+          "text": "We only need the true tonnage numbers for the Nullstone containment cradle. Give us the truth, and we'll leave your House politics out of it.",
+          "goto": "vane_compromise"
+        }
+      ]
+    },
+    "vane_magnetism_pass": {
+      "speaker": "vane",
+      "portrait": "PO-014",
+      "text": "Keep your voice down! Please... I didn't want to do it! Magister Ysolde's seneschal ordered the scrape. He said if our accident rates spiked, the Conclave would revoke our fixed-star survey privileges! Here... here is the original draft with the true casualty registry.",
+      "choices": [
+        {
+          "text": "Take the original ledger and file a formal whistle-blower report with the Archon Registry.",
+          "goto": "vane_expose",
+          "set_flags": { "SQ01_OUTCOME": "EXPOSED", "P1_TALINDIR_TRUTH": 1 }
+        },
+        {
+          "text": "Take the ledger to compensate the families quietly in the Under-Terraces, without a public scandal.",
+          "goto": "vane_quiet_justice",
+          "set_flags": { "SQ01_OUTCOME": "REFORMED" }
+        }
+      ]
+    },
+    "vane_magnetism_fail": {
+      "speaker": "vane",
+      "portrait": "PO-014",
+      "text": "High words from a void-scholar! You have no authority in this tower! If you make an accusation without proof, House Vael'Suran will see your research charter revoked before nightfall!",
+      "choices": [
+        {
+          "text": "[Acumen Check] The pumice dust on your cuffs matches the scrape marks on folio four. We have the proof right here.",
+          "check": { "attr": "Acumen", "dc": 7, "uncertain": false },
+          "goto": "vane_cornered",
+          "goto_fail": "vane_bluff_failed"
+        },
+        {
+          "text": "Then burn the ledger and live with fourteen ghosts on your soul.",
+          "goto": "vane_buried",
+          "set_flags": { "SQ01_OUTCOME": "BURIED" }
+        }
+      ]
+    },
+    "vane_defiant": {
+      "speaker": "vane",
+      "portrait": "PO-014",
+      "text": "'Academic treason'? Orc quarry laborers are not academics, Voidweaver! They are contracted muscle! The city needs basalt to hold the sky; if a few lives are lost in the excavation, the grand architecture endures!",
+      "choices": [
+        {
+          "text": "Every stone in Starfall is bought with someone's life. We are taking the unedited ledger.",
+          "goto": "vane_expose",
+          "set_flags": { "SQ01_OUTCOME": "EXPOSED", "P1_TALINDIR_TRUTH": 1 }
+        },
+        {
+          "text": "Take the true numbers for our project, and leave Vane to his conscience.",
+          "goto": "vane_quiet_justice",
+          "set_flags": { "SQ01_OUTCOME": "REFORMED" }
+        }
+      ]
+    },
+    "vane_compromise": {
+      "speaker": "vane",
+      "portrait": "PO-014",
+      "text": "...You promise no formal inquiry into my office? Take the quarry draft from the bottom drawer. Forty-two tons of high-density basalt was quarried. Just take it and let me do my work.",
+      "choices": [
+        {
+          "text": "Talindir, record the numbers. Let's go.",
+          "goto": "vane_quiet_justice",
+          "set_flags": { "SQ01_OUTCOME": "REFORMED" }
+        }
+      ]
+    },
+    "vane_cornered": {
+      "speaker": "vane",
+      "portrait": "PO-014",
+      "text": "...Fine! Take the parchment! Just don't drag my name into the High Tribunal! I was only following orders!",
+      "choices": [
+        {
+          "text": "We will see what the Tribunal says.",
+          "goto": "vane_expose",
+          "set_flags": { "SQ01_OUTCOME": "EXPOSED", "P1_TALINDIR_TRUTH": 1 }
+        }
+      ]
+    },
+    "vane_bluff_failed": {
+      "speaker": "vane",
+      "portrait": "PO-014",
+      "text": "Empty threats. Hand over those papers or I call the House Wardens right now.",
+      "choices": [
+        {
+          "text": "Leave the papers. We have what we need in memory.",
+          "goto": "vane_buried",
+          "set_flags": { "SQ01_OUTCOME": "BURIED" }
+        }
+      ]
+    },
+    "vane_expose": {
+      "speaker": "talindir",
+      "portrait": "PO-004",
+      "text": "I'll deliver this to the Chronicler's Archive. The families will receive their pensions, and House Vael'Suran will have to answer for every erased name. Thank you, Archmage.",
+      "complete_quest": {
+        "id": "sq01_forged_ledger",
+        "rewards": { "xp": 50, "item": "item_true_quarry_ledger" }
+      }
+    },
+    "vane_quiet_justice": {
+      "speaker": "talindir",
+      "portrait": "PO-004",
+      "text": "We have the true extraction figures for Durak's forge, and I'll see to it that the pensions reach the Under-Terraces through the dock guild. It's a quiet victory, but perhaps the safest one.",
+      "complete_quest": {
+        "id": "sq01_forged_ledger",
+        "rewards": { "xp": 50, "money": 30 }
+      }
+    },
+    "vane_buried": {
+      "speaker": "talindir",
+      "portrait": "PO-004",
+      "text": "Fourteen names... simply washed away by ink and water. Is this what scholarship becomes when power is on the line? I will remember this night, Elorin.",
+      "complete_quest": {
+        "id": "sq01_forged_ledger",
+        "rewards": { "xp": 30 }
+      }
+    }
+  }
+}

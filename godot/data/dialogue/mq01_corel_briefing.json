@@ -1,0 +1,236 @@
+{
+  "id": "mq01_corel_briefing",
+  "start": "briefing_intro",
+  "nodes": {
+    "briefing_intro": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "Elorin. Shut the door. The report from Northreach came in on the dawn courier. Seven hundred and seventy-eight dead. The planar tear didn't just breach the warding—it inverted the resonance. Three square leagues of bedrock turned to black glass.",
+      "start_quest": {
+        "id": "mq01_containment_problem",
+        "title": "The Problem: Northreach & The Grant",
+        "desc": "Confer with Archmagister Corel regarding the Northreach planar catastrophe and secure Conclave approval for the Nullstone initiative.",
+        "category": "main",
+        "stages": [
+          "Hear Corel's briefing on the Northreach disaster",
+          "Determine the Conclave funding strategy",
+          "Assemble the multidisciplinary containment team"
+        ]
+      },
+      "choices": [
+        {
+          "text": "Seven hundred and seventy-eight... The seals we gave them were supposed to hold three centuries.",
+          "goto": "northreach_analysis"
+        },
+        {
+          "text": "Tell me what the Conclave is saying. I know that look on your face, Corel.",
+          "goto": "conclave_pressure"
+        },
+        {
+          "text": "[Voidweaver] Inverted resonance... The tear didn't push through the ward; it pulled the ward inside out.",
+          "require_flag": { "P1_CLASS": "voidweaver" },
+          "goto": "voidweaver_insight"
+        }
+      ]
+    },
+    "voidweaver_insight": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "Exactly what happened. The more harmonic energy the wardens poured into the boundary, the wider the vacuum drank. Conventional warding is dead, Elorin. If we build another wall, we're just building a bigger blast radius.",
+      "choices": [
+        {
+          "text": "Which brings us to the Nullstone proposal.",
+          "goto": "conclave_pressure"
+        }
+      ]
+    },
+    "northreach_analysis": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "Three centuries on paper. In practice, the planar boundary thinned faster than our models predicted. The miners struck a pocket of unformed void, and the harmonic feedback snapped every conduit from the quarry to the garrison.",
+      "choices": [
+        {
+          "text": "And now the Conclave wants someone to blame.",
+          "goto": "conclave_pressure"
+        },
+        {
+          "text": "We cannot keep patching active fractures with passive wards. We need an absolute dampening threshold.",
+          "goto": "nullstone_concept"
+        }
+      ]
+    },
+    "conclave_pressure": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "The High Conclave meets before noon. Astra'Thalas wants to cut funding to the Starfall research wing entirely. They want a demonstration of absolute confidence. They want me to swear the containment method is proven. It nearly is. It will be.",
+      "choices": [
+        {
+          "text": "It isn't proven. I won't say it is.",
+          "goto": "funding_truth"
+        },
+        {
+          "text": "I'll tell them whatever they need to hear to sign the charter.",
+          "goto": "funding_lie",
+          "set_flags": { "P1_FUNDING": "LIE" }
+        },
+        {
+          "text": "I can frame the uncertainty as an asset—risk quantified is leverage in an elven committee.",
+          "check": { "attr": "Acumen", "dc": 7, "uncertain": false },
+          "goto": "funding_hedge_pass",
+          "goto_fail": "funding_hedge_fail"
+        },
+        {
+          "text": "[Harmonist] The Conclave doesn't fund certainty. It funds leverage. Let me show you what they actually want to buy.",
+          "require_flag": { "P1_CLASS": "harmonist" },
+          "goto": "funding_harmonist"
+        },
+        {
+          "text": "[Mender] If we lie to them, we lie to the 778 dead. We promise them a cure, not a miracle.",
+          "require_flag": { "P1_CLASS": "mender" },
+          "goto": "funding_mender"
+        }
+      ]
+    },
+    "nullstone_concept": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "An off-switch. That's what you drafted in that 37-page monster of a proposal. A singular focus that absorbs and neutralizes anomalous planar resonance instead of resisting it. But the Conclave is terrified of the word 'void'.",
+      "choices": [
+        {
+          "text": "They are terrified of what they cannot tax. How do we get the charter approved?",
+          "goto": "conclave_pressure"
+        }
+      ]
+    },
+    "funding_truth": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "Then we may lose the funding, Elorin. And the next surge won't wait for our academic honesty. Astra'Thalas will redirect the astral prisms to their own Spire, and Starfall will be left with paper wards.",
+      "set_flags": { "P1_FUNDING": "TRUTH" },
+      "choices": [
+        {
+          "text": "Better a lost grant than a lie built into the foundation of a weapon.",
+          "goto": "recruitment_transition",
+          "set_flags": { "P1_COIL_LOYALTY": 1, "P1_NORTHREACH_PROMISE": true }
+        },
+        {
+          "text": "Give me thirty days with a dedicated team. I'll make the proof undeniable before they can draft the veto.",
+          "goto": "recruitment_transition",
+          "set_flags": { "P1_NORTHREACH_PROMISE": true }
+        }
+      ]
+    },
+    "funding_lie": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "Thank you. I know what it costs you. I'll present the simulated containment ratios as completed bench tests. May the stars forgive us if we miscalculated.",
+      "strain": 8,
+      "choices": [
+        {
+          "text": "You don't know what it costs. But the work starts now.",
+          "goto": "recruitment_transition"
+        }
+      ]
+    },
+    "funding_hedge_pass": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "By the Song... that might actually hold. 'Phase-gated provisional deployment subject to dual-key verification.' It sounds like bureaucratic mastery. We both sign. The treasury will release the initial bullion.",
+      "set_flags": { "P1_FUNDING": "HEDGE" },
+      "choices": [
+        {
+          "text": "Now we need the minds to build it.",
+          "goto": "recruitment_transition"
+        }
+      ]
+    },
+    "funding_hedge_fail": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "A pretty phrase, but Archon Malakor will see straight through the rhetorical grease. We cannot hedge an existential threat with dialectic tricks.",
+      "choices": [
+        {
+          "text": "Then the truth it is. We state the risks plainly.",
+          "goto": "funding_truth"
+        },
+        {
+          "text": "...Fine. Tell them the bench tests are complete. Authorize the lie.",
+          "goto": "funding_lie",
+          "set_flags": { "P1_FUNDING": "LIE" }
+        }
+      ]
+    },
+    "funding_harmonist": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "You frighten me a little, Elorin. You speak their dialect better than their own heralds. 'A stabilizing mantle that preserves Solari supremacy while isolating provincial risk.' They'll practically beg us to take their gold.",
+      "set_flags": { "P1_FUNDING": "HEDGE", "P1_HARMONIST_CorelRespect": true },
+      "choices": [
+        {
+          "text": "Let us use their vanity to buy the silence of the void.",
+          "goto": "recruitment_transition"
+        }
+      ]
+    },
+    "funding_mender": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "You carry the weight of those dead like a mantle, Elorin. Perhaps that is why Seravin sent you here instead of keeping you in Umbraveil. Very well. We present the truth: that without this device, Starfall itself sits on a fault line.",
+      "set_flags": { "P1_FUNDING": "TRUTH", "P1_NORTHREACH_PROMISE": true },
+      "choices": [
+        {
+          "text": "Let us build the team that can deliver on that promise.",
+          "goto": "recruitment_transition"
+        }
+      ]
+    },
+    "recruitment_transition": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "The charter gives you full requisition authority for four specialist posts. You need an arithmancer for rune compression, a geomancer for bedrock resonance, a structural enchantress for the casing, and a field theorist. Who is on your list?",
+      "advance_quest": {
+        "id": "mq01_the_problem",
+        "stage": 3,
+        "desc": "Recruit the four specialists: Vara, Durak, Coil, and Sera across Starfall."
+      },
+      "start_quest": {
+        "id": "mq02_assembly",
+        "title": "Act I: Assembly of the Core",
+        "desc": "Recruit the four indispensable minds needed to forge the Nullstone containment prototype.",
+        "category": "main",
+        "stages": [
+          "Recruit human prodigy Vara from the Canal Garret",
+          "Recruit Terran geomancer Durak Ironthought in the Under-Terraces",
+          "Recruit Noctari theorist Coil in the Academy Scriptorium",
+          "Confer with Solari enchantress Sera at the Dawnspire Embassy"
+        ]
+      },
+      "choices": [
+        {
+          "text": "Vara in the Canal Garret, Durak in the Under-Terraces, Coil in the Scriptorium, and Sera from Astra'Thalas.",
+          "goto": "briefing_end"
+        },
+        {
+          "text": "A human, a dwarf, a heretic theorist, and a sun elf. The Academy will choke on this roster.",
+          "goto": "briefing_roster_cynic"
+        }
+      ]
+    },
+    "briefing_roster_cynic": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "Let them choke. If the Nullstone works, history will call it enlightened collaboration. If it fails, they will execute all five of us on the same terrace anyway. Go find them.",
+      "choices": [
+        {
+          "text": "I will return when the team is assembled.",
+          "goto": "briefing_end"
+        }
+      ]
+    },
+    "briefing_end": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "Take Scribe Talindir with you. The boy needs to learn how real magic is assembled—not in verses, but in blood, stone, and stubborn arithmetic. Dismissed, Voidweaver."
+    }
+  }
+}

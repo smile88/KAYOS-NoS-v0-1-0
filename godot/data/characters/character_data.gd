@@ -5,7 +5,7 @@ class_name CharacterData
 ## faction palette, and default conversation. Create instances as .tres files in data/characters/
 ## and pick them in the Inspector — GDD §13 ("NPCs = base NPC scene + per-character data resource").
 
-enum Faction { NOCTARI, SOLARI, ORC, TERRAN, HUMAN, OTHER }
+enum Faction { NOCTARI, SOLARI, ORC, TERRAN, HUMAN, SYLVARI, OTHER }
 
 @export var id: String = ""                       # Asset Bible ID, e.g. "CH-001"
 @export var display_name: String = ""             # e.g. "Elorin Voidweaver"

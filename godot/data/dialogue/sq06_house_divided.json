@@ -1,0 +1,100 @@
+{
+  "id": "sq06_house_divided",
+  "start": "miriel_intro",
+  "nodes": {
+    "miriel_intro": {
+      "speaker": "miriel",
+      "portrait": "PO-014",
+      "text": "Voidweaver. You arrive at a delicate juncture. House Corvane's succession charter has been stolen from our private gallery, and my cousin Valen intends to present a forged codicil to the Conclave before the midnight watch.",
+      "start_quest": {
+        "id": "sq06_house_divided",
+        "title": "A House Divided",
+        "desc": "Navigate an inheritance dispute and covert saboteur plot within House Corvane's high manse.",
+        "category": "side",
+        "stages": [
+          "Confer with Lady Miriel in the Corvane Upper Manse",
+          "Examine the altered succession seal",
+          "Expose the usurper's conspiracy"
+        ]
+      },
+      "choices": [
+        {
+          "text": "[Magnetism Check] Lady Miriel, if we bring this before the Conclave without ironclad proof, the other Houses will use it to divide Corvane's voting bloc.",
+          "check": {
+            "attr": "Magnetism",
+            "dc": 7,
+            "uncertain": false
+          },
+          "goto": "miriel_magnetism_pass",
+          "goto_fail": "miriel_magnetism_fail"
+        },
+        {
+          "text": "[Acumen Check] Let me examine the wax seal on the registry copy. True Corvane wax contains crushed starlight quartz.",
+          "check": {
+            "attr": "Acumen",
+            "dc": 7,
+            "uncertain": false
+          },
+          "goto": "miriel_acumen_pass",
+          "goto_fail": "miriel_explain"
+        },
+        {
+          "text": "What does Valen hope to gain by forcing a succession crisis now?",
+          "goto": "miriel_explain"
+        }
+      ]
+    },
+    "miriel_explain": {
+      "speaker": "miriel",
+      "portrait": "PO-014",
+      "text": "Control of our rim observatory! He wants to redirect our stellar lenses toward the void border, defying the Common Sky covenant.",
+      "choices": [
+        {
+          "text": "Then we must recover the true charter before the vote.",
+          "goto": "miriel_resolve"
+        }
+      ]
+    },
+    "miriel_magnetism_pass": {
+      "speaker": "miriel",
+      "portrait": "PO-014",
+      "text": "You speak with the wisdom of a diplomat, Elorin. If we confront Valen privately with the Archmagister's backing, he will have no choice but to yield.",
+      "choices": [
+        {
+          "text": "Let us present the evidence to Valen in closed chambers.",
+          "goto": "miriel_resolve"
+        }
+      ]
+    },
+    "miriel_magnetism_fail": {
+      "speaker": "miriel",
+      "portrait": "PO-014",
+      "text": "I care nothing for Conclave politics! My grandfather's legacy is being rewritten by a traitor in our own bloodline!",
+      "choices": [
+        {
+          "text": "Then let us find the document before he can present it.",
+          "goto": "miriel_resolve"
+        }
+      ]
+    },
+    "miriel_acumen_pass": {
+      "speaker": "miriel",
+      "portrait": "PO-014",
+      "text": "Brilliant! The seal on his document is common resin tinted with copper shavings. Under a lantern, the fraud is undeniable.",
+      "choices": [
+        {
+          "text": "Expose the fraudulent seal to the house elders.",
+          "goto": "miriel_resolve"
+        }
+      ]
+    },
+    "miriel_resolve": {
+      "speaker": "miriel",
+      "portrait": "PO-014",
+      "text": "Valen has withdrawn his claim in disgrace. House Corvane stands united, and our observatory remains dedicated to the safeguard. Take this signet as our gratitude.",
+      "set_flags": {
+        "SQ06_CORVANE_RESOLVED": true
+      }
+    }
+  }
+}

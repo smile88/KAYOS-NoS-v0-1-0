@@ -1,0 +1,111 @@
+{
+  "id": "sq14_golden_graft",
+  "start": "vael_intro",
+  "nodes": {
+    "vael_intro": {
+      "speaker": "vael",
+      "portrait": "PO-014",
+      "text": "Archmage! Please, look at the Solari Sun-Vine in conservatory bed four! The graft with our native starlight briar took beautifully for three seasons, but since the morning watch, the golden blossoms are turning black and brittle.",
+      "start_quest": {
+        "id": "sq14_golden_graft",
+        "title": "The Golden Graft",
+        "desc": "Heal a dying celestial flora hybrid in the starlight glasshouses.",
+        "category": "side",
+        "stages": [
+          "Examine the withered Solari sun-vine in the botanical terrace",
+          "Identify the necrotic blight affecting the starlight rootstock",
+          "Synthesize a nutrient infusion using star-water"
+        ]
+      },
+      "choices": [
+        {
+          "text": "[Acumen Check] The graft isn't sick with blight\u2014it's essence starvation. The soil conduits are clogged with calcified mineral deposits from the upper aqueduct.",
+          "check": {
+            "attr": "Acumen",
+            "dc": 6,
+            "uncertain": false
+          },
+          "goto": "vael_acumen_pass",
+          "goto_fail": "vael_acumen_fail"
+        },
+        {
+          "text": "[Arcana Check] Let me weave an invigorating light-stream through the xylem vascular bundle.",
+          "check": {
+            "attr": "Arcana",
+            "dc": 7,
+            "uncertain": false
+          },
+          "goto": "vael_arcana_pass",
+          "goto_fail": "vael_explain"
+        },
+        {
+          "text": "What nutrients have you been feeding the hybrid rootstock?",
+          "goto": "vael_explain"
+        }
+      ]
+    },
+    "vael_explain": {
+      "speaker": "vael",
+      "portrait": "PO-014",
+      "text": "Standard star-water mixed with crushed amber moss. But ever since the harmonic tremor, the roots have refused to drink.",
+      "choices": [
+        {
+          "text": "We need to clear the root channels and restore harmonic flow.",
+          "goto": "vael_action"
+        }
+      ]
+    },
+    "vael_acumen_pass": {
+      "speaker": "vael",
+      "portrait": "PO-014",
+      "text": "Mineral clogging! Of course! The Terran masonry work upstream kicked calcium flakes into the feeder lines. Let us flush the irrigation tubes immediately.",
+      "choices": [
+        {
+          "text": "Flush the conduits with purified star-water.",
+          "goto": "vael_resolve"
+        }
+      ]
+    },
+    "vael_acumen_fail": {
+      "speaker": "vael",
+      "portrait": "PO-014",
+      "text": "The leaves are wilting faster. If the main stem snaps, two decades of hybrid cultivation will be lost.",
+      "choices": [
+        {
+          "text": "Prune the damaged runners and brace the central stalk.",
+          "goto": "vael_resolve"
+        }
+      ]
+    },
+    "vael_arcana_pass": {
+      "speaker": "vael",
+      "portrait": "PO-014",
+      "text": "The golden glow is returning to the veins! The petals are unfurling again, drinking in the light.",
+      "choices": [
+        {
+          "text": "Stabilize the harmonic frequency at fifty-four hertz.",
+          "goto": "vael_resolve"
+        }
+      ]
+    },
+    "vael_action": {
+      "speaker": "vael",
+      "portrait": "PO-014",
+      "text": "Help me aerate the soil while you channel warmth into the root collar.",
+      "choices": [
+        {
+          "text": "Channel steady warmth into the soil bed.",
+          "goto": "vael_resolve"
+        }
+      ]
+    },
+    "vael_resolve": {
+      "speaker": "vael",
+      "portrait": "PO-014",
+      "text": "Look! A fresh golden shoot is already budding at the crown. You saved the hybrid, Archmage. Sylvari gardens throughout the terrace will flourish tonight.",
+      "set_flags": {
+        "SQ14_BOTANY_RESOLVED": true
+      }
+    }
+  }
+}

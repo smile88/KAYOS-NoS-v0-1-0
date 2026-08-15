@@ -1,0 +1,100 @@
+{
+  "id": "sq10_unspoken_collar",
+  "start": "thrak_intro",
+  "nodes": {
+    "thrak_intro": {
+      "speaker": "thrak",
+      "portrait": "PO-014",
+      "text": "Step back from the crucible edge, Voidweaver. Three cooling manifolds blew out an hour ago. The molten slag is pooling near the drainage sluice, and the High Arches overseer ordered my crew to keep shovelling under threat of the collar.",
+      "start_quest": {
+        "id": "sq10_unspoken_collar",
+        "title": "The Unspoken Collar",
+        "desc": "Address a hazardous slag overflow and labor safety strike in the Under-Terraces foundries.",
+        "category": "side",
+        "stages": [
+          "Meet Foreman Thrak at the deep foundry gates",
+          "Survey the compromised cooling conduits",
+          "Broker safety terms between the smiths and the High Arches"
+        ]
+      },
+      "choices": [
+        {
+          "text": "[Vigor Check] Give me that quench lever. I'll drop the emergency floodgate myself before the slag breaches.",
+          "check": {
+            "attr": "Vigor",
+            "dc": 7,
+            "uncertain": false
+          },
+          "goto": "thrak_vigor_pass",
+          "goto_fail": "thrak_vigor_fail"
+        },
+        {
+          "text": "[Magnetism Check] Foreman Thrak, stand your men down. As an Archmage of the Academy, I will countermand the overseer's order.",
+          "check": {
+            "attr": "Magnetism",
+            "dc": 7,
+            "uncertain": false
+          },
+          "goto": "thrak_magnetism_pass",
+          "goto_fail": "thrak_explain"
+        },
+        {
+          "text": "How many laborers are trapped in the lower casting floor?",
+          "goto": "thrak_explain"
+        }
+      ]
+    },
+    "thrak_explain": {
+      "speaker": "thrak",
+      "portrait": "PO-014",
+      "text": "Nine orc apprentices and twelve Terran stone-cutters. The heat is unbearable down there, and the air is thick with sulfur fumes.",
+      "choices": [
+        {
+          "text": "We clear the lower floor first, then vent the crucible.",
+          "goto": "thrak_resolve"
+        }
+      ]
+    },
+    "thrak_vigor_pass": {
+      "speaker": "thrak",
+      "portrait": "PO-014",
+      "text": "Ha! You hauled that iron gate down against two tons of slag pressure! The lower foundry is safe!",
+      "choices": [
+        {
+          "text": "Now let us fix the cooling manifolds properly.",
+          "goto": "thrak_resolve"
+        }
+      ]
+    },
+    "thrak_vigor_fail": {
+      "speaker": "thrak",
+      "portrait": "PO-014",
+      "text": "The lever is seized! Grab the secondary chains with me\u2014heave!",
+      "choices": [
+        {
+          "text": "Pull together and lock the barrier.",
+          "goto": "thrak_resolve"
+        }
+      ]
+    },
+    "thrak_magnetism_pass": {
+      "speaker": "thrak",
+      "portrait": "PO-014",
+      "text": "An elf standing between an overseer and an orc labor crew? Never thought I'd see the day. The men will listen to you.",
+      "choices": [
+        {
+          "text": "Order the crew to safety while we vent the excess steam.",
+          "goto": "thrak_resolve"
+        }
+      ]
+    },
+    "thrak_resolve": {
+      "speaker": "thrak",
+      "portrait": "PO-014",
+      "text": "Crucible stabilized and no blood spilled. You've earned the respect of the foundry floor, Elorin. When you need heavy iron for your Nullstone project, you come to Thrak.",
+      "set_flags": {
+        "SQ10_FOUNDRY_RESOLVED": true
+      }
+    }
+  }
+}

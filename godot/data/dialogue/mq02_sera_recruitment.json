@@ -1,0 +1,260 @@
+{
+  "id": "mq02_sera_recruitment",
+  "start": "sera_intro",
+  "nodes": {
+    "sera_intro": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "Do come in, Voidweaver. Please, excuse the scent of burning citrus—it is the only thing that masks the damp chill of your Noctari mist. I was wondering when Corel would finally send his chief architect to my salon.",
+      "choices": [
+        {
+          "text": "You knew Corel would approve the project?",
+          "goto": "sera_diplomacy"
+        },
+        {
+          "text": "[Magnetism Check] The mist has its own grace, Lady Sera. But I came for the golden brilliance of Solari structural theory, not to defend our weather.",
+          "check": { "attr": "Magnetism", "dc": 7, "uncertain": false },
+          "goto": "sera_magnetism_pass",
+          "goto_fail": "sera_magnetism_fail"
+        },
+        {
+          "text": "[Arcana Check] Your solar prisms are tuned to the 440-hertz standard of Astra'Thalas. In Starfall's ambient field, that causes a five-percent harmonic bleed.",
+          "check": { "attr": "Arcana", "dc": 8, "uncertain": false },
+          "goto": "sera_arcana_pass",
+          "goto_fail": "sera_arcana_fail"
+        }
+      ]
+    },
+    "sera_diplomacy": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "Of course I knew. Northreach terrified Astra'Thalas. The High Sun King cannot tolerate the idea of an uncontrolled tear breaching the eastern provinces. Starfall was always going to get the grant—the only question was whether you would accept Solari oversight.",
+      "choices": [
+        {
+          "text": "I don't need oversight. I need your structural harmonics to contain the sphere.",
+          "goto": "sera_ward_discussion"
+        }
+      ]
+    },
+    "sera_magnetism_pass": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "How charmingly put. Most of your Academy colleagues look upon my robes as if they carry a plague of daylight. It is refreshing to speak with a Noctari whose manners match her reputation.",
+      "choices": [
+        {
+          "text": "We have common ground in preventing catastrophe. Let us look at the schematics.",
+          "goto": "sera_ward_discussion"
+        }
+      ]
+    },
+    "sera_magnetism_fail": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "Flattery from a void-scholar always tastes faintly of vinegar. Let us skip the courtly preamble and address the engineering.",
+      "choices": [
+        {
+          "text": "Very well. Let's discuss the casing architecture.",
+          "goto": "sera_ward_discussion"
+        }
+      ]
+    },
+    "sera_arcana_pass": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "Astute. Very astute. The bleed is intentional—it grounds the excess solar flux into the city's moisture layer. But if we are to encase the Nullstone, that bleed must be completely inverted to maintain absolute equilibrium.",
+      "choices": [
+        {
+          "text": "Which brings us to the choice of the primary ward scheme.",
+          "goto": "sera_ward_discussion"
+        }
+      ]
+    },
+    "sera_arcana_fail": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "A standard textbook critique, Elorin, but it fails to account for the refractive index of Astra'Thalan glass. Still, you have a keen eye.",
+      "choices": [
+        {
+          "text": "Let us see how that glass holds up to void resonance.",
+          "goto": "sera_ward_discussion"
+        }
+      ]
+    },
+    "sera_ward_discussion": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "To enclose a singularity of negative essence, we need a structural ward scheme that can withstand immense planar torque. I have drafted three distinct configurations for the containment mantle. Which philosophy do you wish to implement?",
+      "choices": [
+        {
+          "text": "The Resonant Lattice: an interwoven mesh of solar gold and void obsidian that distributes stress evenly across all facets.",
+          "goto": "sera_ward_lattice",
+          "set_flags": { "P1_WARD_SCHEME": "LATTICE" }
+        },
+        {
+          "text": "The Gyroscopic Orbit: concentric floating rings that rotate to absorb torque dynamically without rigid stress points.",
+          "goto": "sera_ward_orbit",
+          "set_flags": { "P1_WARD_SCHEME": "ORBIT" }
+        },
+        {
+          "text": "The Monolithic Seal: solid basalt-gold alloy casting that locks the core into an unyielding absolute barrier.",
+          "goto": "sera_ward_seal",
+          "set_flags": { "P1_WARD_SCHEME": "SEAL" }
+        },
+        {
+          "text": "[Harmonist] The Lattice, but modified: we tune the solar strands to resonate at the exact complementary octave of the void pulse.",
+          "require_flag": { "P1_CLASS": "harmonist" },
+          "goto": "sera_harmonist_scheme"
+        }
+      ]
+    },
+    "sera_ward_lattice": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "The Lattice. Elegant, resilient, and highly adaptable. If one node fractures under harmonic strain, the adjacent nodes compensate instantly. An architect's choice.",
+      "choices": [
+        {
+          "text": "Now, about your reports to the Grand Archmage in Astra'Thalas...",
+          "goto": "sera_loyalty_test"
+        }
+      ]
+    },
+    "sera_ward_orbit": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "The Orbit. Daring. It requires continuous kinetic energy, but it eliminates catastrophic shear risk. Durak will complain about the precision bearings, but it is mathematically exquisite.",
+      "choices": [
+        {
+          "text": "Now, about your reports to the Grand Archmage in Astra'Thalas...",
+          "goto": "sera_loyalty_test"
+        }
+      ]
+    },
+    "sera_ward_seal": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "The Monolithic Seal. Brute force. Durak will be overjoyed; it is more forge than enchantment. If it holds, it is impregnable; if it fails, it will shatter catastrophically.",
+      "choices": [
+        {
+          "text": "Now, about your reports to the Grand Archmage in Astra'Thalas...",
+          "goto": "sera_loyalty_test"
+        }
+      ]
+    },
+    "sera_harmonist_scheme": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "Brilliant... The solar gold acts as a damper rather than a cage. That would eliminate ninety percent of the boundary friction! You truly deserve your title, Voidweaver.",
+      "set_flags": { "P1_WARD_SCHEME": "LATTICE" },
+      "choices": [
+        {
+          "text": "Now, about your correspondence with the Solari Crown...",
+          "goto": "sera_loyalty_test"
+        }
+      ]
+    },
+    "sera_loyalty_test": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "Ah. The unspoken thorn. Astra'Thalas expects weekly sealed dispatches regarding the project's progress and the exact matrix blueprints. They consider this technology too dangerous to remain solely in Noctari hands.",
+      "choices": [
+        {
+          "text": "[Fortune Check] (Notice the pre-addressed diplomatic cylinder on her side table with the seal of the Crown Inquisitor.)",
+          "check": { "attr": "Fortune", "dc": 6, "uncertain": false },
+          "goto": "sera_fortune_pass",
+          "goto_fail": "sera_fortune_fail"
+        },
+        {
+          "text": "If you leak the core schematics to Astra'Thalas, you turn a planetary shield into an imperial weapon.",
+          "goto": "sera_warn_leak"
+        },
+        {
+          "text": "Keep your dispatches technical and scrubbed of weaponization data. Give them progress, not power.",
+          "goto": "sera_middle_ground"
+        }
+      ]
+    },
+    "sera_fortune_pass": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "You see everything, don't you? Yes, Archon Malakor demands the blueprint. But... I have seen the devastation at Northreach. I am an enchantress of the light, not a warmonger's clerk. If you trust me, I will withhold the key activation sequences.",
+      "set_flags": { "P1_SERA_LEAK": false },
+      "choices": [
+        {
+          "text": "I trust your integrity, Sera. Keep the keys safe.",
+          "goto": "sera_conclude"
+        }
+      ]
+    },
+    "sera_fortune_fail": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "I have sworn oaths to the Spire of Celestial Harmony, Elorin. I will fulfill my duties to both this team and my homeland.",
+      "set_flags": { "P1_SERA_LEAK": true },
+      "choices": [
+        {
+          "text": "Just remember that we all share the same sky.",
+          "goto": "sera_conclude"
+        }
+      ]
+    },
+    "sera_warn_leak": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "An imperial weapon... Is that what you think we are? Perhaps. But if Astra'Thalas feels excluded, they will simply seize the artifact by force when it is complete.",
+      "choices": [
+        {
+          "text": "Not if we make the containment matrix co-dependent on both solar and lunar resonance.",
+          "goto": "sera_conclude",
+          "set_flags": { "P1_SERA_LEAK": false }
+        },
+        {
+          "text": "We will cross that bridge when the stone is forged.",
+          "goto": "sera_conclude"
+        }
+      ]
+    },
+    "sera_middle_ground": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "A prudent compromise. Progress reports without activation metrics. It will satisfy the bureaucrats and protect the research.",
+      "set_flags": { "P1_SERA_LEAK": false },
+      "choices": [
+        {
+          "text": "Then we are agreed.",
+          "goto": "sera_conclude"
+        }
+      ]
+    },
+    "sera_conclude": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "The team is complete, Voidweaver: Vara's compression, Durak's bedrock cradle, Coil's manifold theorems, and my structural casing. The prototype is mounted in the Academy Containment Vault. Corel has scheduled the initial live surge test for tonight.",
+      "complete_quest": {
+        "id": "mq02_assembly",
+        "rewards": { "xp": 100 }
+      },
+      "start_quest": {
+        "id": "mq03_first_test",
+        "title": "Act I: The Surge Containment Test",
+        "desc": "Oversee the initial live surge containment test of the miniature Nullstone prototype in the Academy Vault.",
+        "category": "main",
+        "stages": [
+          "Assemble the team in the Academy Sub-Vault",
+          "Initiate the controlled planar surge",
+          "Handle the emergency failure and assign official blame in the Conclave report"
+        ]
+      },
+      "choices": [
+        {
+          "text": "Let us make history. To the Vault.",
+          "goto": "sera_end"
+        }
+      ]
+    },
+    "sera_end": {
+      "speaker": "sera",
+      "portrait": "PO-006",
+      "text": "May the light and the dark maintain their truce for one more night. I will meet you at the central island."
+    }
+  }
+}

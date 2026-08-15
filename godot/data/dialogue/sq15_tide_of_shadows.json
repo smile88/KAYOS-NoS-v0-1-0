@@ -1,0 +1,111 @@
+{
+  "id": "sq15_tide_of_shadows",
+  "start": "gavin_intro",
+  "nodes": {
+    "gavin_intro": {
+      "speaker": "gavin",
+      "portrait": "PO-014",
+      "text": "Halt, Archmage! Watch your footing near the causeway threshold! The Mirror isn't resting calm tonight. Black swell waves are lapping over the stone pavers, and the star-reflections below look like they're sinking into an abyss.",
+      "start_quest": {
+        "id": "sq15_tide_of_shadows",
+        "title": "Tide of Shadows",
+        "desc": "Investigate anomalous wave surges and void-shadows rising from the depths of the Mirror lake.",
+        "category": "side",
+        "stages": [
+          "Confer with Bridgewarden Gavin at the causeway gate",
+          "Monitor the dark tides surging against the stone piers",
+          "Enact an emergency tethering ritual to secure the crossing"
+        ]
+      },
+      "choices": [
+        {
+          "text": "[Arcana Check] That's not water movement\u2014it is gravitational tide distortion caused by the containment rig's spin-up cycle on the island.",
+          "check": {
+            "attr": "Arcana",
+            "dc": 7,
+            "uncertain": false
+          },
+          "goto": "gavin_arcana_pass",
+          "goto_fail": "gavin_arcana_fail"
+        },
+        {
+          "text": "[Resilience Check] Step behind me, Bridgewarden. I can anchor the causeway threshold with a starlight tether.",
+          "check": {
+            "attr": "Resilience",
+            "dc": 7,
+            "uncertain": false
+          },
+          "goto": "gavin_resilience_pass",
+          "goto_fail": "gavin_explain"
+        },
+        {
+          "text": "Has anyone attempted to cross the causeway during the surge?",
+          "goto": "gavin_explain"
+        }
+      ]
+    },
+    "gavin_explain": {
+      "speaker": "gavin",
+      "portrait": "PO-014",
+      "text": "A courier tried an hour ago. He said the middle of the bridge felt like walking on grease over an endless sky. Had to crawl back on hands and knees.",
+      "choices": [
+        {
+          "text": "We need to re-anchor the ward stones along the pier foundation.",
+          "goto": "gavin_action"
+        }
+      ]
+    },
+    "gavin_arcana_pass": {
+      "speaker": "gavin",
+      "portrait": "PO-014",
+      "text": "Gravitational distortion? So the lake is literally warping space around the stone road! What do we do to keep travellers from falling through?",
+      "choices": [
+        {
+          "text": "[Voidweaver] Invert the anchor runes on the shore pylons to counteract the pull.",
+          "goto": "gavin_resolve"
+        }
+      ]
+    },
+    "gavin_arcana_fail": {
+      "speaker": "gavin",
+      "portrait": "PO-014",
+      "text": "Another wave just hit the second pier! The spray is dissolving into cold black mist!",
+      "choices": [
+        {
+          "text": "Plant the grounding staff and brace the barrier.",
+          "goto": "gavin_resolve"
+        }
+      ]
+    },
+    "gavin_resilience_pass": {
+      "speaker": "gavin",
+      "portrait": "PO-014",
+      "text": "By the gods, you held that surge back with pure will! The black water broke against your ward like glass on granite.",
+      "choices": [
+        {
+          "text": "Lock the boundary anchor into the bedrock.",
+          "goto": "gavin_resolve"
+        }
+      ]
+    },
+    "gavin_action": {
+      "speaker": "gavin",
+      "portrait": "PO-014",
+      "text": "The shore ward stones are glowing red-hot. Pour cold starlight into the left pylon while I secure the chain!",
+      "choices": [
+        {
+          "text": "Channel starlight into the pylon array.",
+          "goto": "gavin_resolve"
+        }
+      ]
+    },
+    "gavin_resolve": {
+      "speaker": "gavin",
+      "portrait": "PO-014",
+      "text": "The waves have smoothed out to glass. The star-reflections are clear and calm once more. The causeway is open for the scholars. Thank you, Voidweaver.",
+      "set_flags": {
+        "SQ15_CAUSEWAY_RESOLVED": true
+      }
+    }
+  }
+}

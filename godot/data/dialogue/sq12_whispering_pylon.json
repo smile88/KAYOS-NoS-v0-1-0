@@ -1,0 +1,111 @@
+{
+  "id": "sq12_whispering_pylon",
+  "start": "kendra_intro",
+  "nodes": {
+    "kendra_intro": {
+      "speaker": "kendra",
+      "portrait": "PO-014",
+      "text": "Warden Kendra, House Duskmere perimeter guard. Stand clear of Pylon Twelve. For the last six hours, it hasn't been relaying the city's broadcast tone\u2014it's been whispering names in a dead dialect.",
+      "start_quest": {
+        "id": "sq12_whispering_pylon",
+        "title": "The Whispering Pylon",
+        "desc": "Investigate strange auditory emissions radiating from House Duskmere's rim pylon ring.",
+        "category": "side",
+        "stages": [
+          "Report to Warden Kendra at the Duskmere perimeter",
+          "Attune to the pylon's dissonant psychic pulse",
+          "Discharge the accumulated planar static"
+        ]
+      },
+      "choices": [
+        {
+          "text": "[Arcana Check] That's not speech\u2014it's harmonic cavitation from the cloud-sea planar boundary catching in the crystal matrix.",
+          "check": {
+            "attr": "Arcana",
+            "dc": 7,
+            "uncertain": false
+          },
+          "goto": "kendra_arcana_pass",
+          "goto_fail": "kendra_arcana_fail"
+        },
+        {
+          "text": "[Resilience Check] Let me touch the pylon base and ground the accumulating electrostatic charge.",
+          "check": {
+            "attr": "Resilience",
+            "dc": 7,
+            "uncertain": false
+          },
+          "goto": "kendra_resilience_pass",
+          "goto_fail": "kendra_explain"
+        },
+        {
+          "text": "What names is it whispering, Warden?",
+          "goto": "kendra_explain"
+        }
+      ]
+    },
+    "kendra_explain": {
+      "speaker": "kendra",
+      "portrait": "PO-014",
+      "text": "The names of the outposts lost beyond the cloud-veil. It's frightening the night watchmen, and two initiates refused their posts.",
+      "choices": [
+        {
+          "text": "We need to bleed the resonant static before the crystal cracks.",
+          "goto": "kendra_action"
+        }
+      ]
+    },
+    "kendra_arcana_pass": {
+      "speaker": "kendra",
+      "portrait": "PO-014",
+      "text": "Cavitation? So the external cloud pressure is forcing an inverted harmonic into the pylon. How do we tune it out?",
+      "choices": [
+        {
+          "text": "Adjust the ground resonance prongs to phase-cancel the feedback.",
+          "goto": "kendra_resolve"
+        }
+      ]
+    },
+    "kendra_arcana_fail": {
+      "speaker": "kendra",
+      "portrait": "PO-014",
+      "text": "The whispers are getting louder! The obsidian cap is starting to hum with purple corona discharge!",
+      "choices": [
+        {
+          "text": "Ground the pylon with a copper tether immediately.",
+          "goto": "kendra_resolve"
+        }
+      ]
+    },
+    "kendra_resilience_pass": {
+      "speaker": "kendra",
+      "portrait": "PO-014",
+      "text": "You absorbed that entire discharge without flinching! The purple corona has faded to soft blue.",
+      "choices": [
+        {
+          "text": "Re-lock the grounding clamps.",
+          "goto": "kendra_resolve"
+        }
+      ]
+    },
+    "kendra_action": {
+      "speaker": "kendra",
+      "portrait": "PO-014",
+      "text": "Hand me the tuning fork. Strike the base on three while I ground the collar.",
+      "choices": [
+        {
+          "text": "Strike the harmonic tuning node.",
+          "goto": "kendra_resolve"
+        }
+      ]
+    },
+    "kendra_resolve": {
+      "speaker": "kendra",
+      "portrait": "PO-014",
+      "text": "Silence at last. Just the steady, calm hum of the standard city broadcast. The watchmen can return to their stations. Thank you, Voidweaver.",
+      "set_flags": {
+        "SQ12_PYLON_RESOLVED": true
+      }
+    }
+  }
+}

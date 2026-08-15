@@ -80,8 +80,9 @@ func choose(index: int) -> void:
 		if not result["passed"]:
 			next_id = str(choice.get("goto_fail", choice.get("goto", "")))
 
-	# Apply flags set by choosing this option.
+	# Apply flags and quest actions set by choosing this option.
 	_apply_set_flags(choice.get("set_flags", {}))
+	_apply_quest_actions(choice)
 
 	if next_id == "":
 		_finish()
@@ -97,8 +98,9 @@ func _enter_node(node_id: String) -> void:
 	_current_node_id = node_id
 	var node: Dictionary = _nodes[node_id]
 
-	# Side effects on entry (GDD §8.1): set_flags, then strain.
+	# Side effects on entry (GDD §8.1): set_flags, then strain, then quest actions.
 	_apply_set_flags(node.get("set_flags", {}))
+	_apply_quest_actions(node)
 	if node.has("strain"):
 		GameState.add_strain(int(node["strain"]))
 
@@ -159,6 +161,41 @@ func _apply_set_flags(set_flags) -> void:
 		return
 	for key in set_flags:
 		GameState.set_flag(key, set_flags[key])
+
+
+func _apply_quest_actions(data: Dictionary) -> void:
+	if data.has("start_quest"):
+		var sq = data["start_quest"]
+		if sq is Dictionary:
+			GameState.start_quest(
+				str(sq.get("id", "")),
+				str(sq.get("title", "")),
+				str(sq.get("desc", "")),
+				str(sq.get("category", "side")),
+				sq.get("stages", []),
+				sq.get("rewards", {})
+			)
+		elif sq is String:
+			GameState.start_quest(sq, sq, "")
+
+	if data.has("advance_quest") or data.has("set_quest_stage"):
+		var aq = data.get("advance_quest", data.get("set_quest_stage"))
+		if aq is Dictionary:
+			GameState.set_quest_stage(str(aq.get("id", "")), int(aq.get("stage", 1)), str(aq.get("desc", "")))
+
+	if data.has("complete_quest"):
+		var cq = data["complete_quest"]
+		if cq is Dictionary:
+			GameState.complete_quest(str(cq.get("id", "")), cq.get("rewards", {}))
+		elif cq is String:
+			GameState.complete_quest(cq)
+
+	if data.has("fail_quest"):
+		var fq = data["fail_quest"]
+		if fq is Dictionary:
+			GameState.fail_quest(str(fq.get("id", "")))
+		elif fq is String:
+			GameState.fail_quest(fq)
 
 
 func _require_flags_met(require: Dictionary) -> bool:

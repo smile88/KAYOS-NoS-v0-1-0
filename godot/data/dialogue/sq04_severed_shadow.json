@@ -1,0 +1,94 @@
+{
+  "id": "sq04_severed_shadow",
+  "start": "sylas_intro",
+  "nodes": {
+    "sylas_intro": {
+      "speaker": "sylas",
+      "portrait": "PO-014",
+      "text": "Archmage! Be careful where you cast your lantern! My shadow... it tore loose during the resonance pulse. It's hiding under the cloister arches, and every time the bells chime, it stretches further toward the canal!",
+      "start_quest": {
+        "id": "sq04_severed_shadow",
+        "title": "The Severed Shadow",
+        "desc": "Help Apprentice Sylas re-anchor his severed shadow after a botched void-weaving experiment in House Nyx'Talar.",
+        "category": "side",
+        "stages": [
+          "Investigate the rogue shadow tether in the Nyx'Talar Cloister",
+          "Weave a containment ring using inverted Umbral frequencies",
+          "Re-bind the shadow to Sylas"
+        ]
+      },
+      "choices": [
+        {
+          "text": "[Arcana Check] Hold still. Let me analyze the fraying Umbral tether at the base of your boots.",
+          "check": {
+            "attr": "Arcana",
+            "dc": 7,
+            "uncertain": false
+          },
+          "goto": "sylas_arcana_pass",
+          "goto_fail": "sylas_arcana_fail"
+        },
+        {
+          "text": "What experiment were you performing without Master Vaross's supervision?",
+          "goto": "sylas_explain"
+        },
+        {
+          "text": "Don't move. I will corner it before it reaches the star-water.",
+          "goto": "sylas_action"
+        }
+      ]
+    },
+    "sylas_explain": {
+      "speaker": "sylas",
+      "portrait": "PO-014",
+      "text": "I only wanted to test if a shadow could hold essence without collapsing into void-sludge. But the frequency spike from the Northreach tear inverted the weave!",
+      "choices": [
+        {
+          "text": "We need to construct a dampening loop immediately.",
+          "goto": "sylas_action"
+        }
+      ]
+    },
+    "sylas_arcana_pass": {
+      "speaker": "sylas",
+      "portrait": "PO-014",
+      "text": "You see it! The harmonic thread is still vibrating at thirty cycles. If you cast a low resonant D, the shadow should snap back into phase.",
+      "choices": [
+        {
+          "text": "[Voidweaver] Strike the fundamental tone and seal the anchor.",
+          "goto": "sylas_resolve"
+        }
+      ]
+    },
+    "sylas_arcana_fail": {
+      "speaker": "sylas",
+      "portrait": "PO-014",
+      "text": "It's too fast\u2014it just darted behind the basalt pillar! We have to pin it down with physical light barriers.",
+      "choices": [
+        {
+          "text": "Surround the pillar with star-lamps.",
+          "goto": "sylas_resolve"
+        }
+      ]
+    },
+    "sylas_action": {
+      "speaker": "sylas",
+      "portrait": "PO-014",
+      "text": "It's cornered! Please, Archmage, weave the re-anchoring glyph before my vitality drains completely!",
+      "choices": [
+        {
+          "text": "Re-anchor the shadow to Sylas's heels.",
+          "goto": "sylas_resolve"
+        }
+      ]
+    },
+    "sylas_resolve": {
+      "speaker": "sylas",
+      "portrait": "PO-014",
+      "text": "It worked! My shadow is back at my feet... cold, but whole. Thank you, Voidweaver. I will never touch untuned Umbral harmonics again.",
+      "set_flags": {
+        "SQ04_SHADOW_RESOLVED": true
+      }
+    }
+  }
+}

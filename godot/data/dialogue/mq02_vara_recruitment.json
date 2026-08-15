@@ -1,0 +1,202 @@
+{
+  "id": "mq02_vara_recruitment",
+  "start": "vara_intro",
+  "nodes": {
+    "vara_intro": {
+      "speaker": "vara",
+      "portrait": "PO-008",
+      "text": "If you're another proctor from the Third Terrace coming to tell me my rune compression breaches elven harmonic purity, you can save your breath and take the stairs back down. I haven't slept in three days, and this ink is corrosive.",
+      "choices": [
+        {
+          "text": "I'm Elorin Voidweaver. I'm not here about purity. I came because your seven-variable lattice compresses a three-circle seal into a single octave.",
+          "goto": "vara_recognized"
+        },
+        {
+          "text": "Put the stylus down before you burn through the desk, girl.",
+          "goto": "vara_defensive"
+        },
+        {
+          "text": "[Acumen Check] You didn't just compress the runes; you nested the decay harmonics inside the negative spaces.",
+          "check": { "attr": "Acumen", "dc": 7, "uncertain": false },
+          "goto": "vara_math_pass",
+          "goto_fail": "vara_math_fail"
+        }
+      ]
+    },
+    "vara_defensive": {
+      "speaker": "vara",
+      "portrait": "PO-008",
+      "text": "'Girl.' Right. Three hundred years old and you still can't tell the difference between human youth and human brevity. I do in forty years what takes your High House arithmancers two centuries of tea ceremonies. What do you actually want, Archmage?",
+      "choices": [
+        {
+          "text": "I want your calculations. Specifically, the planar boundary dampener.",
+          "goto": "vara_pitch"
+        },
+        {
+          "text": "I apologize. Your speed is remarkable, not reckless.",
+          "goto": "vara_apology"
+        }
+      ]
+    },
+    "vara_apology": {
+      "speaker": "vara",
+      "portrait": "PO-008",
+      "text": "An elven archmage apologizing to an unchartered human in a canal garret. Either the sky is falling or you need something truly impossible.",
+      "choices": [
+        {
+          "text": "Both, as it happens. The sky cracked at Northreach.",
+          "goto": "vara_pitch"
+        }
+      ]
+    },
+    "vara_recognized": {
+      "speaker": "vara",
+      "portrait": "PO-008",
+      "text": "...Voidweaver. You wrote the Umbraveil treatise on planar negation. The one the Academy library keeps chained to the locked shelf in the restricted annex.",
+      "choices": [
+        {
+          "text": "They chained it because they fear what they cannot harmonize. You read it anyway.",
+          "goto": "vara_pitch"
+        },
+        {
+          "text": "[Arcana Check] And you used its fourth theorem to bypass the solar boundary feedback.",
+          "check": { "attr": "Arcana", "dc": 8, "uncertain": false },
+          "goto": "vara_arcana_pass",
+          "goto_fail": "vara_pitch"
+        }
+      ]
+    },
+    "vara_math_pass": {
+      "speaker": "vara",
+      "portrait": "PO-008",
+      "text": "You saw that? None of the High Scribes saw it. They called it 'sloppy margins' and docked my stipend. You're the first person in this city who actually reads the math instead of the pedigree.",
+      "choices": [
+        {
+          "text": "Then let's talk about building something that pedigree can't touch.",
+          "goto": "vara_pitch"
+        }
+      ]
+    },
+    "vara_math_fail": {
+      "speaker": "vara",
+      "portrait": "PO-008",
+      "text": "Close, but no. The decay isn't in the negative space; it's the counter-current. But at least you're looking at the right axis. Why are you here?",
+      "choices": [
+        {
+          "text": "I'm building a containment matrix for a total planar null. I need your compression.",
+          "goto": "vara_pitch"
+        }
+      ]
+    },
+    "vara_arcana_pass": {
+      "speaker": "vara",
+      "portrait": "PO-008",
+      "text": "I did. And it held for twelve seconds before the resonance melted my quartz prism. If I had pure obsidian and an anchor array, it would hold indefinitely.",
+      "choices": [
+        {
+          "text": "I have the obsidian. And a Conclave charter.",
+          "goto": "vara_pitch"
+        }
+      ]
+    },
+    "vara_pitch": {
+      "speaker": "vara",
+      "portrait": "PO-008",
+      "text": "Let's be completely honest, Elorin. The Academy hates humans in research. If I join your team, Magister Ysolde and the High Arches will strike my name from the publication. My work will be credited to some third-generation son of House Vael'Suran whose only talent is breathing century-old dust.",
+      "choices": [
+        {
+          "text": "I give you my personal word: your name will be carved directly into the matrix core and on every document submitted to the Conclave.",
+          "goto": "vara_credit_yes",
+          "set_flags": { "P1_VARA_CREDITED": true }
+        },
+        {
+          "text": "I cannot guarantee public credit without risking the charter. But I can give you the resources to solve the greatest problem in magical history.",
+          "goto": "vara_credit_no",
+          "set_flags": { "P1_VARA_CREDITED": false }
+        },
+        {
+          "text": "[Magnetism Check] The Academy's prestige is a dying echo. Join me, and when this works, they will have to beg human arithmancers to teach them.",
+          "check": { "attr": "Magnetism", "dc": 7, "uncertain": false },
+          "goto": "vara_magnetism_pass",
+          "goto_fail": "vara_magnetism_fail"
+        },
+        {
+          "text": "[Mender] Human lives are the first to burn when planar tears open. Join me to protect your people, regardless of whose name is on the parchment.",
+          "require_flag": { "P1_CLASS": "mender" },
+          "goto": "vara_mender_plea"
+        }
+      ]
+    },
+    "vara_credit_yes": {
+      "speaker": "vara",
+      "portrait": "PO-008",
+      "text": "Carved into the core. A human name on an astral masterwork. If you break that promise, Elorin, I will dismantle your equations line by line. But until then... I'm packing my instruments.",
+      "set_flags": { "P1_VARA_RECRUITED": true },
+      "choices": [
+        {
+          "text": "Report to the Containment Vault on the central island at dusk.",
+          "goto": "vara_end"
+        }
+      ]
+    },
+    "vara_credit_no": {
+      "speaker": "vara",
+      "portrait": "PO-008",
+      "text": "At least you don't lie like the others. 'Resources over recognition.' It's a bitter pill, but solving this equation is bigger than my pride. I'll do it for the math, Voidweaver. Not for your Conclave.",
+      "set_flags": { "P1_VARA_RECRUITED": true },
+      "strain": 4,
+      "choices": [
+        {
+          "text": "Your math will save thousands, Vara. Come to the Vault.",
+          "goto": "vara_end"
+        }
+      ]
+    },
+    "vara_magnetism_pass": {
+      "speaker": "vara",
+      "portrait": "PO-008",
+      "text": "Teaching them... I'd pay good gold to see Magister Ysolde forced to study my notes. You've got an iron tongue, Elorin. Count me in. I'll bring the harmonic compression plates.",
+      "set_flags": { "P1_VARA_RECRUITED": true, "P1_VARA_CREDITED": true },
+      "choices": [
+        {
+          "text": "Welcome to the team, Vara.",
+          "goto": "vara_end"
+        }
+      ]
+    },
+    "vara_magnetism_fail": {
+      "speaker": "vara",
+      "portrait": "PO-008",
+      "text": "Grand speeches don't pay for quill ink or keep the bailiffs off my door. But... if this is real, and the Tear is spreading, I don't have the luxury of refusing. I'll come.",
+      "set_flags": { "P1_VARA_RECRUITED": true },
+      "choices": [
+        {
+          "text": "To the Academy Vault at dusk.",
+          "goto": "vara_end"
+        }
+      ]
+    },
+    "vara_mender_plea": {
+      "speaker": "vara",
+      "portrait": "PO-008",
+      "text": "My brother was in the Northreach auxiliary masonry. When the tear inverted, he lost both eyes to the harmonic flash. You didn't have to use fancy words, Elorin. If this stops another Northreach, I'll carve the runes myself.",
+      "set_flags": { "P1_VARA_RECRUITED": true, "P1_VARA_CREDITED": true },
+      "choices": [
+        {
+          "text": "We will ensure no more brothers are blinded. Meet me at the Vault.",
+          "goto": "vara_end"
+        }
+      ]
+    },
+    "vara_end": {
+      "speaker": "vara",
+      "portrait": "PO-008",
+      "text": "I'll be there. Make sure whoever is forging the bedrock casing knows how to handle a seven-fold harmonic offset. If the dwarf messes up the alloy, all my compression is worthless.",
+      "advance_quest": {
+        "id": "mq02_assembly",
+        "stage": 2,
+        "desc": "Vara recruited. Seek out Durak Ironthought in the Under-Terraces."
+      }
+    }
+  }
+}

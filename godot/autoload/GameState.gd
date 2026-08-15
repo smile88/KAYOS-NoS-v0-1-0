@@ -9,6 +9,7 @@ extends Node
 signal flag_changed(key: String, value)
 signal strain_changed(value: int, band: int)
 signal strain_silence_triggered()
+signal quest_updated(quest_id: String, state: String, stage: int, data: Dictionary)
 
 const SAVE_PATH := "user://kayos_save.json"
 
@@ -20,6 +21,7 @@ enum StrainBand { CALM, FRAYED, STRAINED, BREAKING, SILENCE }
 
 ## Persistent run state -------------------------------------------------------
 var flags: Dictionary = {}
+var quests: Dictionary = {}                   # quest_id -> Dictionary
 var inventory: Array[String] = []
 var current_protagonist: String = "elorin"   # "elorin" | "grakkar" | "talindir"
 var current_scene: String = ""
@@ -38,6 +40,7 @@ func _ready() -> void:
 func reset() -> void:
 	flags.clear()
 	_seed_default_flags()
+	quests.clear()
 	inventory.clear()
 	attributes.clear()
 	_seed_default_attributes()
@@ -46,6 +49,83 @@ func reset() -> void:
 	player_position = Vector2.ZERO
 	mental_strain = 0
 	strain_changed.emit(mental_strain, get_strain_band())
+
+
+## Quest API ------------------------------------------------------------------
+func start_quest(quest_id: String, title: String, desc: String, category: String = "side", stages: Array = [], rewards: Dictionary = {}) -> void:
+	if quests.has(quest_id) and quests[quest_id].get("state") != "inactive":
+		return
+	quests[quest_id] = {
+		"id": quest_id,
+		"title": title,
+		"desc": desc,
+		"category": category, # "main" or "side"
+		"state": "active",
+		"stage": 1,
+		"stages": stages,
+		"rewards": rewards,
+	}
+	quest_updated.emit(quest_id, "active", 1, quests[quest_id])
+
+
+func set_quest_stage(quest_id: String, stage: int, stage_desc: String = "") -> void:
+	if not quests.has(quest_id):
+		return
+	var q: Dictionary = quests[quest_id]
+	q["stage"] = stage
+	if stage_desc != "":
+		if not q.has("stages"):
+			q["stages"] = []
+		while q["stages"].size() < stage:
+			q["stages"].append("")
+		q["stages"][stage - 1] = stage_desc
+	quest_updated.emit(quest_id, str(q.get("state", "active")), stage, q)
+
+
+func complete_quest(quest_id: String, rewards: Dictionary = {}) -> void:
+	if not quests.has(quest_id):
+		return
+	var q: Dictionary = quests[quest_id]
+	q["state"] = "completed"
+	if not rewards.is_empty():
+		if not q.has("rewards"):
+			q["rewards"] = {}
+		q["rewards"].merge(rewards, true)
+	quest_updated.emit(quest_id, "completed", int(q.get("stage", 1)), q)
+
+
+func fail_quest(quest_id: String) -> void:
+	if not quests.has(quest_id):
+		return
+	var q: Dictionary = quests[quest_id]
+	q["state"] = "failed"
+	quest_updated.emit(quest_id, "failed", int(q.get("stage", 1)), q)
+
+
+func get_quest(quest_id: String) -> Dictionary:
+	return quests.get(quest_id, {})
+
+
+func get_quest_state(quest_id: String) -> String:
+	if not quests.has(quest_id):
+		return "inactive"
+	return str(quests[quest_id].get("state", "inactive"))
+
+
+func get_active_quests() -> Array:
+	var list := []
+	for q in quests.values():
+		if q.get("state") == "active":
+			list.append(q)
+	return list
+
+
+func get_completed_quests() -> Array:
+	var list := []
+	for q in quests.values():
+		if q.get("state") == "completed":
+			list.append(q)
+	return list
 
 
 ## Attribute API --------------------------------------------------------------
@@ -102,6 +182,7 @@ func bump_flag(key: String, delta: int, min_v: int = 0, max_v: int = 99) -> void
 func save_game() -> void:
 	var data := {
 		"flags": flags,
+		"quests": quests,
 		"inventory": inventory,
 		"current_protagonist": current_protagonist,
 		"current_scene": current_scene,
@@ -125,6 +206,7 @@ func load_game() -> bool:
 	if typeof(parsed) != TYPE_DICTIONARY:
 		return false
 	flags = parsed.get("flags", {})
+	quests = parsed.get("quests", {})
 	inventory.assign(parsed.get("inventory", []))
 	current_protagonist = parsed.get("current_protagonist", "elorin")
 	current_scene = parsed.get("current_scene", "")

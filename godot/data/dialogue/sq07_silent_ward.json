@@ -1,0 +1,94 @@
+{
+  "id": "sq07_silent_ward",
+  "start": "reliquary_intro",
+  "nodes": {
+    "reliquary_intro": {
+      "speaker": "reliquary_keeper",
+      "portrait": "PO-014",
+      "text": "Few come to the Dead Tower, Voidweaver. Those who remember why it went dark prefer to look away. But the ward in the inner sanctum is bleeding silence\u2014not metaphorically, but as physical decay in the stonework.",
+      "start_quest": {
+        "id": "sq07_silent_ward",
+        "title": "The Silent Ward",
+        "desc": "Inspect a decaying containment ward within the Dead House's unlit tower reliquary.",
+        "category": "side",
+        "stages": [
+          "Enter the Dead House tower reliquary",
+          "Diagnose the unlit ward's planar decay",
+          "Re-align the obsidian dampening matrix"
+        ]
+      },
+      "choices": [
+        {
+          "text": "[Arcana Check] This ward is not Noctari or Solari. It is a pre-caldera harmonic seal that predates the Nine Houses.",
+          "check": {
+            "attr": "Arcana",
+            "dc": 8,
+            "uncertain": false
+          },
+          "goto": "reliquary_arcana_pass",
+          "goto_fail": "reliquary_arcana_fail"
+        },
+        {
+          "text": "What is kept inside this vault that requires an unlit tower to contain?",
+          "goto": "reliquary_explain"
+        },
+        {
+          "text": "Let me examine the obsidian dampening ring around the pedestal.",
+          "goto": "reliquary_action"
+        }
+      ]
+    },
+    "reliquary_explain": {
+      "speaker": "reliquary_keeper",
+      "portrait": "PO-014",
+      "text": "A memory of the First Silence. A shard of the void that didn't dissolve when the Song was woven. If the ward gives out, every bell in Starfall will crack.",
+      "choices": [
+        {
+          "text": "We cannot let that happen. Let us re-tune the matrix.",
+          "goto": "reliquary_action"
+        }
+      ]
+    },
+    "reliquary_arcana_pass": {
+      "speaker": "reliquary_keeper",
+      "portrait": "PO-014",
+      "text": "You perceive the ancient geometry... yes. It requires an inverted cadence to feed on void pressure instead of resisting it.",
+      "choices": [
+        {
+          "text": "[Voidweaver] Invert the flow direction of the boundary runes.",
+          "goto": "reliquary_resolve"
+        }
+      ]
+    },
+    "reliquary_arcana_fail": {
+      "speaker": "reliquary_keeper",
+      "portrait": "PO-014",
+      "text": "Be careful! Touching that glyph with raw magic will only accelerate the entropy!",
+      "choices": [
+        {
+          "text": "Dampen the resonance manually using cold iron rods.",
+          "goto": "reliquary_resolve"
+        }
+      ]
+    },
+    "reliquary_action": {
+      "speaker": "reliquary_keeper",
+      "portrait": "PO-014",
+      "text": "The obsidian rings are spinning out of alignment. Stabilize the central node while I chant the sealing mantra.",
+      "choices": [
+        {
+          "text": "Channel steady void-weave through the focus stone.",
+          "goto": "reliquary_resolve"
+        }
+      ]
+    },
+    "reliquary_resolve": {
+      "speaker": "reliquary_keeper",
+      "portrait": "PO-014",
+      "text": "The vibration has settled into stillness. The Dead House will remain silent for another age. May your own safeguard hold as well as this ancient stone.",
+      "set_flags": {
+        "SQ07_RELIQUARY_RESOLVED": true
+      }
+    }
+  }
+}

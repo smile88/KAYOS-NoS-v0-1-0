@@ -1,0 +1,83 @@
+{
+  "id": "sq08_smugglers_siphon",
+  "start": "kael_intro",
+  "nodes": {
+    "kael_intro": {
+      "speaker": "kael",
+      "portrait": "PO-014",
+      "text": "Psst! Mistress Elorin! Over here behind the cargo barrels. You know how the water level in Canal Three has been dropping two inches every night? It's not evaporation. Someone's tapped a siphon into the main conduit under Lock Seven.",
+      "start_quest": {
+        "id": "sq08_smugglers_siphon",
+        "title": "The Smuggler's Siphon",
+        "desc": "Track down an illegal star-water siphon draining celestial essence from the Canal Quarter locks.",
+        "category": "side",
+        "stages": [
+          "Meet Dockhand Kael at the lower canal sluice",
+          "Trace the hidden siphon conduits beneath the docks",
+          "Decide the fate of the black-market essence ring"
+        ]
+      },
+      "choices": [
+        {
+          "text": "[Acumen Check] Star-water contains refined celestial essence. Someone is distilling it for black-market alchemy in the Under-Terraces.",
+          "check": {
+            "attr": "Acumen",
+            "dc": 6,
+            "uncertain": false
+          },
+          "goto": "kael_acumen_pass",
+          "goto_fail": "kael_explain"
+        },
+        {
+          "text": "Who runs the barges through Lock Seven at night, Kael?",
+          "goto": "kael_explain"
+        },
+        {
+          "text": "Show me where the siphon attaches to the lock mechanism.",
+          "goto": "kael_action"
+        }
+      ]
+    },
+    "kael_explain": {
+      "speaker": "kael",
+      "portrait": "PO-014",
+      "text": "It's the Silver Current syndicate. They bottle the concentrate and sell it to uncredited scholars who can't get Academy lab permits.",
+      "choices": [
+        {
+          "text": "Lead me to their tapping point.",
+          "goto": "kael_action"
+        }
+      ]
+    },
+    "kael_acumen_pass": {
+      "speaker": "kael",
+      "portrait": "PO-014",
+      "text": "Spot on. They've rigged brass pipes directly into the sluice valve. If the water pressure drops too low, the hydraulic lift for the hospital barges will stall.",
+      "choices": [
+        {
+          "text": "We must disconnect the siphon and secure the valve.",
+          "goto": "kael_resolve"
+        }
+      ]
+    },
+    "kael_action": {
+      "speaker": "kael",
+      "portrait": "PO-014",
+      "text": "There! See that flexible lead tubing running under the wharf? They've got three casks filling right now.",
+      "choices": [
+        {
+          "text": "Sever the siphon line and seal the lock breach.",
+          "goto": "kael_resolve"
+        }
+      ]
+    },
+    "kael_resolve": {
+      "speaker": "kael",
+      "portrait": "PO-014",
+      "text": "Valve sealed and lines confiscated! The lock water is already rising back to full mark. The canal folk will breathe a lot easier tonight, Mistress.",
+      "set_flags": {
+        "SQ08_SIPHON_RESOLVED": true
+      }
+    }
+  }
+}

@@ -1,0 +1,253 @@
+{
+  "id": "mq03_first_containment_test",
+  "start": "test_intro",
+  "nodes": {
+    "test_intro": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "Everyone in position. Durak, engage the hydraulic bedrock clamps. Vara, monitor the rune compression arrays. Sera, maintain solar casing polarization. Elorin... the simulated planar injector is at your command.",
+      "choices": [
+        {
+          "text": "Inject the planar pulse. Ten percent resonance threshold.",
+          "goto": "test_pulse_1"
+        },
+        {
+          "text": "[Arcana Check] Wait. The ambient harmonic floor in the vault is three octaves higher than our model. Let me recalibrate.",
+          "check": { "attr": "Arcana", "dc": 7, "uncertain": false },
+          "goto": "test_arcana_pass",
+          "goto_fail": "test_pulse_1"
+        }
+      ]
+    },
+    "test_arcana_pass": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "Good catch! The city's bells must be feeding into the ground conduit. Adjusting the baseline... Ready. Inject the pulse.",
+      "choices": [
+        {
+          "text": "Injecting the pulse now.",
+          "goto": "test_pulse_1"
+        }
+      ]
+    },
+    "test_pulse_1": {
+      "speaker": "coil",
+      "portrait": "PO-007",
+      "text": "Pulse away! Look at the sphere—it's drinking the void energy! Zero planar leakage! Resonance absorption rate is ninety-eight point four percent! It's holding, Elorin! It's actually holding!",
+      "choices": [
+        {
+          "text": "Hold at current levels. Don't increase the feed.",
+          "goto": "test_surge_event"
+        },
+        {
+          "text": "Increase feed to twenty-five percent. Let us find the boundary limit.",
+          "goto": "test_surge_event",
+          "set_flags": { "P1_FAILSAFE_CUT": true }
+        }
+      ]
+    },
+    "test_surge_event": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "WARNING! Bedrock shear sensor is flashing crimson! The basalt casing isn't dispersing the heat—it's turning into a pressure vessel! The harmonic frequency is climbing out of the basin!",
+      "strain": 10,
+      "choices": [
+        {
+          "text": "[Celerity Check] (Dive across the console to slam the manual secondary baffle shut.)",
+          "check": { "attr": "Celerity", "dc": 7, "uncertain": false },
+          "goto": "test_celerity_pass",
+          "goto_fail": "test_disaster"
+        },
+        {
+          "text": "[Resilience Check] (Brace the containment housing with your bare enchanted gauntlets to absorb the shockwave.)",
+          "check": { "attr": "Resilience", "dc": 8, "uncertain": false },
+          "goto": "test_resilience_pass",
+          "goto_fail": "test_disaster"
+        },
+        {
+          "text": "Talindir, pull the primary breaker! Pull it now!",
+          "goto": "test_disaster"
+        }
+      ]
+    },
+    "test_celerity_pass": {
+      "speaker": "vara",
+      "portrait": "PO-008",
+      "text": "The baffle caught the spike! But the back-pressure blew out the tertiary conduit! Scribe Talindir got thrown against the wall—his hands are flash-burned from the conductive ink!",
+      "choices": [
+        {
+          "text": "Talindir! Get a mending draught to him immediately!",
+          "goto": "test_aftermath"
+        }
+      ]
+    },
+    "test_resilience_pass": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "By the mountain's bones! You held five hundred tons of planar torque in your bare hands! The housing cracked, but the vault didn't blow! Scribe Talindir took a shard of basalt in the shoulder, but he's breathing!",
+      "strain": 12,
+      "choices": [
+        {
+          "text": "Tend to Talindir. Shut down the remaining injectors.",
+          "goto": "test_aftermath"
+        }
+      ]
+    },
+    "test_disaster": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "*CRACK-BOOOOM!* The conduit shattered! Containment blew out the southern wall! Talindir is down—he's bleeding from the head, and two orc laborers on the lower platform have severe harmonic burns!",
+      "strain": 18,
+      "choices": [
+        {
+          "text": "Medic! Stabilize the wounded! Quench the core with liquid quartz!",
+          "goto": "test_aftermath"
+        }
+      ]
+    },
+    "test_aftermath": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "The core is cold again. The prototype held eighty percent of the surge, but the failure was violent. An apprentice is injured, the chamber is scorched, and an orc worker from the Under-Terrace crew was carried away on a stretcher.",
+      "choices": [
+        {
+          "text": "[Glance at the injured orc labourer being carried past—meeting his gaze in the smoke.]",
+          "goto": "test_glance",
+          "set_flags": { "P1_GLANCE_SEEN": true }
+        },
+        {
+          "text": "How bad is the damage to the prototype matrix?",
+          "goto": "test_matrix_analysis"
+        }
+      ]
+    },
+    "test_glance": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "Don't look at them, Elorin. The medical staff will patch the laborers up. What matters right now is the report to the High Conclave. Archon Malakor is already demanding an emergency dispatch explaining the explosion.",
+      "choices": [
+        {
+          "text": "What do we put in the official inquiry report?",
+          "goto": "test_blame_decision"
+        }
+      ]
+    },
+    "test_matrix_analysis": {
+      "speaker": "vara",
+      "portrait": "PO-008",
+      "text": "The matrix held its internal core. But there is a micro-fracture along the subharmonic seam where the Terran stone meets the Solari casing. A tiny flaw, but under full planar load, it could leak.",
+      "choices": [
+        {
+          "text": "We must document the flaw in full technical detail.",
+          "goto": "test_flaw_document",
+          "set_flags": { "P1_FLAW": "DOCUMENTED" }
+        },
+        {
+          "text": "Hide the flaw in the report. If the Conclave sees a seam defect, they will cancel the entire Nullstone project.",
+          "goto": "test_flaw_hide",
+          "set_flags": { "P1_FLAW": "HIDDEN" }
+        }
+      ]
+    },
+    "test_flaw_document": {
+      "speaker": "coil",
+      "portrait": "PO-007",
+      "text": "Documenting it is honest, but the Conclave will use it as ammunition to strip our autonomy. Still... knowing where the seam sits will allow us to design a secondary seal.",
+      "choices": [
+        {
+          "text": "Now, about the formal report and assigning responsibility...",
+          "goto": "test_blame_decision"
+        }
+      ]
+    },
+    "test_flaw_hide": {
+      "speaker": "durak",
+      "portrait": "PO-009",
+      "text": "Hiding a crack in stone... that's how mines collapse, Elorin. But I understand the politics. God help whoever has to stand near this machine when it's fully charged.",
+      "strain": 6,
+      "choices": [
+        {
+          "text": "Now, about the formal report and assigning responsibility...",
+          "goto": "test_blame_decision"
+        }
+      ]
+    },
+    "test_blame_decision": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "The Conclave demands a responsible party for the chamber breach and the injuries. If we don't name someone, they will suspend the grant pending a six-month tribunal. Where does the blame land in the dispatch?",
+      "choices": [
+        {
+          "text": "Assign blame to myself: 'The Chief Architect miscalculated the initial harmonic injection rate.'",
+          "goto": "test_blame_self",
+          "set_flags": { "P1_FIRSTTEST_BLAME": "self" }
+        },
+        {
+          "text": "Assign blame to the team: 'Component tolerances provided by auxiliary specialists fell out of alignment.'",
+          "goto": "test_blame_team",
+          "set_flags": { "P1_FIRSTTEST_BLAME": "team" }
+        },
+        {
+          "text": "Assign blame to the raw project: 'Unprecedented planar boundary volatility exceeded all theoretical literature.'",
+          "goto": "test_blame_project",
+          "set_flags": { "P1_FIRSTTEST_BLAME": "project" }
+        }
+      ]
+    },
+    "test_blame_self": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "Noble. You will face a formal censure from the Board of Archmagisters, but it shields Vara, Durak, and Coil from political retaliation. The grant continues under heightened scrutiny.",
+      "strain": 8,
+      "choices": [
+        {
+          "text": "I can bear their censure. Our team stays intact.",
+          "goto": "test_conclusion"
+        }
+      ]
+    },
+    "test_blame_team": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "The Conclave will accept this. But Vara and Durak will remember that their work was thrown under the imperial carriage to save the budget.",
+      "strain": 4,
+      "choices": [
+        {
+          "text": "It was necessary to preserve the greater work.",
+          "goto": "test_conclusion"
+        }
+      ]
+    },
+    "test_blame_project": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "'Planar volatility.' A masterstroke of academic evasion. It frightens the Conclave into believing that without us, they are completely defenseless. They will double the containment budget.",
+      "choices": [
+        {
+          "text": "Then we proceed to the full-scale manufacture.",
+          "goto": "test_conclusion"
+        }
+      ]
+    },
+    "test_conclusion": {
+      "speaker": "corel",
+      "portrait": "PO-011",
+      "text": "The prototype proved the core concept: the void can swallow planar dissonance. The full Nullstone construction is officially sanctioned. Act I is closed. Rest tonight, Elorin. Tomorrow, we begin capturing the heart of a dying star.",
+      "complete_quest": {
+        "id": "mq03_first_test",
+        "rewards": { "xp": 250, "item": "item_prototype_core_fragment" }
+      },
+      "choices": [
+        {
+          "text": "Dismiss the team. Scribe Talindir... let me help you bind that shoulder.",
+          "goto": "test_end"
+        }
+      ]
+    },
+    "test_end": {
+      "speaker": "talindir",
+      "portrait": "PO-004",
+      "text": "I'm alright, Archmage. The ink will wash out. But... when that sphere opened, I heard something beneath the Song. It sounded like the world holding its breath. I'll write the record now."
+    }
+  }
+}

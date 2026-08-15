@@ -1,0 +1,332 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://ui/LegacyLedgerUI.gd" id="1_ledger_ui"]
+[ext_resource type="PackedScene" path="res://ui/QuestNotificationUI.tscn" id="2_notif"]
+
+[node name="LegacyLedgerUI" type="CanvasLayer"]
+layer = 35
+script = ExtResource("1_ledger_ui")
+
+[node name="RootControl" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Backdrop" type="ColorRect" parent="RootControl"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.03, 0.06, 0.75)
+
+[node name="JournalPanel" type="PanelContainer" parent="RootControl"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -440.0
+offset_top = -245.0
+offset_right = 440.0
+offset_bottom = 245.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Margin" type="MarginContainer" parent="RootControl/JournalPanel"]
+layout_mode = 2
+theme_override_constants/margin_left = 18
+theme_override_constants/margin_top = 14
+theme_override_constants/margin_right = 18
+theme_override_constants/margin_bottom = 14
+
+[node name="LayoutVBox" type="VBoxContainer" parent="RootControl/JournalPanel/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HeaderHBox" type="HBoxContainer" parent="RootControl/JournalPanel/Margin/LayoutVBox"]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Emblem" type="Label" parent="RootControl/JournalPanel/Margin/LayoutVBox/HeaderHBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.86, 0.46, 1)
+theme_override_font_sizes/font_size = 20
+text = "✦"
+
+[node name="HeaderTitles" type="VBoxContainer" parent="RootControl/JournalPanel/Margin/LayoutVBox/HeaderHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 1
+
+[node name="HeaderMainTitle" type="Label" parent="RootControl/JournalPanel/Margin/LayoutVBox/HeaderHBox/HeaderTitles"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.86, 0.46, 1)
+theme_override_font_sizes/font_size = 17
+text = "CHRONICLE OF INQUIRIES"
+
+[node name="ProtagonistLabel" type="Label" parent="RootControl/JournalPanel/Margin/LayoutVBox/HeaderHBox/HeaderTitles"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.65, 0.76, 1)
+theme_override_font_sizes/font_size = 11
+text = "Chronicle of: Elorin — Chief Architect · Nullstone Facility"
+
+[node name="CloseBtn" type="Button" parent="RootControl/JournalPanel/Margin/LayoutVBox/HeaderHBox"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(105, 28)
+layout_mode = 2
+focus_mode = 0
+text = "✕ [ESC / J]"
+
+[node name="HeaderSep" type="HSeparator" parent="RootControl/JournalPanel/Margin/LayoutVBox"]
+layout_mode = 2
+
+[node name="MainHBox" type="HBoxContainer" parent="RootControl/JournalPanel/Margin/LayoutVBox"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+
+[node name="LeftPane" type="VBoxContainer" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox"]
+custom_minimum_size = Vector2(310, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 8
+
+[node name="CategoryTabsHBox" type="HBoxContainer" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/LeftPane"]
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="TabAll" type="Button" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/LeftPane/CategoryTabsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 11
+text = "All (0)"
+
+[node name="TabMain" type="Button" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/LeftPane/CategoryTabsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 11
+text = "Main (0)"
+
+[node name="TabSide" type="Button" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/LeftPane/CategoryTabsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 11
+text = "Side (0)"
+
+[node name="TabCompleted" type="Button" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/LeftPane/CategoryTabsHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+focus_mode = 0
+theme_override_font_sizes/font_size = 11
+text = "Done (0)"
+
+[node name="QuestListScroll" type="ScrollContainer" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/LeftPane"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="QuestListVBox" type="VBoxContainer" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/LeftPane/QuestListScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 6
+
+[node name="EmptyListLabel" type="Label" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/LeftPane"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0.48, 0.5, 0.62, 1)
+theme_override_font_sizes/font_size = 12
+text = "Chronicle is empty."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PaneDivider" type="VSeparator" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox"]
+layout_mode = 2
+
+[node name="RightPane" type="VBoxContainer" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 1.65
+theme_override_constants/separation = 8
+
+[node name="DetailScroll" type="ScrollContainer" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 0
+
+[node name="DetailContainer" type="VBoxContainer" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane/DetailScroll"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="TagAndStatusHBox" type="HBoxContainer" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane/DetailScroll/DetailContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="DetailCategoryTag" type="Label" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane/DetailScroll/DetailContainer/TagAndStatusHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.86, 0.46, 1)
+theme_override_font_sizes/font_size = 12
+text = "✦  MAIN QUEST  ·  PRIMARY SPINE"
+
+[node name="DetailStatusBadge" type="Label" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane/DetailScroll/DetailContainer/TagAndStatusHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.48, 0.78, 0.98, 1)
+theme_override_font_sizes/font_size = 12
+text = "[ IN PROGRESS ]"
+horizontal_alignment = 2
+
+[node name="DetailTitle" type="Label" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane/DetailScroll/DetailContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.86, 0.46, 1)
+theme_override_font_sizes/font_size = 18
+text = "The Buried Flaw"
+autowrap_mode = 3
+
+[node name="DetailDesc" type="RichTextLabel" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane/DetailScroll/DetailContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/default_color = Color(0.85, 0.86, 0.94, 1)
+theme_override_font_sizes/normal_font_size = 13
+bbcode_enabled = true
+fit_content = true
+text = "Elorin alone can build a secret weakness into the Nullstone containment core."
+
+[node name="CurrentStageHeader" type="Label" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane/DetailScroll/DetailContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.48, 0.78, 0.98, 1)
+theme_override_font_sizes/font_size = 12
+text = "◆  CURRENT DIRECTIVE"
+
+[node name="CurrentStageBox" type="PanelContainer" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane/DetailScroll/DetailContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="CurrentStageLabel" type="Label" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane/DetailScroll/DetailContainer/CurrentStageBox"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.98, 0.86, 0.46, 1)
+theme_override_font_sizes/font_size = 13
+text = "Inspect the secondary containment lattice in the Scriptorium."
+autowrap_mode = 3
+
+[node name="ObjectivesHeader" type="Label" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane/DetailScroll/DetailContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.65, 0.76, 1)
+theme_override_font_sizes/font_size = 12
+text = "DIRECTIVE RECORD & PROGRESSION"
+
+[node name="ObjectivesVBox" type="VBoxContainer" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane/DetailScroll/DetailContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="RewardsSection" type="VBoxContainer" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane/DetailScroll/DetailContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 4
+
+[node name="RewardsHeader" type="Label" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane/DetailScroll/DetailContainer/RewardsSection"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.62, 0.35, 1)
+theme_override_font_sizes/font_size = 12
+text = "RECORDED GAINS & LEGACY FOOTPRINTS"
+
+[node name="RewardsVBox" type="VBoxContainer" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane/DetailScroll/DetailContainer/RewardsSection"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 2
+
+[node name="EmptyDetailVBox" type="VBoxContainer" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 6
+alignment = 1
+
+[node name="EmptyPromptIcon" type="Label" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane/EmptyDetailVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0.62, 0.35, 1)
+theme_override_font_sizes/font_size = 28
+text = "✦"
+horizontal_alignment = 1
+
+[node name="EmptyPromptLabel" type="Label" parent="RootControl/JournalPanel/Margin/LayoutVBox/MainHBox/RightPane/EmptyDetailVBox"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.65, 0.76, 1)
+theme_override_font_sizes/font_size = 13
+text = "Select an inquiry entry on the left to inspect records."
+horizontal_alignment = 1
+
+[node name="FooterSep" type="HSeparator" parent="RootControl/JournalPanel/Margin/LayoutVBox"]
+layout_mode = 2
+
+[node name="FooterHBox" type="HBoxContainer" parent="RootControl/JournalPanel/Margin/LayoutVBox"]
+layout_mode = 2
+
+[node name="FooterHints" type="Label" parent="RootControl/JournalPanel/Margin/LayoutVBox/FooterHBox"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.55, 0.58, 0.7, 1)
+theme_override_font_sizes/font_size = 11
+text = "[J] Toggle Journal    [Tab] Switch Category    [↑/↓ / W/S] Navigate Records    [ESC] Close"
+
+[node name="HUDToggleBtn" type="Button" parent="RootControl"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -135.0
+offset_top = 10.0
+offset_right = -15.0
+offset_bottom = 38.0
+grow_horizontal = 0
+focus_mode = 0
+theme_override_colors/font_color = Color(0.98, 0.86, 0.46, 1)
+theme_override_font_sizes/font_size = 12
+text = "📜 Journal [J]"
+
+[node name="HUDNotificationDot" type="ColorRect" parent="RootControl/HUDToggleBtn"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(8, 8)
+layout_mode = 0
+offset_left = 6.0
+offset_top = 4.0
+offset_right = 14.0
+offset_bottom = 12.0
+mouse_filter = 2
+color = Color(0.98, 0.86, 0.46, 1)
+
+[node name="QuestNotificationUI" parent="." instance=ExtResource("2_notif")]

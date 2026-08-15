@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CharacterData" load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://data/characters/character_data.gd" id="1_cd"]
+[ext_resource type="Texture2D" path="res://art/placeholders/NPC_generic_noctari.png" id="2_sprite"]
+[ext_resource type="Texture2D" path="res://art/placeholders/PO-014_generic.png" id="3_portrait"]
+
+[resource]
+script = ExtResource("1_cd")
+id = "NPC-SQ-12"
+display_name = "Warden Kendra"
+faction = 0
+portrait = ExtResource("3_portrait")
+sprite = ExtResource("2_sprite")
+default_dialogue = "res://data/dialogue/sq12_whispering_pylon.json"
+editor_notes = "Sentinel at House Duskmere's resonant pylon perimeter."

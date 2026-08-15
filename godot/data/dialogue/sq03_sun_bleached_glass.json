@@ -1,0 +1,199 @@
+{
+  "id": "sq03_sun_bleached_glass",
+  "start": "lyris_intro",
+  "nodes": {
+    "lyris_intro": {
+      "speaker": "lyris",
+      "portrait": "PO-014",
+      "text": "Look at this optical objective, Voidweaver! Pure Astra'Thalan celestial quartz, ground by the Sun-King's master lensmakers, and within forty-eight hours of arriving in your caldera, it turns opaque and milky! Your Noctari glasswright guild has deliberately poisoned the cleaning solvents!",
+      "start_quest": {
+        "id": "sq03_sun_bleached_glass",
+        "title": "Sun-Bleached Glass",
+        "desc": "Investigate the mysterious clouding of Astra'Thalan astronomical lenses in the Dawnspire observatory.",
+        "category": "side",
+        "stages": [
+          "Examine the clouded celestial lens in the Dawnspire salon",
+          "Analyze the optical discoloration mechanism",
+          "Deliver your findings to Envoy Lyris and the Glasswright Guild"
+        ]
+      },
+      "choices": [
+        {
+          "text": "[Acumen Check] Allow me to examine the crystalline lattice under a polarized light beam.",
+          "check": { "attr": "Acumen", "dc": 7, "uncertain": false },
+          "goto": "lyris_acumen_pass",
+          "goto_fail": "lyris_acumen_fail"
+        },
+        {
+          "text": "[Magnetism Check] Envoy Lyris, accusing the city's foremost guild of treasonous sabotage will ignite a diplomatic crisis. Let us examine the facts first.",
+          "check": { "attr": "Magnetism", "dc": 7, "uncertain": false },
+          "goto": "lyris_magnetism_pass",
+          "goto_fail": "lyris_accusation"
+        },
+        {
+          "text": "What makes you so certain it was sabotage rather than natural atmospheric reaction?",
+          "goto": "lyris_accusation"
+        }
+      ]
+    },
+    "lyris_accusation": {
+      "speaker": "lyris",
+      "portrait": "PO-014",
+      "text": "Because the local Noctari Guildmaster, Valthor, openly stated in the forum that Solari optics were 'too fragile for serious astronomical work'! Then, two days later, all four shipment crates from Astra'Thalas are ruined! That is not chemistry; that is spite!",
+      "choices": [
+        {
+          "text": "Let me test the chemical composition of the clouded surface.",
+          "goto": "lyris_analysis_choice"
+        }
+      ]
+    },
+    "lyris_magnetism_pass": {
+      "speaker": "lyris",
+      "portrait": "PO-014",
+      "text": "You speak with the temperance expected of an academic. Very well. But if the Guildmaster's seal is found on the solvent jars, I will personally petition the Archon to shut down their workshops.",
+      "choices": [
+        {
+          "text": "Let us conduct a proper diagnostic.",
+          "goto": "lyris_analysis_choice"
+        }
+      ]
+    },
+    "lyris_acumen_pass": {
+      "speaker": "lyris",
+      "portrait": "PO-014",
+      "text": "What do you see through the polar filter? Look at the concentric discoloration rings—they start from the center and bleed outward.",
+      "choices": [
+        {
+          "text": "The rings follow the magnetic flux lines of Starfall's ambient void mist, not a surface corrosive.",
+          "goto": "lyris_chemical_reveal"
+        }
+      ]
+    },
+    "lyris_acumen_fail": {
+      "speaker": "lyris",
+      "portrait": "PO-014",
+      "text": "The cloudiness is dense. It resists regular spirit washes and light scraping. It has permeated the top five microns of the quartz.",
+      "choices": [
+        {
+          "text": "Let us explore deeper diagnostic methods.",
+          "goto": "lyris_analysis_choice"
+        }
+      ]
+    },
+    "lyris_analysis_choice": {
+      "speaker": "lyris",
+      "portrait": "PO-014",
+      "text": "How do you intend to prove what caused this decay?",
+      "advance_quest": {
+        "id": "sq03_sun_bleached_glass",
+        "stage": 2,
+        "desc": "Determine the true cause of the lens clouding."
+      },
+      "choices": [
+        {
+          "text": "[Arcana Check] Cast an elemental diagnostic to separate solar matrix quartz from ambient void particulates.",
+          "check": { "attr": "Arcana", "dc": 8, "uncertain": false },
+          "goto": "lyris_arcana_pass",
+          "goto_fail": "lyris_arcana_fail"
+        },
+        {
+          "text": "[Acumen Check] Cross-examine the guild cleaning logs against the observatory's exposure intervals.",
+          "check": { "attr": "Acumen", "dc": 7, "uncertain": false },
+          "goto": "lyris_logs_pass",
+          "goto_fail": "lyris_logs_fail"
+        },
+        {
+          "text": "[Voidweaver] Invert the ambient light in the room to expose the void-flux crystallization on the glass.",
+          "require_flag": { "P1_CLASS": "voidweaver" },
+          "goto": "lyris_voidweaver_proof"
+        }
+      ]
+    },
+    "lyris_arcana_pass": {
+      "speaker": "lyris",
+      "portrait": "PO-014",
+      "text": "The light... it turned lavender. The quartz isn't dissolving; it's absorbing the ambient void-light that naturally rises from the caldera floor during twilight!",
+      "choices": [
+        {
+          "text": "Solar quartz from Astra'Thalas was grown under direct sunlight. In Starfall, it starves for radiant lumens and crystalizes void particles.",
+          "goto": "lyris_verdict"
+        }
+      ]
+    },
+    "lyris_arcana_fail": {
+      "speaker": "lyris",
+      "portrait": "PO-014",
+      "text": "The spell flared and fizzled. The quartz rejected the elemental probe. We are no closer to the truth.",
+      "choices": [
+        {
+          "text": "Let me examine the shipping and handling logs instead.",
+          "goto": "lyris_logs_pass"
+        }
+      ]
+    },
+    "lyris_logs_pass": {
+      "speaker": "lyris",
+      "portrait": "PO-014",
+      "text": "Look at the delivery times... The crates sat on the railless causeway during the midnight void-tide for six hours because the ferry was delayed. It was exposed to raw twilight fog before reaching the observatory.",
+      "choices": [
+        {
+          "text": "It was natural atmospheric exposure, not guild sabotage.",
+          "goto": "lyris_verdict"
+        }
+      ]
+    },
+    "lyris_logs_fail": {
+      "speaker": "lyris",
+      "portrait": "PO-014",
+      "text": "The logs are scribbled and incomplete. Typical Noctari bureaucracy. This proves nothing!",
+      "choices": [
+        {
+          "text": "Look at the chemical reaction: it is photochemical decay, not poison.",
+          "goto": "lyris_chemical_reveal"
+        }
+      ]
+    },
+    "lyris_voidweaver_proof": {
+      "speaker": "lyris",
+      "portrait": "PO-014",
+      "text": "The lens is glowing with faint violet bioluminescence... It is drinking the shadow. It isn't sabotage at all... our own solar quartz is fundamentally incompatible with your valley's ecology unless coated with a protective glaze!",
+      "choices": [
+        {
+          "text": "Now you understand the nature of Starfall.",
+          "goto": "lyris_verdict"
+        }
+      ]
+    },
+    "lyris_chemical_reveal": {
+      "speaker": "lyris",
+      "portrait": "PO-014",
+      "text": "So... the Guildmaster did not poison the solvent. Our lenses simply cannot survive Starfall's atmosphere without a local amber-varnish sealant.",
+      "choices": [
+        {
+          "text": "Precisely. Science, not sabotage.",
+          "goto": "lyris_verdict"
+        }
+      ]
+    },
+    "lyris_verdict": {
+      "speaker": "lyris",
+      "portrait": "PO-014",
+      "text": "I was ready to demand diplomatic sanctions and tariffs... I owe Guildmaster Valthor an apology, and I owe you a significant debt, Archmage. With this formula, we can glaze the remaining lenses and resume the planetary survey.",
+      "complete_quest": {
+        "id": "sq03_sun_bleached_glass",
+        "rewards": { "xp": 60, "item": "item_solar_quartz_prism" }
+      },
+      "choices": [
+        {
+          "text": "May your lenses see clearly under any sky.",
+          "goto": "lyris_end"
+        }
+      ]
+    },
+    "lyris_end": {
+      "speaker": "lyris",
+      "portrait": "PO-014",
+      "text": "May the sun illuminate your path, Elorin. Take this Solar Quartz Prism—it may serve your containment experiments well."
+    }
+  }
+}
