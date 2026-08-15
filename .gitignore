@@ -31,3 +31,5 @@ $CLAUDE_JOB_DIR/
 ~$*
 *.af~lock~
 tools/__pycache__/
+
+godot/assets/
